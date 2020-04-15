@@ -53,6 +53,3 @@ TagManager:
   - name: In Front of Player
     uniqueID: 2746616867
     locked: 0
-  - name: Colliders
-    uniqueID: 1097332957
-    locked: 0
