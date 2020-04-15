@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - StopMovement
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2964664317
+    locked: 0
+  - name: Ground Overlay
+    uniqueID: 2326554287
+    locked: 0
+  - name: Player
+    uniqueID: 2550700797
+    locked: 0
+  - name: In Front of Player
+    uniqueID: 2746616867
+    locked: 0
+  - name: Colliders
+    uniqueID: 1097332957
     locked: 0
