@@ -16,41 +16,29 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        //Actually move the player closer to the movepoint every frame 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
+        //Only check movement input if we are at the movepoint position
         if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
         {
+            //Check if we're pressing all the way to the left or to the right
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3((Input.GetAxisRaw("Horizontal")), 0f, 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3((Input.GetAxisRaw("Horizontal")), 0f, 0f);
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
                 }
-
-
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3((Input.GetAxisRaw("Horizontal")), 0f, 0f), .2f, whatStopsMovement))
-                {
-                    movePoint.position += new Vector3((Input.GetAxisRaw("Horizontal")), 0f, 0f);
-                }
-
             }
 
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, (Input.GetAxisRaw("Vertical")), 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
                 {
                     movePoint.position += new Vector3(0f, (Input.GetAxisRaw("Vertical")), 0f);
                 }
-
-
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, (Input.GetAxisRaw("Vertical")), 0f), .2f, whatStopsMovement))
-                {
-                    movePoint.position += new Vector3(0f, (Input.GetAxisRaw("Vertical")), 0f);
-                }
-
-
             }
 
             //anim.SetBool("moving", false);
