@@ -50,10 +50,17 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Horizontal = 1");
                 movePressedTime = Time.timeSinceLevelLoad;
                 horizontalHeld = false;
-                currentDirection.x = Input.GetAxisRaw("Horizontal");
-                currentDirection.y = Input.GetAxisRaw("Vertical");
-                animator.SetFloat("moveX", currentDirection.x);
-                animator.SetFloat("moveY", currentDirection.y);
+                if (animator.GetFloat("moveX") == 1)
+                {
+                    //If next tile is not blocked
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                    {
+
+                        movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+
+                    }
+                }
+
             }
             if (horizontalIsAxisInUse == false && Input.GetAxisRaw("Horizontal") == -1)
             {
@@ -62,10 +69,17 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Horizontal = -1");
                 movePressedTime = Time.timeSinceLevelLoad;
                 horizontalHeld = false;
-                currentDirection.x = Input.GetAxisRaw("Horizontal");
-                currentDirection.y = Input.GetAxisRaw("Vertical");
-                animator.SetFloat("moveX", currentDirection.x);
-                animator.SetFloat("moveY", currentDirection.y);
+                if (animator.GetFloat("moveX") == -1)
+                {
+                    //If next tile is not blocked
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                    {
+
+                        movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+
+                    }
+                }
+
             }
         }
         else if (Input.GetAxisRaw("Horizontal") == 0)
@@ -83,10 +97,16 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Vertical = -1");
                 movePressedTime = Time.timeSinceLevelLoad;
                 verticalHeld = false;
-                currentDirection.x = Input.GetAxisRaw("Horizontal");
-                currentDirection.y = Input.GetAxisRaw("Vertical");
-                animator.SetFloat("moveX", currentDirection.x);
-                animator.SetFloat("moveY", currentDirection.y);
+                if (animator.GetFloat("moveY") == -1)
+                {
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
+                    {
+
+                        movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+
+                    }
+                }
+
             }
             if (verticalIsAxisInUse == false && Input.GetAxisRaw("Vertical") == 1)
             {
@@ -95,10 +115,15 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Vertical = 1");
                 movePressedTime = Time.timeSinceLevelLoad;
                 verticalHeld = false;
-                currentDirection.x = Input.GetAxisRaw("Horizontal");
-                currentDirection.y = Input.GetAxisRaw("Vertical");
-                animator.SetFloat("moveX", currentDirection.x);
-                animator.SetFloat("moveY", currentDirection.y);
+                if (animator.GetFloat("moveY") == 1)
+                {
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
+                    {
+                        movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+
+                    }
+                }
+
             }
         }
         else if (Input.GetAxisRaw("Vertical") == 0)
@@ -134,24 +159,24 @@ public class PlayerController : MonoBehaviour
 
         //Actually move the player closer to the movepoint every frame 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        /*if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
+        if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
         {
             currentDirection.x = Input.GetAxisRaw("Horizontal");
             currentDirection.y = Input.GetAxisRaw("Vertical");
             //Debug.Log("X: " + Input.GetAxisRaw("Horizontal") + " Y: " + Input.GetAxisRaw("Vertical"));
-        }*/
+        }
 
         
 
         //Only check movement input if we are at the movepoint position
         if ((Vector3.Distance(transform.position, movePoint.position) <= .05f))
         {
-            //animator.SetFloat("moveX", currentDirection.x);
-            //animator.SetFloat("moveY", currentDirection.y);
+            animator.SetFloat("moveX", currentDirection.x);
+            animator.SetFloat("moveY", currentDirection.y);
             if (playerReady == true)
             {
                 //Check if we're pressing all the way to the left or to the right
-                if ((Input.GetAxisRaw("Horizontal") == 1f) /*&& animator.GetFloat("moveX") == 1*/)
+                if ((Input.GetAxisRaw("Horizontal") == 1f) && animator.GetFloat("moveX") == 1)
                 {
                     //If next tile is not blocked
                     if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
@@ -162,7 +187,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                else if ((Input.GetAxisRaw("Horizontal") == -1f))
+                else if ((Input.GetAxisRaw("Horizontal") == -1f) && animator.GetFloat("moveX") == -1)
                 {
                     //If next tile is not blocked
                     if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
@@ -173,7 +198,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                else if ((Input.GetAxisRaw("Vertical") == 1f))
+                else if ((Input.GetAxisRaw("Vertical") == 1f) && animator.GetFloat("moveY") == 1)
                 {
                     if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
                     {
@@ -183,7 +208,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                else if ((Input.GetAxisRaw("Vertical") == -1f))
+                else if ((Input.GetAxisRaw("Vertical") == -1f) && animator.GetFloat("moveY") == -1)
                 {
                     if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
                     {
