@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour
 {
     //Config
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] Transform movePoint;
+    [SerializeField] Transform inFrontOfPlayerTrigger;
     Vector2 currentDirection;
+    [SerializeField] GameObject currentInterObj = null;
 
     [SerializeField] LayerMask whatStopsMovement;
 
@@ -15,15 +18,81 @@ public class PlayerController : MonoBehaviour
 
     //Cached component references
     Animator animator;
+    InFrontOfPlayerTrigger testTrigger;
+
+    enum Direction { North, East, South, West, None};
 
     void Start()
     {
         movePoint.parent = null;
         animator = GetComponent<Animator>();
+        testTrigger = GetComponentInChildren<InFrontOfPlayerTrigger>();
     }
     void Update()
     {
         PlayerMove();
+        var dir = GetDirection();
+        SetInteractCoordinates(dir);
+
+        if (CrossPlatformInputManager.GetButtonDown("Interact"))
+        {
+            GameObject colliding = testTrigger.GetCollidingGameObject();
+            if (colliding != null)
+            {
+                colliding.GetComponent<IInteractable>().Interact();
+            }
+        }
+
+    }
+
+    IEnumerator CheckIfInteractableObjectInFront()
+    {
+        yield return new WaitForSeconds(0.001f);
+        
+    }
+
+    void SetInteractCoordinates(Direction dir)
+    {
+        if (dir == Direction.East)
+        {
+            inFrontOfPlayerTrigger.position = new Vector2(transform.position.x + 1, transform.position.y);
+        }
+        if (dir == Direction.West)
+        {
+            inFrontOfPlayerTrigger.position = new Vector2(transform.position.x - 1, transform.position.y);
+        }
+        if (dir == Direction.North)
+        {
+            inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y + 1);
+        }
+        if (dir == Direction.South)
+        {
+            inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y - 1);
+        }
+    }
+
+    Direction GetDirection()
+    {
+        if(currentDirection.x > 0) 
+        {
+            return Direction.East;
+        }
+        if (currentDirection.x < 0)
+        {
+            return Direction.West;
+        }
+        if (currentDirection.y > 0)
+        {
+            return Direction.North;
+        }
+        if (currentDirection.y < 0)
+        {
+            return Direction.South;
+        }
+        else
+        {
+            return Direction.None;
+        }
     }
 
     private void PlayerMove()

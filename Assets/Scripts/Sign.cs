@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityStandardAssets.CrossPlatformInput;
 
-public class Sign : MonoBehaviour
+public class Sign : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject dialogueBox;
     [SerializeField] TextMeshProUGUI dialogueText;
@@ -14,13 +13,18 @@ public class Sign : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Jump") && playerInRange)
+
+    }
+
+    public void Interact()
+    {
+        if(playerInRange)
         {
             if (dialogueBox.activeInHierarchy)
             {
@@ -33,9 +37,10 @@ public class Sign : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("InteractTrigger"))
         {
             playerInRange = true;
         }
@@ -43,7 +48,7 @@ public class Sign : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("InteractTrigger"))
         {
             playerInRange = false;
             dialogueBox.SetActive(false);
