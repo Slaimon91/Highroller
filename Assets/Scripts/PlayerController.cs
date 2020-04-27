@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform inFrontOfPlayerTrigger;
     Vector2 currentDirection;
     [SerializeField] GameObject currentInterObj = null;
+    bool interacting = false;
 
     [SerializeField] LayerMask whatStopsMovement;
 
@@ -30,9 +31,12 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        PlayerMove();
-        var dir = GetDirection();
-        SetInteractCoordinates(dir);
+        if (!interacting)
+        {
+            PlayerMove();
+            var dir = GetDirection();
+            SetInteractCoordinates(dir);
+        }
 
         if (CrossPlatformInputManager.GetButtonDown("Interact"))
         {
@@ -45,10 +49,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator CheckIfInteractableObjectInFront()
+    public void SetInteracting(bool newState)
     {
-        yield return new WaitForSeconds(0.001f);
-        
+        interacting = newState;
     }
 
     void SetInteractCoordinates(Direction dir)

@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     {
         if(!dialogueStarted)
         {
+            FindObjectOfType<PlayerController>().SetInteracting(true);
             nameText.text = dialogue.name;
 
             sentences.Clear();
@@ -54,6 +55,6 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        FindObjectOfType<PlayerController>().SetInteracting(false);
     }
 }
