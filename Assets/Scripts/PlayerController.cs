@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     Vector2 currentDirection;
     [SerializeField] GameObject currentInterObj = null;
     bool interacting = false;
+    bool tileFlipping = false;
 
     [SerializeField] LayerMask whatStopsMovement;
 
@@ -31,14 +32,24 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (!interacting)
+        if (!interacting && !tileFlipping)
         {
             PlayerMove();
             var dir = GetDirection();
             SetInteractCoordinates(dir);
         }
+        if (!interacting && tileFlipping)
+        {
+            if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
+            {
+                currentDirection.x = Input.GetAxisRaw("Horizontal");
+                currentDirection.y = Input.GetAxisRaw("Vertical");
+            }
+            animator.SetFloat("moveX", currentDirection.x);
+            animator.SetFloat("moveY", currentDirection.y);
+        }
 
-        if (CrossPlatformInputManager.GetButtonDown("Interact"))
+        if (CrossPlatformInputManager.GetButtonDown("Interact") && !tileFlipping)
         {
             GameObject colliding = testTrigger.GetCollidingGameObject();
             if (colliding != null)
@@ -46,6 +57,11 @@ public class PlayerController : MonoBehaviour
                 colliding.GetComponent<IInteractable>().Interact();
             }
         }
+        if (CrossPlatformInputManager.GetButtonDown("Tileflip") && !interacting)
+        {
+            tileFlipping = !tileFlipping;
+        }
+        
 
     }
 
