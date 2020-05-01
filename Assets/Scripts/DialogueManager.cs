@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
     bool dialogueStarted = false;
+    bool finishedTyping = true;
+    string sentence;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && finishedTyping)
         {
             EndDialogue();
             dialogueStarted = false;
@@ -49,20 +51,31 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        if (finishedTyping)
+        {
+            sentence = sentences.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+        }
+        else
+        {
+            StopAllCoroutines();
+            dialogueText.text = sentence;
+            finishedTyping = true;
+        }
+        
     }
 
     IEnumerator TypeSentence (string sentence)
     {
+        finishedTyping = false;
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.02f);
         }
-
+        finishedTyping = true;
     }
 
     void EndDialogue()

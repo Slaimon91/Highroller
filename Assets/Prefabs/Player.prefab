@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 818772870}
   - component: {fileID: 818772869}
   m_Layer: 0
-  m_Name: InteractableTrigger
+  m_Name: In Front Of Player Trigger
   m_TagString: InteractTrigger
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -144,9 +144,17 @@ MonoBehaviour:
   movePoint: {fileID: 7626871176384696239}
   inFrontOfPlayerTrigger: {fileID: 818772868}
   currentInterObj: {fileID: 0}
+  groundTilemap: {fileID: 0}
+  colliderTilemap: {fileID: 0}
+  currentTile: {fileID: 0}
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 256
+  testTrigger: {fileID: 0}
+  selectedTilePrefab: {fileID: 16662239167239479, guid: 51ec5f33bfb9831478c784edf7e262d3,
+    type: 3}
+  availableTilePrefab: {fileID: 299745898312277631, guid: 11826d8d558c29945bf04ef1c0de496a,
+    type: 3}
 --- !u!95 &570017286
 Animator:
   serializedVersion: 3

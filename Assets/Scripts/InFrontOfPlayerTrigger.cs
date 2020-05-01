@@ -41,4 +41,9 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     {
         return collidingGameObject;
     }
+
+    public bool GetCollidingStatus()
+    {
+        return currentlyColliding;
+    }
 }

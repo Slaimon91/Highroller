@@ -37,7 +37,7 @@ MonoBehaviour:
   Sprites:
   - Sprite: {fileID: -5112198260503104909, guid: c1e8b395c62d1c84587528c971c50ded,
       type: 3}
-    Weight: 50
+    Weight: 40
   - Sprite: {fileID: -4865492520336680095, guid: c1e8b395c62d1c84587528c971c50ded,
       type: 3}
     Weight: 10

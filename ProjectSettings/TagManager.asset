@@ -55,3 +55,6 @@ TagManager:
   - name: In Front of Player
     uniqueID: 2746616867
     locked: 0
+  - name: All tiles Overlay
+    uniqueID: 3759178343
+    locked: 0
