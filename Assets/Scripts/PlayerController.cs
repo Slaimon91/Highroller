@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentTile = colliderTilemap.GetTile(new Vector3Int((int)(inFrontOfPlayerTrigger.position.x - 0.5f), (int)(inFrontOfPlayerTrigger.position.y - 0.5), (int)transform.position.z));
-
         CheckNewMovementInput();
         //Normal state
         if (!interacting && !tileFlipping)
@@ -88,20 +87,49 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (IsCollidingNotInFront())
+            if (IsCollidingNotInFront() && key != KeyCode.None)
             {
-                selectedTile.transform.position = inFrontOfPlayerTrigger.position;
-                selectedTile.SetActive(true);
+                foreach (GameObject tile in availableTiles)
+                {
+                    if(tile.transform.position == inFrontOfPlayerTrigger.position)
+                    {
+                        selectedTile = tile;
+                        tile.GetComponent<Animator>().SetFloat("Available", 1f);
+                    }
+                    else
+                    {
+                        tile.GetComponent<Animator>().SetFloat("Available", -1f);
+                    }
+                }
+               
+
+                //selectedTile = 
+                //selectedTile.transform.position = inFrontOfPlayerTrigger.position;
+                //selectedTile.SetActive(true);
             }
-            else
+            else if (key != KeyCode.None)
             {
-                selectedTile.SetActive(false);
+                //selectedTile.SetActive(false);
+                foreach (GameObject tile in availableTiles)
+                {
+                    var TileAnimator = tile.GetComponent<Animator>();
+                    TileAnimator.SetFloat("Available", -1f);
+                }
             }
 
             PlayerTurnInPlace();
 
             dir = GetDirection();
             SetInteractCoordinates(dir);
+
+            /*if (CrossPlatformInputManager.GetButtonDown("Interact"))
+            {
+                foreach (GameObject tile in availableTiles)
+                {
+                    var TileAnimator = tile.GetComponent<Animator>();
+                    TileAnimator.SetFloat("Available", TileAnimator.GetFloat("Available") * -1f);
+                }
+            }*/
         }
     }
 
@@ -208,19 +236,14 @@ public class PlayerController : MonoBehaviour
         dir = GetDirection();
         SetInteractCoordinates(dir);
         NotWalking();
-        selectedTile = Instantiate(selectedTilePrefab, inFrontOfPlayerTrigger.position, Quaternion.identity);
-        selectedTile.transform.parent = transform;
-        selectedTile.SetActive(false);
-        MarkAvailableTiles();
-        hasFinishedWalking = true;
-        if(IsCollidingNotInFront())
-        {
-            
-        }
-        
+        //selectedTile = Instantiate(selectedTilePrefab, inFrontOfPlayerTrigger.position, Quaternion.identity);
+        //selectedTile.transform.parent = transform;
+        //selectedTile.SetActive(false);
+        SpawnAvailableTiles();
+        hasFinishedWalking = true;        
     }
 
-    private void MarkAvailableTiles()
+    private void SpawnAvailableTiles()
     {
         Vector3 tempEast =  new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
         Vector3 tempWest = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
@@ -232,7 +255,13 @@ public class PlayerController : MonoBehaviour
             (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempEast, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempEast, Quaternion.identity));
+            availableTile.transform.parent = transform;
             availableTiles.Add(availableTile);
+            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
+            {
+                selectedTile = availableTile;
+                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
+            }
         }
 
         //West
@@ -240,7 +269,13 @@ public class PlayerController : MonoBehaviour
             (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempWest, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempWest, Quaternion.identity));
+            availableTile.transform.parent = transform;
             availableTiles.Add(availableTile);
+            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
+            {
+                selectedTile = availableTile;
+                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
+            }
         }
 
         //North
@@ -248,7 +283,13 @@ public class PlayerController : MonoBehaviour
             (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempNorth, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempNorth, Quaternion.identity));
+            availableTile.transform.parent = transform;
             availableTiles.Add(availableTile);
+            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
+            {
+                selectedTile = availableTile;
+                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
+            }
         }
 
         //South
@@ -256,7 +297,13 @@ public class PlayerController : MonoBehaviour
             (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempSouth, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempSouth, Quaternion.identity));
+            availableTile.transform.parent = transform;
             availableTiles.Add(availableTile);
+            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
+            {
+                selectedTile = availableTile;
+                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
+            }
         }
     }
 
@@ -267,6 +314,13 @@ public class PlayerController : MonoBehaviour
             currentDirection.x = Input.GetAxisRaw("Horizontal");
             currentDirection.y = Input.GetAxisRaw("Vertical");
         }
+        animator.SetFloat("moveX", currentDirection.x);
+        animator.SetFloat("moveY", currentDirection.y);
+    }
+
+    void NotWalking()
+    {
+        animator.SetBool("Walking", false);
         animator.SetFloat("moveX", currentDirection.x);
         animator.SetFloat("moveY", currentDirection.y);
     }
@@ -329,11 +383,5 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Walking", true);
         }
-    }
-    void NotWalking()
-    {
-        animator.SetBool("Walking", false);
-        animator.SetFloat("moveX", currentDirection.x);
-        animator.SetFloat("moveY", currentDirection.y);
     }
 }
