@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     bool hasFinishedWalking = false;
     [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap colliderTilemap;
-    TileBase currentTile;
+    [SerializeField] TileBase currentTile;
     Direction dir;
     KeyCode key = KeyCode.None;
 
@@ -44,11 +44,33 @@ public class PlayerController : MonoBehaviour
         inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y - 1);
         dir = GetDirection();
         SetInteractCoordinates(dir);
+        currentDirection.y = -1f;
     }
 
     void Update()
     {
-        currentTile = colliderTilemap.GetTile(new Vector3Int((int)(inFrontOfPlayerTrigger.position.x - 0.5f), (int)(inFrontOfPlayerTrigger.position.y - 0.5), (int)transform.position.z));
+        //currentTile = groundTilemap.GetTile(new Vector3Int((int)selectedTile.transform.position.x, (int)selectedTile.transform.position.y, (int)selectedTile.transform.position.z));
+        //currentTile = groundTilemap.GetTile(new Vector3Int((int)(inFrontOfPlayerTrigger.position.x - 0.5f), (int)(inFrontOfPlayerTrigger.position.y - 0.5), (int)transform.position.z));
+        if (selectedTile)
+        {
+            currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x -0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z));
+            Debug.Log("Now checking: " + selectedTile.transform.position.x + " " + selectedTile.transform.position.y + " " + selectedTile.transform.position.z);
+            if(currentTile)
+            {
+                bool startsWithSwamp = currentTile.name.StartsWith("Tilemap_Swamp");
+                if (startsWithSwamp)
+                {
+                    Debug.Log("Swamp");
+                }
+                bool startsWithForest = currentTile.name.StartsWith("Tilemap_GreenForest");
+                if (startsWithForest)
+                {
+                    Debug.Log("Forest");
+                }
+            }
+
+        }
+        
         CheckNewMovementInput();
         //Normal state
         if (!interacting && !tileFlipping)
@@ -75,6 +97,11 @@ public class PlayerController : MonoBehaviour
         if (CrossPlatformInputManager.GetButtonDown("Tileflip") && !interacting)
         {
             PressedTileFlip();
+        }
+
+        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        {
+            FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
     }
 
@@ -110,6 +137,7 @@ public class PlayerController : MonoBehaviour
             else if (key != KeyCode.None)
             {
                 //selectedTile.SetActive(false);
+                selectedTile = null;
                 foreach (GameObject tile in availableTiles)
                 {
                     var TileAnimator = tile.GetComponent<Animator>();
@@ -306,7 +334,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+ 
     private void PlayerTurnInPlace()
     {
         if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
