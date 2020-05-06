@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartScreen.unity
     guid: 2e344e9957bb1bd4b8591acc1563e0ac
   - enabled: 1
@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/OverworldTrash.unity
-    guid: 8654532e3c1a56c45adb7b69b672e5d9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

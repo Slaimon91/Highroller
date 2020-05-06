@@ -33,13 +33,11 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadOverworldScene()
     {
-        SceneManager.LoadScene("hej");
-        //SceneManager.LoadScene(1);
+        SceneManager.LoadScene("OverworldScene");
     }
     public void LoadBattleScene()
     {
-        SceneManager.LoadScene("OverworldScene");
-        //SceneManager.LoadScene(2);
+        SceneManager.LoadScene("BattleScene");
     }
 
 
