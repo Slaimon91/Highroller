@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractTrigger
   - InteractableObject
+  - InteractableTile
   layers:
   - Default
   - TransparentFX

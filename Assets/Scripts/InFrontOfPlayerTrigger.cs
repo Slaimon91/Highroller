@@ -5,7 +5,8 @@ using UnityEngine;
 public class InFrontOfPlayerTrigger : MonoBehaviour
 {
     [SerializeField] GameObject collidingGameObject = null;
-    bool currentlyColliding = false;
+    bool currentlyCollidingInteractable = false;
+    bool currentlyCollidingTileable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,13 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     {
         if (other.CompareTag("InteractableObject"))
         {
-            currentlyColliding = true;
+            currentlyCollidingInteractable = true;
+            collidingGameObject = other.gameObject;
+        }
+
+        else if (other.CompareTag("InteractableTile"))
+        {
+            currentlyCollidingTileable = true;
             collidingGameObject = other.gameObject;
         }
     }
@@ -32,7 +39,13 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     {
         if (other.CompareTag("InteractableObject"))
         {
-            currentlyColliding = false;
+            currentlyCollidingInteractable = false;
+            collidingGameObject = null;
+        }
+
+        else if (other.CompareTag("InteractableTile"))
+        {
+            currentlyCollidingTileable = false;
             collidingGameObject = null;
         }
     }
@@ -42,8 +55,12 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
         return collidingGameObject;
     }
 
-    public bool GetCollidingStatus()
+    public bool GetCollidingInteractableStatus()
     {
-        return currentlyColliding;
+        return currentlyCollidingInteractable;
+    }
+    public bool GetCollidingTileableStatus()
+    {
+        return currentlyCollidingTileable;
     }
 }

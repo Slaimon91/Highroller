@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     bool hasFinishedWalking = false;
     [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap colliderTilemap;
-    [SerializeField] TileBase currentTile;
+    [SerializeField] GroundTile currentTile;
     Direction dir;
     KeyCode key = KeyCode.None;
 
@@ -49,9 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //currentTile = groundTilemap.GetTile(new Vector3Int((int)selectedTile.transform.position.x, (int)selectedTile.transform.position.y, (int)selectedTile.transform.position.z));
-        //currentTile = groundTilemap.GetTile(new Vector3Int((int)(inFrontOfPlayerTrigger.position.x - 0.5f), (int)(inFrontOfPlayerTrigger.position.y - 0.5), (int)transform.position.z));
-        if (selectedTile)
+        /*if (selectedTile)
         {
             currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x -0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z));
             Debug.Log("Now checking: " + selectedTile.transform.position.x + " " + selectedTile.transform.position.y + " " + selectedTile.transform.position.z);
@@ -69,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-        }
+        }*/
         
         CheckNewMovementInput();
         //Normal state
@@ -83,12 +81,17 @@ public class PlayerController : MonoBehaviour
         if (!interacting && tileFlipping)
         {
             TileFlippingUpdate();
+            //Flipping a tile
+            if (CrossPlatformInputManager.GetButtonDown("Interact"))
+            {
+                FlipTile();
+            }
         }
         //Pressed interact
         if (CrossPlatformInputManager.GetButtonDown("Interact") && !tileFlipping)
         {
             GameObject colliding = testTrigger.GetCollidingGameObject();
-            if (testTrigger.GetCollidingStatus())
+            if (testTrigger.GetCollidingInteractableStatus())
             {
                 colliding.GetComponent<IInteractable>().Interact();
             }
@@ -101,6 +104,49 @@ public class PlayerController : MonoBehaviour
 
         if (CrossPlatformInputManager.GetButtonDown("Cancel"))
         {
+            FindObjectOfType<LevelLoader>().LoadBattleScene();
+        }
+    }
+
+    private void FlipTile()
+    {
+        if (selectedTile)
+        {
+            currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x - 0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z)) as GroundTile;
+            if (currentTile)
+            {
+                TestGroundType(currentTile.groundType);
+
+            }
+            else
+            {
+                GameObject colliding = testTrigger.GetCollidingGameObject();
+                if (testTrigger.GetCollidingTileableStatus())
+                {
+                    GroundType tmpType = colliding.GetComponent<TTileable>().GetTileType();
+
+                    TestGroundType(tmpType);
+                }
+            }
+
+        }
+    }
+
+    private void TestGroundType(GroundType groundTile)
+    {
+        if (groundTile == GroundType.GreenforestGrass)
+        {
+            Debug.Log("Grass");
+            FindObjectOfType<LevelLoader>().LoadBattleScene();
+        }
+        if (groundTile == GroundType.GreenforestSwamp)
+        {
+            Debug.Log("Swamp");
+            FindObjectOfType<LevelLoader>().LoadBattleScene();
+        }
+        if (groundTile == GroundType.GreenforestWater)
+        {
+            Debug.Log("Water");
             FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
     }

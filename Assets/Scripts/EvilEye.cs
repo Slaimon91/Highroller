@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class EvilEye : MonoBehaviour
+public class EvilEye : MonoBehaviour, TTileable
 {
     Animator animator;
+    GroundType groundType;
 
     void Start()
     {
+        groundType = GroundType.GreenforestWater;
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -26,5 +29,10 @@ public class EvilEye : MonoBehaviour
             //animator.SetTrigger("Exit");
             animator.SetBool("Enter", false);
         }
+    }
+
+    public GroundType GetTileType()
+    {
+        return groundType;
     }
 }
