@@ -5,6 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerBattleController : MonoBehaviour
 {
+    [SerializeField] int maxHP;
+    [SerializeField] int currentHP;
+
     // Start is called before the first frame update
     void Start()
     {
