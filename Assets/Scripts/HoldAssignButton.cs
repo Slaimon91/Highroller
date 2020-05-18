@@ -40,12 +40,7 @@ public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler/
 
     public void OnSelect(BaseEventData eventData)
     {
-        /*if(eventData.selectedObject == thisButton)
-        {
-            Debug.Log("SELECTED BUTTON");
-        }
 
-        Debug.Log("UN BUTTON");*/
         assignButtonSelected = true;
     }
 

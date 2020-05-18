@@ -27,6 +27,8 @@ public class BattleSystem : MonoBehaviour
 
     public Sprite[] diceSprites;
 
+    public Dice[] dices;
+
     EnemyBattle enemyUnit;
     PlayerBattleController player;
 
@@ -86,7 +88,7 @@ public class BattleSystem : MonoBehaviour
 
     public void OnDicePressed()
     {
-        Debug.Log("Hej");
+        
     }
 
     public void OnAssignButton()
