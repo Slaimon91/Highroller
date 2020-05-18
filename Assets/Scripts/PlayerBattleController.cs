@@ -5,19 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerBattleController : MonoBehaviour
 {
-    [SerializeField] int maxHP;
-    [SerializeField] int currentHP;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        if (CrossPlatformInputManager.GetButtonDown("Change Scene Hax"))
         {
             FindObjectOfType<LevelLoader>().LoadOverworldScene();
         }

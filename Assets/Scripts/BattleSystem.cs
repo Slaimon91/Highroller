@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
@@ -12,6 +13,7 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    GameObject lastselect;
 
     public Transform playerSpawnPoint;
     public Transform enemySpawnPoint;
@@ -30,11 +32,29 @@ public class BattleSystem : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI enemyNameText;
 
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         state = BattleState.START;
         SetUpBattle();
+    }
+
+    void Update()
+    {
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastselect);
+        }
+        else
+        {
+            lastselect = EventSystem.current.currentSelectedGameObject;
+        }
     }
 
     void SetUpBattle()
@@ -64,6 +84,11 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
+    public void OnDicePressed()
+    {
+        Debug.Log("Hej");
+    }
+
     public void OnAssignButton()
     {
         if (state != BattleState.PLAYERTURN)
@@ -72,5 +97,4 @@ public class BattleSystem : MonoBehaviour
         }
         EnemyTurn();
     }
-
 }

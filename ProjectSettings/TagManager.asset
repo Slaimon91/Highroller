@@ -59,3 +59,9 @@ TagManager:
   - name: All tiles Overlay
     uniqueID: 3759178343
     locked: 0
+  - name: UI
+    uniqueID: 1464040527
+    locked: 0
+  - name: Over UI
+    uniqueID: 950600117
+    locked: 0

@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             PressedTileFlip();
         }
 
-        if (CrossPlatformInputManager.GetButtonDown("Cancel"))
+        if (CrossPlatformInputManager.GetButtonDown("Change Scene Hax"))
         {
             FindObjectOfType<LevelLoader>().LoadBattleScene();
         }

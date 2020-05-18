@@ -4,19 +4,23 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
-public class HoldAssignButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler//, IPointerDownHandler, IPointerUpHandler
 {
-    private bool pointerDown;
-    private float pointerDownTimer;
+    private bool buttonDown;
+    private float buttonDownTimer;
+    private bool holding = false;
+    private bool assignButtonSelected = false;
 
     [SerializeField] private float requiredHoldTime;
 
     public UnityEvent onLongClick;
 
     [SerializeField] private Image fillImage;
+    //private GameObject thisButton;
 
-    public void OnPointerDown(PointerEventData eventData)
+    /*public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
         Debug.Log("OnPointerDown");
@@ -27,42 +31,83 @@ public class HoldAssignButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         Reset();
         Debug.Log("OnPointerUp");
 
+    }*/
+
+    void Start()
+    {
+       // thisButton = GetComponent<Button>().gameObject;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        /*if(eventData.selectedObject == thisButton)
+        {
+            Debug.Log("SELECTED BUTTON");
+        }
+
+        Debug.Log("UN BUTTON");*/
+        assignButtonSelected = true;
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        assignButtonSelected = false;
+        Reset();
     }
 
     public void HoldingButton()
     {
-        pointerDown = true;
-        Debug.Log("OnPointerDown333");
+        buttonDown = true;
     }
 
     public void ReleasedButton()
     {
         Reset();
-        Debug.Log("OnPointerUp333");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(pointerDown)
+        if(assignButtonSelected)
         {
-            pointerDownTimer += Time.deltaTime;
-            if(pointerDownTimer >= requiredHoldTime)
+            CheckButtonStatus();
+            if (buttonDown)
             {
-                if(onLongClick != null)
+                buttonDownTimer += Time.deltaTime;
+                if (buttonDownTimer >= requiredHoldTime)
                 {
-                    onLongClick.Invoke();
+                    if (onLongClick != null)
+                    {
+                        onLongClick.Invoke();
+                    }
+                    Reset();
                 }
-                Reset();
+                fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
             }
-            fillImage.fillAmount = pointerDownTimer / requiredHoldTime;
         }
     }
 
     private void Reset()
     {
-        pointerDown = false;
-        pointerDownTimer = 0;
-        fillImage.fillAmount = pointerDownTimer / requiredHoldTime;
+        buttonDown = false;
+        buttonDownTimer = 0;
+        fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
+    }
+
+    private void CheckButtonStatus()
+    {
+        if (CrossPlatformInputManager.GetButtonDown("Submit"))
+        {
+            holding = true;
+            HoldingButton();
+        }
+        else if (CrossPlatformInputManager.GetButtonUp("Submit"))
+        {
+            if (holding)
+            {
+                holding = false;
+                ReleasedButton();
+            }
+        }
     }
 }
