@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler//, IPointerDownHandler, IPointerUpHandler
+public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonDown;
     private float buttonDownTimer;
@@ -18,20 +18,8 @@ public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler/
     public UnityEvent onLongClick;
 
     [SerializeField] private Image fillImage;
+    [SerializeField] GameObject selected;
     //private GameObject thisButton;
-
-    /*public void OnPointerDown(PointerEventData eventData)
-    {
-        pointerDown = true;
-        Debug.Log("OnPointerDown");
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Reset();
-        Debug.Log("OnPointerUp");
-
-    }*/
 
     void Start()
     {
@@ -42,11 +30,13 @@ public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler/
     {
 
         assignButtonSelected = true;
+        selected.SetActive(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         assignButtonSelected = false;
+        selected.SetActive(false);
         Reset();
     }
 

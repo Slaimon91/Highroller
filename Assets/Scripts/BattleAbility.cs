@@ -6,16 +6,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
+
+public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
-    private bool diceLocked = false;
-   
+
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
-    [SerializeField] GameObject marked;
-    [SerializeField] GameObject locked;
-    [SerializeField] GameObject greyed; 
+    //[SerializeField] GameObject marked;
 
     void Start()
     {
@@ -24,27 +22,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     // Update is called once per frame
     void Update()
     {
-        if(buttonSelected)
-        {
-            if (CrossPlatformInputManager.GetButtonDown("Tileflip"))
-            {
-                LockDice();
-            }
-        }
-    }
 
-    private void LockDice()
-    {
-        diceLocked = !diceLocked;
-
-        if(diceLocked)
-        {
-            locked.SetActive(true);
-        }
-        else
-        {
-            locked.SetActive(false);
-        }
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -56,28 +34,23 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         buttonSelected = false;
-        selected.SetActive(false);
         //marked.SetActive(false);
+        selected.SetActive(false);
     }
 
-    public void DiceClicked()
+    public void AbilityClicked()
     {
-        if (!marked.activeSelf)
+        /*if (!marked.activeSelf)
         {
             marked.SetActive(true);
-          //  animator.SetBool("buttonMarked", true);
+            //  animator.SetBool("buttonMarked", true);
             //selected.SetActive(false);
         }
         else
         {
             marked.SetActive(false);
-          //  animator.SetBool("buttonMarked", false);
+            //  animator.SetBool("buttonMarked", false);
             //selected.SetActive(true);
-        }
-    }
-
-    private void CheckButtonStatus()
-    {
-
+        }*/
     }
 }

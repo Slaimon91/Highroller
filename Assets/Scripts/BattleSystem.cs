@@ -73,11 +73,11 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
-        Dice1 = Random.Range(1, 13);
+        Dice1 = Random.Range(1, 7);
         diceImages[0].sprite = diceSprites[Dice1 - 1];
-        Dice2 = Random.Range(1, 13);
+        Dice2 = Random.Range(1, 7);
         diceImages[1].sprite = diceSprites[Dice2 - 1];
-        Dice3 = Random.Range(1, 13);
+        Dice3 = Random.Range(1, 7);
         diceImages[2].sprite = diceSprites[Dice3 - 1];
     }
 
