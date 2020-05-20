@@ -50,9 +50,7 @@ MonoBehaviour:
     type: 3}
   playerSpawnPoint: {fileID: 0}
   enemySpawnPoint: {fileID: 0}
-  Dice1: 0
-  Dice2: 0
-  Dice3: 0
+  diceNumbers: 000000000000000000000000
   diceImages:
   - {fileID: 0}
   - {fileID: 0}
@@ -70,4 +68,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 440788a9b58e2c84aad3b033ea7d0d28, type: 3}
   - {fileID: 21300000, guid: 873976f0410fda8478633549d7103773, type: 3}
   - {fileID: 21300000, guid: 4c4090a0384b6cf4d8f165d6e6bbce23, type: 3}
+  diceGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyNameText: {fileID: 0}

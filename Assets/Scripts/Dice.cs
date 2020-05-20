@@ -10,12 +10,14 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
     private bool diceLocked = false;
+    private bool diceInactive = false;
+    private bool diceMarked = false;
    
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
     [SerializeField] GameObject marked;
     [SerializeField] GameObject locked;
-    [SerializeField] GameObject greyed; 
+    [SerializeField] GameObject inactive; 
 
     void Start()
     {
@@ -28,23 +30,74 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             if (CrossPlatformInputManager.GetButtonDown("Tileflip"))
             {
-                LockDice();
+                ToggleLockDice();
             }
         }
     }
 
-    private void LockDice()
+    public void ToggleLockDice()
     {
-        diceLocked = !diceLocked;
-
-        if(diceLocked)
+        if(!diceLocked && !diceInactive)
         {
             locked.SetActive(true);
+            diceLocked = true;
         }
         else
         {
             locked.SetActive(false);
+            diceLocked = false;
         }
+    }
+
+    public bool GetLockStatus()
+    {
+        return diceLocked;
+    }
+
+    public bool GetLockedOrInactiveStatus()
+    {
+        if(diceLocked || diceInactive)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetInactiveStatus(bool inactiveStatus)
+    {
+        if(!inactiveStatus)
+        {
+            diceInactive = false;
+            inactive.SetActive(false);
+        }
+        else
+        {
+            diceInactive = true;
+            inactive.SetActive(true);
+        }
+    }
+
+    public void SetMarkedStatus(bool markedStatus)
+    {
+        if(!markedStatus)
+        {
+            marked.SetActive(false);
+            diceMarked = false;
+        }
+    }
+
+    public bool GetMarkedStatus()
+    {
+        return diceMarked;
+    }
+
+    public bool RerollDieStatus()
+    {
+        if(diceLocked || diceInactive)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -57,27 +110,23 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = false;
         selected.SetActive(false);
-        //marked.SetActive(false);
     }
 
     public void DiceClicked()
     {
-        if (!marked.activeSelf)
+        if(!diceLocked && !diceInactive)
         {
-            marked.SetActive(true);
-          //  animator.SetBool("buttonMarked", true);
-            //selected.SetActive(false);
+            if (!marked.activeSelf)
+            {
+                marked.SetActive(true);
+                diceMarked = true;
+            }
+            else
+            {
+                marked.SetActive(false);
+                diceMarked = false;
+            }
         }
-        else
-        {
-            marked.SetActive(false);
-          //  animator.SetBool("buttonMarked", false);
-            //selected.SetActive(true);
-        }
-    }
-
-    private void CheckButtonStatus()
-    {
-
+        
     }
 }
