@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GroundTile currentTile;
     Direction dir;
     KeyCode key = KeyCode.None;
+    bool tileFlipAxisPressed = false;
 
     [SerializeField] LayerMask whatStopsMovement;
 
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }*/
-        
+
         CheckNewMovementInput();
         //Normal state
         if (!interacting && !tileFlipping)
@@ -97,10 +98,17 @@ public class PlayerController : MonoBehaviour
             }
         }
         //Pressed tileflip
-        if (CrossPlatformInputManager.GetButtonDown("Tileflip") && !interacting)
+        if ((CrossPlatformInputManager.GetButtonDown("Tileflip") || (Mathf.Abs(CrossPlatformInputManager.GetAxisRaw("TileflipAxis")) > 0f && tileFlipAxisPressed == false)) && !interacting)
         {
+            //Debug.Log(CrossPlatformInputManager.GetAxisRaw("TileflipAxis"));
+            tileFlipAxisPressed = true;
             PressedTileFlip();
         }
+        else if(Mathf.Abs(CrossPlatformInputManager.GetAxisRaw("TileflipAxis")) < 1f)
+        {
+            tileFlipAxisPressed = false;
+        }
+
 
         if (CrossPlatformInputManager.GetButtonDown("Change Scene Hax"))
         {
@@ -160,7 +168,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (IsCollidingNotInFront() && key != KeyCode.None)
+            if (IsCollidingNotInFront()/* && key != KeyCode.None*/)
             {
                 foreach (GameObject tile in availableTiles)
                 {
@@ -180,7 +188,7 @@ public class PlayerController : MonoBehaviour
                 //selectedTile.transform.position = inFrontOfPlayerTrigger.position;
                 //selectedTile.SetActive(true);
             }
-            else if (key != KeyCode.None)
+            else //if (key != KeyCode.None)
             {
                 //selectedTile.SetActive(false);
                 selectedTile = null;

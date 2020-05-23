@@ -68,6 +68,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 440788a9b58e2c84aad3b033ea7d0d28, type: 3}
   - {fileID: 21300000, guid: 873976f0410fda8478633549d7103773, type: 3}
   - {fileID: 21300000, guid: 4c4090a0384b6cf4d8f165d6e6bbce23, type: 3}
+  - {fileID: 21300000, guid: 09f6e6c84c0423742b94376bd7334bca, type: 3}
+  - {fileID: 21300000, guid: 1dd78ebae62e5f94fb2c5b9365f3fd8e, type: 3}
+  - {fileID: 21300000, guid: 88651e0196433e449969e192acba01df, type: 3}
+  - {fileID: 21300000, guid: 253c9f5f0b3a3394cb3238a029652e27, type: 3}
+  - {fileID: 21300000, guid: f2ffd1e7ffdb3264a8f15b3bd2194761, type: 3}
+  - {fileID: 21300000, guid: 4915219b030e49b4c88010f1de2b2de2, type: 3}
+  - {fileID: 21300000, guid: 21d298ca8e6e1004cbac18626cfe75e5, type: 3}
+  - {fileID: 21300000, guid: 063a5763cb9dc4e4bbf5643495c71db7, type: 3}
+  - {fileID: 21300000, guid: 189a6a7469b633f47abb43c029f2d129, type: 3}
+  - {fileID: 21300000, guid: aad0605b37efeaa41930929e8c8d5d17, type: 3}
+  - {fileID: 21300000, guid: da4bdff5cafd0b34a8affaf6315c2abe, type: 3}
+  - {fileID: 21300000, guid: c5e62fad1efec6f44a1fe0296bfd2b5a, type: 3}
   diceGameObjects:
   - {fileID: 0}
   - {fileID: 0}

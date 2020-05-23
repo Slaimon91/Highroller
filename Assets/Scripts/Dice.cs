@@ -12,12 +12,16 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool diceLocked = false;
     private bool diceInactive = false;
     private bool diceMarked = false;
+    private bool diceAssigned = false;
+
+    private GameObject diceAssignedTo;
    
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
     [SerializeField] GameObject marked;
     [SerializeField] GameObject locked;
-    [SerializeField] GameObject inactive; 
+    [SerializeField] GameObject inactive;
+    [SerializeField] GameObject assigned;
 
     void Start()
     {
@@ -28,7 +32,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         if(buttonSelected)
         {
-            if (CrossPlatformInputManager.GetButtonDown("Tileflip"))
+            if (CrossPlatformInputManager.GetButtonDown("LockDice"))
             {
                 ToggleLockDice();
             }
@@ -47,20 +51,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
             locked.SetActive(false);
             diceLocked = false;
         }
-    }
-
-    public bool GetLockStatus()
-    {
-        return diceLocked;
-    }
-
-    public bool GetLockedOrInactiveStatus()
-    {
-        if(diceLocked || diceInactive)
-        {
-            return true;
-        }
-        return false;
     }
 
     public void SetInactiveStatus(bool inactiveStatus)
@@ -86,18 +76,57 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
     }
 
+    public void SetAssignedTo(GameObject enemyNumber)
+    {
+        diceAssignedTo = enemyNumber;
+    }
+
+    public void SetAssignedStatus(bool status)
+    {
+        if (!status)
+        {
+            diceAssigned = false;
+            assigned.SetActive(false);
+        }
+        else
+        {
+            diceAssigned = true;
+            assigned.SetActive(true);
+        }
+    }
+
+    public bool GetAssignedStatus()
+    {
+        return diceAssigned;
+    }
+
+    public GameObject GetAssignedTo()
+    {
+        return diceAssignedTo;
+    }
+
+    public bool GetLockStatus()
+    {
+        return diceLocked;
+    }
+
+    public bool GetLockedOrInactiveStatus()
+    {
+        if (diceLocked || diceInactive)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool GetMarkedStatus()
     {
         return diceMarked;
     }
 
-    public bool RerollDieStatus()
+    public bool GetInactiveStatus()
     {
-        if(diceLocked || diceInactive)
-        {
-            return false;
-        }
-        return true;
+        return diceInactive;
     }
 
     public void OnSelect(BaseEventData eventData)

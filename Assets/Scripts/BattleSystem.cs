@@ -13,12 +13,14 @@ public class BattleSystem : MonoBehaviour
     public BattleState state;
 
     public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
+    [SerializeField] List<GameObject> enemiesGO = new List<GameObject>();
     private GameObject lastselect;
+    private PlayerBattleController player;
     private bool cancelPressed = false;
 
     public Transform playerSpawnPoint;
-    public Transform enemySpawnPoint;
+    public Transform[] enemySpawnPoints;
 
     public int[] diceNumbers;
     public Image[] diceImages;
@@ -27,10 +29,12 @@ public class BattleSystem : MonoBehaviour
     private int[] firstDicePair = {-1, -1 };
     private int[] secondDicePair = {-1, -1 };
 
-    EnemyBattle enemyUnit;
-    PlayerBattleController player;
+    public int[] diceKeyNumbers;
+    public Image[] diceKeyImages;
+    public DiceKey[] diceKeys;
 
-    [SerializeField] TextMeshProUGUI enemyNameText;
+    //[SerializeField] TextMeshProUGUI[] enemyNameTexts;
+    [SerializeField] int nrOfEnemies;
 
     void Awake()
     {
@@ -54,10 +58,17 @@ public class BattleSystem : MonoBehaviour
     void SetUpBattle()
     {
         GameObject playerGO = Instantiate(playerPrefab, playerSpawnPoint);
-        GameObject enemyGO = Instantiate(enemyPrefab, enemySpawnPoint);
-        enemyUnit = enemyGO.GetComponent<EnemyBattle>();
-
-        enemyNameText.text = enemyUnit.unitName;
+        for(int i = 0; i < nrOfEnemies; i++)
+        {
+            var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
+            enemiesGO.Add(enemyGO);
+            diceKeys[i].transform.parent.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyGO.GetComponent<EEnemyInterface>().GetUnitName();
+            diceKeyNumbers[i] = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
+            diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
+            enemyGO.GetComponent<EEnemyInterface>().SetDiceKeyGO(diceKeys[i]);
+        }
+        
+        player = playerGO.GetComponent<PlayerBattleController>();
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
@@ -67,20 +78,75 @@ public class BattleSystem : MonoBehaviour
     {
         for (int i = 0; i < diceNumbers.Length; i++)
         {
-            if(diceGameObjects[i].RerollDieStatus())
+            if(diceGameObjects[i].GetAssignedStatus())
+            {
+                diceGameObjects[i].SetAssignedStatus(false);
+                diceGameObjects[i].SetAssignedTo(null);
+            }
+
+            if(!diceGameObjects[i].GetLockedOrInactiveStatus() && !diceGameObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
             {
                 diceNumbers[i] = Random.Range(1, 7);
                 diceImages[i].sprite = diceSprites[diceNumbers[i] - 1];
+            }
+            else if(!diceGameObjects[i].GetLockedOrInactiveStatus() && diceGameObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+            {
+                Dice pressedDice = diceGameObjects[i].GetComponent<Dice>();
+
+                if (pressedDice == diceGameObjects[firstDicePair[1]])
+                {
+                    diceGameObjects[firstDicePair[0]].SetInactiveStatus(false);
+                    diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
+                    diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+                    diceNumbers[firstDicePair[0]] = Random.Range(1, 7);
+                    diceNumbers[firstDicePair[1]] = Random.Range(1, 7);
+                    diceImages[firstDicePair[0]].sprite = diceSprites[diceNumbers[firstDicePair[0]] - 1];
+                    diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+                    firstDicePair[0] = -1;
+                    firstDicePair[1] = -1;
+                }
+                else if (pressedDice == diceGameObjects[secondDicePair[1]])
+                {
+                    diceGameObjects[secondDicePair[0]].SetInactiveStatus(false);
+                    diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
+                    diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+                    diceNumbers[secondDicePair[0]] = Random.Range(1, 7);
+                    diceNumbers[secondDicePair[1]] = Random.Range(1, 7);
+                    diceImages[secondDicePair[0]].sprite = diceSprites[diceNumbers[secondDicePair[0]] - 1];
+                    diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+                    secondDicePair[0] = -1;
+                    secondDicePair[1] = -1;
+                }
             }
             if(diceGameObjects[i].GetLockStatus())
             {
                 diceGameObjects[i].ToggleLockDice();
             }
+            diceGameObjects[i].SetMarkedStatus(false);
         }
     }
 
     void EnemyTurn()
     {
+        player.TakeDamage(1);
+
+        foreach(var enemyGO in enemiesGO)
+        {
+            if (enemyGO.GetComponent<EEnemyInterface>().GetDeathStatus())
+            {
+                enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+                enemiesGO.Remove(enemyGO);
+                nrOfEnemies--;
+                break;
+            }
+            enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+        }
+
+        if(enemiesGO.Count == 0)
+        {
+            FindObjectOfType<LevelLoader>().LoadOverworldScene();
+        }
+
         PlayerTurn();
     }
 
@@ -149,6 +215,59 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    public void OnKeyPressed()
+    {
+        DiceKey pressedDiceKey;
+        var go = EventSystem.current.currentSelectedGameObject;
+        if (go != null)
+        {
+            pressedDiceKey = go.GetComponent<DiceKey>();
+
+            Dice firstPressedDice = null;
+            int firstPressedNumber = 0;
+            int secondPressedNumber = 0;
+
+            //Find first marked die
+            for (int i = 0; i < diceNumbers.Length; i++)
+            {
+                if (diceGameObjects[i].GetMarkedStatus())
+                {
+
+                    firstPressedDice = diceGameObjects[i];
+                    firstPressedNumber = diceNumbers[i];
+                }
+            }
+
+            //If found
+            if (firstPressedDice != null)
+            {
+
+                //Get the dicekey number
+                foreach(var enemyGO in enemiesGO)
+                {
+                    if(enemyGO.GetComponent<EEnemyInterface>().GetDiceKey() == pressedDiceKey)
+                    {
+                        secondPressedNumber = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
+                        if (secondPressedNumber == firstPressedNumber)
+                        {
+                            firstPressedDice.SetAssignedStatus(true);
+                            firstPressedDice.SetMarkedStatus(false);
+                            //pressedDiceKey.SetAssignedStatus(true);
+                            firstPressedDice.SetAssignedTo(pressedDiceKey.gameObject);
+                            enemyGO.GetComponent<EEnemyInterface>().Assign(true);
+                        }
+                        else
+                        {
+                            //Play negative sound
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     private void PressCancel()
     {
         if (CrossPlatformInputManager.GetButtonDown("Cancel") && !cancelPressed)
@@ -169,26 +288,69 @@ public class BattleSystem : MonoBehaviour
             //If no die was marked
             if(!diceDeselected)
             {
+                //If the selected dice is a dice key
+                if(go.GetComponent<DiceKey>())
+                {
+                    DiceKey pressedDiceKey = go.GetComponent<DiceKey>();
+
+                    foreach (var enemyGO in enemiesGO)
+                    {
+                        if (enemyGO.GetComponent<EEnemyInterface>().GetDiceKey() == pressedDiceKey)
+                        {
+                            enemyGO.GetComponent<EEnemyInterface>().Assign(false);
+
+                            for (int k = 0; k < diceGameObjects.Length; k++)
+                            {
+                                if(diceGameObjects[k].GetAssignedTo() == go)
+                                {
+                                    diceGameObjects[k].SetAssignedStatus(false);
+                                    diceGameObjects[k].SetAssignedTo(null);
+                                    break;
+                                } 
+                            }
+                            break;
+                        }
+                    }
+
+
+
+                    if (pressedDiceKey.GetAssignedStatus())
+                    {
+                        pressedDiceKey.SetAssignedStatus(false);
+
+                        for (int i = 0; i < diceNumbers.Length; i++)
+                        {
+                            if(diceGameObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
+                            {
+                                //TODO
+                            }
+                        }
+                    }
+                }
+
                 //If the selected dice is a added one
-                if (go.GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+                else if (go.GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
                 {
                     Dice pressedDice = go.GetComponent<Dice>();
 
-                    if (pressedDice == diceGameObjects[firstDicePair[1]])
+                    if(!pressedDice.GetInactiveStatus())
                     {
-                        diceGameObjects[firstDicePair[0]].SetInactiveStatus(false);
-                        diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
-                        diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
-                        firstDicePair[0] = -1;
-                        firstDicePair[1] = -1;
-                    }
-                    else if (pressedDice == diceGameObjects[secondDicePair[1]])
-                    {
-                        diceGameObjects[secondDicePair[0]].SetInactiveStatus(false);
-                        diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
-                        diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
-                        secondDicePair[0] = -1;
-                        secondDicePair[1] = -1;
+                        if (pressedDice == diceGameObjects[firstDicePair[1]])
+                        {
+                            diceGameObjects[firstDicePair[0]].SetInactiveStatus(false);
+                            diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
+                            diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+                            firstDicePair[0] = -1;
+                            firstDicePair[1] = -1;
+                        }
+                        else if (pressedDice == diceGameObjects[secondDicePair[1]])
+                        {
+                            diceGameObjects[secondDicePair[0]].SetInactiveStatus(false);
+                            diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
+                            diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+                            secondDicePair[0] = -1;
+                            secondDicePair[1] = -1;
+                        }
                     }
                 }
             }

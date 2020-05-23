@@ -4,18 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
+    private bool diceKeyAssigned = false;
 
-    //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
+    [SerializeField] GameObject assigned;
 
-    void Start()
-    {
-    }
     // Update is called once per frame
     void Update()
     {
@@ -32,26 +31,28 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = false;
         selected.SetActive(false);
-        //marked.SetActive(false);
     }
 
-    public void DiceKeyClicked()
+    public void SetAssignedStatus(bool status)
     {
-        /*if (!marked.activeSelf)
+        if (!status)
         {
-            marked.SetActive(true);
-            //  animator.SetBool("buttonMarked", true);
-            //selected.SetActive(false);
+            diceKeyAssigned = false;
+            assigned.SetActive(false);
         }
         else
         {
-            marked.SetActive(false);
-            //  animator.SetBool("buttonMarked", false);
-            //selected.SetActive(true);
-        }*/
+            diceKeyAssigned = true;
+            assigned.SetActive(true);
+        }
     }
 
-    private void CheckButtonStatus()
+    public bool GetAssignedStatus()
+    {
+        return diceKeyAssigned;
+    }
+
+    public void DiceKeyClicked()
     {
 
     }
