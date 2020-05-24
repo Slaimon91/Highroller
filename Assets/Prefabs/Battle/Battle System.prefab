@@ -46,10 +46,14 @@ MonoBehaviour:
   state: 0
   playerPrefab: {fileID: 6892863589901207043, guid: 0706d640489e16745931671eaf0470bb,
     type: 3}
-  enemyPrefab: {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+  - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
+  enemiesGO: []
   playerSpawnPoint: {fileID: 0}
-  enemySpawnPoint: {fileID: 0}
+  enemySpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   diceNumbers: 000000000000000000000000
   diceImages:
   - {fileID: 0}
@@ -84,4 +88,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  enemyNameText: {fileID: 0}
+  diceKeyNumbers: 0000000000000000
+  diceKeyImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  diceKeys:
+  - {fileID: 0}
+  - {fileID: 0}
+  nrOfEnemies: 2
