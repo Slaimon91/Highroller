@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerBattleController : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class PlayerBattleController : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
     bool isDead;
+    PlayerControls controls;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Gameplay.ChangeSceneHax.performed += ctx => LoadSceneHax();
+    }
 
     void Start()
     {
@@ -21,11 +29,6 @@ public class PlayerBattleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Change Scene Hax"))
-        {
-            FindObjectOfType<LevelLoader>().LoadOverworldScene();
-        }
-
         healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
 
         if(currentHealth <= 0)
@@ -37,6 +40,21 @@ public class PlayerBattleController : MonoBehaviour
 
             Dead();
         }
+    }
+
+    void LoadSceneHax()
+    {
+        FindObjectOfType<LevelLoader>().LoadOverworldScene();
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 
     private void Dead()

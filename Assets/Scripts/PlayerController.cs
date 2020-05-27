@@ -35,6 +35,19 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> availableTiles;
 
     enum Direction { North, East, South, West, None};
+    
+    PlayerControls controls;
+
+    Vector2 move;
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Gameplay.ChangeSceneHax.performed += ctx => ChangeSceneHax();
+        controls.Gameplay.Interact.performed += ctx => Interact();
+        controls.Gameplay.Tileflip.performed += ctx => PressedTileFlip();
+        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+    }
 
     void Start()
     {
@@ -50,27 +63,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        /*if (selectedTile)
-        {
-            currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x -0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z));
-            Debug.Log("Now checking: " + selectedTile.transform.position.x + " " + selectedTile.transform.position.y + " " + selectedTile.transform.position.z);
-            if(currentTile)
-            {
-                bool startsWithSwamp = currentTile.name.StartsWith("Tilemap_Swamp");
-                if (startsWithSwamp)
-                {
-                    Debug.Log("Swamp");
-                }
-                bool startsWithForest = currentTile.name.StartsWith("Tilemap_GreenForest");
-                if (startsWithForest)
-                {
-                    Debug.Log("Forest");
-                }
-            }
-
-        }*/
-
-        CheckNewMovementInput();
         //Normal state
         if (!interacting && !tileFlipping)
         {
@@ -82,14 +74,19 @@ public class PlayerController : MonoBehaviour
         if (!interacting && tileFlipping)
         {
             TileFlippingUpdate();
-            //Flipping a tile
-            if (CrossPlatformInputManager.GetButtonDown("Interact"))
-            {
-                FlipTile();
-            }
         }
+    }
+
+    private void Interact()
+    {
+        //Flipping a tile
+        if (!interacting && tileFlipping)
+        {
+            FlipTile();
+        }
+
         //Pressed interact
-        if (CrossPlatformInputManager.GetButtonDown("Interact") && !tileFlipping)
+        if (!tileFlipping)
         {
             GameObject colliding = testTrigger.GetCollidingGameObject();
             if (testTrigger.GetCollidingInteractableStatus())
@@ -97,23 +94,11 @@ public class PlayerController : MonoBehaviour
                 colliding.GetComponent<IInteractable>().Interact();
             }
         }
-        //Pressed tileflip
-        if ((CrossPlatformInputManager.GetButtonDown("Tileflip") || (Mathf.Abs(CrossPlatformInputManager.GetAxisRaw("TileflipAxis")) > 0f && tileFlipAxisPressed == false)) && !interacting)
-        {
-            //Debug.Log(CrossPlatformInputManager.GetAxisRaw("TileflipAxis"));
-            tileFlipAxisPressed = true;
-            PressedTileFlip();
-        }
-        else if(Mathf.Abs(CrossPlatformInputManager.GetAxisRaw("TileflipAxis")) < 1f)
-        {
-            tileFlipAxisPressed = false;
-        }
+    }
 
-
-        if (CrossPlatformInputManager.GetButtonDown("Change Scene Hax"))
-        {
-            FindObjectOfType<LevelLoader>().LoadBattleScene();
-        }
+    private void ChangeSceneHax()
+    {
+        FindObjectOfType<LevelLoader>().LoadBattleScene();
     }
 
     private void FlipTile()
@@ -136,7 +121,6 @@ public class PlayerController : MonoBehaviour
                     TestGroundType(tmpType);
                 }
             }
-
         }
     }
 
@@ -144,18 +128,29 @@ public class PlayerController : MonoBehaviour
     {
         if (groundTile == GroundType.GreenforestGrass)
         {
-            Debug.Log("Grass");
-            FindObjectOfType<LevelLoader>().LoadBattleScene();
+            float pickedNumber = Random.Range(0, 100);
+
+            if(pickedNumber < 20)
+            {
+                Debug.Log("YOU GOT GAIA!");
+            }
+            else
+            {
+                FindObjectOfType<EncounterManager>().GreenforestGrass();
+            }
+
+            //Debug.Log("Grass");
+            //FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
         if (groundTile == GroundType.GreenforestSwamp)
         {
             Debug.Log("Swamp");
-            FindObjectOfType<LevelLoader>().LoadBattleScene();
+            //FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
         if (groundTile == GroundType.GreenforestWater)
         {
             Debug.Log("Water");
-            FindObjectOfType<LevelLoader>().LoadBattleScene();
+            //FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
     }
 
@@ -168,7 +163,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (IsCollidingNotInFront()/* && key != KeyCode.None*/)
+            if (IsCollidingNotInFront())
             {
                 foreach (GameObject tile in availableTiles)
                 {
@@ -182,15 +177,9 @@ public class PlayerController : MonoBehaviour
                         tile.GetComponent<Animator>().SetFloat("Available", -1f);
                     }
                 }
-               
-
-                //selectedTile = 
-                //selectedTile.transform.position = inFrontOfPlayerTrigger.position;
-                //selectedTile.SetActive(true);
             }
-            else //if (key != KeyCode.None)
+            else
             {
-                //selectedTile.SetActive(false);
                 selectedTile = null;
                 foreach (GameObject tile in availableTiles)
                 {
@@ -203,54 +192,38 @@ public class PlayerController : MonoBehaviour
 
             dir = GetDirection();
             SetInteractCoordinates(dir);
-
-            /*if (CrossPlatformInputManager.GetButtonDown("Interact"))
-            {
-                foreach (GameObject tile in availableTiles)
-                {
-                    var TileAnimator = tile.GetComponent<Animator>();
-                    TileAnimator.SetFloat("Available", TileAnimator.GetFloat("Available") * -1f);
-                }
-            }*/
         }
     }
 
     private void PressedTileFlip()
     {
-        //Start flipping
-        if (!tileFlipping)
+        //Pressed tileflip
+        if (!interacting)
         {
-            tileFlipping = true;
-
-            StartCoroutine(WaitForFinishWalking());
-        }
-        //Stop flipping
-        else if (tileFlipping && hasFinishedWalking)
-        {
-            tileFlipping = false;
-            Destroy(selectedTile);
-            foreach (GameObject tile in availableTiles)
+            //Start flipping
+            if (!tileFlipping)
             {
-                Destroy(tile);
+                tileFlipping = true;
+
+                StartCoroutine(WaitForFinishWalking());
             }
-            availableTiles.Clear();
+            //Stop flipping
+            else if (tileFlipping && hasFinishedWalking)
+            {
+                tileFlipping = false;
+                Destroy(selectedTile);
+                foreach (GameObject tile in availableTiles)
+                {
+                    Destroy(tile);
+                }
+                availableTiles.Clear();
+            }
         }
-    }
-
-    private void CheckNewMovementInput()
-    {
-        if (Input.GetKeyDown(KeyCode.W)) key = KeyCode.W;
-        else if (Input.GetKeyDown(KeyCode.A)) key = KeyCode.A;
-        else if (Input.GetKeyDown(KeyCode.S)) key = KeyCode.S;
-        else if (Input.GetKeyDown(KeyCode.D)) key = KeyCode.D;
-
-        if (Input.GetKeyUp(key)) key = KeyCode.None;
     }
 
     private bool IsCollidingNotInFront()
     {
-        if (/*(colliderTilemap.GetTile(new Vector3Int((int)(inFrontOfPlayerTrigger.position.x - 0.5f), (int)(inFrontOfPlayerTrigger.position.y - 0.5), 
-            (int)transform.position.z)) == null) && */!Physics2D.OverlapCircle(testTrigger.transform.position, .2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(testTrigger.transform.position, .2f, whatStopsMovement))
         {
             return true;
         }
@@ -318,9 +291,6 @@ public class PlayerController : MonoBehaviour
         dir = GetDirection();
         SetInteractCoordinates(dir);
         NotWalking();
-        //selectedTile = Instantiate(selectedTilePrefab, inFrontOfPlayerTrigger.position, Quaternion.identity);
-        //selectedTile.transform.parent = transform;
-        //selectedTile.SetActive(false);
         SpawnAvailableTiles();
         hasFinishedWalking = true;        
     }
@@ -333,8 +303,7 @@ public class PlayerController : MonoBehaviour
         Vector3 tempSouth = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
 
         //East
-        if (/*colliderTilemap.GetTile(new Vector3Int((int)(transform.position.x - 0.5f + 1f), (int)(transform.position.y - 0.5),
-            (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempEast, .2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(tempEast, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempEast, Quaternion.identity));
             availableTile.transform.parent = transform;
@@ -347,8 +316,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //West
-        if (/*colliderTilemap.GetTile(new Vector3Int((int)(transform.position.x - 0.5f - 1f), (int)(transform.position.y - 0.5),
-            (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempWest, .2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(tempWest, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempWest, Quaternion.identity));
             availableTile.transform.parent = transform;
@@ -361,8 +329,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //North
-        if (/*colliderTilemap.GetTile(new Vector3Int((int)(transform.position.x - 0.5f), (int)(transform.position.y - 0.5 + 1f),
-            (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempNorth, .2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(tempNorth, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempNorth, Quaternion.identity));
             availableTile.transform.parent = transform;
@@ -375,8 +342,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //South
-        if (/*colliderTilemap.GetTile(new Vector3Int((int)(transform.position.x - 0.5f), (int)(transform.position.y - 0.5 - 1f),
-            (int)transform.position.z)) == null && */!Physics2D.OverlapCircle(tempSouth, .2f, whatStopsMovement))
+        if (!Physics2D.OverlapCircle(tempSouth, .2f, whatStopsMovement))
         {
             GameObject availableTile = (Instantiate(availableTilePrefab, tempSouth, Quaternion.identity));
             availableTile.transform.parent = transform;
@@ -391,10 +357,10 @@ public class PlayerController : MonoBehaviour
  
     private void PlayerTurnInPlace()
     {
-        if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
+        if (move.x != 0 || move.y != 0)
         {
-            currentDirection.x = Input.GetAxisRaw("Horizontal");
-            currentDirection.y = Input.GetAxisRaw("Vertical");
+            currentDirection.x = move.x;
+            currentDirection.y = move.y;
         }
         animator.SetFloat("moveX", currentDirection.x);
         animator.SetFloat("moveY", currentDirection.y);
@@ -412,10 +378,10 @@ public class PlayerController : MonoBehaviour
 
         //Actually move the player closer to the movepoint every frame 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        if ((Input.GetAxisRaw("Horizontal") != 0) || (Input.GetAxisRaw("Vertical") != 0))
+        if (move.x != 0 || move.y != 0)
         {
-            currentDirection.x = Input.GetAxisRaw("Horizontal");
-            currentDirection.y = Input.GetAxisRaw("Vertical");
+            currentDirection.x = move.x;
+            currentDirection.y = move.y;
         }
 
         //Only check movement input if we are at the movepoint position
@@ -423,12 +389,12 @@ public class PlayerController : MonoBehaviour
         {
 
             //Check if we're pressing all the way to the left or to the right
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && (key == KeyCode.A || key == KeyCode.D || key == KeyCode.None))
+            if (Mathf.Abs(move.x) == 1f)
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x, 0f, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                    movePoint.position += new Vector3(move.x, 0f, 0f);
                     animator.SetFloat("moveX", currentDirection.x);
                     animator.SetFloat("moveY", 0);
 
@@ -439,12 +405,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f && (key == KeyCode.W || key == KeyCode.S || key == KeyCode.None))
+            else if (Mathf.Abs(move.y) == 1f)
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3(0f, (Input.GetAxisRaw("Vertical")), 0f);
+                    movePoint.position += new Vector3(0f, move.y, 0f);
                     animator.SetFloat("moveY", currentDirection.y);
                     animator.SetFloat("moveX", 0);
 
@@ -465,5 +431,14 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Walking", true);
         }
+    }
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }

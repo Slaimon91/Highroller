@@ -23,6 +23,13 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
 
+    PlayerControls controls;
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Gameplay.LockDice.performed += ctx => ToggleLockDice();
+    }
+
     void Start()
     {
 
@@ -30,26 +37,23 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     // Update is called once per frame
     void Update()
     {
-        if(buttonSelected)
-        {
-            if (CrossPlatformInputManager.GetButtonDown("LockDice"))
-            {
-                ToggleLockDice();
-            }
-        }
+
     }
 
     public void ToggleLockDice()
     {
-        if(!diceLocked && !diceInactive)
+        if (buttonSelected)
         {
-            locked.SetActive(true);
-            diceLocked = true;
-        }
-        else
-        {
-            locked.SetActive(false);
-            diceLocked = false;
+            if (!diceLocked && !diceInactive && !diceAssigned)
+            {
+                locked.SetActive(true);
+                diceLocked = true;
+            }
+            else
+            {
+                locked.SetActive(false);
+                diceLocked = false;
+            }
         }
     }
 
@@ -143,7 +147,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void DiceClicked()
     {
-        if(!diceLocked && !diceInactive)
+        if(!diceLocked && !diceInactive && !diceAssigned)
         {
             if (!marked.activeSelf)
             {
@@ -157,5 +161,14 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
             }
         }
         
+    }
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }

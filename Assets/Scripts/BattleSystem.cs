@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-using UnityStandardAssets.CrossPlatformInput;
+//using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.InputSystem;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
@@ -36,8 +37,12 @@ public class BattleSystem : MonoBehaviour
     //[SerializeField] TextMeshProUGUI[] enemyNameTexts;
     [SerializeField] int nrOfEnemies;
 
+    PlayerControls controls;
+
     void Awake()
     {
+        controls = new PlayerControls();
+        controls.Gameplay.Cancel.performed += ctx => PressedCancel();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -51,8 +56,8 @@ public class BattleSystem : MonoBehaviour
 
     void Update()
     {
-        PreventCursor();
-        PressCancel();
+        //PreventCursor();
+        //PressCancel();
     }
 
     void SetUpBattle()
@@ -130,16 +135,27 @@ public class BattleSystem : MonoBehaviour
     {
         player.TakeDamage(1);
 
+        List<GameObject> toRemoveList = new List<GameObject>();
+
+        //see if someone will die
         foreach(var enemyGO in enemiesGO)
         {
             if (enemyGO.GetComponent<EEnemyInterface>().GetDeathStatus())
             {
-                enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
-                enemiesGO.Remove(enemyGO);
-                nrOfEnemies--;
-                break;
+                toRemoveList.Add(enemyGO);
             }
-            enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+            else
+            {
+                enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+            }
+        }
+
+        //Actually kill them
+        foreach(var toRemoveGO in toRemoveList)
+        {
+            toRemoveGO.GetComponent<EEnemyInterface>().EnemyAction();
+            enemiesGO.Remove(toRemoveGO);
+            nrOfEnemies--;
         }
 
         if(enemiesGO.Count == 0)
@@ -268,9 +284,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private void PressCancel()
+    private void PressedCancel()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Cancel") && !cancelPressed)
+        if (!cancelPressed)
         {
             cancelPressed = true;
             bool diceDeselected = false;
@@ -333,7 +349,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     Dice pressedDice = go.GetComponent<Dice>();
 
-                    if(!pressedDice.GetInactiveStatus())
+                    if(!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus())
                     {
                         if (pressedDice == diceGameObjects[firstDicePair[1]])
                         {
@@ -356,7 +372,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (CrossPlatformInputManager.GetButtonDown("Cancel") && cancelPressed)
+        if (cancelPressed)
         {
             cancelPressed = false;
         }
@@ -380,5 +396,15 @@ public class BattleSystem : MonoBehaviour
             return;
         }
         EnemyTurn();
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }

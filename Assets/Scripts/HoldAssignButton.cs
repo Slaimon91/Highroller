@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class HoldAssignButton : MonoBehaviour
 {
     private bool buttonDown;
     private float buttonDownTimer;
@@ -21,54 +21,29 @@ public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject selected;
     //private GameObject thisButton;
 
-    void Start()
+    PlayerControls controls;
+    void Awake()
     {
-       // thisButton = GetComponent<Button>().gameObject;
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-
-        assignButtonSelected = true;
-        selected.SetActive(true);
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-        assignButtonSelected = false;
-        selected.SetActive(false);
-        Reset();
-    }
-
-    public void HoldingButton()
-    {
-        buttonDown = true;
-    }
-
-    public void ReleasedButton()
-    {
-        Reset();
+        controls = new PlayerControls();
+        controls.Gameplay.Pass.performed += ctx => ButtonStarted();
+        controls.Gameplay.Pass.canceled += ctx => ButtonCanceled();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(assignButtonSelected)
+        if (buttonDown)
         {
-            CheckButtonStatus();
-            if (buttonDown)
+            buttonDownTimer += Time.deltaTime;
+            if (buttonDownTimer >= requiredHoldTime)
             {
-                buttonDownTimer += Time.deltaTime;
-                if (buttonDownTimer >= requiredHoldTime)
+                if (onLongClick != null)
                 {
-                    if (onLongClick != null)
-                    {
-                        onLongClick.Invoke();
-                    }
-                    Reset();
+                    onLongClick.Invoke();
                 }
-                fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
+                Reset();
             }
+            fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
         }
     }
 
@@ -78,21 +53,29 @@ public class HoldAssignButton : MonoBehaviour, ISelectHandler, IDeselectHandler
         buttonDownTimer = 0;
         fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
     }
-
-    private void CheckButtonStatus()
+    
+    private void ButtonStarted()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Submit"))
+        holding = true;
+        buttonDown = true;
+    }
+
+    private void ButtonCanceled()
+    {
+        if (holding)
         {
-            holding = true;
-            HoldingButton();
+            holding = false;
+            Reset();
         }
-        else if (CrossPlatformInputManager.GetButtonUp("Submit"))
-        {
-            if (holding)
-            {
-                holding = false;
-                ReleasedButton();
-            }
-        }
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
     }
 }
