@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityStandardAssets.CrossPlatformInput;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Tilemap colliderTilemap;
     [SerializeField] GroundTile currentTile;
     Direction dir;
-    KeyCode key = KeyCode.None;
     bool tileFlipAxisPressed = false;
 
     [SerializeField] LayerMask whatStopsMovement;
@@ -33,10 +33,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject availableTilePrefab;
     private GameObject selectedTile;
     private List<GameObject> availableTiles;
+    [SerializeField] PlayerValues playerValues;
 
     enum Direction { North, East, South, West, None};
     
     PlayerControls controls;
+    [SerializeField] TextMeshProUGUI healthText;
+    private GameObject healthTextGameObject;
+    [SerializeField] TextMeshProUGUI gaiaText;
+    private GameObject gaiaTextGameObject;
 
     Vector2 move;
     void Awake()
@@ -59,10 +64,16 @@ public class PlayerController : MonoBehaviour
         dir = GetDirection();
         SetInteractCoordinates(dir);
         currentDirection.y = -1f;
+        healthTextGameObject = GameObject.FindGameObjectWithTag("HealthText");
+        healthText = healthTextGameObject.GetComponent<TextMeshProUGUI>();
+        gaiaTextGameObject = GameObject.FindGameObjectWithTag("GaiaText");
+        gaiaText = gaiaTextGameObject.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
+        healthText.text = playerValues.healthPoints.ToString() + " / " + playerValues.maxHealthPoints.ToString();
+        gaiaText.text = playerValues.gaia.ToString();
         //Normal state
         if (!interacting && !tileFlipping)
         {
@@ -132,25 +143,40 @@ public class PlayerController : MonoBehaviour
 
             if(pickedNumber < 20)
             {
-                Debug.Log("YOU GOT GAIA!");
+                Debug.Log("YOU GOT GAIA 20!");
+                playerValues.gaia += 20;
             }
             else
             {
                 FindObjectOfType<EncounterManager>().GreenforestGrass();
             }
-
-            //Debug.Log("Grass");
-            //FindObjectOfType<LevelLoader>().LoadBattleScene();
         }
         if (groundTile == GroundType.GreenforestSwamp)
         {
-            Debug.Log("Swamp");
-            //FindObjectOfType<LevelLoader>().LoadBattleScene();
+            float pickedNumber = Random.Range(0, 100);
+
+            if (pickedNumber < 20)
+            {
+                Debug.Log("YOU GOT GAIA!");
+            }
+            else
+            {
+                FindObjectOfType<EncounterManager>().GreenforestSwamp();
+            }
         }
         if (groundTile == GroundType.GreenforestWater)
         {
-            Debug.Log("Water");
-            //FindObjectOfType<LevelLoader>().LoadBattleScene();
+            float pickedNumber = Random.Range(0, 100);
+
+            if (pickedNumber < 101)
+            {
+                Debug.Log("YOU GOT GAIA 20!");
+                playerValues.gaia += 20;
+            }
+            else
+            {
+                FindObjectOfType<EncounterManager>().GreenforestWater();
+            }
         }
     }
 

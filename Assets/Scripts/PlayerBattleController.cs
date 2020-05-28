@@ -7,12 +7,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerBattleController : MonoBehaviour
 {
-    [SerializeField] int currentHealth;
-    [SerializeField] int maxHealth;
+    //[SerializeField] int currentHealth;
+    //[SerializeField] int maxHealth;
     [SerializeField] TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
     bool isDead;
     PlayerControls controls;
+    [SerializeField] PlayerValues playerValues;
 
     void Awake()
     {
@@ -29,9 +30,9 @@ public class PlayerBattleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        healthText.text = playerValues.healthPoints.ToString() + " / " + playerValues.maxHealthPoints.ToString();
 
-        if(currentHealth <= 0)
+        if(playerValues.healthPoints <= 0)
         {
             if(isDead)
             {
@@ -64,15 +65,15 @@ public class PlayerBattleController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        playerValues.healthPoints -= damage;
     }
 
     public void HealDamage(int damage)
     {
-        currentHealth += damage;
-        if(currentHealth>maxHealth)
+        playerValues.healthPoints += damage;
+        if(playerValues.healthPoints > playerValues.maxHealthPoints)
         {
-            currentHealth = maxHealth;
+            playerValues.healthPoints = playerValues.maxHealthPoints;
         }
     }
 }

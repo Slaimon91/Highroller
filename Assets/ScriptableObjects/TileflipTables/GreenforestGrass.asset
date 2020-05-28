@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GreenforestGrass
   m_EditorClassIdentifier: 
   name: GreenforestGrass
+  battleBackground: {fileID: 21300000, guid: b053ecbb9aa062140ab6b75e075f1297, type: 3}
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}

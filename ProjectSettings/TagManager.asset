@@ -8,6 +8,7 @@ TagManager:
   - InteractableObject
   - InteractableTile
   - HealthText
+  - GaiaText
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
     public List<TileflipTable> tables = new List<TileflipTable>();
+    [SerializeField] BattleStartupInfo battleStartupInfo;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class EncounterManager : MonoBehaviour
 
     private void LaunchBattle(TileflipTable matchedTable)
     {
+        //battleStartupInfo = Resources.Load<BattleStartupInfo>("BattleStartupInfo");
         if (matchedTable != null)
         {
             float totalWeight = 0;
@@ -31,7 +33,7 @@ public class EncounterManager : MonoBehaviour
             }
 
             float pickedNumber = Random.Range(0, totalWeight);
-
+            battleStartupInfo.enemies.Clear();
 
             for (int i = 0; i < weightTable.Count; i++)
             {
@@ -39,10 +41,12 @@ public class EncounterManager : MonoBehaviour
                 {
                     for (int k = 0; k < matchedTable.encounters[i].list.Count; k++)
                     {
-                        Debug.Log(matchedTable.encounters[i].list[k]);
+                        //Debug.Log(matchedTable.encounters[i].list[k]);
+                        battleStartupInfo.enemies.Add(matchedTable.encounters[i].list[k]);
                     }
-                    //FindObjectOfType<LevelLoader>().LoadBattleScene();
-                    Debug.Log("\n");
+                    battleStartupInfo.battleBackground = matchedTable.battleBackground;
+                    Debug.Log("FlippedTILE!");
+                    FindObjectOfType<LevelLoader>().LoadBattleScene();
                     return;
                 }
                 else
@@ -56,6 +60,17 @@ public class EncounterManager : MonoBehaviour
     public void GreenforestGrass()
     {
         TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestGrass"));
+        LaunchBattle(tableToSend);
+    }
+
+    public void GreenforestSwamp()
+    {
+        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestSwamp"));
+        LaunchBattle(tableToSend);
+    }
+    public void GreenforestWater()
+    {
+        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestWater"));
         LaunchBattle(tableToSend);
     }
 }

@@ -14,8 +14,9 @@ public class BattleSystem : MonoBehaviour
     public BattleState state;
 
     public GameObject playerPrefab;
-    public GameObject[] enemyPrefabs;
-    [SerializeField] List<GameObject> enemiesGO = new List<GameObject>();
+    private List<GameObject> enemyPrefabs = new List<GameObject>();
+    private List<GameObject> enemiesGO = new List<GameObject>();
+    [SerializeField] GameObject[] enemiesInfo;
     private GameObject lastselect;
     private PlayerBattleController player;
     private bool cancelPressed = false;
@@ -34,10 +35,11 @@ public class BattleSystem : MonoBehaviour
     public Image[] diceKeyImages;
     public DiceKey[] diceKeys;
 
-    //[SerializeField] TextMeshProUGUI[] enemyNameTexts;
-    [SerializeField] int nrOfEnemies;
+    int nrOfEnemies;
 
     PlayerControls controls;
+    [SerializeField] BattleStartupInfo battleStartupInfo;
+    private Sprite battleBackground;
 
     void Awake()
     {
@@ -63,20 +65,30 @@ public class BattleSystem : MonoBehaviour
     void SetUpBattle()
     {
         GameObject playerGO = Instantiate(playerPrefab, playerSpawnPoint);
+        nrOfEnemies = battleStartupInfo.enemies.Count;
         for(int i = 0; i < nrOfEnemies; i++)
         {
+            enemyPrefabs.Add(battleStartupInfo.enemies[i]);
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
             enemiesGO.Add(enemyGO);
             diceKeys[i].transform.parent.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyGO.GetComponent<EEnemyInterface>().GetUnitName();
             diceKeyNumbers[i] = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
             diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
             enemyGO.GetComponent<EEnemyInterface>().SetDiceKeyGO(diceKeys[i]);
+            enemiesInfo[i].SetActive(true);
         }
-        
+        GetComponentInChildren<SpriteRenderer>().sprite = battleStartupInfo.battleBackground;
         player = playerGO.GetComponent<PlayerBattleController>();
+        SetupButtonNavigation();
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();
+    }
+
+    void SetupButtonNavigation()
+    {
+
+        
     }
 
     void PlayerTurn()
