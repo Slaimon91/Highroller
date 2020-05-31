@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &549468894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549468896}
+  - component: {fileID: 549468895}
+  m_Layer: 0
+  m_Name: Battle Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &549468896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549468894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1718, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7000813602035915060}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &549468895
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549468894}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 868ec6a12a94656459e360ae11615600, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &7000813602035915066
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +108,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 549468896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,53 +128,64 @@ MonoBehaviour:
   state: 0
   playerPrefab: {fileID: 6892863589901207043, guid: 0706d640489e16745931671eaf0470bb,
     type: 3}
-  enemyPrefabs:
-  - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-  - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
-  enemiesGO: []
+  enemiesInfo:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerSpawnPoint: {fileID: 0}
   enemySpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
-  diceNumbers: 000000000000000000000000
+  - {fileID: 0}
+  - {fileID: 0}
+  diceNumbers: 0000000000000000000000000000000000000000
   diceImages:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   diceSprites:
-  - {fileID: 21300000, guid: 10841c331ce15a443bd7315f729749b8, type: 3}
-  - {fileID: 21300000, guid: c2d7d4e20e8ca5749b20ba00fc341ce5, type: 3}
-  - {fileID: 21300000, guid: 3f699435f2c66f5499b364b1ea9f9a73, type: 3}
-  - {fileID: 21300000, guid: b6765d5096c83ed48bea19bfb9f1fde5, type: 3}
-  - {fileID: 21300000, guid: 9526ba65b6ae06248b70cb4e6a3745fc, type: 3}
-  - {fileID: 21300000, guid: 78b56baca5537554cbd79174fa723ec6, type: 3}
-  - {fileID: 21300000, guid: ea1eff3059373b047a6fc0443f71f01e, type: 3}
-  - {fileID: 21300000, guid: 6719ff4b070826d4c929226debbf8fdc, type: 3}
-  - {fileID: 21300000, guid: cd67dc09df109824b99d93816d729d42, type: 3}
-  - {fileID: 21300000, guid: 440788a9b58e2c84aad3b033ea7d0d28, type: 3}
-  - {fileID: 21300000, guid: 873976f0410fda8478633549d7103773, type: 3}
-  - {fileID: 21300000, guid: 4c4090a0384b6cf4d8f165d6e6bbce23, type: 3}
-  - {fileID: 21300000, guid: 09f6e6c84c0423742b94376bd7334bca, type: 3}
-  - {fileID: 21300000, guid: 1dd78ebae62e5f94fb2c5b9365f3fd8e, type: 3}
-  - {fileID: 21300000, guid: 88651e0196433e449969e192acba01df, type: 3}
-  - {fileID: 21300000, guid: 253c9f5f0b3a3394cb3238a029652e27, type: 3}
-  - {fileID: 21300000, guid: f2ffd1e7ffdb3264a8f15b3bd2194761, type: 3}
-  - {fileID: 21300000, guid: 4915219b030e49b4c88010f1de2b2de2, type: 3}
-  - {fileID: 21300000, guid: 21d298ca8e6e1004cbac18626cfe75e5, type: 3}
-  - {fileID: 21300000, guid: 063a5763cb9dc4e4bbf5643495c71db7, type: 3}
-  - {fileID: 21300000, guid: 189a6a7469b633f47abb43c029f2d129, type: 3}
-  - {fileID: 21300000, guid: aad0605b37efeaa41930929e8c8d5d17, type: 3}
-  - {fileID: 21300000, guid: da4bdff5cafd0b34a8affaf6315c2abe, type: 3}
-  - {fileID: 21300000, guid: c5e62fad1efec6f44a1fe0296bfd2b5a, type: 3}
+  - {fileID: 21300000, guid: 5960272c03688874ab1360d22dc30851, type: 3}
+  - {fileID: 21300000, guid: 90cf1d97427c4e84b9b08659b7416d4e, type: 3}
+  - {fileID: 21300000, guid: 07a03b06e7c93344595612bb2368865c, type: 3}
+  - {fileID: 21300000, guid: 45a5d77f894410640a1afd66f948b973, type: 3}
+  - {fileID: 21300000, guid: b69bcc1023e3f4e4a8cafb8a4ca0d081, type: 3}
+  - {fileID: 21300000, guid: 1898bcd226eafc546a46b9d0c2d9ff0c, type: 3}
+  - {fileID: 21300000, guid: 1e0698cf1fd69e849b6c2220cec1c1ec, type: 3}
+  - {fileID: 21300000, guid: e56d6eac526bd8d48a84d1dd75332926, type: 3}
+  - {fileID: 21300000, guid: 69dd69cee18c3b149b57a2f93944e55e, type: 3}
+  - {fileID: 21300000, guid: 3dd663ca94b838d4a8890760a24259aa, type: 3}
+  - {fileID: 21300000, guid: 82ba4069b1820804183a7221e0d584e8, type: 3}
+  - {fileID: 21300000, guid: ac9c515aba036f841a5a9b2159b782bc, type: 3}
+  - {fileID: 21300000, guid: 73c4b35912181df43a69f6e491a8e18a, type: 3}
+  - {fileID: 21300000, guid: 0b791bd3c2760e5408a8a0d8a537c09e, type: 3}
+  - {fileID: 21300000, guid: fc5345401ad3c0b4c833cf03dc6fcc92, type: 3}
+  - {fileID: 21300000, guid: 9e9b3910fa00995468cb4f672f789aaa, type: 3}
+  - {fileID: 21300000, guid: c5a8d69bf7c27904ea91e08fabdee3d2, type: 3}
+  - {fileID: 21300000, guid: 61d23e6b6a2b0d94da41c97c0d2a9fe1, type: 3}
+  - {fileID: 21300000, guid: 1f660d9ace0653848b488eb1ccb0718f, type: 3}
+  - {fileID: 21300000, guid: 7db8a11dbf4ac1849a79cc3a2f4f0a1b, type: 3}
+  - {fileID: 21300000, guid: a6fe40f5b76c2cf43b4a07882495202d, type: 3}
+  - {fileID: 21300000, guid: 919c4d29da5fb384192f23e96685ca03, type: 3}
+  - {fileID: 21300000, guid: dcfea0ff185a0b54b80f4b1dac95d267, type: 3}
+  - {fileID: 21300000, guid: e32f0742c02559c49b6c7a3d1cc6be12, type: 3}
   diceGameObjects:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  diceKeyNumbers: 0000000000000000
+  - {fileID: 0}
+  - {fileID: 0}
+  diceKeyNumbers: 00000000000000000000000000000000
   diceKeyImages:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   diceKeys:
   - {fileID: 0}
   - {fileID: 0}
-  nrOfEnemies: 2
+  - {fileID: 0}
+  - {fileID: 0}
+  battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}

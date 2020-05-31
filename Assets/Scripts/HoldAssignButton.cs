@@ -11,15 +11,12 @@ public class HoldAssignButton : MonoBehaviour
     private bool buttonDown;
     private float buttonDownTimer;
     private bool holding = false;
-    private bool assignButtonSelected = false;
 
     [SerializeField] private float requiredHoldTime;
 
     public UnityEvent onLongClick;
 
     [SerializeField] private Image fillImage;
-    [SerializeField] GameObject selected;
-    //private GameObject thisButton;
 
     PlayerControls controls;
     void Awake()

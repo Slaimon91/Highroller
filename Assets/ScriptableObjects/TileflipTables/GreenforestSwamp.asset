@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenforestSwamp
   m_EditorClassIdentifier: 
   name: GreenforestSwamp
-  battleBackground: {fileID: 21300000, guid: f595799d2a726404fa1955c8ea2faaf2, type: 3}
+  battleBackground: {fileID: 21300000, guid: 868ec6a12a94656459e360ae11615600, type: 3}
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}

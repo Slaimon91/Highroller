@@ -71,7 +71,7 @@ public class BattleSystem : MonoBehaviour
             enemyPrefabs.Add(battleStartupInfo.enemies[i]);
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
             enemiesGO.Add(enemyGO);
-            diceKeys[i].transform.parent.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyGO.GetComponent<EEnemyInterface>().GetUnitName();
+            //diceKeys[i].transform.parent.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyGO.GetComponent<EEnemyInterface>().GetUnitName();
             diceKeyNumbers[i] = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
             diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
             enemyGO.GetComponent<EEnemyInterface>().SetDiceKeyGO(diceKeys[i]);
