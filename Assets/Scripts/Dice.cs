@@ -99,6 +99,30 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
     }
 
+    public void SetButtonNavigation(Button otherButton, string direction)
+    {
+        Navigation nav = GetComponent<Button>().navigation;
+        switch (direction)
+        {
+            case "up":
+                nav.selectOnUp = otherButton;
+                GetComponent<Button>().navigation = nav;
+                break;
+            case "down":
+                nav.selectOnDown = otherButton;
+                GetComponent<Button>().navigation = nav;
+                break;
+            case "left":
+                nav.selectOnLeft = otherButton;
+                GetComponent<Button>().navigation = nav;
+                break;
+            case "right":
+                nav.selectOnRight = otherButton;
+                GetComponent<Button>().navigation = nav;
+                break;
+        }
+    }
+
     public bool GetAssignedStatus()
     {
         return diceAssigned;

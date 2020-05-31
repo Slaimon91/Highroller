@@ -24,7 +24,7 @@ public class BattleSystem : MonoBehaviour
     public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
 
-    public int[] diceNumbers;
+    private int[] diceNumbers;
     public Image[] diceImages;
     public Sprite[] diceSprites;
     public Dice[] diceGameObjects;
@@ -45,13 +45,15 @@ public class BattleSystem : MonoBehaviour
     {
         controls = new PlayerControls();
         controls.Gameplay.Cancel.performed += ctx => PressedCancel();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         state = BattleState.START;
         SetUpBattle();
     }
@@ -87,8 +89,40 @@ public class BattleSystem : MonoBehaviour
 
     void SetupButtonNavigation()
     {
-
         
+        if (battleStartupInfo.nrOfDices == 3)
+        {
+            diceNumbers = new int[] { 0, 0, 0 };
+            diceGameObjects[3].gameObject.SetActive(false);
+            diceGameObjects[4].gameObject.SetActive(false);
+            diceKeys[3].SetButtonNavigation(diceGameObjects[2].GetComponent<Button>(), "up");
+        }
+        else if (battleStartupInfo.nrOfDices == 4)
+        {
+            diceNumbers = new int[] { 0, 0, 0, 0 };
+            diceGameObjects[4].gameObject.SetActive(false);
+        }
+        else if (battleStartupInfo.nrOfDices == 5)
+        {
+            diceNumbers = new int[] { 0, 0, 0, 0, 0 };
+        }
+
+        /*if(battleStartupInfo.enemies.Count == 1)
+        {
+            diceKeys[1].gameObject.SetActive(false);
+            diceKeys[2].gameObject.SetActive(false);
+            diceKeys[3].gameObject.SetActive(false);
+        }
+        else if (battleStartupInfo.enemies.Count == 2)
+        {
+            diceKeys[2].gameObject.SetActive(false);
+            diceKeys[3].gameObject.SetActive(false);
+        }
+        else if (battleStartupInfo.enemies.Count == 3)
+        {
+            diceKeys[3].gameObject.SetActive(false);
+        }*/
+
     }
 
     void PlayerTurn()

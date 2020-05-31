@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
         healthText = healthTextGameObject.GetComponent<TextMeshProUGUI>();
         gaiaTextGameObject = GameObject.FindGameObjectWithTag("GaiaText");
         gaiaText = gaiaTextGameObject.GetComponent<TextMeshProUGUI>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
