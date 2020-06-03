@@ -11,35 +11,51 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
 public class BattleSystem : MonoBehaviour
 {
-    public BattleState state;
-
-    public GameObject playerPrefab;
+    //Enemies and abilities
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private List<GameObject> enemiesGO = new List<GameObject>();
-    [SerializeField] GameObject[] enemiesInfo;
-    private GameObject lastselect;
-    private PlayerBattleController player;
-    private bool cancelPressed = false;
+    private List<EnemyInfo> enemiesInfo = new List<EnemyInfo>();
+    private List<BattleAbility> abilities = new List<BattleAbility>();
 
+    //Spawnpoints
     public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
 
+    //Dice and dice keys
     private int[] diceNumbers;
-    public Image[] diceImages;
+    private List<Image> diceImages = new List<Image>();
     public Sprite[] diceSprites;
-    public Dice[] diceGameObjects;
-    private int[] firstDicePair = {-1, -1 };
-    private int[] secondDicePair = {-1, -1 };
+    private List<Dice> diceObjects = new List<Dice>();
+    private int[] firstDicePair = { -1, -1 };
+    private int[] secondDicePair = { -1, -1 };
 
-    public int[] diceKeyNumbers;
-    public Image[] diceKeyImages;
-    public DiceKey[] diceKeys;
+    private List<int> diceKeyNumbers = new List<int>();
+    private List<Image> diceKeyImages = new List<Image>();
+    private List<DiceKey> diceKeys = new List<DiceKey>();
 
-    int nrOfEnemies;
-
-    PlayerControls controls;
+    //Prefabs and panels
+    [SerializeField] GameObject playerPrefab;
+    [SerializeField] Dice dicePrefabs;
+    [SerializeField] DiceKey diceKeyPrefab;
+    [SerializeField] EnemyInfo enemiesInfoPrefab;
+    [SerializeField] BattleAbility abilitiesPrefab;
+    [SerializeField] BattleAbility abilitiesPrefabThree;
+    [SerializeField] Transform dicePanel;
+    [SerializeField] Transform diceKeyPanel;
+    [SerializeField] Transform enemiesInfoPanel;
+    [SerializeField] Transform abilitiesPanel;
+    [SerializeField] Transform abilitiesPanelThree;
+    [SerializeField] Sprite threeAbilitiesSprite;
     [SerializeField] BattleStartupInfo battleStartupInfo;
+
+    public BattleState state;
+    int nrOfEnemies;
+    PlayerControls controls;
+    private GameObject lastselect;
+    private PlayerBattleController player;
+    private bool cancelPressed = false;
     private Sprite battleBackground;
+    private EventSystem eventSystem;
 
     void Awake()
     {
@@ -55,6 +71,7 @@ public class BattleSystem : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         state = BattleState.START;
+        eventSystem = FindObjectOfType<EventSystem>();
         SetUpBattle();
     }
 
@@ -68,16 +85,15 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject playerGO = Instantiate(playerPrefab, playerSpawnPoint);
         nrOfEnemies = battleStartupInfo.enemies.Count;
-        for(int i = 0; i < nrOfEnemies; i++)
+        InstantiateDices();
+        for (int i = 0; i < nrOfEnemies; i++)
         {
             enemyPrefabs.Add(battleStartupInfo.enemies[i]);
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
             enemiesGO.Add(enemyGO);
-            //diceKeys[i].transform.parent.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>().text = enemyGO.GetComponent<EEnemyInterface>().GetUnitName();
-            diceKeyNumbers[i] = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
+            diceKeyNumbers.Add(enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber());
             diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
             enemyGO.GetComponent<EEnemyInterface>().SetDiceKeyGO(diceKeys[i]);
-            enemiesInfo[i].SetActive(true);
         }
         GetComponentInChildren<SpriteRenderer>().sprite = battleStartupInfo.battleBackground;
         player = playerGO.GetComponent<PlayerBattleController>();
@@ -87,41 +103,260 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    void SetupButtonNavigation()
+    void InstantiateDices()
     {
-        
+        //Instantiate dices
         if (battleStartupInfo.nrOfDices == 3)
         {
+            int offset = 46;
+            for(int i = 0; i < battleStartupInfo.nrOfDices; i++)
+            {
+                diceObjects.Add(Instantiate(dicePrefabs, dicePanel.transform));
+                RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector3(46 - offset*i, 0, 0);
+                diceImages.Add(diceObjects[i].GetComponent<Image>());
+            }
+
             diceNumbers = new int[] { 0, 0, 0 };
-            diceGameObjects[3].gameObject.SetActive(false);
-            diceGameObjects[4].gameObject.SetActive(false);
-            diceKeys[3].SetButtonNavigation(diceGameObjects[2].GetComponent<Button>(), "up");
         }
         else if (battleStartupInfo.nrOfDices == 4)
         {
+            int offset = 37;
+            int extraoffset = 0;
+            for (int i = 0; i < battleStartupInfo.nrOfDices; i++)
+            {
+                if(i == 2)
+                {
+                    extraoffset = -1;
+                }
+
+                diceObjects.Add(Instantiate(dicePrefabs, dicePanel.transform));
+                RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector3(56 - (offset * i) + extraoffset, 0, 0);
+                diceImages.Add(diceObjects[i].GetComponent<Image>());
+            }
+
             diceNumbers = new int[] { 0, 0, 0, 0 };
-            diceGameObjects[4].gameObject.SetActive(false);
         }
         else if (battleStartupInfo.nrOfDices == 5)
         {
+            int offset = 31;
+            for (int i = 0; i < battleStartupInfo.nrOfDices; i++)
+            {
+                diceObjects.Add(Instantiate(dicePrefabs, dicePanel.transform));
+                RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector3(62 - offset * i, 0, 0);
+                diceImages.Add(diceObjects[i].GetComponent<Image>());
+            }
+
             diceNumbers = new int[] { 0, 0, 0, 0, 0 };
         }
 
-        /*if(battleStartupInfo.enemies.Count == 1)
+        eventSystem.firstSelectedGameObject = diceObjects[0].gameObject;
+
+        //Instantiate enemies and dicekeys
+        for(int i = 0; i < battleStartupInfo.enemies.Count; i++)
         {
-            diceKeys[1].gameObject.SetActive(false);
-            diceKeys[2].gameObject.SetActive(false);
-            diceKeys[3].gameObject.SetActive(false);
+            int offset = 31;
+            int offsetInfo = 22;
+            diceKeys.Add(Instantiate(diceKeyPrefab, diceKeyPanel.transform));
+            RectTransform rt = diceKeys[i].GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(0 - offset * i, 0, 0);
+            diceKeyImages.Add(diceKeys[i].GetComponent<Image>());
+
+            enemiesInfo.Add(Instantiate(enemiesInfoPrefab, enemiesInfoPanel.transform));
+            RectTransform rtInfo = enemiesInfo[i].GetComponent<RectTransform>();
+            rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
+            Image enemiesInfoImage = enemiesInfo[i].GetComponent<Image>();
+            enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EEnemyInterface>().GetIcon();
         }
-        else if (battleStartupInfo.enemies.Count == 2)
+
+        //Instantiate player abilities
+        for (int i = 0; i < battleStartupInfo.abilities.Count; i++)
         {
-            diceKeys[2].gameObject.SetActive(false);
-            diceKeys[3].gameObject.SetActive(false);
+            if(battleStartupInfo.abilities.Count == 1 || battleStartupInfo.abilities.Count == 2)
+            {
+                int offset = 22;
+
+                abilities.Add(Instantiate(abilitiesPrefab, abilitiesPanel.transform));
+                RectTransform rt = abilities[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
+                Image abilitiesImage = abilities[i].GetComponent<Image>();
+                abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+            }
+
+            else if(battleStartupInfo.abilities.Count == 3)
+            {
+                abilitiesPanel.gameObject.SetActive(false);
+                abilitiesPanelThree.gameObject.SetActive(true);
+
+                int offset = 22;
+
+                abilities.Add(Instantiate(abilitiesPrefabThree, abilitiesPanelThree.transform));
+                RectTransform rt = abilities[i].GetComponent<RectTransform>();
+                rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
+                Image abilitiesImage = abilities[i].GetComponent<Image>();
+                abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+            }
         }
-        else if (battleStartupInfo.enemies.Count == 3)
+    }
+
+    void SetupButtonNavigation()
+    {
+        //Dices
+        for (int i = 0; i < diceObjects.Count; i++)
         {
-            diceKeys[3].gameObject.SetActive(false);
-        }*/
+            if (i + 1 < diceObjects.Count)
+            {
+                diceObjects[i].SetButtonNavigation(diceObjects[i+1].GetComponent<Button>(), "left");
+            }
+
+            if(i != 0)
+            {
+                diceObjects[i].SetButtonNavigation(diceObjects[i - 1].GetComponent<Button>(), "right");
+            }
+
+            int shortestDistanceKey = 0;
+            float shortestDistanceKeyUnits = 0;
+
+            for(int k = 0; k < diceKeys.Count; k++)
+            {
+                float distance = Vector2.Distance(diceObjects[i].GetComponent<RectTransform>().TransformPoint(diceObjects[i].GetComponent<RectTransform>().rect.center),
+                                        diceKeys[k].GetComponent<RectTransform>().TransformPoint(diceKeys[k].GetComponent<RectTransform>().rect.center));
+
+                if (distance < shortestDistanceKeyUnits || k == 0)
+                {
+                    shortestDistanceKey = k;
+                    shortestDistanceKeyUnits = distance;
+                }
+            }
+
+            diceObjects[i].SetButtonNavigation(diceKeys[shortestDistanceKey].GetComponent<Button>(), "up");
+        }
+
+        //Dice keys
+        for(int i = 0; i < diceKeys.Count; i++)
+        {
+            if (i + 1 < diceKeys.Count)
+            {
+                diceKeys[i].SetButtonNavigation(diceKeys[i + 1].GetComponent<Button>(), "left");
+            }
+
+            if (i != 0)
+            {
+                diceKeys[i].SetButtonNavigation(diceKeys[i - 1].GetComponent<Button>(), "right");
+            }
+
+            int shortestDistanceDice = 0;
+            float shortestDistanceDiceUnits = 0;
+
+            for (int k = 0; k < diceObjects.Count; k++)
+            {
+                float distance = Vector2.Distance(diceKeys[i].GetComponent<RectTransform>().TransformPoint(diceKeys[i].GetComponent<RectTransform>().rect.center),
+                                                        diceObjects[k].GetComponent<RectTransform>().TransformPoint(diceObjects[k].GetComponent<RectTransform>().rect.center));
+
+                if (distance < shortestDistanceDiceUnits || k == 0)
+                {
+                    shortestDistanceDice = k;
+                    shortestDistanceDiceUnits = distance;
+                }
+            }
+
+            diceKeys[i].SetButtonNavigation(diceObjects[shortestDistanceDice].GetComponent<Button>(), "down");
+
+            int shortestDistanceInfo = 0;
+            float shortestDistanceInfoUnits = 0;
+
+            for (int k = 0; k < enemiesInfo.Count; k++)
+            {
+                float distance = Vector2.Distance(diceKeys[i].GetComponent<RectTransform>().TransformPoint(diceKeys[i].GetComponent<RectTransform>().rect.center),
+                                                        enemiesInfo[k].GetComponent<RectTransform>().TransformPoint(enemiesInfo[k].GetComponent<RectTransform>().rect.center));
+
+                if (distance < shortestDistanceInfoUnits || k == 0)
+                {
+                    shortestDistanceInfo = k;
+                    shortestDistanceInfoUnits = distance;
+                }
+
+
+            }
+
+            diceKeys[i].SetButtonNavigation(enemiesInfo[shortestDistanceInfo].GetComponent<Button>(), "up");
+        }
+
+        /*float distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(diceKeys[i].GetComponent<RectTransform>().position),
+                                        Camera.main.ViewportToWorldPoint(enemiesInfo[k].GetComponent<RectTransform>().position));
+Debug.Log("Distance from key " + i + " to enemy " + k + " is = " + distance + " where the key is at " +
+    Camera.main.ViewportToWorldPoint(diceKeys[i].GetComponent<RectTransform>().position) + " and the enemy is at " +
+        Camera.main.ViewportToWorldPoint(enemiesInfo[k].GetComponent<RectTransform>().position));
+if (distance < shortestDistanceInfoUnits || k == 0)
+{
+    shortestDistanceInfo = k;
+    shortestDistanceInfoUnits = distance;
+}*/
+
+        //Enemies Info
+        for (int i = 0; i < enemiesInfo.Count; i++)
+        {
+            if (i + 1 < enemiesInfo.Count)
+            {
+                enemiesInfo[i].SetButtonNavigation(enemiesInfo[i + 1].GetComponent<Button>(), "left");
+            }
+
+            if (i != 0)
+            {
+                enemiesInfo[i].SetButtonNavigation(enemiesInfo[i - 1].GetComponent<Button>(), "right");
+            }
+
+            if(i == enemiesInfo.Count - 1)
+            {
+                if(abilities.Count > 0)
+                {
+                    enemiesInfo[enemiesInfo.Count - 1].SetButtonNavigation(abilities[abilities.Count - 1].GetComponent<Button>(), "left");
+                }
+            }
+
+            int shortestDistanceKey = 0;
+            float shortestDistanceKeyUnits = 0;
+
+            for (int k = 0; k < diceKeys.Count; k++)
+            {
+                float distance = Vector2.Distance(enemiesInfo[i].GetComponent<RectTransform>().TransformPoint(enemiesInfo[i].GetComponent<RectTransform>().rect.center),
+                                        diceKeys[k].GetComponent<RectTransform>().TransformPoint(diceKeys[k].GetComponent<RectTransform>().rect.center));
+
+                if (distance < shortestDistanceKeyUnits || k == 0)
+                {
+                    shortestDistanceKey = k;
+                    shortestDistanceKeyUnits = distance;
+                }
+            }
+
+            enemiesInfo[i].SetButtonNavigation(diceKeys[shortestDistanceKey].GetComponent<Button>(), "down");
+        }
+
+        //Abilities Info
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (i + 1 < abilities.Count)
+            {
+                abilities[i].SetButtonNavigation(abilities[i + 1].GetComponent<Button>(), "right");
+            }
+
+            if (i != 0)
+            {
+                abilities[i].SetButtonNavigation(abilities[i - 1].GetComponent<Button>(), "left");
+            }
+
+            if (i == abilities.Count - 1)
+            {
+                if (enemiesInfo.Count > 0)
+                {
+                    abilities[abilities.Count - 1].SetButtonNavigation(enemiesInfo[enemiesInfo.Count - 1].GetComponent<Button>(), "right");
+                }
+            }
+
+            abilities[i].SetButtonNavigation(diceKeys[diceKeys.Count - 1].GetComponent<Button>(), "down");
+        }
 
     }
 
@@ -129,24 +364,24 @@ public class BattleSystem : MonoBehaviour
     {
         for (int i = 0; i < diceNumbers.Length; i++)
         {
-            if(diceGameObjects[i].GetAssignedStatus())
+            if(diceObjects[i].GetAssignedStatus())
             {
-                diceGameObjects[i].SetAssignedStatus(false);
-                diceGameObjects[i].SetAssignedTo(null);
+                diceObjects[i].SetAssignedStatus(false);
+                diceObjects[i].SetAssignedTo(null);
             }
 
-            if(!diceGameObjects[i].GetLockedOrInactiveStatus() && !diceGameObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+            if(!diceObjects[i].GetLockedOrInactiveStatus() && !diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
             {
                 diceNumbers[i] = Random.Range(1, 7);
                 diceImages[i].sprite = diceSprites[diceNumbers[i] - 1];
             }
-            else if(!diceGameObjects[i].GetLockedOrInactiveStatus() && diceGameObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+            else if(!diceObjects[i].GetLockedOrInactiveStatus() && diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
             {
-                Dice pressedDice = diceGameObjects[i].GetComponent<Dice>();
+                Dice pressedDice = diceObjects[i].GetComponent<Dice>();
 
-                if (pressedDice == diceGameObjects[firstDicePair[1]])
+                if (pressedDice == diceObjects[firstDicePair[1]])
                 {
-                    diceGameObjects[firstDicePair[0]].SetInactiveStatus(false);
+                    diceObjects[firstDicePair[0]].SetInactiveStatus(false);
                     diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
                     diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
                     diceNumbers[firstDicePair[0]] = Random.Range(1, 7);
@@ -156,9 +391,9 @@ public class BattleSystem : MonoBehaviour
                     firstDicePair[0] = -1;
                     firstDicePair[1] = -1;
                 }
-                else if (pressedDice == diceGameObjects[secondDicePair[1]])
+                else if (pressedDice == diceObjects[secondDicePair[1]])
                 {
-                    diceGameObjects[secondDicePair[0]].SetInactiveStatus(false);
+                    diceObjects[secondDicePair[0]].SetInactiveStatus(false);
                     diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
                     diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
                     diceNumbers[secondDicePair[0]] = Random.Range(1, 7);
@@ -169,11 +404,11 @@ public class BattleSystem : MonoBehaviour
                     secondDicePair[1] = -1;
                 }
             }
-            if(diceGameObjects[i].GetLockStatus())
+            if(diceObjects[i].GetLockStatus())
             {
-                diceGameObjects[i].ToggleLockDice();
+                diceObjects[i].ToggleLockDice();
             }
-            diceGameObjects[i].SetMarkedStatus(false);
+            diceObjects[i].SetMarkedStatus(false);
         }
     }
 
@@ -227,11 +462,11 @@ public class BattleSystem : MonoBehaviour
 
                 for (int i = 0; i < diceNumbers.Length; i++)
                 {
-                    if (diceGameObjects[i].GetMarkedStatus())
+                    if (diceObjects[i].GetMarkedStatus())
                     {
-                        if (diceGameObjects[i] != secondPressedDice)
+                        if (diceObjects[i] != secondPressedDice)
                         {
-                            firstPressedDice = diceGameObjects[i];
+                            firstPressedDice = diceObjects[i];
                             firstPressedNumber = i;
                         }
                         else
@@ -262,15 +497,15 @@ public class BattleSystem : MonoBehaviour
                         //Add die operations
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
                         diceImages[secondPressedNumber].sprite = diceSprites[diceNumbers[secondPressedNumber] + 12 - 1];
-                        diceGameObjects[firstPressedNumber].SetInactiveStatus(true);
-                        diceGameObjects[firstPressedNumber].SetMarkedStatus(false);
-                        diceGameObjects[secondPressedNumber].SetMarkedStatus(false);
+                        diceObjects[firstPressedNumber].SetInactiveStatus(true);
+                        diceObjects[firstPressedNumber].SetMarkedStatus(false);
+                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
                     }
                     //If one of them was a pair, unmark it
                     else if (diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice") 
                         || diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
                     {
-                        diceGameObjects[secondPressedNumber].SetMarkedStatus(false);
+                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
                     }
                 }
             }
@@ -292,10 +527,10 @@ public class BattleSystem : MonoBehaviour
             //Find first marked die
             for (int i = 0; i < diceNumbers.Length; i++)
             {
-                if (diceGameObjects[i].GetMarkedStatus())
+                if (diceObjects[i].GetMarkedStatus())
                 {
 
-                    firstPressedDice = diceGameObjects[i];
+                    firstPressedDice = diceObjects[i];
                     firstPressedNumber = diceNumbers[i];
                 }
             }
@@ -340,10 +575,10 @@ public class BattleSystem : MonoBehaviour
 
             for (int i = 0; i < diceNumbers.Length; i++)
             {
-                if(diceGameObjects[i].GetMarkedStatus())
+                if(diceObjects[i].GetMarkedStatus())
                 {
                     diceDeselected = true;
-                    diceGameObjects[i].SetMarkedStatus(false);
+                    diceObjects[i].SetMarkedStatus(false);
                 }
             }
 
@@ -361,12 +596,12 @@ public class BattleSystem : MonoBehaviour
                         {
                             enemyGO.GetComponent<EEnemyInterface>().Assign(false);
 
-                            for (int k = 0; k < diceGameObjects.Length; k++)
+                            for (int k = 0; k < diceObjects.Count; k++)
                             {
-                                if(diceGameObjects[k].GetAssignedTo() == go)
+                                if(diceObjects[k].GetAssignedTo() == go)
                                 {
-                                    diceGameObjects[k].SetAssignedStatus(false);
-                                    diceGameObjects[k].SetAssignedTo(null);
+                                    diceObjects[k].SetAssignedStatus(false);
+                                    diceObjects[k].SetAssignedTo(null);
                                     break;
                                 } 
                             }
@@ -382,7 +617,7 @@ public class BattleSystem : MonoBehaviour
 
                         for (int i = 0; i < diceNumbers.Length; i++)
                         {
-                            if(diceGameObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
+                            if(diceObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
                             {
                                 //TODO
                             }
@@ -397,17 +632,17 @@ public class BattleSystem : MonoBehaviour
 
                     if(!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus())
                     {
-                        if (pressedDice == diceGameObjects[firstDicePair[1]])
+                        if (pressedDice == diceObjects[firstDicePair[1]])
                         {
-                            diceGameObjects[firstDicePair[0]].SetInactiveStatus(false);
+                            diceObjects[firstDicePair[0]].SetInactiveStatus(false);
                             diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
                             diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
                             firstDicePair[0] = -1;
                             firstDicePair[1] = -1;
                         }
-                        else if (pressedDice == diceGameObjects[secondDicePair[1]])
+                        else if (pressedDice == diceObjects[secondDicePair[1]])
                         {
-                            diceGameObjects[secondDicePair[0]].SetInactiveStatus(false);
+                            diceObjects[secondDicePair[0]].SetInactiveStatus(false);
                             diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
                             diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
                             secondDicePair[0] = -1;

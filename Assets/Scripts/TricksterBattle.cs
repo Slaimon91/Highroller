@@ -8,6 +8,7 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
     [SerializeField] int diceKeyNumber;
     [SerializeField] string unitName;
     [SerializeField] DiceKey diceKeyGO;
+    [SerializeField] Sprite icon;
     private Image diceKeyImage;
     private BattleSystem battleSystem;
     private bool isDead = false;
@@ -64,6 +65,11 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
            diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
         }
         
+    }
+
+    public Sprite GetIcon()
+    {
+        return icon;
     }
 
     public bool GetDeathStatus()

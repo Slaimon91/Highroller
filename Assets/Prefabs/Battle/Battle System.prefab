@@ -125,23 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd57356c8464e5419be4116a5506c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  playerPrefab: {fileID: 6892863589901207043, guid: 0706d640489e16745931671eaf0470bb,
-    type: 3}
-  enemiesInfo:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   playerSpawnPoint: {fileID: 0}
   enemySpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  diceNumbers: 0000000000000000000000000000000000000000
-  diceImages:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -171,21 +156,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 919c4d29da5fb384192f23e96685ca03, type: 3}
   - {fileID: 21300000, guid: dcfea0ff185a0b54b80f4b1dac95d267, type: 3}
   - {fileID: 21300000, guid: e32f0742c02559c49b6c7a3d1cc6be12, type: 3}
-  diceGameObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  diceKeyNumbers: 00000000000000000000000000000000
-  diceKeyImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  diceKeys:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerPrefab: {fileID: 6892863589901207043, guid: 0706d640489e16745931671eaf0470bb,
+    type: 3}
+  dicePrefabs: {fileID: 3717969203235718818, guid: 84bc613c0438761428e040d99a6f90a1,
+    type: 3}
+  diceKeyPrefab: {fileID: 5169549824585999149, guid: 47bd8d0f157b70c42b780f54a2a269c9,
+    type: 3}
+  enemiesInfoPrefab: {fileID: 8482101970848158651, guid: b6b50fef263e2b94cbf5a56e0fda8485,
+    type: 3}
+  abilitiesPrefab: {fileID: 1199621282699562613, guid: f59875b0f1fe0c94393ce1d6088b07cf,
+    type: 3}
+  abilitiesPrefabThree: {fileID: 5799497200354570169, guid: 58ebbeaf8a3e8834f822f6f77fcbc1e0,
+    type: 3}
+  dicePanel: {fileID: 0}
+  diceKeyPanel: {fileID: 0}
+  enemiesInfoPanel: {fileID: 0}
+  abilitiesPanel: {fileID: 0}
+  abilitiesPanelThree: {fileID: 0}
+  threeAbilitiesSprite: {fileID: 21300000, guid: 79c627b2ea87ce548ba1a9d14c779db7,
+    type: 3}
   battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}
+  state: 0

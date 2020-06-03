@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface EEnemyInterface
 {
+
     void EnemySetup();
     void Assign(bool status);
     void EnemyAction();
+
+    Sprite GetIcon();
 
     bool GetDeathStatus();
 

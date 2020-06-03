@@ -9,6 +9,7 @@ public class GoblinBattle : MonoBehaviour, EEnemyInterface
     [SerializeField] int diceKeyNumber;
     [SerializeField] string unitName;
     [SerializeField] DiceKey diceKeyGO;
+    [SerializeField] Sprite icon;
     private Image diceKeyImage;
     private bool isDead = false;
 
@@ -52,6 +53,11 @@ public class GoblinBattle : MonoBehaviour, EEnemyInterface
             Destroy(diceKeyGO.transform.parent.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    public Sprite GetIcon()
+    {
+        return icon;
     }
 
     public bool GetDeathStatus()

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 
-public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
 
