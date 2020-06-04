@@ -13,9 +13,14 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool diceInactive = false;
     private bool diceMarked = false;
     private bool diceAssigned = false;
+    private bool isGold = false;
+    private bool isPlatinum = false;
+    private float diceNumber = -1;
+    private bool makeGold = false;
 
     private GameObject diceAssignedTo;
     private BattleSystem battleSystem;
+    private Animator animator;
    
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
@@ -23,6 +28,9 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
+    [SerializeField] Image fillImage;
+    [SerializeField] float fillTimeSeconds;
+    private float fillTimer;
 
     public Sprite[] diceSpritesLocked;
     public Sprite[] diceSpritesInactive;
@@ -38,11 +46,29 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     void Start()
     {
         battleSystem = FindObjectOfType<BattleSystem>();
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
     // Update is called once per frame
     void Update()
     {
+        if(animator.enabled == true)
+        {
+            animator.Play(0, -1, GetComponentInParent<DiceMasterAnimator>().myTime);
+        }
+        if(makeGold)
+        {
+            fillTimer += Time.deltaTime;
+            fillImage.fillAmount = fillTimer / fillTimeSeconds;
+            if (fillTimer >= fillTimeSeconds)
+            {
+                animator.enabled = true;
+                makeGold = false;
+                fillImage.fillAmount = 0;
 
+            }
+            
+        }
     }
 
     public void ToggleLockDice()
@@ -61,6 +87,17 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 diceLocked = false;
             }
         }
+    }
+
+    public void UnlockDice()
+    {
+        locked.SetActive(false);
+        diceLocked = false;
+    }
+
+    public void SetFillImage(Sprite diceSprite)
+    {
+        fillImage.sprite = diceSprite;
     }
 
     public void SetInactiveStatus(bool inactiveStatus)
@@ -129,6 +166,38 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 GetComponent<Button>().navigation = nav;
                 break;
         }
+    }
+
+    public void SetGold(bool status, int number)
+    {
+        isGold = status;
+        diceNumber = number;
+        animator.SetBool("isGold", status);
+        animator.SetFloat("diceNumber", diceNumber);
+        if(status)
+        {
+            makeGold = true;
+            fillTimer = 0;
+        }
+        else
+        {
+            animator.enabled = false;
+        }
+    }
+
+    public void SetPlatinum(bool status, int diceNumber)
+    {
+        isPlatinum = status;
+    }
+
+    public bool GetGoldStatus()
+    {
+        return isGold;
+    }
+
+    public bool GetPlatinumStatus()
+    {
+        return isPlatinum;
     }
 
     public bool GetAssignedStatus()

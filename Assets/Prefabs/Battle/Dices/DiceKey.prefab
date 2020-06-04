@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 1232976309444004870}
   - component: {fileID: 6705044073071608368}
   - component: {fileID: 5169549824585999149}
+  - component: {fileID: 8682020358336456585}
   m_Layer: 5
   m_Name: DiceKey
   m_TagString: Untagged
@@ -305,3 +306,22 @@ MonoBehaviour:
   - {fileID: 7733378967850423464, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
   - {fileID: -2914874440533297744, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
   - {fileID: 3372625920713028586, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+--- !u!95 &8682020358336456585
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096230942959011180}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 462324d44e71bb043b7aa7f6c0e17e45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

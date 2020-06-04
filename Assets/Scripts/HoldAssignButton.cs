@@ -47,10 +47,6 @@ public class HoldAssignButton : MonoBehaviour
             buttonDownTimer += Time.deltaTime;
             if (buttonDownTimer >= requiredHoldTime)
             {
-                if (onLongClick != null && passCompleted == false)
-                {
-                    onLongClick.Invoke();
-                }
                 if (passCompleted == false)
                 {
                     passCompleted = true;
@@ -68,6 +64,8 @@ public class HoldAssignButton : MonoBehaviour
     private IEnumerator PassCompleted()
     {
         yield return new WaitForSeconds(completedWaitTime);
+        savedSelectedGameObject = eventSystem.firstSelectedGameObject;
+        onLongClick.Invoke();
         Reset();
     }
 
@@ -89,7 +87,7 @@ public class HoldAssignButton : MonoBehaviour
 
     private void ButtonCanceled()
     {
-        if (holding)
+        if (holding && !passCompleted)
         {
             holding = false;
             Reset();

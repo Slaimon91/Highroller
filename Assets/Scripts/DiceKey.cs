@@ -11,16 +11,28 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
     private bool diceKeyAssigned = false;
+    private bool isGold = false;
+    private bool isPlatinum = false;
+    private float diceNumber = -1;
 
     [SerializeField] GameObject selected;
     [SerializeField] GameObject assigned;
 
     public Sprite[] diceSpritesAssigned;
+    private Animator animator;
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        animator.enabled = false;
+    }
     // Update is called once per frame
     void Update()
     {
-
+        if (animator.enabled == true)
+        {
+            animator.Play(0, -1, GetComponentInParent<DiceMasterAnimator>().myTime);
+        }
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -72,6 +84,37 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
                 GetComponent<Button>().navigation = nav;
                 break;
         }
+    }
+
+    public void SetGold(bool status, int number)
+    {
+        isGold = status;
+        diceNumber = number;
+        animator.SetBool("isGold", status);
+        animator.SetFloat("diceNumber", diceNumber);
+        if (status && diceNumber < 5)
+        {
+            animator.enabled = true;
+        }
+        else
+        {
+            animator.enabled = false;
+        }
+    }
+
+    public void SetPlatinum(bool status, int diceNumber)
+    {
+        isPlatinum = status;
+    }
+
+    public bool GetGoldStatus()
+    {
+        return isGold;
+    }
+
+    public bool GetPlatinumStatus()
+    {
+        return isPlatinum;
     }
 
     public bool GetAssignedStatus()
