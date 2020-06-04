@@ -17,7 +17,7 @@ MonoBehaviour:
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
     weight: 100

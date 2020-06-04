@@ -36,21 +36,26 @@ public class GoblinBattle : MonoBehaviour, EEnemyInterface
         {
             isDead = false;
 
-            diceKeyGO.SetAssignedStatus(false);
+            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
         }
         else
         {
             isDead = true;
 
-            diceKeyGO.SetAssignedStatus(true);
+            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
         }
     }
 
     public void EnemyAction()
     {
+
+    }
+
+    public void TriggerDeath()
+    {
         if (isDead)
         {
-            Destroy(diceKeyGO.transform.parent.gameObject);
+            //Destroy(diceKeyGO.transform.parent.gameObject);
             Destroy(gameObject);
         }
     }

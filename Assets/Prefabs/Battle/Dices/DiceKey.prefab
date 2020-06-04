@@ -292,3 +292,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: {fileID: 5590127929142147126}
   assigned: {fileID: 2798927863433954010}
+  diceSpritesAssigned:
+  - {fileID: 3597721376902117332, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -4519436866088443645, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 5675237145223977641, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 57477353098336980, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -7027528123075009333, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -2940720795328398714, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -6091804376411612668, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 9119955914930974053, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -1126320684951416717, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 7733378967850423464, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -2914874440533297744, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 3372625920713028586, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}

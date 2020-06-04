@@ -10,6 +10,7 @@ public interface EEnemyInterface
     void Assign(bool status);
     void EnemyAction();
 
+    void TriggerDeath();
     Sprite GetIcon();
 
     bool GetDeathStatus();

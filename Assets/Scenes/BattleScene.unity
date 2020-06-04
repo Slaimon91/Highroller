@@ -842,12 +842,6 @@ PrefabInstance:
       propertyPath: abilitiesPanelThree
       value: 
       objectReference: {fileID: 1641947633}
-    - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
-        type: 3}
-      propertyPath: dicePrefabs
-      value: 
-      objectReference: {fileID: 238876300617606435, guid: 84bc613c0438761428e040d99a6f90a1,
-        type: 3}
     - target: {fileID: 7000813602035915066, guid: 3e911584b4561ca4aa227456d35693fb,
         type: 3}
       propertyPath: m_Name

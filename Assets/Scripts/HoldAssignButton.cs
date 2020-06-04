@@ -22,11 +22,14 @@ public class HoldAssignButton : MonoBehaviour
     [SerializeField] private GameObject completedImage;
 
     PlayerControls controls;
+    private GameObject savedSelectedGameObject;
+    private EventSystem eventSystem;
     void Awake()
     {
         controls = new PlayerControls();
         controls.Gameplay.Pass.performed += ctx => ButtonStarted();
         controls.Gameplay.Pass.canceled += ctx => ButtonCanceled();
+        eventSystem = FindObjectOfType<EventSystem>();
     }
 
     // Update is called once per frame
@@ -34,6 +37,13 @@ public class HoldAssignButton : MonoBehaviour
     {
         if (buttonDown)
         {
+            if(eventSystem.currentSelectedGameObject != null)
+            {
+                savedSelectedGameObject = eventSystem.currentSelectedGameObject;
+            }
+
+            eventSystem.SetSelectedGameObject(null);
+
             buttonDownTimer += Time.deltaTime;
             if (buttonDownTimer >= requiredHoldTime)
             {
@@ -68,6 +78,7 @@ public class HoldAssignButton : MonoBehaviour
         passCompleted = false;
         completedImage.SetActive(false);
         fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
+        eventSystem.SetSelectedGameObject(savedSelectedGameObject);
     }
     
     private void ButtonStarted()

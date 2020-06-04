@@ -25,6 +25,8 @@ public class BattleSystem : MonoBehaviour
     private int[] diceNumbers;
     private List<Image> diceImages = new List<Image>();
     public Sprite[] diceSprites;
+    public Sprite[] diceSpritesGold;
+    public Sprite[] diceSpritesPlatinum;
     private List<Dice> diceObjects = new List<Dice>();
     private int[] firstDicePair = { -1, -1 };
     private int[] secondDicePair = { -1, -1 };
@@ -49,7 +51,6 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleStartupInfo battleStartupInfo;
 
     public BattleState state;
-    int nrOfEnemies;
     PlayerControls controls;
     private GameObject lastselect;
     private PlayerBattleController player;
@@ -60,9 +61,7 @@ public class BattleSystem : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.Cancel.performed += ctx => PressedCancel();
-        
-        
+        controls.Gameplay.Cancel.performed += ctx => PressedCancel();   
     }
 
     // Start is called before the first frame update
@@ -79,13 +78,12 @@ public class BattleSystem : MonoBehaviour
     {
         //PreventCursor();
         //PressCancel();
-        //OnDicePressed();
     }
 
     void SetUpBattle()
     {
         GameObject playerGO = Instantiate(playerPrefab, playerSpawnPoint);
-        nrOfEnemies = battleStartupInfo.enemies.Count;
+        int nrOfEnemies = battleStartupInfo.enemies.Count;
         InstantiateDices();
         for (int i = 0; i < nrOfEnemies; i++)
         {
@@ -116,6 +114,7 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(46 - offset*i, 0, 0);
                 diceImages.Add(diceObjects[i].GetComponent<Image>());
+                diceObjects[i].GetComponent<Button>().onClick.AddListener(OnDicePressed);
             }
 
             diceNumbers = new int[] { 0, 0, 0 };
@@ -135,6 +134,7 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(56 - (offset * i) + extraoffset, 0, 0);
                 diceImages.Add(diceObjects[i].GetComponent<Image>());
+                diceObjects[i].GetComponent<Button>().onClick.AddListener(OnDicePressed);
             }
 
             diceNumbers = new int[] { 0, 0, 0, 0 };
@@ -148,6 +148,7 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = diceObjects[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(62 - offset * i, 0, 0);
                 diceImages.Add(diceObjects[i].GetComponent<Image>());
+                diceObjects[i].GetComponent<Button>().onClick.AddListener(OnDicePressed);
             }
 
             diceNumbers = new int[] { 0, 0, 0, 0, 0 };
@@ -156,7 +157,7 @@ public class BattleSystem : MonoBehaviour
         eventSystem.firstSelectedGameObject = diceObjects[0].gameObject;
 
         //Instantiate enemies and dicekeys
-        for(int i = 0; i < battleStartupInfo.enemies.Count; i++)
+        for (int i = 0; i < battleStartupInfo.enemies.Count; i++)
         {
             int offset = 31;
             int offsetInfo = 22;
@@ -164,6 +165,7 @@ public class BattleSystem : MonoBehaviour
             RectTransform rt = diceKeys[i].GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector3(0 - offset * i, 0, 0);
             diceKeyImages.Add(diceKeys[i].GetComponent<Image>());
+            diceKeys[i].GetComponent<Button>().onClick.AddListener(OnKeyPressed);
 
             enemiesInfo.Add(Instantiate(enemiesInfoPrefab, enemiesInfoPanel.transform));
             RectTransform rtInfo = enemiesInfo[i].GetComponent<RectTransform>();
@@ -204,6 +206,7 @@ public class BattleSystem : MonoBehaviour
 
     void SetupButtonNavigation()
     {
+        eventSystem.SetSelectedGameObject(diceObjects[0].gameObject);
         //Dices
         for (int i = 0; i < diceObjects.Count; i++)
         {
@@ -285,17 +288,6 @@ public class BattleSystem : MonoBehaviour
             diceKeys[i].SetButtonNavigation(enemiesInfo[shortestDistanceInfo].GetComponent<Button>(), "up");
         }
 
-        /*float distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(diceKeys[i].GetComponent<RectTransform>().position),
-                                        Camera.main.ViewportToWorldPoint(enemiesInfo[k].GetComponent<RectTransform>().position));
-Debug.Log("Distance from key " + i + " to enemy " + k + " is = " + distance + " where the key is at " +
-    Camera.main.ViewportToWorldPoint(diceKeys[i].GetComponent<RectTransform>().position) + " and the enemy is at " +
-        Camera.main.ViewportToWorldPoint(enemiesInfo[k].GetComponent<RectTransform>().position));
-if (distance < shortestDistanceInfoUnits || k == 0)
-{
-    shortestDistanceInfo = k;
-    shortestDistanceInfoUnits = distance;
-}*/
-
         //Enemies Info
         for (int i = 0; i < enemiesInfo.Count; i++)
         {
@@ -363,8 +355,7 @@ if (distance < shortestDistanceInfoUnits || k == 0)
 
     void PlayerTurn()
     {
-        Debug.Log(diceObjects.Count);
-        OnDicePressed();
+        SetupButtonNavigation();
         for (int i = 0; i < diceObjects.Count; i++)
         {
             if(diceObjects[i].GetAssignedStatus())
@@ -373,12 +364,12 @@ if (distance < shortestDistanceInfoUnits || k == 0)
                 diceObjects[i].SetAssignedTo(null);
             }
 
-            if(!diceObjects[i].GetLockedOrInactiveStatus() && !diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+            if(!diceObjects[i].GetLockedOrInactiveStatus() && !diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added"))
             {
                 diceNumbers[i] = Random.Range(1, 7);
                 diceImages[i].sprite = diceSprites[diceNumbers[i] - 1];
             }
-            else if(!diceObjects[i].GetLockedOrInactiveStatus() && diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+            else if(!diceObjects[i].GetLockedOrInactiveStatus() && diceObjects[i].GetComponent<Image>().sprite.name.StartsWith("Added"))
             {
                 Dice pressedDice = diceObjects[i].GetComponent<Dice>();
 
@@ -407,7 +398,7 @@ if (distance < shortestDistanceInfoUnits || k == 0)
                     secondDicePair[1] = -1;
                 }
             }
-            if(diceObjects[i].GetLockStatus())
+            if(diceObjects[i].GetLockedStatus())
             {
                 diceObjects[i].ToggleLockDice();
             }
@@ -417,8 +408,6 @@ if (distance < shortestDistanceInfoUnits || k == 0)
 
     void EnemyTurn()
     {
-        player.TakeDamage(1);
-
         List<GameObject> toRemoveList = new List<GameObject>();
 
         //see if someone will die
@@ -428,24 +417,33 @@ if (distance < shortestDistanceInfoUnits || k == 0)
             {
                 toRemoveList.Add(enemyGO);
             }
-            else
-            {
-                enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
-            }
         }
 
         //Actually kill them
         foreach(var toRemoveGO in toRemoveList)
         {
-            toRemoveGO.GetComponent<EEnemyInterface>().EnemyAction();
-            enemiesGO.Remove(toRemoveGO);
-            nrOfEnemies--;
+            int index = enemiesGO.IndexOf(toRemoveGO);
+            enemiesGO[index].GetComponent<EEnemyInterface>().TriggerDeath();
+            Destroy(enemiesInfo[index].gameObject);
+            Destroy(diceKeys[index].gameObject);
+            enemiesGO.Remove(enemiesGO[index]);
+            enemiesInfo.Remove(enemiesInfo[index]);
+            diceKeys.Remove(diceKeys[index]);
         }
 
         if(enemiesGO.Count == 0)
         {
             FindObjectOfType<LevelLoader>().LoadOverworldScene();
+            return;
         }
+
+        //Enemy Attack
+        foreach (var enemyGO in enemiesGO)
+        {
+            enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+        }
+
+        player.TakeDamage(1);
 
         PlayerTurn();
     }
@@ -456,11 +454,9 @@ if (distance < shortestDistanceInfoUnits || k == 0)
         var go = EventSystem.current.currentSelectedGameObject;
         if(go != null)
         {
-            Debug.Log(diceObjects.Count);
             secondPressedDice = go.GetComponent<Dice>();
             if(!secondPressedDice.GetLockedOrInactiveStatus())
             {
-                Debug.Log(diceObjects.Count);
                 Dice firstPressedDice = null;
                 int firstPressedNumber = 0;
                 int secondPressedNumber = 0;
@@ -484,8 +480,8 @@ if (distance < shortestDistanceInfoUnits || k == 0)
                 if(firstPressedDice != null)
                 {
                     //If none of them is already a pair
-                    if (!diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice") && 
-                        !diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+                    if (!diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added") && 
+                        !diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added"))
                     {
                         //Save die pair for later
                         if(firstDicePair[0] == -1)
@@ -501,14 +497,14 @@ if (distance < shortestDistanceInfoUnits || k == 0)
 
                         //Add die operations
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
-                        diceImages[secondPressedNumber].sprite = diceSprites[diceNumbers[secondPressedNumber] + 12 - 1];
+                        diceImages[secondPressedNumber].sprite = diceSpritesGold[diceNumbers[secondPressedNumber] - 1];
                         diceObjects[firstPressedNumber].SetInactiveStatus(true);
                         diceObjects[firstPressedNumber].SetMarkedStatus(false);
                         diceObjects[secondPressedNumber].SetMarkedStatus(false);
                     }
                     //If one of them was a pair, unmark it
-                    else if (diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice") 
-                        || diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+                    else if (diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added")
+                        || diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added"))
                     {
                         diceObjects[secondPressedNumber].SetMarkedStatus(false);
                     }
@@ -614,28 +610,28 @@ if (distance < shortestDistanceInfoUnits || k == 0)
                         }
                     }
 
-
-
+                    //if the dicekey was assigned
                     if (pressedDiceKey.GetAssignedStatus())
                     {
-                        pressedDiceKey.SetAssignedStatus(false);
+                        pressedDiceKey.SetAssignedStatus(false, diceKeyNumbers[diceKeys.IndexOf(pressedDiceKey)]);
 
-                        for (int i = 0; i < diceNumbers.Length; i++)
+                        for (int i = 0; i < diceObjects.Count; i++)
                         {
                             if(diceObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
                             {
                                 //TODO
+                                Debug.Log("Hejsan");
                             }
                         }
                     }
                 }
 
                 //If the selected dice is a added one
-                else if (go.GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
+                else if (go.GetComponent<Image>().sprite.name.StartsWith("Added"))
                 {
                     Dice pressedDice = go.GetComponent<Dice>();
 
-                    if(!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus())
+                    if(!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
                     {
                         if (pressedDice == diceObjects[firstDicePair[1]])
                         {
@@ -663,6 +659,12 @@ if (distance < shortestDistanceInfoUnits || k == 0)
             cancelPressed = false;
         }
     }
+
+    public int GetDiceNumber(Dice dice)
+    {
+        return diceNumbers[diceObjects.IndexOf(dice)];
+    }
+
     private void PreventCursor()
     {
         if (EventSystem.current.currentSelectedGameObject == null)

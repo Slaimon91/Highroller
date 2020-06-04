@@ -105,10 +105,10 @@ RectTransform:
   m_Father: {fileID: 238876300617606436}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 32, y: 32}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &238876299981261648
 CanvasRenderer:
@@ -435,7 +435,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5960272c03688874ab1360d22dc30851, type: 3}
+  m_Sprite: {fileID: -8232111649797111819, guid: ab55760a4dcef2d4a845c75e29834e7a,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -499,8 +500,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: OnDicePressed
         m_Mode: 1
         m_Arguments:
@@ -528,3 +528,42 @@ MonoBehaviour:
   locked: {fileID: 238876299981261651}
   inactive: {fileID: 238876300548808120}
   assigned: {fileID: 238876300208179234}
+  diceSpritesLocked:
+  - {fileID: 953190355077862658, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: 5318654278424016557, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: 6256771161199710612, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -7048533675184688102, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: 4021181948287047520, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -4593483533536649484, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -950687501349237147, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -3377627864244132209, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -5376069252124304588, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: 5136091537145130960, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: 5679280279662279865, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  - {fileID: -7907851394263765359, guid: 3f398549d507496479f606aa9306535d, type: 3}
+  diceSpritesInactive:
+  - {fileID: 9112993794511998834, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -9093002536425596559, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -8488483342454076061, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -7743057500888932039, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 2399075132963950485, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 3482267894038963840, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -3628643788255781677, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 2951064260710568643, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -5973787400444618483, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 703323423492652272, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: -4907195616308424318, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 106686410243986288, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  diceSpritesAssigned:
+  - {fileID: 3597721376902117332, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -4519436866088443645, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 5675237145223977641, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 57477353098336980, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -7027528123075009333, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -2940720795328398714, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -6091804376411612668, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 9119955914930974053, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -1126320684951416717, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 7733378967850423464, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: -2914874440533297744, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 3372625920713028586, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}

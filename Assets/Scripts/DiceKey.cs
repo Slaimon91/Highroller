@@ -15,6 +15,8 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject selected;
     [SerializeField] GameObject assigned;
 
+    public Sprite[] diceSpritesAssigned;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +35,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         selected.SetActive(false);
     }
 
-    public void SetAssignedStatus(bool status)
+    public void SetAssignedStatus(bool status, int keyNumber)
     {
         if (!status)
         {
@@ -42,6 +44,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         else
         {
+            assigned.GetComponent<Image>().sprite = diceSpritesAssigned[keyNumber - 1];
             diceKeyAssigned = true;
             assigned.SetActive(true);
         }

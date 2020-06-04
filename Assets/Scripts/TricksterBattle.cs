@@ -15,7 +15,7 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
     // Start is called before the first frame update
     void Awake()
     {
-        diceKeyNumber = 6;
+        diceKeyNumber = Random.Range(1, 7);
         battleSystem = FindObjectOfType<BattleSystem>();
     }
 
@@ -36,24 +36,18 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
         {
             isDead = false;
 
-            diceKeyGO.SetAssignedStatus(false);
+            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
         }
         else
         {
             isDead = true;
 
-            diceKeyGO.SetAssignedStatus(true);
+            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
         }
     }
 
     public void EnemyAction()
     {
-        if(isDead)
-        {
-            Destroy(diceKeyGO.transform.parent.gameObject);
-            Destroy(gameObject);
-        }
-
         int newDiceKeyNumber = diceKeyNumber;
         while(newDiceKeyNumber == diceKeyNumber)
         {
@@ -65,6 +59,15 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
            diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
         }
         
+    }
+
+    public void TriggerDeath()
+    {
+        if (isDead)
+        {
+            //Destroy(diceKeyGO.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public Sprite GetIcon()

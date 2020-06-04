@@ -15,6 +15,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool diceAssigned = false;
 
     private GameObject diceAssignedTo;
+    private BattleSystem battleSystem;
    
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
@@ -22,6 +23,10 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
+
+    public Sprite[] diceSpritesLocked;
+    public Sprite[] diceSpritesInactive;
+    public Sprite[] diceSpritesAssigned;
 
     PlayerControls controls;
     void Awake()
@@ -32,7 +37,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     void Start()
     {
-
+        battleSystem = FindObjectOfType<BattleSystem>();
     }
     // Update is called once per frame
     void Update()
@@ -46,6 +51,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             if (!diceLocked && !diceInactive && !diceAssigned)
             {
+                locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
                 locked.SetActive(true);
                 diceLocked = true;
             }
@@ -66,6 +72,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         else
         {
+            inactive.GetComponent<Image>().sprite = diceSpritesInactive[battleSystem.GetDiceNumber(this) - 1];
             diceInactive = true;
             inactive.SetActive(true);
         }
@@ -94,6 +101,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
         else
         {
+            assigned.GetComponent<Image>().sprite = diceSpritesAssigned[battleSystem.GetDiceNumber(this) - 1];
             diceAssigned = true;
             assigned.SetActive(true);
         }
@@ -133,7 +141,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         return diceAssignedTo;
     }
 
-    public bool GetLockStatus()
+    public bool GetLockedStatus()
     {
         return diceLocked;
     }
