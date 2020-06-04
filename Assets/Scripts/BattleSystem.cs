@@ -79,6 +79,7 @@ public class BattleSystem : MonoBehaviour
     {
         //PreventCursor();
         //PressCancel();
+        //OnDicePressed();
     }
 
     void SetUpBattle()
@@ -362,7 +363,9 @@ if (distance < shortestDistanceInfoUnits || k == 0)
 
     void PlayerTurn()
     {
-        for (int i = 0; i < diceNumbers.Length; i++)
+        Debug.Log(diceObjects.Count);
+        OnDicePressed();
+        for (int i = 0; i < diceObjects.Count; i++)
         {
             if(diceObjects[i].GetAssignedStatus())
             {
@@ -453,14 +456,16 @@ if (distance < shortestDistanceInfoUnits || k == 0)
         var go = EventSystem.current.currentSelectedGameObject;
         if(go != null)
         {
+            Debug.Log(diceObjects.Count);
             secondPressedDice = go.GetComponent<Dice>();
             if(!secondPressedDice.GetLockedOrInactiveStatus())
             {
+                Debug.Log(diceObjects.Count);
                 Dice firstPressedDice = null;
                 int firstPressedNumber = 0;
                 int secondPressedNumber = 0;
 
-                for (int i = 0; i < diceNumbers.Length; i++)
+                for (int i = 0; i < diceObjects.Count; i++)
                 {
                     if (diceObjects[i].GetMarkedStatus())
                     {
@@ -477,7 +482,7 @@ if (distance < shortestDistanceInfoUnits || k == 0)
                 }
                 
                 if(firstPressedDice != null)
-                {   
+                {
                     //If none of them is already a pair
                     if (!diceImages[secondPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice") && 
                         !diceImages[firstPressedNumber].GetComponent<Image>().sprite.name.StartsWith("Added_Dice"))
@@ -525,7 +530,7 @@ if (distance < shortestDistanceInfoUnits || k == 0)
             int secondPressedNumber = 0;
 
             //Find first marked die
-            for (int i = 0; i < diceNumbers.Length; i++)
+            for (int i = 0; i < diceObjects.Count; i++)
             {
                 if (diceObjects[i].GetMarkedStatus())
                 {
@@ -573,7 +578,7 @@ if (distance < shortestDistanceInfoUnits || k == 0)
             bool diceDeselected = false;
             var go = EventSystem.current.currentSelectedGameObject;
 
-            for (int i = 0; i < diceNumbers.Length; i++)
+            for (int i = 0; i < diceObjects.Count; i++)
             {
                 if(diceObjects[i].GetMarkedStatus())
                 {
