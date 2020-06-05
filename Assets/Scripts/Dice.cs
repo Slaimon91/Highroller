@@ -56,7 +56,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             animator.Play(0, -1, GetComponentInParent<DiceMasterAnimator>().myTime);
         }
-        if(makeGold)
+        /*if(makeGold)
         {
             fillTimer += Time.deltaTime;
             fillImage.fillAmount = fillTimer / fillTimeSeconds;
@@ -68,7 +68,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
 
             }
             
-        }
+        }*/
     }
 
     public void ToggleLockDice()
@@ -176,8 +176,9 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         animator.SetFloat("diceNumber", diceNumber);
         if(status)
         {
-            makeGold = true;
-            fillTimer = 0;
+            //makeGold = true;
+            //fillTimer = 0;
+            animator.enabled = true;
         }
         else
         {
@@ -185,9 +186,22 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
     }
 
-    public void SetPlatinum(bool status, int diceNumber)
+    public void SetPlatinum(bool status, int number)
     {
         isPlatinum = status;
+        diceNumber = number;
+        animator.SetBool("isPlatinum", status);
+        animator.SetFloat("diceNumber", diceNumber);
+        if (status)
+        {
+            //makeGold = true;
+            //fillTimer = 0;
+            animator.enabled = true;
+        }
+        else
+        {
+            animator.enabled = false;
+        }
     }
 
     public bool GetGoldStatus()

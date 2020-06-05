@@ -546,31 +546,31 @@ MonoBehaviour:
   - {fileID: 5679280279662279865, guid: 3f398549d507496479f606aa9306535d, type: 3}
   - {fileID: -7907851394263765359, guid: 3f398549d507496479f606aa9306535d, type: 3}
   diceSpritesInactive:
-  - {fileID: 9112993794511998834, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -9093002536425596559, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -8488483342454076061, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -7743057500888932039, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: 2399075132963950485, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: 3482267894038963840, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -3628643788255781677, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: 2951064260710568643, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -5973787400444618483, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: 703323423492652272, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: -4907195616308424318, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
-  - {fileID: 106686410243986288, guid: 8938cfded66b0154eae399f952926ceb, type: 3}
+  - {fileID: 3242884679300641166, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4056356197245270000, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -8852008973318729298, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4565242735907959330, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 105148788359288150, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 6921779033261027356, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4896309329980502267, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4170113284269964611, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4150416207260787464, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 511865692308919224, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4271804661941773916, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 488564026253002968, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
   diceSpritesAssigned:
-  - {fileID: 3597721376902117332, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -4519436866088443645, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: 5675237145223977641, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: 57477353098336980, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -7027528123075009333, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -2940720795328398714, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -6091804376411612668, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: 9119955914930974053, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -1126320684951416717, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: 7733378967850423464, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: -2914874440533297744, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
-  - {fileID: 3372625920713028586, guid: 3bf2c31609dca644187f7ffbd3208a57, type: 3}
+  - {fileID: 3242884679300641166, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4056356197245270000, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -8852008973318729298, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4565242735907959330, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 105148788359288150, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 6921779033261027356, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4896309329980502267, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4170113284269964611, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4150416207260787464, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 511865692308919224, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4271804661941773916, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 488564026253002968, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
 --- !u!95 &1419409722
 Animator:
   serializedVersion: 3
