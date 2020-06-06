@@ -91,9 +91,9 @@ public class BattleSystem : MonoBehaviour
             enemyPrefabs.Add(battleStartupInfo.enemies[i]);
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
             enemiesGO.Add(enemyGO);
-            diceKeyNumbers.Add(enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber());
+            diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
             diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
-            enemyGO.GetComponent<EEnemyInterface>().SetDiceKeyGO(diceKeys[i]);
+            enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
         }
         GetComponentInChildren<SpriteRenderer>().sprite = battleStartupInfo.battleBackground;
         player = playerGO.GetComponent<PlayerBattleController>();
@@ -172,7 +172,7 @@ public class BattleSystem : MonoBehaviour
             RectTransform rtInfo = enemiesInfo[i].GetComponent<RectTransform>();
             rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
             Image enemiesInfoImage = enemiesInfo[i].GetComponent<Image>();
-            enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EEnemyInterface>().GetIcon();
+            enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetIcon();
         }
 
         //Instantiate player abilities
@@ -469,7 +469,7 @@ public class BattleSystem : MonoBehaviour
         //see if someone will die
         foreach(var enemyGO in enemiesGO)
         {
-            if (enemyGO.GetComponent<EEnemyInterface>().GetDeathStatus())
+            if (enemyGO.GetComponent<EnemyBattleBase>().GetDeathStatus())
             {
                 toRemoveList.Add(enemyGO);
             }
@@ -479,7 +479,7 @@ public class BattleSystem : MonoBehaviour
         foreach(var toRemoveGO in toRemoveList)
         {
             int index = enemiesGO.IndexOf(toRemoveGO);
-            enemiesGO[index].GetComponent<EEnemyInterface>().TriggerDeath();
+            enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDeath();
             Destroy(enemiesInfo[index].gameObject);
             Destroy(diceKeys[index].gameObject);
             enemiesGO.Remove(enemiesGO[index]);
@@ -496,7 +496,7 @@ public class BattleSystem : MonoBehaviour
         //Enemy Attack
         foreach (var enemyGO in enemiesGO)
         {
-            enemyGO.GetComponent<EEnemyInterface>().EnemyAction();
+            enemyGO.GetComponent<EnemyBattleBase>().EnemyAction();
         }
 
         player.TakeDamage(1);
@@ -537,7 +537,9 @@ public class BattleSystem : MonoBehaviour
                 {
                     //If none of them is already a pair
                     if (!diceObjects[secondPressedNumber].GetComponent<Dice>().GetGoldStatus() && 
-                        !diceObjects[firstPressedNumber].GetComponent<Dice>().GetGoldStatus())
+                        !diceObjects[firstPressedNumber].GetComponent<Dice>().GetGoldStatus() && 
+                        !diceObjects[secondPressedNumber].GetComponent<Dice>().GetPlatinumStatus() &&
+                        !diceObjects[firstPressedNumber].GetComponent<Dice>().GetPlatinumStatus())
                     {
                         //Save die pair for later
                         if(firstDicePair[0] == -1)
@@ -624,16 +626,16 @@ public class BattleSystem : MonoBehaviour
                 //Get the dicekey number
                 foreach(var enemyGO in enemiesGO)
                 {
-                    if(enemyGO.GetComponent<EEnemyInterface>().GetDiceKey() == pressedDiceKey)
+                    if(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                     {
-                        secondPressedNumber = enemyGO.GetComponent<EEnemyInterface>().GetDiceKeyNumber();
+                        secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
                         if (secondPressedNumber == firstPressedNumber)
                         {
                             firstPressedDice.SetAssignedStatus(true);
                             firstPressedDice.SetMarkedStatus(false);
                             //pressedDiceKey.SetAssignedStatus(true);
                             firstPressedDice.SetAssignedTo(pressedDiceKey.gameObject);
-                            enemyGO.GetComponent<EEnemyInterface>().Assign(true);
+                            enemyGO.GetComponent<EnemyBattleBase>().Assign(true);
                         }
                         else
                         {
@@ -674,9 +676,9 @@ public class BattleSystem : MonoBehaviour
 
                     foreach (var enemyGO in enemiesGO)
                     {
-                        if (enemyGO.GetComponent<EEnemyInterface>().GetDiceKey() == pressedDiceKey)
+                        if (enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                         {
-                            enemyGO.GetComponent<EEnemyInterface>().Assign(false);
+                            enemyGO.GetComponent<EnemyBattleBase>().Assign(false);
 
                             for (int k = 0; k < diceObjects.Count; k++)
                             {

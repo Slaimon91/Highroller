@@ -16,7 +16,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool isGold = false;
     private bool isPlatinum = false;
     private float diceNumber = -1;
-    private bool makeGold = false;
 
     private GameObject diceAssignedTo;
     private BattleSystem battleSystem;
@@ -28,9 +27,9 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
-    [SerializeField] Image fillImage;
-    [SerializeField] float fillTimeSeconds;
-    private float fillTimer;
+    [SerializeField] GameObject transition;
+    //[SerializeField] float fillTimeSeconds;
+    //private float fillTimer;
 
     public Sprite[] diceSpritesLocked;
     public Sprite[] diceSpritesInactive;
@@ -77,7 +76,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             if (!diceLocked && !diceInactive && !diceAssigned)
             {
-                locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
+                //locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
                 locked.SetActive(true);
                 diceLocked = true;
             }
@@ -95,9 +94,9 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         diceLocked = false;
     }
 
-    public void SetFillImage(Sprite diceSprite)
+    public void EnableAnimator()
     {
-        fillImage.sprite = diceSprite;
+        animator.enabled = true;
     }
 
     public void SetInactiveStatus(bool inactiveStatus)
@@ -179,6 +178,8 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
             //makeGold = true;
             //fillTimer = 0;
             animator.enabled = true;
+            //transition.SetActive(true);
+            //transition.GetComponent<Animator>().SetBool("normalToGold", true);
         }
         else
         {

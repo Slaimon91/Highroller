@@ -1,94 +1,94 @@
 fileFormatVersion: 2
-guid: ccce8f8e1c5d48644a1b9e5b8e73f936
+guid: 80b0cf32110757645878de69e5e488ab
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7823199163594180092
-    second: Dice_plat_animation_1_0
+      213: -2753752792535856836
+    second: Dice_plat_animation_15_0
   - first:
-      213: -1176828105873463531
-    second: Dice_plat_animation_1_1
+      213: 2712490933358951488
+    second: Dice_plat_animation_15_1
   - first:
-      213: -5603503162866074023
-    second: Dice_plat_animation_1_2
+      213: -6558407352332546398
+    second: Dice_plat_animation_15_2
   - first:
-      213: 2053569860389549034
-    second: Dice_plat_animation_1_3
+      213: 2574873141845667570
+    second: Dice_plat_animation_15_3
   - first:
-      213: 2280185998452483244
-    second: Dice_plat_animation_1_4
+      213: 8771081440622287118
+    second: Dice_plat_animation_15_4
   - first:
-      213: -5370076256089888215
-    second: Dice_plat_animation_1_5
+      213: -7913353821994790301
+    second: Dice_plat_animation_15_5
   - first:
-      213: 1004270568398143632
-    second: Dice_plat_animation_1_6
+      213: -6095241512663248009
+    second: Dice_plat_animation_15_6
   - first:
-      213: -865393387290648341
-    second: Dice_plat_animation_1_7
+      213: -5450332244623120797
+    second: Dice_plat_animation_15_7
   - first:
-      213: 4038814042335696672
-    second: Dice_plat_animation_1_8
+      213: 8705176161556138034
+    second: Dice_plat_animation_15_8
   - first:
-      213: -2052992992470452381
-    second: Dice_plat_animation_1_9
+      213: -6223315573201538308
+    second: Dice_plat_animation_15_9
   - first:
-      213: -2481514821540158765
-    second: Dice_plat_animation_1_10
+      213: -767054099511044008
+    second: Dice_plat_animation_15_10
   - first:
-      213: -1479215816783042901
-    second: Dice_plat_animation_1_11
+      213: 6625131722378711783
+    second: Dice_plat_animation_15_11
   - first:
-      213: 5293181403638961777
-    second: Dice_plat_animation_1_12
+      213: 4993823796299193392
+    second: Dice_plat_animation_15_12
   - first:
-      213: 2610704319551377009
-    second: Dice_plat_animation_1_13
+      213: 6758480158683832158
+    second: Dice_plat_animation_15_13
   - first:
-      213: -6447303777903050772
-    second: Dice_plat_animation_1_14
+      213: -976965940131252872
+    second: Dice_plat_animation_15_14
   - first:
-      213: -5033347148008323842
-    second: Dice_plat_animation_1_15
+      213: -6813553787702337659
+    second: Dice_plat_animation_15_15
   - first:
-      213: -7242890352411067726
-    second: Dice_plat_animation_1_16
+      213: -6129735602196259223
+    second: Dice_plat_animation_15_16
   - first:
-      213: 5751096670420655035
-    second: Dice_plat_animation_1_17
+      213: -3362190828265566163
+    second: Dice_plat_animation_15_17
   - first:
-      213: -6903337025967650679
-    second: Dice_plat_animation_1_18
+      213: -3092764241836273104
+    second: Dice_plat_animation_15_18
   - first:
-      213: 5848772304693078568
-    second: Dice_plat_animation_1_19
+      213: 3690063143036221879
+    second: Dice_plat_animation_15_19
   - first:
-      213: -2828190106154703008
-    second: Dice_plat_animation_1_20
+      213: 6254687960768666479
+    second: Dice_plat_animation_15_20
   - first:
-      213: -6614009746036303291
-    second: Dice_plat_animation_1_21
+      213: -1825809404187364373
+    second: Dice_plat_animation_15_21
   - first:
-      213: -2888052603664955905
-    second: Dice_plat_animation_1_22
+      213: 2261091964088184548
+    second: Dice_plat_animation_15_22
   - first:
-      213: 8002650372330413846
-    second: Dice_plat_animation_1_23
+      213: -4326443065101950398
+    second: Dice_plat_animation_15_23
   - first:
-      213: 4403730604858283896
-    second: Dice_plat_animation_1_24
+      213: -8652072138024182021
+    second: Dice_plat_animation_15_24
   - first:
-      213: -8862225405015769062
-    second: Dice_plat_animation_1_25
+      213: 4603888317655158484
+    second: Dice_plat_animation_15_25
   - first:
-      213: 3535699394744902004
-    second: Dice_plat_animation_1_26
+      213: 5013303997792390673
+    second: Dice_plat_animation_15_26
   - first:
-      213: 5657502897841476655
-    second: Dice_plat_animation_1_27
+      213: 7154109769838468495
+    second: Dice_plat_animation_15_27
   - first:
-      213: 6199536895479715006
-    second: Dice_plat_animation_1_28
+      213: 5996496105279568133
+    second: Dice_plat_animation_15_28
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -174,7 +174,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dice_plat_animation_1_0
+      name: Dice_plat_animation_15_0
       rect:
         serializedVersion: 2
         x: 0
@@ -188,14 +188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40af5de4fc96e6390800000000000000
-      internalID: -7823199163594180092
+      spriteID: c3909a9dc64b8c9d0800000000000000
+      internalID: -2753752792535856836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_1
+      name: Dice_plat_animation_15_1
       rect:
         serializedVersion: 2
         x: 26
@@ -209,14 +209,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51767b3a2111bafe0800000000000000
-      internalID: -1176828105873463531
+      spriteID: 04cf35be124b4a520800000000000000
+      internalID: 2712490933358951488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_2
+      name: Dice_plat_animation_15_2
       rect:
         serializedVersion: 2
         x: 52
@@ -230,14 +230,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95ef69fdf8b5c32b0800000000000000
-      internalID: -5603503162866074023
+      spriteID: 2ae88efc24bdbf4a0800000000000000
+      internalID: -6558407352332546398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_3
+      name: Dice_plat_animation_15_3
       rect:
         serializedVersion: 2
         x: 78
@@ -251,14 +251,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae3b7f168eebf7c10800000000000000
-      internalID: 2053569860389549034
+      spriteID: 2fea761fa79cbb320800000000000000
+      internalID: 2574873141845667570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_4
+      name: Dice_plat_animation_15_4
       rect:
         serializedVersion: 2
         x: 104
@@ -272,14 +272,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca4649ba519d4af10800000000000000
-      internalID: 2280185998452483244
+      spriteID: e09105c591429b970800000000000000
+      internalID: 8771081440622287118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_5
+      name: Dice_plat_animation_15_5
       rect:
         serializedVersion: 2
         x: 130
@@ -293,14 +293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92aa003d818a975b0800000000000000
-      internalID: -5370076256089888215
+      spriteID: 362550a20ae1e2290800000000000000
+      internalID: -7913353821994790301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_6
+      name: Dice_plat_animation_15_6
       rect:
         serializedVersion: 2
         x: 156
@@ -314,14 +314,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09040c7d2c2efed00800000000000000
-      internalID: 1004270568398143632
+      spriteID: 7731e71632a596ba0800000000000000
+      internalID: -6095241512663248009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_7
+      name: Dice_plat_animation_15_7
       rect:
         serializedVersion: 2
         x: 182
@@ -335,14 +335,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be0a19f9c418df3f0800000000000000
-      internalID: -865393387290648341
+      spriteID: 366a16b53b78c54b0800000000000000
+      internalID: -5450332244623120797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_8
+      name: Dice_plat_animation_15_8
       rect:
         serializedVersion: 2
         x: 208
@@ -356,14 +356,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 027574319ffbc0830800000000000000
-      internalID: 4038814042335696672
+      spriteID: 23880c0d89ffec870800000000000000
+      internalID: 8705176161556138034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_9
+      name: Dice_plat_animation_15_9
       rect:
         serializedVersion: 2
         x: 234
@@ -377,14 +377,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 367be6520cd4283e0800000000000000
-      internalID: -2052992992470452381
+      spriteID: cf27a2e657752a9a0800000000000000
+      internalID: -6223315573201538308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_10
+      name: Dice_plat_animation_15_10
       rect:
         serializedVersion: 2
         x: 260
@@ -398,14 +398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d26b3dda63ef8dd0800000000000000
-      internalID: -2481514821540158765
+      spriteID: 858132b4c50ea55f0800000000000000
+      internalID: -767054099511044008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_11
+      name: Dice_plat_animation_15_11
       rect:
         serializedVersion: 2
         x: 286
@@ -419,14 +419,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6e1864d05c87be0800000000000000
-      internalID: -1479215816783042901
+      spriteID: 7e21e86333231fb50800000000000000
+      internalID: 6625131722378711783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_12
+      name: Dice_plat_animation_15_12
       rect:
         serializedVersion: 2
         x: 312
@@ -440,14 +440,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1769a9f2178257940800000000000000
-      internalID: 5293181403638961777
+      spriteID: 03c5e49c840ad4540800000000000000
+      internalID: 4993823796299193392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_13
+      name: Dice_plat_animation_15_13
       rect:
         serializedVersion: 2
         x: 338
@@ -461,14 +461,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17e007c1fb51b3420800000000000000
-      internalID: 2610704319551377009
+      spriteID: e5f10e775e1facd50800000000000000
+      internalID: 6758480158683832158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_14
+      name: Dice_plat_animation_15_14
       rect:
         serializedVersion: 2
         x: 364
@@ -482,14 +482,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceffd0f8f539686a0800000000000000
-      internalID: -6447303777903050772
+      spriteID: 87532d457ae1172f0800000000000000
+      internalID: -976965940131252872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_15
+      name: Dice_plat_animation_15_15
       rect:
         serializedVersion: 2
         x: 390
@@ -503,14 +503,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef40dbbcf65f52ab0800000000000000
-      internalID: -5033347148008323842
+      spriteID: 58f1cf90ee46171a0800000000000000
+      internalID: -6813553787702337659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_16
+      name: Dice_plat_animation_15_16
       rect:
         serializedVersion: 2
         x: 416
@@ -524,14 +524,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ba3f6559951c7b90800000000000000
-      internalID: -7242890352411067726
+      spriteID: 96ed60052fdceeaa0800000000000000
+      internalID: -6129735602196259223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_17
+      name: Dice_plat_animation_15_17
       rect:
         serializedVersion: 2
         x: 442
@@ -545,14 +545,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbbda5d73ffffcf40800000000000000
-      internalID: 5751096670420655035
+      spriteID: d20972e51491751d0800000000000000
+      internalID: -3362190828265566163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_18
+      name: Dice_plat_animation_15_18
       rect:
         serializedVersion: 2
         x: 468
@@ -566,14 +566,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9888562ec8b6230a0800000000000000
-      internalID: -6903337025967650679
+      spriteID: 0329157ee4b4415d0800000000000000
+      internalID: -3092764241836273104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_19
+      name: Dice_plat_animation_15_19
       rect:
         serializedVersion: 2
         x: 494
@@ -587,14 +587,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82aaf594c630b2150800000000000000
-      internalID: 5848772304693078568
+      spriteID: 7b97f67b0ecb53330800000000000000
+      internalID: 3690063143036221879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_20
+      name: Dice_plat_animation_15_20
       rect:
         serializedVersion: 2
         x: 520
@@ -608,14 +608,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 067ef55351040c8d0800000000000000
-      internalID: -2828190106154703008
+      spriteID: f6b5782cf8d1dc650800000000000000
+      internalID: 6254687960768666479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_21
+      name: Dice_plat_animation_15_21
       rect:
         serializedVersion: 2
         x: 546
@@ -629,14 +629,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54ad882bd215634a0800000000000000
-      internalID: -6614009746036303291
+      spriteID: be338db350c69a6e0800000000000000
+      internalID: -1825809404187364373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_22
+      name: Dice_plat_animation_15_22
       rect:
         serializedVersion: 2
         x: 572
@@ -650,14 +650,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff588e165739be7d0800000000000000
-      internalID: -2888052603664955905
+      spriteID: 4ee67fb5923016f10800000000000000
+      internalID: 2261091964088184548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_23
+      name: Dice_plat_animation_15_23
       rect:
         serializedVersion: 2
         x: 598
@@ -671,14 +671,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fd6602d102f0f60800000000000000
-      internalID: 8002650372330413846
+      spriteID: 24265ab64f265f3c0800000000000000
+      internalID: -4326443065101950398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_24
+      name: Dice_plat_animation_15_24
       rect:
         serializedVersion: 2
         x: 624
@@ -692,14 +692,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 877181537a13d1d30800000000000000
-      internalID: 4403730604858283896
+      spriteID: bfe930a2b3aade780800000000000000
+      internalID: -8652072138024182021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_25
+      name: Dice_plat_animation_15_25
       rect:
         serializedVersion: 2
         x: 650
@@ -713,14 +713,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a10c79eb2fc030580800000000000000
-      internalID: -8862225405015769062
+      spriteID: 4de086f480c44ef30800000000000000
+      internalID: 4603888317655158484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_26
+      name: Dice_plat_animation_15_26
       rect:
         serializedVersion: 2
         x: 676
@@ -734,14 +734,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4716558ddd3511130800000000000000
-      internalID: 3535699394744902004
+      spriteID: 11e0673ac65d29540800000000000000
+      internalID: 5013303997792390673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_27
+      name: Dice_plat_animation_15_27
       rect:
         serializedVersion: 2
         x: 702
@@ -755,14 +755,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f24959d29ec738e40800000000000000
-      internalID: 5657502897841476655
+      spriteID: f8d9f5b7ee0884360800000000000000
+      internalID: 7154109769838468495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dice_plat_animation_1_28
+      name: Dice_plat_animation_15_28
       rect:
         serializedVersion: 2
         x: 728
@@ -776,8 +776,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb41ffab5fd290650800000000000000
-      internalID: 6199536895479715006
+      spriteID: 509b33cdf65d73350800000000000000
+      internalID: 5996496105279568133
       vertices: []
       indices: 
       edges: []

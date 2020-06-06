@@ -868,6 +868,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
         type: 3}
+      propertyPath: diceSprites.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
+        type: 3}
       propertyPath: playerSpawnPoint
       value: 
       objectReference: {fileID: 21691268}

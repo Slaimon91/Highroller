@@ -4,15 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class GoblinBattle : MonoBehaviour, EEnemyInterface
+public class GoblinBattle : EnemyBattleBase
 {
-    [SerializeField] int diceKeyNumber;
-    [SerializeField] string unitName;
-    [SerializeField] DiceKey diceKeyGO;
-    [SerializeField] Sprite icon;
-    private Image diceKeyImage;
-    private bool isDead = false;
-
+    [SerializeField] ThrowSimulation rockToThrow;
+    public Transform throwingHand;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,69 +20,16 @@ public class GoblinBattle : MonoBehaviour, EEnemyInterface
         
     }
 
-    public void EnemySetup()
+    public override void EnemySetup()
     {
 
     }
 
-    public void Assign(bool status)
+    public override void EnemyAction()
     {
-        if(!status)
-        {
-            isDead = false;
-
-            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
-        }
-        else
-        {
-            isDead = true;
-
-            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
-        }
-    }
-
-    public void EnemyAction()
-    {
-
-    }
-
-    public void TriggerDeath()
-    {
-        if (isDead)
-        {
-            //Destroy(diceKeyGO.transform.parent.gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    public Sprite GetIcon()
-    {
-        return icon;
-    }
-
-    public bool GetDeathStatus()
-    {
-        return isDead;
-    }
-
-    public string GetUnitName()
-    {
-        return unitName;
-    }
-
-    public int GetDiceKeyNumber()
-    {
-        return diceKeyNumber;
-    }
-
-    public DiceKey GetDiceKey()
-    {
-        return diceKeyGO;
-    }
-
-    public void SetDiceKeyGO(DiceKey diceKey)
-    {
-        diceKeyGO = diceKey;
-        diceKeyImage = diceKeyGO.GetComponent<Image>();
+        var rock = Instantiate(rockToThrow, throwingHand);
+        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerBody);
+        var rock2 = Instantiate(rockToThrow, throwingHand);
+        rock2.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
     }
 }

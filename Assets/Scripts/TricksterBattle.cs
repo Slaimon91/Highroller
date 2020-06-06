@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TricksterBattle : MonoBehaviour, EEnemyInterface
+public class TricksterBattle : EnemyBattleBase
 {
-    [SerializeField] int diceKeyNumber;
-    [SerializeField] string unitName;
-    [SerializeField] DiceKey diceKeyGO;
-    [SerializeField] Sprite icon;
-    private Image diceKeyImage;
     private BattleSystem battleSystem;
-    private bool isDead = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,28 +19,12 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
 
     }
 
-    public void EnemySetup()
+    public override void EnemySetup()
     {
 
     }
 
-    public void Assign(bool status)
-    {
-        if (!status)
-        {
-            isDead = false;
-
-            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
-        }
-        else
-        {
-            isDead = true;
-
-            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
-        }
-    }
-
-    public void EnemyAction()
+    public override void EnemyAction()
     {
         int newDiceKeyNumber = diceKeyNumber;
         while(newDiceKeyNumber == diceKeyNumber)
@@ -58,45 +36,5 @@ public class TricksterBattle : MonoBehaviour, EEnemyInterface
         {
            diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
         }
-        
-    }
-
-    public void TriggerDeath()
-    {
-        if (isDead)
-        {
-            //Destroy(diceKeyGO.gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    public Sprite GetIcon()
-    {
-        return icon;
-    }
-
-    public bool GetDeathStatus()
-    {
-        return isDead;
-    }
-
-    public string GetUnitName()
-    {
-        return unitName;
-    }
-    public int GetDiceKeyNumber()
-    {
-        return diceKeyNumber;
-    }
-
-    public DiceKey GetDiceKey()
-    {
-        return diceKeyGO;
-    }
-
-    public void SetDiceKeyGO(DiceKey diceKey)
-    {
-        diceKeyGO = diceKey;
-        diceKeyImage = diceKeyGO.GetComponent<Image>();
     }
 }

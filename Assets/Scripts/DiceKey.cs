@@ -20,10 +20,12 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public Sprite[] diceSpritesAssigned;
     private Animator animator;
+    private Animator animatorAssigned;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        animatorAssigned = GetComponentInChildren<Animator>();
         animator.enabled = false;
     }
     // Update is called once per frame
@@ -53,12 +55,14 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             diceKeyAssigned = false;
             assigned.SetActive(false);
+            //animatorAssigned.enabled = false;
         }
         else
         {
             assigned.GetComponent<Image>().sprite = diceSpritesAssigned[keyNumber - 1];
             diceKeyAssigned = true;
             assigned.SetActive(true);
+            //animatorAssigned.enabled = true;
         }
     }
 

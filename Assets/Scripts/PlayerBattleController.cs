@@ -14,6 +14,8 @@ public class PlayerBattleController : MonoBehaviour
     bool isDead;
     PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
+    public Transform playerHead;
+    public Transform playerBody;
 
     void Awake()
     {
