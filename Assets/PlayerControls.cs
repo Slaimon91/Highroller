@@ -35,6 +35,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e174529-e8bb-4d4d-9e4e-5b76a81ccffe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Inventory"",
                     ""type"": ""Button"",
                     ""id"": ""39d0d76a-51f6-4ef4-bf7c-2cf5eaf01b55"",
@@ -54,6 +62,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Submit"",
                     ""type"": ""Button"",
                     ""id"": ""d59ab3a3-cfa8-4449-b6fa-855a75e0b479"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""83a5f917-e824-4b27-a7ea-f7175605baa1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -410,6 +426,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Pass"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7df2e11a-4334-4b73-9921-8063b6eee7a9"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dbbe221-5f6c-4551-a449-e3f1da6fce83"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8c27113-85c9-4684-8549-14febabe1f8d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ceb72c5-84cb-4e4c-a4c8-f1c1e9351f2e"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -420,9 +480,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Cancel = m_Gameplay.FindAction("Cancel", throwIfNotFound: true);
+        m_Gameplay_Block = m_Gameplay.FindAction("Block", throwIfNotFound: true);
         m_Gameplay_Inventory = m_Gameplay.FindAction("Inventory", throwIfNotFound: true);
         m_Gameplay_Tileflip = m_Gameplay.FindAction("Tileflip", throwIfNotFound: true);
         m_Gameplay_Submit = m_Gameplay.FindAction("Submit", throwIfNotFound: true);
+        m_Gameplay_Dodge = m_Gameplay.FindAction("Dodge", throwIfNotFound: true);
         m_Gameplay_LockDice = m_Gameplay.FindAction("LockDice", throwIfNotFound: true);
         m_Gameplay_ChangeSceneHax = m_Gameplay.FindAction("ChangeSceneHax", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
@@ -478,9 +540,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Cancel;
+    private readonly InputAction m_Gameplay_Block;
     private readonly InputAction m_Gameplay_Inventory;
     private readonly InputAction m_Gameplay_Tileflip;
     private readonly InputAction m_Gameplay_Submit;
+    private readonly InputAction m_Gameplay_Dodge;
     private readonly InputAction m_Gameplay_LockDice;
     private readonly InputAction m_Gameplay_ChangeSceneHax;
     private readonly InputAction m_Gameplay_Move;
@@ -491,9 +555,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Cancel => m_Wrapper.m_Gameplay_Cancel;
+        public InputAction @Block => m_Wrapper.m_Gameplay_Block;
         public InputAction @Inventory => m_Wrapper.m_Gameplay_Inventory;
         public InputAction @Tileflip => m_Wrapper.m_Gameplay_Tileflip;
         public InputAction @Submit => m_Wrapper.m_Gameplay_Submit;
+        public InputAction @Dodge => m_Wrapper.m_Gameplay_Dodge;
         public InputAction @LockDice => m_Wrapper.m_Gameplay_LockDice;
         public InputAction @ChangeSceneHax => m_Wrapper.m_Gameplay_ChangeSceneHax;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
@@ -513,6 +579,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCancel;
+                @Block.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBlock;
+                @Block.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBlock;
+                @Block.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBlock;
                 @Inventory.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventory;
@@ -522,6 +591,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Submit.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSubmit;
+                @Dodge.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDodge;
                 @LockDice.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLockDice;
                 @LockDice.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLockDice;
                 @LockDice.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLockDice;
@@ -544,6 +616,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
@@ -553,6 +628,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
                 @LockDice.started += instance.OnLockDice;
                 @LockDice.performed += instance.OnLockDice;
                 @LockDice.canceled += instance.OnLockDice;
@@ -573,9 +651,11 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnTileflip(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
         void OnLockDice(InputAction.CallbackContext context);
         void OnChangeSceneHax(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);

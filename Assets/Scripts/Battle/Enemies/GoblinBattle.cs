@@ -25,11 +25,17 @@ public class GoblinBattle : EnemyBattleBase
 
     }
 
-    public override void EnemyAction()
+    public override IEnumerator EnemyAction()
     {
-        var rock = Instantiate(rockToThrow, throwingHand);
-        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerBody);
+        //var rock = Instantiate(rockToThrow, throwingHand);
+      //  rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerBody);
         var rock2 = Instantiate(rockToThrow, throwingHand);
         rock2.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
+
+        //while(rock2 != null)
+       // {
+//
+       // }
+        yield return null;
     }
 }

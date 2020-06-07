@@ -357,6 +357,7 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         SetupButtonNavigation();
+        state = BattleState.PLAYERTURN;
         for (int i = 0; i < diceObjects.Count; i++)
         {
             if(diceObjects[i].GetAssignedStatus())
@@ -464,6 +465,8 @@ public class BattleSystem : MonoBehaviour
 
     void EnemyTurn()
     {
+        state = BattleState.ENEMYTURN;
+        player.EnemyTurnStart();
         List<GameObject> toRemoveList = new List<GameObject>();
 
         //see if someone will die
@@ -496,12 +499,11 @@ public class BattleSystem : MonoBehaviour
         //Enemy Attack
         foreach (var enemyGO in enemiesGO)
         {
-            enemyGO.GetComponent<EnemyBattleBase>().EnemyAction();
+            StartCoroutine(enemyGO.GetComponent<EnemyBattleBase>().EnemyAction());
         }
 
-        player.TakeDamage(1);
-
         PlayerTurn();
+
     }
 
     public void OnDicePressed()
@@ -651,131 +653,134 @@ public class BattleSystem : MonoBehaviour
 
     private void PressedCancel()
     {
-        if (!cancelPressed)
+        if(state == BattleState.PLAYERTURN)
         {
-            cancelPressed = true;
-            bool diceDeselected = false;
-            var go = EventSystem.current.currentSelectedGameObject;
-
-            for (int i = 0; i < diceObjects.Count; i++)
+            if (!cancelPressed)
             {
-                if(diceObjects[i].GetMarkedStatus())
-                {
-                    diceDeselected = true;
-                    diceObjects[i].SetMarkedStatus(false);
-                }
-            }
+                cancelPressed = true;
+                bool diceDeselected = false;
+                var go = EventSystem.current.currentSelectedGameObject;
 
-            //If no die was marked
-            if (!diceDeselected)
-            {
-                //If the selected dice is a dice key
-                if (go.GetComponent<DiceKey>())
+                for (int i = 0; i < diceObjects.Count; i++)
                 {
-                    DiceKey pressedDiceKey = go.GetComponent<DiceKey>();
-
-                    foreach (var enemyGO in enemiesGO)
+                    if (diceObjects[i].GetMarkedStatus())
                     {
-                        if (enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
-                        {
-                            enemyGO.GetComponent<EnemyBattleBase>().Assign(false);
+                        diceDeselected = true;
+                        diceObjects[i].SetMarkedStatus(false);
+                    }
+                }
 
-                            for (int k = 0; k < diceObjects.Count; k++)
+                //If no die was marked
+                if (!diceDeselected)
+                {
+                    //If the selected dice is a dice key
+                    if (go.GetComponent<DiceKey>())
+                    {
+                        DiceKey pressedDiceKey = go.GetComponent<DiceKey>();
+
+                        foreach (var enemyGO in enemiesGO)
+                        {
+                            if (enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                             {
-                                if (diceObjects[k].GetAssignedTo() == go)
+                                enemyGO.GetComponent<EnemyBattleBase>().Assign(false);
+
+                                for (int k = 0; k < diceObjects.Count; k++)
                                 {
-                                    diceObjects[k].SetAssignedStatus(false);
-                                    diceObjects[k].SetAssignedTo(null);
-                                    break;
+                                    if (diceObjects[k].GetAssignedTo() == go)
+                                    {
+                                        diceObjects[k].SetAssignedStatus(false);
+                                        diceObjects[k].SetAssignedTo(null);
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+
+                        //if the dicekey was assigned
+                        if (pressedDiceKey.GetAssignedStatus())
+                        {
+                            pressedDiceKey.SetAssignedStatus(false, diceKeyNumbers[diceKeys.IndexOf(pressedDiceKey)]);
+
+                            for (int i = 0; i < diceObjects.Count; i++)
+                            {
+                                if (diceObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
+                                {
+                                    //TODO
+                                    Debug.Log("Hejsan");
                                 }
                             }
-                            break;
                         }
                     }
 
-                    //if the dicekey was assigned
-                    if (pressedDiceKey.GetAssignedStatus())
+                    //If the selected dice is a added one
+                    else if (go.GetComponent<Dice>().GetGoldStatus())
                     {
-                        pressedDiceKey.SetAssignedStatus(false, diceKeyNumbers[diceKeys.IndexOf(pressedDiceKey)]);
+                        Dice pressedDice = go.GetComponent<Dice>();
 
-                        for (int i = 0; i < diceObjects.Count; i++)
+                        if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
                         {
-                            if (diceObjects[i].GetAssignedTo() == pressedDiceKey.gameObject)
+                            if (firstDicePair[1] != -1)
                             {
-                                //TODO
-                                Debug.Log("Hejsan");
+                                if (pressedDice == diceObjects[firstDicePair[1]])
+                                {
+                                    diceObjects[firstDicePair[1]].SetGold(false, -1);
+                                    diceObjects[firstDicePair[0]].SetInactiveStatus(false);
+                                    diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
+                                    diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+
+                                    firstDicePair[0] = -1;
+                                    firstDicePair[1] = -1;
+                                }
+                            }
+
+                            if (secondDicePair[1] != -1)
+                            {
+                                //argument out of range, kan inte cancla nr 2
+                                if (pressedDice == diceObjects[secondDicePair[1]])
+                                {
+                                    diceObjects[secondDicePair[1]].SetGold(false, -1);
+                                    diceObjects[secondDicePair[0]].SetInactiveStatus(false);
+                                    diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
+                                    diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+
+                                    secondDicePair[0] = -1;
+                                    secondDicePair[1] = -1;
+                                }
                             }
                         }
                     }
-                }
 
-                //If the selected dice is a added one
-                else if (go.GetComponent<Dice>().GetGoldStatus())
-                {
-                    Dice pressedDice = go.GetComponent<Dice>();
-
-                    if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
+                    else if (go.GetComponent<Dice>().GetPlatinumStatus())
                     {
-                        if (firstDicePair[1] != -1)
+                        Dice pressedDice = go.GetComponent<Dice>();
+
+                        if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
                         {
-                            if (pressedDice == diceObjects[firstDicePair[1]])
+                            if (thirdDicePair[1] != -1)
                             {
-                                diceObjects[firstDicePair[1]].SetGold(false, -1);
-                                diceObjects[firstDicePair[0]].SetInactiveStatus(false);
-                                diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
-                                diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+                                if (pressedDice == diceObjects[thirdDicePair[1]])
+                                {
+                                    diceObjects[thirdDicePair[1]].SetPlatinum(false, -1);
+                                    diceObjects[thirdDicePair[0]].SetInactiveStatus(false);
+                                    diceNumbers[thirdDicePair[1]] -= diceNumbers[thirdDicePair[0]];
+                                    diceObjects[thirdDicePair[0]].SetGold(true, diceNumbers[thirdDicePair[0]]);
+                                    diceObjects[thirdDicePair[1]].SetGold(true, diceNumbers[thirdDicePair[1]]);
+                                    diceImages[thirdDicePair[1]].sprite = diceSpritesGold[diceNumbers[thirdDicePair[1]] - 1];
 
-                                firstDicePair[0] = -1;
-                                firstDicePair[1] = -1;
-                            }
-                        }
-
-                        if (secondDicePair[1] != -1)
-                        {
-                            //argument out of range, kan inte cancla nr 2
-                            if (pressedDice == diceObjects[secondDicePair[1]])
-                            {
-                                diceObjects[secondDicePair[1]].SetGold(false, -1);
-                                diceObjects[secondDicePair[0]].SetInactiveStatus(false);
-                                diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
-                                diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
-
-                                secondDicePair[0] = -1;
-                                secondDicePair[1] = -1;
-                            }
-                        }
-                    }
-                }
-
-                else if (go.GetComponent<Dice>().GetPlatinumStatus())
-                {
-                    Dice pressedDice = go.GetComponent<Dice>();
-
-                    if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
-                    {
-                        if (thirdDicePair[1] != -1)
-                        {
-                            if (pressedDice == diceObjects[thirdDicePair[1]])
-                            {
-                                diceObjects[thirdDicePair[1]].SetPlatinum(false, -1);
-                                diceObjects[thirdDicePair[0]].SetInactiveStatus(false);
-                                diceNumbers[thirdDicePair[1]] -= diceNumbers[thirdDicePair[0]];
-                                diceObjects[thirdDicePair[0]].SetGold(true, diceNumbers[thirdDicePair[0]]);
-                                diceObjects[thirdDicePair[1]].SetGold(true, diceNumbers[thirdDicePair[1]]);
-                                diceImages[thirdDicePair[1]].sprite = diceSpritesGold[diceNumbers[thirdDicePair[1]] - 1];
-
-                                thirdDicePair[0] = -1;
-                                thirdDicePair[1] = -1;
+                                    thirdDicePair[0] = -1;
+                                    thirdDicePair[1] = -1;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
 
-        if (cancelPressed)
-        {
-            cancelPressed = false;
+            if (cancelPressed)
+            {
+                cancelPressed = false;
+            }
         }
     }
 

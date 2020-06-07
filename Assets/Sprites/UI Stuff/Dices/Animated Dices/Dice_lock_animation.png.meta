@@ -1,0 +1,560 @@
+fileFormatVersion: 2
+guid: e0580a982da9b9947afaeb0099e6d6ac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5738492934848045169
+    second: Dice_lock_animation_0
+  - first:
+      213: -2010583356550865893
+    second: Dice_lock_animation_1
+  - first:
+      213: -6633969470172948730
+    second: Dice_lock_animation_2
+  - first:
+      213: -7084089213092195121
+    second: Dice_lock_animation_3
+  - first:
+      213: -7802726603136901035
+    second: Dice_lock_animation_4
+  - first:
+      213: 8962170470555441960
+    second: Dice_lock_animation_5
+  - first:
+      213: -6782769376016489600
+    second: Dice_lock_animation_6
+  - first:
+      213: 6946288232619816786
+    second: Dice_lock_animation_7
+  - first:
+      213: -911520537815812654
+    second: Dice_lock_animation_8
+  - first:
+      213: 7037230408590364588
+    second: Dice_lock_animation_9
+  - first:
+      213: -763280024019842237
+    second: Dice_lock_animation_10
+  - first:
+      213: -1216503929836506918
+    second: Dice_lock_animation_11
+  - first:
+      213: 6342494472981330757
+    second: Dice_lock_animation_12
+  - first:
+      213: -7192623956592509806
+    second: Dice_lock_animation_13
+  - first:
+      213: -1339035906149797807
+    second: Dice_lock_animation_14
+  - first:
+      213: -2243650745776450147
+    second: Dice_lock_animation_15
+  - first:
+      213: 4998451730594124384
+    second: Dice_lock_animation_16
+  - first:
+      213: 1653424033628973286
+    second: Dice_lock_animation_17
+  - first:
+      213: 1762159702275243273
+    second: Dice_lock_animation_18
+  - first:
+      213: -5580616769059324771
+    second: Dice_lock_animation_19
+  - first:
+      213: -982976281261389773
+    second: Dice_lock_animation_20
+  - first:
+      213: -8324714277902953944
+    second: Dice_lock_animation_21
+  - first:
+      213: 5378405681759346287
+    second: Dice_lock_animation_22
+  - first:
+      213: 1716117867983986178
+    second: Dice_lock_animation_23
+  - first:
+      213: -2091347901882338318
+    second: Dice_lock_animation_24
+  - first:
+      213: 5784611720282209194
+    second: Dice_lock_animation_25
+  - first:
+      213: -8252462174570203500
+    second: Dice_lock_animation_26
+  - first:
+      213: -1476341912994948518
+    second: Dice_lock_animation_27
+  - first:
+      213: 4754125709094634626
+    second: Dice_lock_animation_28
+  - first:
+      213: 7999540044484723315
+    second: Dice_lock_animation_29
+  - first:
+      213: -4461953999001654433
+    second: Dice_lock_animation_30
+  - first:
+      213: 291882447485169536
+    second: Dice_lock_animation_31
+  - first:
+      213: -6183615811866361133
+    second: Dice_lock_animation_32
+  - first:
+      213: 4101612057467774748
+    second: Dice_lock_animation_33
+  - first:
+      213: -1632219452692254615
+    second: Dice_lock_animation_34
+  - first:
+      213: -6333771604348158407
+    second: Dice_lock_animation_35
+  - first:
+      213: 5436234429879635977
+    second: Dice_lock_animation_36
+  - first:
+      213: -4031807857970125479
+    second: Dice_lock_animation_37
+  - first:
+      213: -2284351335984633260
+    second: Dice_lock_animation_38
+  - first:
+      213: -2794834899112974687
+    second: Dice_lock_animation_39
+  - first:
+      213: 1027689963195208933
+    second: Dice_lock_animation_40
+  - first:
+      213: -7992941020488383822
+    second: Dice_lock_animation_41
+  - first:
+      213: -4289667133272896632
+    second: Dice_lock_animation_42
+  - first:
+      213: 2581438553220186368
+    second: Dice_lock_animation_43
+  - first:
+      213: -3698032034118539270
+    second: Dice_lock_animation_44
+  - first:
+      213: -2108216834802814519
+    second: Dice_lock_animation_45
+  - first:
+      213: -7362273353224696237
+    second: Dice_lock_animation_46
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dice_lock_animation_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f1b406417cc50b0800000000000000
+      internalID: -5738492934848045169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c1979f619f814e0800000000000000
+      internalID: -2010583356550865893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6071e874ae76fe3a0800000000000000
+      internalID: -6633969470172948730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc49670d46240bd90800000000000000
+      internalID: -7084089213092195121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550e88cbe7527b390800000000000000
+      internalID: -7802726603136901035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82bd3f13f86006c70800000000000000
+      internalID: 8962170470555441960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083a32d6033ced1a0800000000000000
+      internalID: -6782769376016489600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 257b7c4385c266060800000000000000
+      internalID: 6946288232619816786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5f30a76e0a953f0800000000000000
+      internalID: -911520537815812654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caf0b9295c349a160800000000000000
+      internalID: 7037230408590364588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_10
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b4528bcd84865f0800000000000000
+      internalID: -763280024019842237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad07a320f1c1e1fe0800000000000000
+      internalID: -1216503929836506918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_12
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b3ee38e11150850800000000000000
+      internalID: 6342494472981330757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_13
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cb650ae9aae2c90800000000000000
+      internalID: -7192623956592509806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dice_lock_animation_14
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150b27810f9ca6de0800000000000000
+      internalID: -1339035906149797807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

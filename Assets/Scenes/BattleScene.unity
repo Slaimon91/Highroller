@@ -802,6 +802,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battle Canvas Updated
       objectReference: {fileID: 0}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 72d0801597627f345a3176aa2c147a0e,
+        type: 2}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -266886065864555618, guid: 72d0801597627f345a3176aa2c147a0e,
+        type: 2}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839460927108394764, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4103e730896d542468b516036b855c84, type: 3}
 --- !u!1001 &7000813603339507917

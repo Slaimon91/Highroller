@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "1e174529-e8bb-4d4d-9e4e-5b76a81ccffe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Inventory",
                     "type": "Button",
                     "id": "39d0d76a-51f6-4ef4-bf7c-2cf5eaf01b55",
@@ -41,6 +49,14 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "d59ab3a3-cfa8-4449-b6fa-855a75e0b479",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Dodge",
+                    "type": "Button",
+                    "id": "83a5f917-e824-4b27-a7ea-f7175605baa1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -395,6 +411,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pass",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7df2e11a-4334-4b73-9921-8063b6eee7a9",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2dbbe221-5f6c-4551-a449-e3f1da6fce83",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8c27113-85c9-4684-8549-14febabe1f8d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ceb72c5-84cb-4e4c-a4c8-f1c1e9351f2e",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

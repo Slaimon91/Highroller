@@ -11,6 +11,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     [SerializeField] protected Sprite icon;
     protected Image diceKeyImage;
     protected bool isDead = false;
+    [SerializeField] protected int damageAmount = 0;
 
     public abstract void EnemySetup();
 
@@ -30,7 +31,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
         }
     }
 
-    public abstract void EnemyAction();
+    public abstract IEnumerator EnemyAction();
 
     public virtual void TriggerDeath()
     {
@@ -64,6 +65,11 @@ public abstract class EnemyBattleBase : MonoBehaviour
     public DiceKey GetDiceKey()
     {
         return diceKeyGO;
+    }
+
+    public int GetDamageAmount()
+    {
+        return damageAmount;
     }
 
     public void SetDiceKeyGO(DiceKey diceKey)

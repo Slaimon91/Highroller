@@ -24,7 +24,7 @@ public class TricksterBattle : EnemyBattleBase
 
     }
 
-    public override void EnemyAction()
+    public override IEnumerator EnemyAction()
     {
         int newDiceKeyNumber = diceKeyNumber;
         while(newDiceKeyNumber == diceKeyNumber)
@@ -36,5 +36,6 @@ public class TricksterBattle : EnemyBattleBase
         {
            diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
         }
+        yield return new WaitForSeconds(2);
     }
 }

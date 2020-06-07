@@ -27,8 +27,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
-    [SerializeField] GameObject transition;
-    //[SerializeField] float fillTimeSeconds;
+    private AudioSource lockAudio;
     //private float fillTimer;
 
     public Sprite[] diceSpritesLocked;
@@ -47,6 +46,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         battleSystem = FindObjectOfType<BattleSystem>();
         animator = GetComponent<Animator>();
         animator.enabled = false;
+        lockAudio = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -79,11 +79,13 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 //locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
                 locked.SetActive(true);
                 diceLocked = true;
+                lockAudio.Play();
             }
             else
             {
                 locked.SetActive(false);
                 diceLocked = false;
+                lockAudio.Stop();
             }
         }
     }

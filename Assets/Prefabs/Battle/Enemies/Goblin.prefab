@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Goblin
   icon: {fileID: 21300000, guid: 743ec6f903507694e9e0be60e88f8376, type: 3}
+  damageAmount: 2
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
