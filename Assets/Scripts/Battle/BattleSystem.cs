@@ -49,7 +49,11 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Transform abilitiesPanel;
     [SerializeField] Transform abilitiesPanelThree;
     [SerializeField] Sprite threeAbilitiesSprite;
+    [SerializeField] Image buttonInfoBox;
+    [SerializeField] Sprite playerturnButtonBox;
+    [SerializeField] Sprite enemyturnButtonBox;
     [SerializeField] BattleStartupInfo battleStartupInfo;
+
 
     public BattleState state;
     PlayerControls controls;
@@ -358,6 +362,8 @@ public class BattleSystem : MonoBehaviour
     {
         SetupButtonNavigation();
         state = BattleState.PLAYERTURN;
+        buttonInfoBox.sprite = playerturnButtonBox;
+        FindObjectOfType<HoldAssignButton>().Reset();
         for (int i = 0; i < diceObjects.Count; i++)
         {
             if(diceObjects[i].GetAssignedStatus())
@@ -463,10 +469,10 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void EnemyTurn()
+    IEnumerator EnemyTurn()
     {
         state = BattleState.ENEMYTURN;
-        player.EnemyTurnStart();
+        buttonInfoBox.sprite = enemyturnButtonBox;
         List<GameObject> toRemoveList = new List<GameObject>();
 
         //see if someone will die
@@ -493,17 +499,24 @@ public class BattleSystem : MonoBehaviour
         if(enemiesGO.Count == 0)
         {
             FindObjectOfType<LevelLoader>().LoadOverworldScene();
-            return;
+            
         }
 
+        //Launch enemy attacks
+        yield return StartCoroutine(EnemyAttacks());
+        PlayerTurn();
+
+    }
+
+    IEnumerator EnemyAttacks()
+    {
         //Enemy Attack
         foreach (var enemyGO in enemiesGO)
         {
-            StartCoroutine(enemyGO.GetComponent<EnemyBattleBase>().EnemyAction());
+            player.EnemyTurnStart();
+            yield return StartCoroutine(enemyGO.GetComponent<EnemyBattleBase>().EnemyAction());
+            //Debug.Log(enemyGO.name + " just finished!");
         }
-
-        PlayerTurn();
-
     }
 
     public void OnDicePressed()
@@ -807,7 +820,7 @@ public class BattleSystem : MonoBehaviour
         {
             return;
         }
-        EnemyTurn();
+        StartCoroutine(EnemyTurn());
     }
 
     void OnEnable()

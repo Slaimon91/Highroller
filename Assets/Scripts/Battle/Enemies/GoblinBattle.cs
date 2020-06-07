@@ -32,10 +32,10 @@ public class GoblinBattle : EnemyBattleBase
         var rock2 = Instantiate(rockToThrow, throwingHand);
         rock2.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
 
-        //while(rock2 != null)
-       // {
-//
-       // }
-        yield return null;
+        while(rock2 != null)
+        {
+            yield return null;
+        }
+        yield return 0;
     }
 }

@@ -51,7 +51,7 @@ public class HoldAssignButton : MonoBehaviour
                 {
                     passCompleted = true;
                     completedImage.SetActive(true);
-                    StartCoroutine(PassCompleted());
+                    PassCompleted();
 
                 }
 
@@ -61,15 +61,12 @@ public class HoldAssignButton : MonoBehaviour
         }
     }
 
-    private IEnumerator PassCompleted()
+    private void PassCompleted()
     {
-        yield return new WaitForSeconds(completedWaitTime);
-        savedSelectedGameObject = eventSystem.firstSelectedGameObject;
         onLongClick.Invoke();
-        Reset();
     }
 
-    private void Reset()
+    public void Reset()
     {
         buttonDown = false;
         buttonDownTimer = 0;

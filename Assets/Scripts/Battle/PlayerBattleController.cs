@@ -15,6 +15,10 @@ public class PlayerBattleController : MonoBehaviour
     bool hasBlocked = false;
     bool hasDodged = false;
     bool hasDefended = false;
+    bool isInsideBlock = false;
+    bool isInsideDodge = false;
+    bool successBlock = false;
+    bool successDodge = false;
     PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
     public Transform playerHead;
@@ -64,6 +68,16 @@ public class PlayerBattleController : MonoBehaviour
         {
             hasDefended = true;
             hasBlocked = true;
+
+            if (isInsideBlock)
+            {
+                Debug.Log("You blocked!");
+                successBlock = true;
+            }
+            else
+            {
+                Debug.Log("You failed the block!");
+            }
         }
     }
 
@@ -73,6 +87,15 @@ public class PlayerBattleController : MonoBehaviour
         {
             hasDefended = true;
             hasDodged = true;
+            if(isInsideDodge)
+            {
+                Debug.Log("You dodged!");
+                successDodge = true;
+            }
+            else
+            {
+                Debug.Log("You failed the dodge!");
+            }
         }
     }
 
@@ -93,43 +116,72 @@ public class PlayerBattleController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hej");
         EnemyBattleBase collidingEnemy = null;
         if((collidingEnemy = other.gameObject.GetComponent<EnemyBattleBase>()) != null)
         {
-            TakeDamage(collidingEnemy.GetDamageAmount());
-            Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage!");
+            if(successBlock)
+            {
+                TakeDamage(collidingEnemy.GetDamageAmount() - 1);
+                Debug.Log("You took " + (collidingEnemy.GetDamageAmount() - 1) + " damage!");
+            }
+            else if (successDodge)
+            {
+
+            }
+            else
+            {
+                TakeDamage(collidingEnemy.GetDamageAmount());
+                Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage123!");
+            }
+            
         }
         else if ((collidingEnemy = other.gameObject.GetComponentInParent<EnemyBattleBase>()) != null)
         {
-            TakeDamage(collidingEnemy.GetDamageAmount());
-            Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage!");
-            Destroy(collidingEnemy);
+            if (successBlock)
+            {
+                TakeDamage(collidingEnemy.GetDamageAmount() - 1);
+                Debug.Log("You took " + (collidingEnemy.GetDamageAmount() - 1) + " damage!");
+            }
+            else if (successDodge)
+            {
+
+            }
+            else
+            {
+                TakeDamage(collidingEnemy.GetDamageAmount());
+                Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage!");
+            }
+            
+            Destroy(other.gameObject);
         }
         else
         {
             Debug.Log("No damage component found!");
         }
+        isInsideBlock = false;
+        isInsideDodge = false;
     }
 
     public void EnteredBlockZone(GameObject other)
     {
-        Debug.Log("Entering blockzone");
+        //Debug.Log("Entering blockzone");
+        isInsideBlock = true;
     }
 
     public void LeavingBlockZone(GameObject other)
     {
-        Debug.Log("Leaving blockzone");
+        
     }
 
     public void EnteredDodgeZone(GameObject other)
     {
-        Debug.Log("Entering dodgezone");
+        //Debug.Log("Entering dodgezone");
+        isInsideDodge = true;
     }
 
     public void LeavingDodgeZone(GameObject other)
     {
-        Debug.Log("Leaving dodgezone");
+        
     }
 
     public void TakeDamage(int damage)
@@ -151,5 +203,7 @@ public class PlayerBattleController : MonoBehaviour
         hasDefended = false;
         hasBlocked = false;
         hasDodged = false;
+        successBlock = false;
+        successDodge = false;
     }
 }

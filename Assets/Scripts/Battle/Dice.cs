@@ -80,6 +80,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 locked.SetActive(true);
                 diceLocked = true;
                 lockAudio.Play();
+                SetMarkedStatus(false);
             }
             else
             {

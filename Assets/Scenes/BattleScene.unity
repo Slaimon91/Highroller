@@ -427,6 +427,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4274287387145895377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1763948020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4274287388745152040, guid: 4103e730896d542468b516036b855c84,
+    type: 3}
+  m_PrefabInstance: {fileID: 4274287387145895377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1796792476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3132002511963159079, guid: 6971ddf86a9cdcd45a9101093a1fef47,
@@ -834,6 +846,12 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4274287388745152040, guid: 4103e730896d542468b516036b855c84,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c32a07db0036ac84aa4221535a1d4174,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4103e730896d542468b516036b855c84, type: 3}
 --- !u!1001 &7000813603339507917
@@ -953,6 +971,23 @@ PrefabInstance:
       propertyPath: abilitiesPanelThree
       value: 
       objectReference: {fileID: 1641947633}
+    - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
+        type: 3}
+      propertyPath: buttonInfoBox
+      value: 
+      objectReference: {fileID: 1763948020}
+    - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
+        type: 3}
+      propertyPath: enemyturnButtonBox
+      value: 
+      objectReference: {fileID: 21300000, guid: e318e8f03415bd14d9d3d0f623bb8e2a,
+        type: 3}
+    - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
+        type: 3}
+      propertyPath: playerturnButtonBox
+      value: 
+      objectReference: {fileID: 21300000, guid: c32a07db0036ac84aa4221535a1d4174,
+        type: 3}
     - target: {fileID: 7000813602035915066, guid: 3e911584b4561ca4aa227456d35693fb,
         type: 3}
       propertyPath: m_Name
