@@ -42,10 +42,11 @@ public class HoldAssignButton : MonoBehaviour
             if(eventSystem.currentSelectedGameObject != null)
             {
                 savedSelectedGameObject = eventSystem.currentSelectedGameObject;
+                audioManager.Play("Passing");
             }
 
             eventSystem.SetSelectedGameObject(null);
-            audioManager.Play("Passing");
+            
             buttonDownTimer += Time.deltaTime;
             if (buttonDownTimer >= requiredHoldTime)
             {
