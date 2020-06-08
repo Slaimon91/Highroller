@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127482270645473819}
   - component: {fileID: -5391734532585957267}
+  - component: {fileID: 1052720663}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -48,9 +49,29 @@ MonoBehaviour:
   unitName: Goblin
   icon: {fileID: 21300000, guid: 743ec6f903507694e9e0be60e88f8376, type: 3}
   damageAmount: 2
+  infoText: Am goblin, am angry, me mesh!
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
+--- !u!95 &1052720663
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127482270645473796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbdcab7ecc248cc468f2fba9217ae982, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &127482272032152838
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +142,8 @@ SpriteRenderer:
   m_SortingLayerID: 950600117
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bb5a6239df259d241b4cd900d8e050e0, type: 3}
+  m_Sprite: {fileID: 2720988199577455813, guid: 6ffd6ecc67e5e61469cc6370bc170b16,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

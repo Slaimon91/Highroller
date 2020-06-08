@@ -11,7 +11,14 @@ public abstract class EnemyBattleBase : MonoBehaviour
     [SerializeField] protected Sprite icon;
     protected Image diceKeyImage;
     protected bool isDead = false;
+    protected bool isAssigned = false;
     [SerializeField] protected int damageAmount = 0;
+
+    [SerializeField]
+    [TextArea(3, 20)]
+    protected string infoText;
+
+    protected Animator animator;
 
     public abstract void EnemySetup();
 
@@ -19,13 +26,13 @@ public abstract class EnemyBattleBase : MonoBehaviour
     {
         if (!status)
         {
-            isDead = false;
+            isAssigned = false;
 
             diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
         }
         else
         {
-            isDead = true;
+            isAssigned = true;
 
             diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
         }
@@ -33,8 +40,9 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     public abstract IEnumerator EnemyAction();
 
-    public virtual void TriggerDeath()
+    public virtual void TriggerDying()
     {
+        isDead = true;
         if (isDead)
         {
             //Destroy(diceKeyGO.gameObject);
@@ -42,10 +50,26 @@ public abstract class EnemyBattleBase : MonoBehaviour
         }
     }
 
+    public virtual void Die()
+    {
+        
+    }
+
+    public string GetInfoText()
+    {
+        return infoText;
+    }
+
     public Sprite GetIcon()
     {
         return icon;
     }
+
+    public bool GetAssignedStatus()
+    {
+        return isAssigned;
+    }
+
 
     public bool GetDeathStatus()
     {

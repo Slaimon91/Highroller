@@ -24,12 +24,14 @@ public class HoldAssignButton : MonoBehaviour
     PlayerControls controls;
     private GameObject savedSelectedGameObject;
     private EventSystem eventSystem;
+    private AudioManager audioManager;
     void Awake()
     {
         controls = new PlayerControls();
         controls.Gameplay.Pass.performed += ctx => ButtonStarted();
         controls.Gameplay.Pass.canceled += ctx => ButtonCanceled();
         eventSystem = FindObjectOfType<EventSystem>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class HoldAssignButton : MonoBehaviour
             }
 
             eventSystem.SetSelectedGameObject(null);
-
+            audioManager.Play("Passing");
             buttonDownTimer += Time.deltaTime;
             if (buttonDownTimer >= requiredHoldTime)
             {
@@ -52,10 +54,7 @@ public class HoldAssignButton : MonoBehaviour
                     passCompleted = true;
                     completedImage.SetActive(true);
                     PassCompleted();
-
                 }
-
-
             }
             fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
         }
@@ -64,11 +63,14 @@ public class HoldAssignButton : MonoBehaviour
     private void PassCompleted()
     {
         onLongClick.Invoke();
+        audioManager.Stop("Passing");
+        audioManager.Play("PassCompleted");
         savedSelectedGameObject = eventSystem.firstSelectedGameObject;
     }
 
     public void Reset()
     {
+        audioManager.Stop("Passing");
         buttonDown = false;
         buttonDownTimer = 0;
         passCompleted = false;

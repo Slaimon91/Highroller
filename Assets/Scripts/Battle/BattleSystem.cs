@@ -62,6 +62,7 @@ public class BattleSystem : MonoBehaviour
     private bool cancelPressed = false;
     private Sprite battleBackground;
     private EventSystem eventSystem;
+    private AudioManager audioManager;
 
     void Awake()
     {
@@ -75,6 +76,7 @@ public class BattleSystem : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         state = BattleState.START;
+        audioManager = FindObjectOfType<AudioManager>();
         eventSystem = FindObjectOfType<EventSystem>();
         SetUpBattle();
     }
@@ -177,6 +179,7 @@ public class BattleSystem : MonoBehaviour
             rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
             Image enemiesInfoImage = enemiesInfo[i].GetComponent<Image>();
             enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetIcon();
+            enemiesInfo[i].infoTextImage.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText();
         }
 
         //Instantiate player abilities
@@ -360,6 +363,7 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        audioManager.Play("PlayerTurnStart");
         SetupButtonNavigation();
         state = BattleState.PLAYERTURN;
         buttonInfoBox.sprite = playerturnButtonBox;
@@ -478,7 +482,7 @@ public class BattleSystem : MonoBehaviour
         //see if someone will die
         foreach(var enemyGO in enemiesGO)
         {
-            if (enemyGO.GetComponent<EnemyBattleBase>().GetDeathStatus())
+            if (enemyGO.GetComponent<EnemyBattleBase>().GetAssignedStatus())
             {
                 toRemoveList.Add(enemyGO);
             }
@@ -488,7 +492,7 @@ public class BattleSystem : MonoBehaviour
         foreach(var toRemoveGO in toRemoveList)
         {
             int index = enemiesGO.IndexOf(toRemoveGO);
-            enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDeath();
+            enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
             Destroy(enemiesInfo[index].gameObject);
             Destroy(diceKeys[index].gameObject);
             enemiesGO.Remove(enemiesGO[index]);
@@ -646,6 +650,7 @@ public class BattleSystem : MonoBehaviour
                         secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
                         if (secondPressedNumber == firstPressedNumber)
                         {
+                            audioManager.Play("Assign");
                             firstPressedDice.SetAssignedStatus(true);
                             firstPressedDice.SetMarkedStatus(false);
                             //pressedDiceKey.SetAssignedStatus(true);

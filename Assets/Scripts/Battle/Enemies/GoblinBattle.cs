@@ -12,12 +12,21 @@ public class GoblinBattle : EnemyBattleBase
     void Awake()
     {
         diceKeyNumber = 3;
+        if (GetComponent<Animator>() != null)
+            animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        StartCoroutine(Idle2());
+    }
+
+    IEnumerator Idle2()
+    {
+        yield return new WaitForSeconds(Random.Range(10f, 15f));
+        animator.ResetTrigger("Idle2");
+        animator.SetTrigger("Idle2");
+        StartCoroutine(Idle2());
     }
 
     public override void EnemySetup()
@@ -37,5 +46,21 @@ public class GoblinBattle : EnemyBattleBase
             yield return null;
         }
         yield return 0;
+    }
+
+    public override void TriggerDying()
+    {
+        animator.SetBool("isDead", true);
+        isDead = true;
+    }
+
+    public override void Die()
+    {
+        if (isDead)
+        {
+            //Destroy(diceKeyGO.gameObject);
+            Destroy(gameObject);
+        }
+
     }
 }
