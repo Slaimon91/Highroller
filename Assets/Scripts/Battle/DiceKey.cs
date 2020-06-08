@@ -21,12 +21,14 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Sprite[] diceSpritesAssigned;
     private Animator animator;
     private Animator animatorAssigned;
+    private AudioManager audioManager;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         animatorAssigned = GetComponentInChildren<Animator>();
         animator.enabled = false;
+        audioManager = FindObjectOfType<AudioManager>();
     }
     // Update is called once per frame
     void Update()
@@ -41,6 +43,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = true;
         selected.SetActive(true);
+        audioManager.Play("MoveBattleCursor");
     }
 
     public void OnDeselect(BaseEventData eventData)

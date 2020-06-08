@@ -20,17 +20,15 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     private GameObject diceAssignedTo;
     private BattleSystem battleSystem;
     private Animator animator;
+    private AudioManager audioManager;
    
-    //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
     [SerializeField] GameObject marked;
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
     private AudioSource lockAudio;
-    //private float fillTimer;
 
-    public Sprite[] diceSpritesLocked;
     public Sprite[] diceSpritesInactive;
     public Sprite[] diceSpritesAssigned;
 
@@ -47,6 +45,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         animator = GetComponent<Animator>();
         animator.enabled = false;
         lockAudio = GetComponent<AudioSource>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     // Update is called once per frame
     void Update()
@@ -79,14 +78,16 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 //locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
                 locked.SetActive(true);
                 diceLocked = true;
-                lockAudio.Play();
+                //lockAudio.Play();
+                audioManager.Play("Lock");
                 SetMarkedStatus(false);
             }
             else
             {
                 locked.SetActive(false);
                 diceLocked = false;
-                lockAudio.Stop();
+               // lockAudio.Stop();
+                audioManager.Stop("Lock");
             }
         }
     }
@@ -256,6 +257,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = true;
         selected.SetActive(true);
+        audioManager.Play("MoveBattleCursor");
     }
 
     public void OnDeselect(BaseEventData eventData)

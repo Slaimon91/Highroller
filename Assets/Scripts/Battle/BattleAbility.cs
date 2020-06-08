@@ -29,6 +29,7 @@ public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = true;
         selected.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("MoveBattleCursor");
     }
 
     public void OnDeselect(BaseEventData eventData)

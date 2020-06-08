@@ -64,6 +64,7 @@ public class HoldAssignButton : MonoBehaviour
     private void PassCompleted()
     {
         onLongClick.Invoke();
+        savedSelectedGameObject = eventSystem.firstSelectedGameObject;
     }
 
     public void Reset()
