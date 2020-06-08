@@ -18,6 +18,16 @@ public class ThrowSimulation : MonoBehaviour
 
     void Start()
     {
+        
+    }
+
+    public IEnumerator StartThrowCoro()
+    {
+        yield return StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target.position));
+    }
+
+    public void StartThrow()
+    {
         StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target.position));
     }
 
@@ -73,11 +83,14 @@ public class ThrowSimulation : MonoBehaviour
             yield return null;
         }
 
-
+        yield return null;
+        
     }
 
     public void SetTarget(Transform newTarget)
     {
         Target = newTarget;
     }
+
+   
 }

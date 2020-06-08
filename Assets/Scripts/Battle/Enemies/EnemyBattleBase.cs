@@ -14,6 +14,8 @@ public abstract class EnemyBattleBase : MonoBehaviour
     protected bool isAssigned = false;
     [SerializeField] protected int damageAmount = 0;
 
+    [SerializeField] protected GameObject mySprite;
+
     [SerializeField]
     [TextArea(3, 20)]
     protected string infoText;
@@ -22,7 +24,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     public abstract void EnemySetup();
 
-    public void Assign(bool status)
+    public virtual void Assign(bool status)
     {
         if (!status)
         {
@@ -50,9 +52,9 @@ public abstract class EnemyBattleBase : MonoBehaviour
         }
     }
 
-    public virtual void Die()
+    public virtual IEnumerator Die()
     {
-        
+        yield return null;
     }
 
     public string GetInfoText()

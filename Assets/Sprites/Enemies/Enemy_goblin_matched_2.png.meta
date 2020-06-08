@@ -1,58 +1,55 @@
 fileFormatVersion: 2
-guid: dee9e8644c3ffae42becdfc8e8c864c4
+guid: 99cd72efb2c11f74b96cb08c1ae1b1bd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4353412532212087545
-    second: Enemy_goblin_death_animation_0
+      213: 4409488832539947560
+    second: Enemy_goblin_matched_2_0
   - first:
-      213: -5288843554758245216
-    second: Enemy_goblin_death_animation_1
+      213: -883911312595510416
+    second: Enemy_goblin_matched_2_1
   - first:
-      213: -3213572306090217623
-    second: Enemy_goblin_death_animation_2
+      213: 8955751022656340050
+    second: Enemy_goblin_matched_2_2
   - first:
-      213: -6114299279437243653
-    second: Enemy_goblin_death_animation_3
+      213: -443048490442147997
+    second: Enemy_goblin_matched_2_3
   - first:
-      213: 4556077773305246618
-    second: Enemy_goblin_death_animation_4
+      213: -8121978414865285320
+    second: Enemy_goblin_matched_2_4
   - first:
-      213: 2824172099046086862
-    second: Enemy_goblin_death_animation_5
+      213: -1364267491916498882
+    second: Enemy_goblin_matched_2_5
   - first:
-      213: -2278855996707865329
-    second: Enemy_goblin_death_animation_6
+      213: -5753251563528145701
+    second: Enemy_goblin_matched_2_6
   - first:
-      213: -3678666705456176031
-    second: Enemy_goblin_death_animation_7
+      213: 3200418396047192796
+    second: Enemy_goblin_matched_2_7
   - first:
-      213: 4333249348833586644
-    second: Enemy_goblin_death_animation_8
+      213: 3364085543423257768
+    second: Enemy_goblin_matched_2_8
   - first:
-      213: 5758706664616888410
-    second: Enemy_goblin_death_animation_9
+      213: -111865888690216889
+    second: Enemy_goblin_matched_2_9
   - first:
-      213: 2116112928793571092
-    second: Enemy_goblin_death_animation_10
+      213: -5188413724780099975
+    second: Enemy_goblin_matched_2_10
   - first:
-      213: 359726858834793216
-    second: Enemy_goblin_death_animation_11
+      213: 3122368455129653407
+    second: Enemy_goblin_matched_2_11
   - first:
-      213: 3257070574823025882
-    second: Enemy_goblin_death_animation_12
+      213: -2998795868987553214
+    second: Enemy_goblin_matched_2_12
   - first:
-      213: 6681370722261613876
-    second: Enemy_goblin_death_animation_13
+      213: -382717294396074240
+    second: Enemy_goblin_matched_2_13
   - first:
-      213: 4110649655084569808
-    second: Enemy_goblin_death_animation_14
+      213: -7360421182881293128
+    second: Enemy_goblin_matched_2_14
   - first:
-      213: -805934639192871447
-    second: Enemy_goblin_death_animation_15
-  - first:
-      213: 233186103145788433
-    second: Enemy_goblin_death_animation_16
+      213: 3358667762284724087
+    second: Enemy_goblin_matched_2_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -138,12 +135,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_0
+      name: Enemy_goblin_matched_2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,19 +149,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 705c3c80e529593c0800000000000000
-      internalID: -4353412532212087545
+      spriteID: 82278901bb6a13d30800000000000000
+      internalID: 4409488832539947560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_1
+      name: Enemy_goblin_matched_2_1
       rect:
         serializedVersion: 2
-        x: 45
+        x: 32
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,19 +170,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a44506fec04a96b0800000000000000
-      internalID: -5288843554758245216
+      spriteID: 07b9bc72857bbb3f0800000000000000
+      internalID: -883911312595510416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_2
+      name: Enemy_goblin_matched_2_2
       rect:
         serializedVersion: 2
-        x: 90
+        x: 64
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,19 +191,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96fa57b83091763d0800000000000000
-      internalID: -3213572306090217623
+      spriteID: 250c5420b18394c70800000000000000
+      internalID: 8955751022656340050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_3
+      name: Enemy_goblin_matched_2_3
       rect:
         serializedVersion: 2
-        x: 135
+        x: 96
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,19 +212,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfa57b64335a52ba0800000000000000
-      internalID: -6114299279437243653
+      spriteID: 3673cecceb9f9d9f0800000000000000
+      internalID: -443048490442147997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_4
+      name: Enemy_goblin_matched_2_4
       rect:
         serializedVersion: 2
-        x: 180
+        x: 128
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,19 +233,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9379ee78907a3f30800000000000000
-      internalID: 4556077773305246618
+      spriteID: 83f709ce9afe84f80800000000000000
+      internalID: -8121978414865285320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_5
+      name: Enemy_goblin_matched_2_5
       rect:
         serializedVersion: 2
-        x: 225
+        x: 160
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,19 +254,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec8163c9f89713720800000000000000
-      internalID: 2824172099046086862
+      spriteID: e3834bdb1f5211de0800000000000000
+      internalID: -1364267491916498882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_6
+      name: Enemy_goblin_matched_2_6
       rect:
         serializedVersion: 2
-        x: 270
+        x: 192
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -278,19 +275,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d75fd7b80ef50e0800000000000000
-      internalID: -2278855996707865329
+      spriteID: bd4b17c5f285820b0800000000000000
+      internalID: -5753251563528145701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_7
+      name: Enemy_goblin_matched_2_7
       rect:
         serializedVersion: 2
-        x: 315
+        x: 224
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,19 +296,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1646a3e2f10c2fcc0800000000000000
-      internalID: -3678666705456176031
+      spriteID: cd2b40d139b2a6c20800000000000000
+      internalID: 3200418396047192796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_8
+      name: Enemy_goblin_matched_2_8
       rect:
         serializedVersion: 2
-        x: 360
+        x: 256
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -320,19 +317,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dd2b60035bc22c30800000000000000
-      internalID: 4333249348833586644
+      spriteID: 8ac25c16af1afae20800000000000000
+      internalID: 3364085543423257768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_9
+      name: Enemy_goblin_matched_2_9
       rect:
         serializedVersion: 2
-        x: 405
+        x: 288
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -341,19 +338,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a580a2653390bef40800000000000000
-      internalID: 5758706664616888410
+      spriteID: 740e2222192927ef0800000000000000
+      internalID: -111865888690216889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_10
+      name: Enemy_goblin_matched_2_10
       rect:
         serializedVersion: 2
-        x: 450
+        x: 320
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -362,19 +359,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41f2a514f71fd5d10800000000000000
-      internalID: 2116112928793571092
+      spriteID: 97688bae43d0ff7b0800000000000000
+      internalID: -5188413724780099975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_11
+      name: Enemy_goblin_matched_2_11
       rect:
         serializedVersion: 2
-        x: 495
+        x: 352
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -383,19 +380,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 003d3051ca10ef400800000000000000
-      internalID: 359726858834793216
+      spriteID: f9063e12191e45b20800000000000000
+      internalID: 3122368455129653407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_12
+      name: Enemy_goblin_matched_2_12
       rect:
         serializedVersion: 2
-        x: 540
+        x: 384
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -404,19 +401,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adc24bc5e60733d20800000000000000
-      internalID: 3257070574823025882
+      spriteID: 24a8613ab032266d0800000000000000
+      internalID: -2998795868987553214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_13
+      name: Enemy_goblin_matched_2_13
       rect:
         serializedVersion: 2
-        x: 585
+        x: 416
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -425,19 +422,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43d3911c54ff8bc50800000000000000
-      internalID: 6681370722261613876
+      spriteID: 0079f1206a050baf0800000000000000
+      internalID: -382717294396074240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_14
+      name: Enemy_goblin_matched_2_14
       rect:
         serializedVersion: 2
-        x: 630
+        x: 448
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -446,19 +443,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d4d5670516fb0930800000000000000
-      internalID: 4110649655084569808
+      spriteID: 8bc991d6ee78ad990800000000000000
+      internalID: -7360421182881293128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_death_animation_15
+      name: Enemy_goblin_matched_2_15
       rect:
         serializedVersion: 2
-        x: 675
+        x: 480
         y: 0
-        width: 45
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -467,29 +464,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ede9b637beb0d4f0800000000000000
-      internalID: -805934639192871447
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_death_animation_16
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 45
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 114ff8c76817c3300800000000000000
-      internalID: 233186103145788433
+      spriteID: 77f7989e8826c9e20800000000000000
+      internalID: 3358667762284724087
       vertices: []
       indices: 
       edges: []

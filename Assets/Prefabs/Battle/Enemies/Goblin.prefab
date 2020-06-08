@@ -49,6 +49,7 @@ MonoBehaviour:
   unitName: Goblin
   icon: {fileID: 21300000, guid: 743ec6f903507694e9e0be60e88f8376, type: 3}
   damageAmount: 2
+  mySprite: {fileID: 127482272032152838}
   infoText: Am goblin, am angry, me mesh!
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
@@ -82,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127482272032152837}
   - component: {fileID: 127482272032152836}
+  - component: {fileID: 6700130022201901500}
   m_Layer: 0
   m_Name: Enemy Sprite
   m_TagString: Untagged
@@ -154,6 +156,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6700130022201901500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127482272032152838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce3892dadb6e28429e162f62905af95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 3
+  arcAmount: 10
+  heightOfShot: 1
+  Projectile: {fileID: 127482272032152837}
 --- !u!1 &7883337684873352535
 GameObject:
   m_ObjectHideFlags: 0

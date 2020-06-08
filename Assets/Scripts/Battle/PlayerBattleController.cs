@@ -23,6 +23,7 @@ public class PlayerBattleController : MonoBehaviour
     [SerializeField] PlayerValues playerValues;
     public Transform playerHead;
     public Transform playerBody;
+    public Transform gaiaPoint;
 
     private BattleSystem battleSystem;
 
