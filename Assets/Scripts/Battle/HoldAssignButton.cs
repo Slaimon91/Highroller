@@ -25,6 +25,8 @@ public class HoldAssignButton : MonoBehaviour
     private GameObject savedSelectedGameObject;
     private EventSystem eventSystem;
     private AudioManager audioManager;
+    private Animator animatorPass;
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -32,6 +34,7 @@ public class HoldAssignButton : MonoBehaviour
         controls.Gameplay.Pass.canceled += ctx => ButtonCanceled();
         eventSystem = FindObjectOfType<EventSystem>();
         audioManager = FindObjectOfType<AudioManager>();
+        animatorPass = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class HoldAssignButton : MonoBehaviour
                 {
                     passCompleted = true;
                     completedImage.SetActive(true);
+                    fillImage.gameObject.SetActive(false);
                     PassCompleted();
                 }
             }
@@ -76,6 +80,7 @@ public class HoldAssignButton : MonoBehaviour
         buttonDownTimer = 0;
         passCompleted = false;
         completedImage.SetActive(false);
+        fillImage.gameObject.SetActive(true);
         fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
         eventSystem.SetSelectedGameObject(savedSelectedGameObject);
     }

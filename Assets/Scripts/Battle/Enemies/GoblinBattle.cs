@@ -34,18 +34,39 @@ public class GoblinBattle : EnemyBattleBase
 
     }
 
+    public override void Assign(bool status)
+    {
+        if (!status)
+        {
+            isAssigned = false;
+
+            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
+
+            animator.SetBool("isMatched", false);
+        }
+        else
+        {
+            isAssigned = true;
+
+            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
+
+            animator.SetBool("isMatched", true);
+        }
+    }
+
     public override IEnumerator EnemyAction()
     {
         //var rock = Instantiate(rockToThrow, throwingHand);
       //  rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerBody);
         var rock2 = Instantiate(rockToThrow, throwingHand);
         rock2.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
+        rock2.StartThrow();
 
         while(rock2 != null)
         {
             yield return null;
         }
-        yield return 0;
+        yield return null;
     }
 
     public override void TriggerDying()
@@ -54,8 +75,11 @@ public class GoblinBattle : EnemyBattleBase
         isDead = true;
     }
 
-    public override void Die()
+    public override IEnumerator Die()
     {
+        mySprite.GetComponent<ThrowSimulation>().SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
+        yield return StartCoroutine(mySprite.GetComponent<ThrowSimulation>().StartThrowCoro());
+
         if (isDead)
         {
             //Destroy(diceKeyGO.gameObject);

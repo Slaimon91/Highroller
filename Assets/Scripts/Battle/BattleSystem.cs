@@ -488,17 +488,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        //Actually kill them
-        foreach(var toRemoveGO in toRemoveList)
-        {
-            int index = enemiesGO.IndexOf(toRemoveGO);
-            enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
-            Destroy(enemiesInfo[index].gameObject);
-            Destroy(diceKeys[index].gameObject);
-            enemiesGO.Remove(enemiesGO[index]);
-            enemiesInfo.Remove(enemiesInfo[index]);
-            diceKeys.Remove(diceKeys[index]);
-        }
+        yield return StartCoroutine(EnemyDeaths(toRemoveList));
 
         if(enemiesGO.Count == 0)
         {
@@ -512,14 +502,38 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    IEnumerator EnemyDeaths(List<GameObject> sentToRemoveList)
+    {
+        int enemiesToDie = sentToRemoveList.Count;
+
+        //Actually kill them
+        for (int i = sentToRemoveList.Count - 1; i >= 0; i--)
+        {
+            int index = enemiesGO.IndexOf(sentToRemoveList[i]);
+            enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
+            Destroy(enemiesInfo[index].gameObject);
+            Destroy(diceKeys[index].gameObject);
+            enemiesGO.Remove(enemiesGO[index]);
+            enemiesInfo.Remove(enemiesInfo[index]);
+            diceKeys.Remove(diceKeys[index]);
+        }
+        
+        /*while(enemiesToDie > 1)
+        {
+            yield return null;
+        }*/
+
+        yield return null;
+
+    }
+
     IEnumerator EnemyAttacks()
     {
         //Enemy Attack
-        foreach (var enemyGO in enemiesGO)
+        for(int i = enemiesGO.Count - 1; i >= 0; i--)
         {
             player.EnemyTurnStart();
-            yield return StartCoroutine(enemyGO.GetComponent<EnemyBattleBase>().EnemyAction());
-            //Debug.Log(enemyGO.name + " just finished!");
+            yield return StartCoroutine(enemiesGO[i].GetComponent<EnemyBattleBase>().EnemyAction());
         }
     }
 

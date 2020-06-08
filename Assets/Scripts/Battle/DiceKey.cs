@@ -14,7 +14,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool isGold = false;
     private bool isPlatinum = false;
     private float diceNumber = -1;
-
+    
     [SerializeField] GameObject selected;
     [SerializeField] GameObject assigned;
 
