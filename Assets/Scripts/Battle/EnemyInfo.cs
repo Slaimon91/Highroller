@@ -13,7 +13,7 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
-    //[SerializeField] GameObject marked;
+    public GameObject infoTextImage;
 
     void Start()
     {
@@ -37,22 +37,12 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
         buttonSelected = false;
         //marked.SetActive(false);
         selected.SetActive(false);
+        infoTextImage.SetActive(false);
     }
 
     public void AbilityClicked()
     {
-        /*if (!marked.activeSelf)
-        {
-            marked.SetActive(true);
-            //  animator.SetBool("buttonMarked", true);
-            //selected.SetActive(false);
-        }
-        else
-        {
-            marked.SetActive(false);
-            //  animator.SetBool("buttonMarked", false);
-            //selected.SetActive(true);
-        }*/
+        infoTextImage.SetActive(!infoTextImage.activeSelf);
     }
 
     public void SetButtonNavigation(Button otherButton, string direction)
