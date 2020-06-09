@@ -122,17 +122,15 @@ public class PlayerBattleController : MonoBehaviour
         {
             if(successBlock)
             {
-                TakeDamage(collidingEnemy.GetDamageAmount() - 1);
-                Debug.Log("You took " + (collidingEnemy.GetDamageAmount() - 1) + " damage!");
+                SuccessBlock(collidingEnemy);
             }
             else if (successDodge)
             {
-
+                SuccessDodge();
             }
             else
             {
                 TakeDamage(collidingEnemy.GetDamageAmount());
-                Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage123!");
             }
             
         }
@@ -140,17 +138,15 @@ public class PlayerBattleController : MonoBehaviour
         {
             if (successBlock)
             {
-                TakeDamage(collidingEnemy.GetDamageAmount() - 1);
-                Debug.Log("You took " + (collidingEnemy.GetDamageAmount() - 1) + " damage!");
+                SuccessBlock(collidingEnemy);
             }
             else if (successDodge)
             {
-
+                SuccessDodge();
             }
             else
             {
                 TakeDamage(collidingEnemy.GetDamageAmount());
-                Debug.Log("You took " + collidingEnemy.GetDamageAmount() + " damage!");
             }
             
             Destroy(other.gameObject);
@@ -161,6 +157,24 @@ public class PlayerBattleController : MonoBehaviour
         }
         isInsideBlock = false;
         isInsideDodge = false;
+    }
+
+    private void SuccessBlock(EnemyBattleBase enemy)
+    {
+        int reduction = 0;
+
+        foreach (AbilityBase ability in battleSystem.battleAbilites)
+        {
+            reduction += ability.Block();
+        }
+
+        TakeDamage(enemy.GetDamageAmount() - reduction);
+        Debug.Log("You took " + (enemy.GetDamageAmount() - reduction) + " damage!");
+    }
+
+    private void SuccessDodge()
+    {
+
     }
 
     public void EnteredBlockZone(GameObject other)
@@ -187,7 +201,15 @@ public class PlayerBattleController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        playerValues.healthPoints -= damage;
+        int reduction = 0;
+
+        foreach(AbilityBase ability in battleSystem.battleAbilites)
+        {
+            reduction += ability.TakeDamage();
+        }
+
+        playerValues.healthPoints -= damage - reduction;
+        Debug.Log("You took " + (damage - reduction) + " damage!");
     }
 
     public void HealDamage(int damage)

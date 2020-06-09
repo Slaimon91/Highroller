@@ -1110,7 +1110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemiesInfoPrefab
       value: 
-      objectReference: {fileID: 5842274218386544749, guid: 4f3785ebdb88c0f45a5fc2809dd51b2d,
+      objectReference: {fileID: 5241719615806275297, guid: 171ec1a7d959c7540a7bffaf69027a67,
         type: 3}
     - target: {fileID: 7000813602035915061, guid: 3e911584b4561ca4aa227456d35693fb,
         type: 3}
@@ -1140,7 +1140,7 @@ PrefabInstance:
     - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
         type: 3}
@@ -1264,8 +1264,23 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 6ebacae62af30e94ea3cca5193602746, type: 3}
     - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
         type: 3}
-      propertyPath: sounds.Array.data[0].volume
+      propertyPath: sounds.Array.data[6].name
+      value: DiceCombine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
+        type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 67302dab8ce2dbb4ca48bbc7d768c146, type: 3}
+    - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
+        type: 3}
+      propertyPath: sounds.Array.data[6].volume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733200375699008670, guid: f843ab75e988d134eb23368ccb8b4f31,
+        type: 3}
+      propertyPath: sounds.Array.data[6].pitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8733200375699008671, guid: f843ab75e988d134eb23368ccb8b4f31,
         type: 3}

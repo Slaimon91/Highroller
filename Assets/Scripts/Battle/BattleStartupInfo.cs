@@ -8,7 +8,7 @@ public class BattleStartupInfo : ScriptableObject
     public Sprite battleBackground;
     public List<GameObject> enemies;
     public int nrOfDices;
-    public List<GameObject> abilities;
+    public List<AbilityBase> abilities;
 
     public virtual void Use()
     {

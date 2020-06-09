@@ -15,7 +15,8 @@ public class BattleSystem : MonoBehaviour
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private List<GameObject> enemiesGO = new List<GameObject>();
     private List<EnemyInfo> enemiesInfo = new List<EnemyInfo>();
-    private List<BattleAbility> abilities = new List<BattleAbility>();
+    private List<BattleAbility> abilityHolder = new List<BattleAbility>();
+    [HideInInspector] public List<AbilityBase> battleAbilites = new List<AbilityBase>();
 
     //Spawnpoints
     public Transform playerSpawnPoint;
@@ -60,6 +61,7 @@ public class BattleSystem : MonoBehaviour
     private GameObject lastselect;
     private PlayerBattleController player;
     private bool cancelPressed = false;
+    private int enemiesToDie = 0;
     private Sprite battleBackground;
     private EventSystem eventSystem;
     private AudioManager audioManager;
@@ -106,7 +108,7 @@ public class BattleSystem : MonoBehaviour
         SetupButtonNavigation();
 
         state = BattleState.PLAYERTURN;
-        PlayerTurn();
+        FirstTurn();
     }
 
     void InstantiateDices()
@@ -189,11 +191,12 @@ public class BattleSystem : MonoBehaviour
             {
                 int offset = 22;
 
-                abilities.Add(Instantiate(abilitiesPrefab, abilitiesPanel.transform));
-                RectTransform rt = abilities[i].GetComponent<RectTransform>();
+                abilityHolder.Add(Instantiate(abilitiesPrefab, abilitiesPanel.transform));
+                RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
-                Image abilitiesImage = abilities[i].GetComponent<Image>();
-                abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
+                //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
 
             else if(battleStartupInfo.abilities.Count == 3)
@@ -203,11 +206,12 @@ public class BattleSystem : MonoBehaviour
 
                 int offset = 22;
 
-                abilities.Add(Instantiate(abilitiesPrefabThree, abilitiesPanelThree.transform));
-                RectTransform rt = abilities[i].GetComponent<RectTransform>();
+                abilityHolder.Add(Instantiate(abilitiesPrefabThree, abilitiesPanelThree.transform));
+                RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
-                Image abilitiesImage = abilities[i].GetComponent<Image>();
+                Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
                 abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
         }
     }
@@ -311,9 +315,9 @@ public class BattleSystem : MonoBehaviour
 
             if(i == enemiesInfo.Count - 1)
             {
-                if(abilities.Count > 0)
+                if(abilityHolder.Count > 0)
                 {
-                    enemiesInfo[enemiesInfo.Count - 1].SetButtonNavigation(abilities[abilities.Count - 1].GetComponent<Button>(), "left");
+                    enemiesInfo[enemiesInfo.Count - 1].SetButtonNavigation(abilityHolder[abilityHolder.Count - 1].GetComponent<Button>(), "left");
                 }
             }
 
@@ -336,29 +340,35 @@ public class BattleSystem : MonoBehaviour
         }
 
         //Abilities Info
-        for (int i = 0; i < abilities.Count; i++)
+        for (int i = 0; i < abilityHolder.Count; i++)
         {
-            if (i + 1 < abilities.Count)
+            if (i + 1 < abilityHolder.Count)
             {
-                abilities[i].SetButtonNavigation(abilities[i + 1].GetComponent<Button>(), "right");
+                abilityHolder[i].SetButtonNavigation(abilityHolder[i + 1].GetComponent<Button>(), "right");
             }
 
             if (i != 0)
             {
-                abilities[i].SetButtonNavigation(abilities[i - 1].GetComponent<Button>(), "left");
+                abilityHolder[i].SetButtonNavigation(abilityHolder[i - 1].GetComponent<Button>(), "left");
             }
 
-            if (i == abilities.Count - 1)
+            if (i == abilityHolder.Count - 1)
             {
                 if (enemiesInfo.Count > 0)
                 {
-                    abilities[abilities.Count - 1].SetButtonNavigation(enemiesInfo[enemiesInfo.Count - 1].GetComponent<Button>(), "right");
+                    abilityHolder[abilityHolder.Count - 1].SetButtonNavigation(enemiesInfo[enemiesInfo.Count - 1].GetComponent<Button>(), "right");
                 }
             }
 
-            abilities[i].SetButtonNavigation(diceKeys[diceKeys.Count - 1].GetComponent<Button>(), "down");
+            abilityHolder[i].SetButtonNavigation(diceKeys[diceKeys.Count - 1].GetComponent<Button>(), "down");
         }
 
+    }
+
+    void FirstTurn()
+    {
+        SetupButtonNavigation();
+        state = BattleState.PLAYERTURN;
     }
 
     void PlayerTurn()
@@ -471,6 +481,10 @@ public class BattleSystem : MonoBehaviour
             }
             diceObjects[i].SetMarkedStatus(false);
         }
+        foreach (AbilityBase ability in battleAbilites)
+        {
+            ability.TurnStart();
+        }
     }
 
     IEnumerator EnemyTurn()
@@ -488,9 +502,23 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
+        foreach (AbilityBase ability in battleAbilites)
+        {
+            ability.TurnEnd();
+        }
+
         yield return StartCoroutine(EnemyDeaths(toRemoveList));
 
-        if(enemiesGO.Count == 0)
+        for (int i = toRemoveList.Count - 1; i >= 0; i--)
+        {
+            foreach (AbilityBase ability in battleAbilites)
+            {
+                ability.EnemyDeath();
+            }
+        }
+            
+
+        if (enemiesGO.Count == 0)
         {
             FindObjectOfType<LevelLoader>().LoadOverworldScene();
             
@@ -504,7 +532,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyDeaths(List<GameObject> sentToRemoveList)
     {
-        int enemiesToDie = sentToRemoveList.Count;
+        enemiesToDie = sentToRemoveList.Count;
 
         //Actually kill them
         for (int i = sentToRemoveList.Count - 1; i >= 0; i--)
@@ -518,13 +546,18 @@ public class BattleSystem : MonoBehaviour
             diceKeys.Remove(diceKeys[index]);
         }
         
-        /*while(enemiesToDie > 1)
+        while(enemiesToDie >= 1)
         {
             yield return null;
-        }*/
+        }
 
         yield return null;
 
+    }
+
+    public void SignalEnemyDeath()
+    {
+        enemiesToDie--;
     }
 
     IEnumerator EnemyAttacks()
@@ -590,10 +623,11 @@ public class BattleSystem : MonoBehaviour
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
                         diceObjects[firstPressedNumber].SetInactiveStatus(true);
                         diceObjects[firstPressedNumber].SetMarkedStatus(false);
-                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
+                        //diceObjects[secondPressedNumber].SetMarkedStatus(false);
                         diceImages[secondPressedNumber].sprite = diceSpritesGold[diceNumbers[secondPressedNumber] - 1];
                         diceObjects[secondPressedNumber].SetGold(true, diceNumbers[secondPressedNumber]);
-                        //diceObjects[secondPressedNumber].SetFillImage(diceSpritesGold[diceNumbers[secondPressedNumber] - 1]);
+                        //diceObjects[secondPressedNumber].SetMarkedStatus(true);
+                        audioManager.Play("DiceCombine");
                     }
 
                     //both were gold
@@ -607,12 +641,14 @@ public class BattleSystem : MonoBehaviour
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
                         diceObjects[firstPressedNumber].SetInactiveStatus(true);
                         diceObjects[firstPressedNumber].SetMarkedStatus(false);
-                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
+                        //diceObjects[secondPressedNumber].SetMarkedStatus(false);
                         diceImages[secondPressedNumber].sprite = diceSpritesPlatinum[diceNumbers[secondPressedNumber] - 1];
 
                         diceObjects[firstPressedNumber].SetGold(false, diceNumbers[firstPressedNumber]);
                         diceObjects[secondPressedNumber].SetGold(false, diceNumbers[secondPressedNumber]);
                         diceObjects[secondPressedNumber].SetPlatinum(true, diceNumbers[secondPressedNumber]);
+                        //diceObjects[secondPressedNumber].SetMarkedStatus(true);
+                        audioManager.Play("DiceCombine");
                     }
 
                     //If one of them was a pair, unmark it

@@ -182,8 +182,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.995, y: -51.5}
-  m_SizeDelta: {x: 108.99, y: 57.51}
+  m_AnchoredPosition: {x: -34.47, y: -70.99}
+  m_SizeDelta: {x: 87.95, y: 96.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4397816666839762885
 CanvasRenderer:
@@ -530,9 +530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Create a new folder in your Assets directory for custom fonts, then copy
-    a custom font into the folder. Fonts can either be downloaded or obtained from
-    your system\u2019s font directory. "
+  m_text: Changes dicekey after every round.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c35a409e89fb6a408fcdc3eb79f20ba, type: 2}
   m_sharedMaterial: {fileID: -157062179057853184, guid: 8c35a409e89fb6a408fcdc3eb79f20ba,
@@ -571,14 +569,14 @@ MonoBehaviour:
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 87
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -602,14 +600,14 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8523640393855391232}
-    characterCount: 182
+    characterCount: 34
     spriteCount: 0
-    spaceCount: 31
-    wordCount: 31
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
-    lineCount: 7
+    lineCount: 2
     pageCount: 1
-    materialCount: 2
+    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -659,8 +657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.19, y: -5.165}
-  m_SizeDelta: {x: 16.38, y: 6.33}
+  m_AnchoredPosition: {x: 43.595, y: -5.165}
+  m_SizeDelta: {x: 23.94, y: 6.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8523640393931044600
 CanvasRenderer:
@@ -688,10 +686,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Goblin
+  m_text: Trickster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db57c106758f18147b3028fc4eae5623, type: 2}
-  m_sharedMaterial: {fileID: 3729364100967289876, guid: db57c106758f18147b3028fc4eae5623,
+  m_fontAsset: {fileID: 11400000, guid: 8c35a409e89fb6a408fcdc3eb79f20ba, type: 2}
+  m_sharedMaterial: {fileID: -157062179057853184, guid: 8c35a409e89fb6a408fcdc3eb79f20ba,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -758,7 +756,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8523640393931044601}
-    characterCount: 6
+    characterCount: 9
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -815,8 +813,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4, y: -4}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 43.595, y: -6.77}
+  m_SizeDelta: {x: 79.19, y: 5.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8523640393990505328
 CanvasRenderer:
@@ -844,10 +842,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Changes dicekey after every round
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db57c106758f18147b3028fc4eae5623, type: 2}
-  m_sharedMaterial: {fileID: 3729364100967289876, guid: db57c106758f18147b3028fc4eae5623,
+  m_fontAsset: {fileID: 11400000, guid: 8c35a409e89fb6a408fcdc3eb79f20ba, type: 2}
+  m_sharedMaterial: {fileID: -157062179057853184, guid: 8c35a409e89fb6a408fcdc3eb79f20ba,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -873,8 +871,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -883,7 +881,7 @@ MonoBehaviour:
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -5
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -914,13 +912,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8523640393990505329}
-    characterCount: 0
+    characterCount: 33
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -974,8 +972,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.19, y: -12.33}
-  m_SizeDelta: {x: 8, y: 8}
+  m_AnchoredPosition: {x: 43.595, y: -15.1}
+  m_SizeDelta: {x: 87.19, y: 13.54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8523640394020105073
 CanvasRenderer:
@@ -1101,10 +1099,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Goblin
+  m_text: Trickster
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2ff39ec0e1e48064abf3577e69cd2c77, type: 2}
-  m_sharedMaterial: {fileID: -2961209032807401725, guid: 2ff39ec0e1e48064abf3577e69cd2c77,
+  m_fontAsset: {fileID: 11400000, guid: 8c35a409e89fb6a408fcdc3eb79f20ba, type: 2}
+  m_sharedMaterial: {fileID: -157062179057853184, guid: 8c35a409e89fb6a408fcdc3eb79f20ba,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1130,13 +1128,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 4
+  m_fontStyle: 5
   m_textAlignment: 258
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1171,7 +1169,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8523640394255082829}
-    characterCount: 6
+    characterCount: 9
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1397,8 +1395,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100.8, y: -8.165}
-  m_SizeDelta: {x: 16.38, y: 16.33}
+  m_AnchoredPosition: {x: 44.354996, y: -10.934999}
+  m_SizeDelta: {x: 87.19, y: 21.869999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8523640394987303283
 CanvasRenderer:
