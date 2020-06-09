@@ -44,6 +44,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     public virtual void TriggerDying()
     {
+        FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         isDead = true;
         if (isDead)
         {

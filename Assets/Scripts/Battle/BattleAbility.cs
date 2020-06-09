@@ -15,9 +15,6 @@ public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject selected;
     //[SerializeField] GameObject marked;
 
-    [TextArea(3, 20)]
-    public string info;
-
     void Start()
     {
 

@@ -23,7 +23,7 @@ public class GoblinBattle : EnemyBattleBase
 
     IEnumerator Idle2()
     {
-        yield return new WaitForSeconds(Random.Range(10f, 15f));
+        yield return new WaitForSeconds(Random.Range(15f, 25f));
         animator.ResetTrigger("Idle2");
         animator.SetTrigger("Idle2");
         StartCoroutine(Idle2());
@@ -79,7 +79,7 @@ public class GoblinBattle : EnemyBattleBase
     {
         mySprite.GetComponent<ThrowSimulation>().SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
         yield return StartCoroutine(mySprite.GetComponent<ThrowSimulation>().StartThrowCoro());
-
+        FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         if (isDead)
         {
             //Destroy(diceKeyGO.gameObject);
