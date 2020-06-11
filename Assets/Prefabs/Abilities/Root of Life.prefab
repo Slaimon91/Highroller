@@ -191,6 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23995e53d68e9d4b878176b25d7b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: Gain 1 HP at the start of your turn.
-  battleImageHolder: {fileID: 2050755360242906952}
+  abilityName: Roof of Life
+  info: 'Passive:
+
+    Gain 1 HP at the start of your turn.'
+  activeAbility: 0
   healAmount: 1

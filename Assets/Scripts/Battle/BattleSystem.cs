@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
+public enum DiceStatus { NORMAL, GOLD, PLATINUM};
+
 public class BattleSystem : MonoBehaviour
 {
     //Enemies and abilities
@@ -181,7 +183,8 @@ public class BattleSystem : MonoBehaviour
             rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
             Image enemiesInfoImage = enemiesInfo[i].GetComponent<Image>();
             enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetIcon();
-            enemiesInfo[i].infoTextImage.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText();
+            enemiesInfo[i].unitName = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName();
+            enemiesInfo[i].unitText = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText();
         }
 
         //Instantiate player abilities
@@ -195,7 +198,9 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
                 Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
-                //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                abilityHolder[i].unitName = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName();
+                abilityHolder[i].unitText = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo();
+
                 battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
 
@@ -210,7 +215,10 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
                 Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
-                abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                abilityHolder[i].unitName = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName();
+                abilityHolder[i].unitText = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo();
+
                 battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
         }
@@ -369,6 +377,7 @@ public class BattleSystem : MonoBehaviour
     {
         SetupButtonNavigation();
         state = BattleState.PLAYERTURN;
+        RollDice();
     }
 
     void PlayerTurn()
@@ -378,20 +387,29 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         buttonInfoBox.sprite = playerturnButtonBox;
         FindObjectOfType<HoldAssignButton>().Reset();
+        RollDice();
+        foreach (AbilityBase ability in battleAbilites)
+        {
+            ability.TurnStart();
+        }
+    }
+
+    public void RollDice()
+    {
         for (int i = 0; i < diceObjects.Count; i++)
         {
-            if(diceObjects[i].GetAssignedStatus())
+            if (diceObjects[i].GetAssignedStatus())
             {
                 diceObjects[i].SetAssignedStatus(false);
                 diceObjects[i].SetAssignedTo(null);
             }
 
-            if(!diceObjects[i].GetLockedOrInactiveStatus() && !diceObjects[i].GetComponent<Dice>().GetGoldStatus() && !diceObjects[i].GetComponent<Dice>().GetPlatinumStatus())
+            if (!diceObjects[i].GetLockedOrInactiveStatus() && !diceObjects[i].GetComponent<Dice>().GetGoldStatus() && !diceObjects[i].GetComponent<Dice>().GetPlatinumStatus())
             {
                 diceNumbers[i] = Random.Range(1, 7);
                 diceImages[i].sprite = diceSprites[diceNumbers[i] - 1];
             }
-            else if(!diceObjects[i].GetLockedOrInactiveStatus() && diceObjects[i].GetComponent<Dice>().GetGoldStatus())
+            else if (!diceObjects[i].GetLockedOrInactiveStatus() && diceObjects[i].GetComponent<Dice>().GetGoldStatus())
             {
                 Dice pressedDice = diceObjects[i].GetComponent<Dice>();
 
@@ -475,15 +493,11 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-            if(diceObjects[i].GetLockedStatus())
+            if (diceObjects[i].GetLockedStatus())
             {
                 diceObjects[i].UnlockDice();
             }
             diceObjects[i].SetMarkedStatus(false);
-        }
-        foreach (AbilityBase ability in battleAbilites)
-        {
-            ability.TurnStart();
         }
     }
 

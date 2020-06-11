@@ -191,6 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236fd57671033a24fa4a6b84f4ff97f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: Whenever this character kills an enemy, heal 2 HP.
-  battleImageHolder: {fileID: 2285284606300841085}
+  abilityName: Soul Siphon
+  info: 'Passive:
+
+    Whenever this character kills an enemy, heal 2 HP.'
+  activeAbility: 0
   healAmount: 2

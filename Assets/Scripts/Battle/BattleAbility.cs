@@ -4,20 +4,37 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityStandardAssets.CrossPlatformInput;
+using TMPro;
 
 
 public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
 
-    //selectedTile.SetActive(false);
+    [SerializeField] Sprite normal;
+    [SerializeField] Sprite marked;
     [SerializeField] GameObject selected;
-    //[SerializeField] GameObject marked;
+    [SerializeField] GameObject inactive;
+    private GameObject imageHolder;
+
+    private GameObject infoTextImage;
+    private TextMeshProUGUI infoName;
+    private TextMeshProUGUI infoText;
+    [HideInInspector] public string unitName;
+    [HideInInspector] public string unitText;
+    private bool activatable = false;
+    private bool isMarked = false;
+    Animator animator;
 
     void Start()
     {
-
+        InfoPanel abilityPanel = GetComponentInParent<InfoPanel>();
+        infoTextImage = abilityPanel.infoTextHolder;
+        infoName = abilityPanel.infoName;
+        infoText = abilityPanel.infoText;
+        activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
+        imageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+        animator = GetComponentInChildren<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -30,29 +47,48 @@ public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
         buttonSelected = true;
         selected.SetActive(true);
         FindObjectOfType<AudioManager>().Play("MoveBattleCursor");
+        infoName.text = unitName;
+        infoText.text = unitText;
+        infoTextImage.SetActive(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
         buttonSelected = false;
-        //marked.SetActive(false);
         selected.SetActive(false);
+        infoTextImage.SetActive(false);
     }
 
     public void AbilityClicked()
     {
-        /*if (!marked.activeSelf)
+        if (!isMarked && activatable)
         {
-            marked.SetActive(true);
-            //  animator.SetBool("buttonMarked", true);
+            isMarked = true;
+            imageHolder.GetComponent<Image>().sprite = marked;
+            animator.SetBool("isMarked", true);
             //selected.SetActive(false);
         }
-        else
+        else if (isMarked && activatable)
         {
-            marked.SetActive(false);
-            //  animator.SetBool("buttonMarked", false);
+            isMarked = false;
+            imageHolder.GetComponent<Image>().sprite = normal;
+            animator.SetBool("isMarked", false);
             //selected.SetActive(true);
-        }*/
+        }
+    }
+
+    public void SetInactive()
+    {
+        isMarked = false;
+        activatable = false;
+        imageHolder.GetComponent<Image>().sprite = normal;
+        inactive.SetActive(true);
+        animator.enabled = false;
+    }
+
+    public bool GetMarkedStatus()
+    {
+        return isMarked;
     }
 
     public void SetButtonNavigation(Button otherButton, string direction)

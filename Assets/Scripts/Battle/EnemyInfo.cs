@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
+using TMPro;
 
 
 public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
@@ -13,10 +14,18 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
-    public GameObject infoTextImage;
+    private GameObject infoTextImage;
+    private TextMeshProUGUI infoName;
+    private TextMeshProUGUI infoText;
+    [HideInInspector] public string unitName;
+    [HideInInspector] public string unitText;
 
     void Start()
     {
+        InfoPanel enemyPanel = GetComponentInParent<InfoPanel>();
+        infoTextImage = enemyPanel.infoTextHolder;
+        infoName = enemyPanel.infoName;
+        infoText = enemyPanel.infoText;
 
     }
     // Update is called once per frame
@@ -30,6 +39,9 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
         buttonSelected = true;
         selected.SetActive(true);
         FindObjectOfType<AudioManager>().Play("MoveBattleCursor");
+        infoName.text = unitName;
+        infoText.text = unitText;
+        infoTextImage.SetActive(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -42,7 +54,7 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void AbilityClicked()
     {
-        infoTextImage.SetActive(!infoTextImage.activeSelf);
+        
     }
 
     public void SetButtonNavigation(Button otherButton, string direction)

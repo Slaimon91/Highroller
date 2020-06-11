@@ -27,7 +27,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject locked;
     [SerializeField] GameObject inactive;
     [SerializeField] GameObject assigned;
-    private AudioSource lockAudio;
 
     public Sprite[] diceSpritesInactive;
     public Sprite[] diceSpritesAssigned;
@@ -44,7 +43,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         battleSystem = FindObjectOfType<BattleSystem>();
         animator = GetComponent<Animator>();
         animator.enabled = false;
-        lockAudio = GetComponent<AudioSource>();
         audioManager = FindObjectOfType<AudioManager>();
     }
     // Update is called once per frame
@@ -54,19 +52,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             animator.Play(0, -1, GetComponentInParent<DiceMasterAnimator>().myTime);
         }
-        /*if(makeGold)
-        {
-            fillTimer += Time.deltaTime;
-            fillImage.fillAmount = fillTimer / fillTimeSeconds;
-            if (fillTimer >= fillTimeSeconds)
-            {
-                animator.enabled = true;
-                makeGold = false;
-                fillImage.fillAmount = 0;
-
-            }
-            
-        }*/
     }
 
     public void ToggleLockDice()
@@ -75,10 +60,8 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             if (!diceLocked && !diceInactive && !diceAssigned)
             {
-                //locked.GetComponent<Image>().sprite = diceSpritesLocked[battleSystem.GetDiceNumber(this) - 1];
                 locked.SetActive(true);
                 diceLocked = true;
-                //lockAudio.Play();
                 audioManager.Play("Lock");
                 SetMarkedStatus(false);
             }
@@ -86,7 +69,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
             {
                 locked.SetActive(false);
                 diceLocked = false;
-               // lockAudio.Stop();
                 audioManager.Stop("Lock");
             }
         }
@@ -179,11 +161,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         animator.SetFloat("diceNumber", diceNumber);
         if(status)
         {
-            //makeGold = true;
-            //fillTimer = 0;
             animator.enabled = true;
-            //transition.SetActive(true);
-            //transition.GetComponent<Animator>().SetBool("normalToGold", true);
         }
         else
         {
@@ -199,8 +177,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         animator.SetFloat("diceNumber", diceNumber);
         if (status)
         {
-            //makeGold = true;
-            //fillTimer = 0;
             animator.enabled = true;
         }
         else
@@ -281,7 +257,6 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
                 diceMarked = false;
             }
         }
-        
     }
     void OnEnable()
     {

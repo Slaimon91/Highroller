@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
   name: PlayerValues
-  healthPoints: 15
+  healthPoints: 25
   maxHealthPoints: 25
   gaia: 70

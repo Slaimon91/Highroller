@@ -45,9 +45,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Lock
-    clip: {fileID: 8300000, guid: 60632dc6bb213d442bfa44d8bc96f645, type: 3}
+    clip: {fileID: 8300000, guid: 6ebacae62af30e94ea3cca5193602746, type: 3}
     volume: 0.1
     pitch: 1
-    playOnAwake: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: MoveBattleCursor
+    clip: {fileID: 8300000, guid: c9510b66413a02c46b4031a323c20a42, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Assign
+    clip: {fileID: 8300000, guid: 49cc2a35e0f34bf4b923ba597db9949a, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Passing
+    clip: {fileID: 8300000, guid: b8bd27bb805694a4faae5b508b123f81, type: 3}
+    volume: 0
+    pitch: 1
+    playOnAwake: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: PassCompleted
+    clip: {fileID: 8300000, guid: de4a37ee8af08e0479fe151ae753bac5, type: 3}
+    volume: 0.75
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerTurnStart
+    clip: {fileID: 8300000, guid: 59fd3b5560154bb47817eaee72b171d9, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: DiceCombine
+    clip: {fileID: 8300000, guid: 67302dab8ce2dbb4ca48bbc7d768c146, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
     loop: 0
     source: {fileID: 0}

@@ -47,17 +47,8 @@ MonoBehaviour:
   unitName: Trickster
   icon: {fileID: 21300000, guid: eefa828d6351438488f6bfa5000d6f80, type: 3}
   damageAmount: 3
-  infoText: 'You have to sort the labels.
-
-    Place the first label (that one that
-    is the lowest on the screen or maybe nearest to the camera in world space like
-    to normally wood.
-
-    The other you have to check if the rect that they would
-    be displayed overlapping with any other ui element that already there.
-
-    If
-    its overlapping move element up so that they do not overlap anymore.'
+  mySprite: {fileID: 0}
+  infoText: Changes dice key every after every turn.
 --- !u!1 &127482272032152838
 GameObject:
   m_ObjectHideFlags: 0

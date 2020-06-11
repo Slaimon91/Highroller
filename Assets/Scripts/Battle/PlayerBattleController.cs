@@ -7,9 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerBattleController : MonoBehaviour
 {
-    //[SerializeField] int currentHealth;
-    //[SerializeField] int maxHealth;
-    [SerializeField] TextMeshProUGUI healthText;
+    private TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
     bool isDead;
     bool hasBlocked = false;
@@ -19,6 +17,7 @@ public class PlayerBattleController : MonoBehaviour
     bool isInsideDodge = false;
     bool successBlock = false;
     bool successDodge = false;
+
     PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
     public Transform playerHead;
@@ -202,14 +201,21 @@ public class PlayerBattleController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         int reduction = 0;
+        int damageToTake = 0;
 
         foreach(AbilityBase ability in battleSystem.battleAbilites)
         {
             reduction += ability.TakeDamage();
         }
 
-        playerValues.healthPoints -= damage - reduction;
-        Debug.Log("You took " + (damage - reduction) + " damage!");
+        damageToTake = damage - reduction;
+        if (damageToTake < 0)
+        {
+            damageToTake = 0;
+        }
+
+        playerValues.healthPoints -= damageToTake;
+        Debug.Log("You took " + (damageToTake) + " damage!");
     }
 
     public void HealDamage(int damage)

@@ -19,6 +19,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject assigned;
 
     public Sprite[] diceSpritesAssigned;
+    public Sprite[] diceSpritesInactive;
     private Animator animator;
     private Animator animatorAssigned;
     private AudioManager audioManager;

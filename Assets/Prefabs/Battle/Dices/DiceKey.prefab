@@ -400,6 +400,19 @@ MonoBehaviour:
   - {fileID: -2353843222529084187, guid: 07b957893cdb0a347af70a4448ccea70, type: 3}
   - {fileID: -4365531264933336326, guid: 07b957893cdb0a347af70a4448ccea70, type: 3}
   - {fileID: 5987266459245150124, guid: 07b957893cdb0a347af70a4448ccea70, type: 3}
+  diceSpritesInactive:
+  - {fileID: 3242884679300641166, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4056356197245270000, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -8852008973318729298, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4565242735907959330, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 105148788359288150, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 6921779033261027356, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4896309329980502267, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4170113284269964611, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4150416207260787464, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 511865692308919224, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4271804661941773916, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 488564026253002968, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
 --- !u!95 &8682020358336456585
 Animator:
   serializedVersion: 3

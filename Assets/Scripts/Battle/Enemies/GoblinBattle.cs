@@ -8,6 +8,7 @@ public class GoblinBattle : EnemyBattleBase
 {
     [SerializeField] ThrowSimulation rockToThrow;
     public Transform throwingHand;
+    private bool attackFinished = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,15 +19,24 @@ public class GoblinBattle : EnemyBattleBase
 
     void Start()
     {
-        StartCoroutine(Idle2());
+        StartCoroutine(NewIdle());
     }
 
-    IEnumerator Idle2()
+    IEnumerator NewIdle()
     {
-        yield return new WaitForSeconds(Random.Range(15f, 25f));
+        yield return new WaitForSeconds(Random.Range(30f, 45f));
         animator.ResetTrigger("Idle2");
-        animator.SetTrigger("Idle2");
-        StartCoroutine(Idle2());
+        animator.ResetTrigger("Idle3");
+        if (Random.Range(0f, 1f) >= 0.5f)
+        {
+            animator.SetTrigger("Idle2");
+        }
+        else
+        {
+            animator.SetTrigger("Idle3");
+        }
+        
+        StartCoroutine(NewIdle());
     }
 
     public override void EnemySetup()
@@ -56,16 +66,27 @@ public class GoblinBattle : EnemyBattleBase
 
     public override IEnumerator EnemyAction()
     {
-        //var rock = Instantiate(rockToThrow, throwingHand);
-      //  rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerBody);
-        var rock2 = Instantiate(rockToThrow, throwingHand);
-        rock2.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
-        rock2.StartThrow();
+        attackFinished = false;
+        animator.SetTrigger("isAttacking");
 
-        while(rock2 != null)
+        while (!attackFinished)
         {
             yield return null;
         }
+        yield return null;
+    }
+
+    public IEnumerator ThrowRock()
+    {
+        var rock = Instantiate(rockToThrow, throwingHand);
+        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
+        rock.StartThrow();
+
+        while (rock != null)
+        {
+            yield return null;
+        }
+        attackFinished = true;
         yield return null;
     }
 
@@ -82,9 +103,7 @@ public class GoblinBattle : EnemyBattleBase
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         if (isDead)
         {
-            //Destroy(diceKeyGO.gameObject);
             Destroy(gameObject);
         }
-
     }
 }
