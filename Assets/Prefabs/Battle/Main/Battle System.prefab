@@ -132,6 +132,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  rightOOB: {fileID: 0}
+  leftOOB: {fileID: 0}
   diceSprites:
   - {fileID: -8232111649797111819, guid: ab55760a4dcef2d4a845c75e29834e7a, type: 3}
   - {fileID: 1022766990169307712, guid: ab55760a4dcef2d4a845c75e29834e7a, type: 3}

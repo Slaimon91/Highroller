@@ -117,7 +117,8 @@ public class PlayerBattleController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         EnemyBattleBase collidingEnemy = null;
-        if((collidingEnemy = other.gameObject.GetComponent<EnemyBattleBase>()) != null)
+            
+        if ((collidingEnemy = other.gameObject.GetComponent<EnemyBattleBase>()) != null)
         {
             if(successBlock)
             {
@@ -130,6 +131,7 @@ public class PlayerBattleController : MonoBehaviour
             else
             {
                 TakeDamage(collidingEnemy.GetDamageAmount());
+                collidingEnemy.CollideWithPlayer();
             }
             
         }

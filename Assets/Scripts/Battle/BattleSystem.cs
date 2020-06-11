@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
-public enum DiceStatus { NORMAL, GOLD, PLATINUM};
+public enum DiceStatus { INACTIVE, NORMAL, GOLD, PLATINUM};
 
 public class BattleSystem : MonoBehaviour
 {
@@ -23,6 +23,8 @@ public class BattleSystem : MonoBehaviour
     //Spawnpoints
     public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
+    public Transform rightOOB;
+    public Transform leftOOB;
 
     //Dice and dice keys
     private int[] diceNumbers;
@@ -712,7 +714,7 @@ public class BattleSystem : MonoBehaviour
                     if(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                     {
                         secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
-                        if (secondPressedNumber == firstPressedNumber)
+                        if (secondPressedNumber == firstPressedNumber && !pressedDiceKey.GetAssignedStatus())
                         {
                             audioManager.Play("Assign");
                             firstPressedDice.SetAssignedStatus(true);
@@ -869,6 +871,11 @@ public class BattleSystem : MonoBehaviour
     public int GetDiceNumber(Dice dice)
     {
         return diceNumbers[diceObjects.IndexOf(dice)];
+    }
+
+    public int GetNumberOfEnemies()
+    {
+        return enemiesGO.Count;
     }
 
     private void PreventCursor()

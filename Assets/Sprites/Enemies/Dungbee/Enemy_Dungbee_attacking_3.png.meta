@@ -1,43 +1,37 @@
 fileFormatVersion: 2
-guid: a7ba9ac9647ce07499453d13997aefbf
+guid: 42668187bc0ae054c8f7ff4d22da296b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 369368148551090342
-    second: Enemy_Dungbee_attacking_1_0
+      213: 8849770313542303705
+    second: Enemy_Dungbee_attacking_3_0
   - first:
-      213: 4412307084861137239
-    second: Enemy_Dungbee_attacking_1_1
+      213: -5064428175013503349
+    second: Enemy_Dungbee_attacking_3_1
   - first:
-      213: -907225854470375998
-    second: Enemy_Dungbee_attacking_1_2
+      213: 6516465962853807522
+    second: Enemy_Dungbee_attacking_3_2
   - first:
-      213: -6840854116198150550
-    second: Enemy_Dungbee_attacking_1_3
+      213: 1830015725345615
+    second: Enemy_Dungbee_attacking_3_3
   - first:
-      213: 5781210081714226338
-    second: Enemy_Dungbee_attacking_1_4
+      213: 3429722623260243145
+    second: Enemy_Dungbee_attacking_3_4
   - first:
-      213: 6296832871900963035
-    second: Enemy_Dungbee_attacking_1_5
+      213: 6594991128912762604
+    second: Enemy_Dungbee_attacking_3_5
   - first:
-      213: 7515504189408233382
-    second: Enemy_Dungbee_attacking_1_6
+      213: 7181357031399990802
+    second: Enemy_Dungbee_attacking_3_6
   - first:
-      213: 2813527944815572236
-    second: Enemy_Dungbee_attacking_1_7
+      213: 4097906752466180996
+    second: Enemy_Dungbee_attacking_3_7
   - first:
-      213: -4767073897134059767
-    second: Enemy_Dungbee_attacking_1_8
+      213: 2700362002310794735
+    second: Enemy_Dungbee_attacking_3_8
   - first:
-      213: 7509349751265656481
-    second: Enemy_Dungbee_attacking_1_9
-  - first:
-      213: -5047263605300857593
-    second: Enemy_Dungbee_attacking_1_10
-  - first:
-      213: -9200656389566548135
-    second: Enemy_Dungbee_attacking_1_11
+      213: 6688507799621756750
+    second: Enemy_Dungbee_attacking_3_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_0
+      name: Enemy_Dungbee_attacking_3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a04bb5cf52402500800000000000000
-      internalID: 369368148551090342
+      spriteID: 9df7c7a4633b0da70800000000000000
+      internalID: 8849770313542303705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_1
+      name: Enemy_Dungbee_attacking_3_1
       rect:
         serializedVersion: 2
         x: 45
@@ -158,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75166119ae9ab3d30800000000000000
-      internalID: 4412307084861137239
+      spriteID: b8e17d5486987b9b0800000000000000
+      internalID: -5064428175013503349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_2
+      name: Enemy_Dungbee_attacking_3_2
       rect:
         serializedVersion: 2
         x: 90
@@ -179,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c53e3d54e2e863f0800000000000000
-      internalID: -907225854470375998
+      spriteID: 2a533da74432f6a50800000000000000
+      internalID: 6516465962853807522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_3
+      name: Enemy_Dungbee_attacking_3_3
       rect:
         serializedVersion: 2
         x: 135
@@ -200,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6e8dbbfc676011a0800000000000000
-      internalID: -6840854116198150550
+      spriteID: f4b1e3db360860000800000000000000
+      internalID: 1830015725345615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_4
+      name: Enemy_Dungbee_attacking_3_4
       rect:
         serializedVersion: 2
         x: 180
@@ -221,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a4cb7c60fbfa3050800000000000000
-      internalID: 5781210081714226338
+      spriteID: 9c43c8ded82d89f20800000000000000
+      internalID: 3429722623260243145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_5
+      name: Enemy_Dungbee_attacking_3_5
       rect:
         serializedVersion: 2
         x: 225
@@ -242,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd0e8ab8228d26750800000000000000
-      internalID: 6296832871900963035
+      spriteID: ce692bf6d7d168b50800000000000000
+      internalID: 6594991128912762604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_6
+      name: Enemy_Dungbee_attacking_3_6
       rect:
         serializedVersion: 2
         x: 270
@@ -263,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a743adcd3f6c4860800000000000000
-      internalID: 7515504189408233382
+      spriteID: 216a9ddeb2e49a360800000000000000
+      internalID: 7181357031399990802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_7
+      name: Enemy_Dungbee_attacking_3_7
       rect:
         serializedVersion: 2
         x: 315
@@ -284,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c05fd5452c8ab0720800000000000000
-      internalID: 2813527944815572236
+      spriteID: 48bdb6fca70bed830800000000000000
+      internalID: 4097906752466180996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_8
+      name: Enemy_Dungbee_attacking_3_8
       rect:
         serializedVersion: 2
         x: 360
@@ -305,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90f894f2c83f7ddb0800000000000000
-      internalID: -4767073897134059767
+      spriteID: fed82b81fec997520800000000000000
+      internalID: 2700362002310794735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_9
+      name: Enemy_Dungbee_attacking_3_9
       rect:
         serializedVersion: 2
         x: 405
@@ -326,50 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ae7b5200d1963860800000000000000
-      internalID: 7509349751265656481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_10
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 45
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 705f8461e7484f9b0800000000000000
-      internalID: -5047263605300857593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dungbee_attacking_1_11
-      rect:
-        serializedVersion: 2
-        x: 495
-        y: 0
-        width: 45
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9573577c2c3b05080800000000000000
-      internalID: -9200656389566548135
+      spriteID: e4762e1186a52dc50800000000000000
+      internalID: 6688507799621756750
       vertices: []
       indices: 
       edges: []

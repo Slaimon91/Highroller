@@ -16,8 +16,8 @@ MonoBehaviour:
   battleBackground: {fileID: 21300000, guid: 868ec6a12a94656459e360ae11615600, type: 3}
   encounters:
   - list:
+    - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
     weight: 100

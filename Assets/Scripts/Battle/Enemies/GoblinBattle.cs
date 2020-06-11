@@ -12,7 +12,6 @@ public class GoblinBattle : EnemyBattleBase
     // Start is called before the first frame update
     void Awake()
     {
-        diceKeyNumber = 3;
         if (GetComponent<Animator>() != null)
             animator = GetComponent<Animator>();
     }

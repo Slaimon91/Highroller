@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public abstract class EnemyBattleBase : MonoBehaviour
 {
-    protected int diceKeyNumber;
-    [SerializeField] protected string unitName;
     protected DiceKey diceKeyGO;
-    [SerializeField] protected Sprite icon;
     protected Image diceKeyImage;
     protected bool isDead = false;
     protected bool isAssigned = false;
-    [SerializeField] protected int damageAmount = 0;
 
+    [SerializeField] protected string unitName = "Name";
+    [SerializeField] protected int diceKeyNumber = 1;
+    [SerializeField] protected bool isGold = false;
+    [SerializeField] protected bool isPlatinum = false;
+    [SerializeField] protected bool isInactive = false;
+    [SerializeField] protected int damageAmount = 0;
+    [SerializeField] protected Sprite icon;
     [SerializeField] protected GameObject mySprite;
 
     [SerializeField]
@@ -22,6 +25,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     protected Animator animator;
 
+    //Enemy actions
     public abstract void EnemySetup();
 
     public virtual void Assign(bool status)
@@ -58,6 +62,12 @@ public abstract class EnemyBattleBase : MonoBehaviour
         yield return null;
     }
 
+    public virtual void CollideWithPlayer()
+    {
+
+    }
+
+    //Getters & Setters
     public string GetInfoText()
     {
         return infoText;
@@ -97,6 +107,21 @@ public abstract class EnemyBattleBase : MonoBehaviour
     public int GetDamageAmount()
     {
         return damageAmount;
+    }
+
+    public bool GetGoldStatus()
+    {
+        return isGold;
+    }
+
+    public bool GetPlatinumStatus()
+    {
+        return isPlatinum;
+    }
+
+    public bool GetInactiveStatus()
+    {
+        return isInactive;
     }
 
     public void SetDiceKeyGO(DiceKey diceKey)
