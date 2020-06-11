@@ -11,6 +11,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
     private bool diceKeyAssigned = false;
+    private bool diceInactive = false;
     private bool isGold = false;
     private bool isPlatinum = false;
     private float diceNumber = -1;
@@ -19,12 +20,11 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] GameObject assigned;
 
     public Sprite[] diceSpritesAssigned;
-    public Sprite[] diceSpritesInactive;
     private Animator animator;
     private Animator animatorAssigned;
     private AudioManager audioManager;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         animatorAssigned = GetComponentInChildren<Animator>();
@@ -59,14 +59,12 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         {
             diceKeyAssigned = false;
             assigned.SetActive(false);
-            //animatorAssigned.enabled = false;
         }
         else
         {
             assigned.GetComponent<Image>().sprite = diceSpritesAssigned[keyNumber - 1];
             diceKeyAssigned = true;
             assigned.SetActive(true);
-            //animatorAssigned.enabled = true;
         }
     }
 
@@ -100,7 +98,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         diceNumber = number;
         animator.SetBool("isGold", status);
         animator.SetFloat("diceNumber", diceNumber);
-        if (status && diceNumber < 5)
+        if (status && diceNumber >= 4)
         {
             animator.enabled = true;
         }
@@ -110,9 +108,32 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         }
     }
 
-    public void SetPlatinum(bool status, int diceNumber)
+    public void SetPlatinum(bool status, int number)
     {
         isPlatinum = status;
+        diceNumber = number;
+        animator.SetBool("isPlatinum", status);
+        animator.SetFloat("diceNumber", diceNumber);
+        if (status && diceNumber >= 4)
+        {
+            animator.enabled = true;
+        }
+        else
+        {
+            animator.enabled = false;
+        }
+    }
+
+    public void SetInactive(bool status, int number)
+    {
+        diceInactive = status;
+        diceNumber = number;
+        //animator.enabled = false;
+    }
+
+    public bool GetInactiveStatus()
+    {
+        return diceInactive;
     }
 
     public bool GetGoldStatus()

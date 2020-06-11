@@ -185,6 +185,19 @@ MonoBehaviour:
   - {fileID: 3823456176186984876, guid: c4d76619672aab7409f1b7026c023dcb, type: 3}
   - {fileID: 5800555012961391548, guid: c4d76619672aab7409f1b7026c023dcb, type: 3}
   - {fileID: -6861851807615226673, guid: c4d76619672aab7409f1b7026c023dcb, type: 3}
+  diceSpritesInactive:
+  - {fileID: 3242884679300641166, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4056356197245270000, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -8852008973318729298, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4565242735907959330, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 105148788359288150, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 6921779033261027356, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4896309329980502267, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4170113284269964611, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 4150416207260787464, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 511865692308919224, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: -4271804661941773916, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
+  - {fileID: 488564026253002968, guid: 0ef16a01e1eb4a543ae4330bf9bca3f1, type: 3}
   playerPrefab: {fileID: 1612591524534670610, guid: e1be15ca731aa974a89d62e0126494c9,
     type: 3}
   dicePrefabs: {fileID: 238876300617606435, guid: 84bc613c0438761428e040d99a6f90a1,

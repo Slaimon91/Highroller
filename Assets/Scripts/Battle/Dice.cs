@@ -159,7 +159,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         diceNumber = number;
         animator.SetBool("isGold", status);
         animator.SetFloat("diceNumber", diceNumber);
-        if(status)
+        if(status && diceNumber >= 2)
         {
             animator.enabled = true;
         }
@@ -175,7 +175,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
         diceNumber = number;
         animator.SetBool("isPlatinum", status);
         animator.SetFloat("diceNumber", diceNumber);
-        if (status)
+        if (status && diceNumber >= 4)
         {
             animator.enabled = true;
         }

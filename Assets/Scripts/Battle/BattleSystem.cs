@@ -9,8 +9,6 @@ using UnityEngine.InputSystem;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
 
-public enum DiceStatus { INACTIVE, NORMAL, GOLD, PLATINUM};
-
 public class BattleSystem : MonoBehaviour
 {
     //Enemies and abilities
@@ -32,6 +30,7 @@ public class BattleSystem : MonoBehaviour
     public Sprite[] diceSprites;
     public Sprite[] diceSpritesGold;
     public Sprite[] diceSpritesPlatinum;
+    public Sprite[] diceSpritesInactive;
     private List<Dice> diceObjects = new List<Dice>();
     private int[] firstDicePair = { -1, -1 };
     private int[] secondDicePair = { -1, -1 };
@@ -104,7 +103,7 @@ public class BattleSystem : MonoBehaviour
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[i]);
             enemiesGO.Add(enemyGO);
             diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
-            diceKeyImages[i].sprite = diceSprites[diceKeyNumbers[i] - 1];
+            SetDiceKey(i);
             enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
         }
         GetComponentInChildren<SpriteRenderer>().sprite = battleStartupInfo.battleBackground;
@@ -114,6 +113,32 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         FirstTurn();
     }
+
+    public void SetDiceKey(int index)
+    {
+        EnemyBattleBase enemy = enemiesGO[index].GetComponent<EnemyBattleBase>();
+
+        if(enemy.GetInactiveStatus())
+        {
+            diceKeys[index].SetInactive(true, enemy.GetDiceKeyNumber());
+            diceKeyImages[index].sprite = diceSpritesInactive[diceKeyNumbers[index] - 1];
+        }
+        else if (enemy.GetGoldStatus())
+        {
+            diceKeys[index].SetGold(true, enemy.GetDiceKeyNumber());
+            diceKeyImages[index].sprite = diceSpritesGold[diceKeyNumbers[index] - 1];
+        }
+        else if (enemy.GetPlatinumStatus())
+        {
+            diceKeys[index].SetPlatinum(true, enemy.GetDiceKeyNumber());
+            diceKeyImages[index].sprite = diceSpritesPlatinum[diceKeyNumbers[index] - 1];
+        }
+        else
+        {
+            diceKeyImages[index].sprite = diceSprites[diceKeyNumbers[index] - 1];
+        }
+    }
+
 
     void InstantiateDices()
     {
@@ -639,7 +664,7 @@ public class BattleSystem : MonoBehaviour
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
                         diceObjects[firstPressedNumber].SetInactiveStatus(true);
                         diceObjects[firstPressedNumber].SetMarkedStatus(false);
-                        //diceObjects[secondPressedNumber].SetMarkedStatus(false);
+                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
                         diceImages[secondPressedNumber].sprite = diceSpritesGold[diceNumbers[secondPressedNumber] - 1];
                         diceObjects[secondPressedNumber].SetGold(true, diceNumbers[secondPressedNumber]);
                         //diceObjects[secondPressedNumber].SetMarkedStatus(true);
@@ -657,7 +682,7 @@ public class BattleSystem : MonoBehaviour
                         diceNumbers[secondPressedNumber] += diceNumbers[firstPressedNumber];
                         diceObjects[firstPressedNumber].SetInactiveStatus(true);
                         diceObjects[firstPressedNumber].SetMarkedStatus(false);
-                        //diceObjects[secondPressedNumber].SetMarkedStatus(false);
+                        diceObjects[secondPressedNumber].SetMarkedStatus(false);
                         diceImages[secondPressedNumber].sprite = diceSpritesPlatinum[diceNumbers[secondPressedNumber] - 1];
 
                         diceObjects[firstPressedNumber].SetGold(false, diceNumbers[firstPressedNumber]);
@@ -714,14 +739,28 @@ public class BattleSystem : MonoBehaviour
                     if(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                     {
                         secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
-                        if (secondPressedNumber == firstPressedNumber && !pressedDiceKey.GetAssignedStatus())
+                        if (secondPressedNumber == firstPressedNumber && !pressedDiceKey.GetAssignedStatus() && !pressedDiceKey.GetInactiveStatus())
                         {
-                            audioManager.Play("Assign");
-                            firstPressedDice.SetAssignedStatus(true);
-                            firstPressedDice.SetMarkedStatus(false);
-                            //pressedDiceKey.SetAssignedStatus(true);
-                            firstPressedDice.SetAssignedTo(pressedDiceKey.gameObject);
-                            enemyGO.GetComponent<EnemyBattleBase>().Assign(true);
+                            if(pressedDiceKey.GetGoldStatus() && !firstPressedDice.GetGoldStatus() && !firstPressedDice.GetPlatinumStatus())
+                            {
+                                Debug.Log("jek");
+                                break;
+                                //Play negative sound
+                            }
+                            else if(pressedDiceKey.GetPlatinumStatus() && !firstPressedDice.GetPlatinumStatus())
+                            {
+                                break;
+                                //Play negative sound
+                            }
+                            else
+                            {
+                                audioManager.Play("Assign");
+                                firstPressedDice.SetAssignedStatus(true);
+                                firstPressedDice.SetMarkedStatus(false);
+                                //pressedDiceKey.SetAssignedStatus(true);
+                                firstPressedDice.SetAssignedTo(pressedDiceKey.gameObject);
+                                enemyGO.GetComponent<EnemyBattleBase>().Assign(true);
+                            }
                         }
                         else
                         {
@@ -876,6 +915,11 @@ public class BattleSystem : MonoBehaviour
     public int GetNumberOfEnemies()
     {
         return enemiesGO.Count;
+    }
+
+    public int GetEnemyIndex(GameObject enemy)
+    {
+        return enemiesGO.IndexOf(enemy);
     }
 
     private void PreventCursor()

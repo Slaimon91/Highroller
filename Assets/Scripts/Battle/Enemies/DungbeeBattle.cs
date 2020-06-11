@@ -27,6 +27,16 @@ public class DungbeeBattle : EnemyBattleBase
     {
 
     }
+
+    public void Expose()
+    {
+        if (isInactive)
+        {
+            isInactive = false;
+            FindObjectOfType<BattleSystem>().SetDiceKey(FindObjectOfType<BattleSystem>().GetEnemyIndex(gameObject));
+        }
+    }
+
     public override IEnumerator EnemyAction()
     {
         if(FindObjectOfType<BattleSystem>().GetNumberOfEnemies() == 1)
