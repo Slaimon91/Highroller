@@ -97,8 +97,9 @@ public class GoblinBattle : EnemyBattleBase
 
     public override IEnumerator Die()
     {
-        mySprite.GetComponent<ThrowSimulation>().SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
-        yield return StartCoroutine(mySprite.GetComponent<ThrowSimulation>().StartThrowCoro());
+        var orb = Instantiate(myOrb, transform);
+        orb.SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
+        yield return StartCoroutine(orb.StartThrowCoro());
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         if (isDead)
         {

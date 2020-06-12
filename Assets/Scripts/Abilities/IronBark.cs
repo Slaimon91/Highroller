@@ -19,7 +19,7 @@ public class IronBark : AbilityBase
 
     public override void TurnEnd()
     {
-        if(GetComponentInParent<BattleAbility>().GetMarkedStatus())
+        if(GetComponentInParent<BattleAbilityHolder>().GetMarkedStatus())
         {
             activeTurn = true;
         }
@@ -44,7 +44,7 @@ public class IronBark : AbilityBase
             inactive = true;
             activeTurn = false;
 
-            GetComponentInParent<BattleAbility>().SetInactive();
+            GetComponentInParent<BattleAbilityHolder>().SetInactive();
         }
         else
         {

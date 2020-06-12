@@ -23,8 +23,12 @@ public class PlayerBattleController : MonoBehaviour
     public Transform playerHead;
     public Transform playerBody;
     public Transform gaiaPoint;
+    public GameObject damageText;
+    public GameObject healText;
+    private Canvas canvas;
 
     private BattleSystem battleSystem;
+    Animator animator;
 
     void Awake()
     {
@@ -39,6 +43,8 @@ public class PlayerBattleController : MonoBehaviour
         healthTextGameObject = GameObject.FindGameObjectWithTag("HealthText");
         healthText = healthTextGameObject.GetComponent<TextMeshProUGUI>();
         battleSystem = FindObjectOfType<BattleSystem>();
+        animator = GetComponent<Animator>();
+        canvas = FindObjectOfType<Canvas>();
     }
 
     // Update is called once per frame
@@ -68,8 +74,9 @@ public class PlayerBattleController : MonoBehaviour
         {
             hasDefended = true;
             hasBlocked = true;
+            animator.SetTrigger("Block");
 
-            if (isInsideBlock)
+            if (isInsideBlock && !isInsideDodge)
             {
                 Debug.Log("You blocked!");
                 successBlock = true;
@@ -162,7 +169,7 @@ public class PlayerBattleController : MonoBehaviour
 
     private void SuccessBlock(EnemyBattleBase enemy)
     {
-        int reduction = 0;
+        int reduction = 1;
 
         foreach (AbilityBase ability in battleSystem.battleAbilites)
         {
@@ -170,7 +177,6 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         TakeDamage(enemy.GetDamageAmount() - reduction);
-        Debug.Log("You took " + (enemy.GetDamageAmount() - reduction) + " damage!");
     }
 
     private void SuccessDodge()
@@ -217,12 +223,15 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         playerValues.healthPoints -= damageToTake;
+        StartCoroutine(DamageText(damage));
+        EnemyTurnStart();
         Debug.Log("You took " + (damageToTake) + " damage!");
     }
 
     public void HealDamage(int damage)
     {
         playerValues.healthPoints += damage;
+        StartCoroutine(HealText(damage));
         if(playerValues.healthPoints > playerValues.maxHealthPoints)
         {
             playerValues.healthPoints = playerValues.maxHealthPoints;
@@ -236,5 +245,25 @@ public class PlayerBattleController : MonoBehaviour
         hasDodged = false;
         successBlock = false;
         successDodge = false;
+    }
+
+    IEnumerator DamageText(int damage)
+    {
+        var text = Instantiate(damageText, canvas.transform);
+        text.GetComponent<TextMeshProUGUI>().text = "-" + damage;
+
+        yield return new WaitForSeconds(1);
+
+        Destroy(text.gameObject);
+    }
+
+    IEnumerator HealText(int damage)
+    {
+        var text = Instantiate(healText, canvas.transform);
+        text.GetComponent<TextMeshProUGUI>().text = "+ " + damage;
+
+        yield return new WaitForSeconds(1);
+
+        Destroy(text.gameObject);
     }
 }

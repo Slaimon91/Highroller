@@ -15,7 +15,7 @@ public class BattleSystem : MonoBehaviour
     private List<GameObject> enemyPrefabs = new List<GameObject>();
     private List<GameObject> enemiesGO = new List<GameObject>();
     private List<EnemyInfo> enemiesInfo = new List<EnemyInfo>();
-    private List<BattleAbility> abilityHolder = new List<BattleAbility>();
+    private List<BattleAbilityHolder> abilityHolder = new List<BattleAbilityHolder>();
     [HideInInspector] public List<AbilityBase> battleAbilites = new List<AbilityBase>();
 
     //Spawnpoints
@@ -45,8 +45,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Dice dicePrefabs;
     [SerializeField] DiceKey diceKeyPrefab;
     [SerializeField] EnemyInfo enemiesInfoPrefab;
-    [SerializeField] BattleAbility abilitiesPrefab;
-    [SerializeField] BattleAbility abilitiesPrefabThree;
+    [SerializeField] BattleAbilityHolder abilitiesPrefab;
+    [SerializeField] BattleAbilityHolder abilitiesPrefabThree;
     [SerializeField] Transform dicePanel;
     [SerializeField] Transform diceKeyPanel;
     [SerializeField] Transform enemiesInfoPanel;
@@ -117,7 +117,7 @@ public class BattleSystem : MonoBehaviour
     public void SetDiceKey(int index)
     {
         EnemyBattleBase enemy = enemiesGO[index].GetComponent<EnemyBattleBase>();
-
+        
         if(enemy.GetInactiveStatus())
         {
             diceKeys[index].SetInactive(true, enemy.GetDiceKeyNumber());
@@ -125,16 +125,19 @@ public class BattleSystem : MonoBehaviour
         }
         else if (enemy.GetGoldStatus())
         {
+            diceKeys[index].SetInactive(false, enemy.GetDiceKeyNumber());
             diceKeys[index].SetGold(true, enemy.GetDiceKeyNumber());
             diceKeyImages[index].sprite = diceSpritesGold[diceKeyNumbers[index] - 1];
         }
         else if (enemy.GetPlatinumStatus())
         {
+            diceKeys[index].SetInactive(false, enemy.GetDiceKeyNumber());
             diceKeys[index].SetPlatinum(true, enemy.GetDiceKeyNumber());
             diceKeyImages[index].sprite = diceSpritesPlatinum[diceKeyNumbers[index] - 1];
         }
         else
         {
+            diceKeys[index].SetInactive(false, enemy.GetDiceKeyNumber());
             diceKeyImages[index].sprite = diceSprites[diceKeyNumbers[index] - 1];
         }
     }
@@ -797,7 +800,7 @@ public class BattleSystem : MonoBehaviour
                 if (!diceDeselected)
                 {
                     //If the selected dice is a dice key
-                    if (go.GetComponent<DiceKey>())
+                    if (go.GetComponent<DiceKey>() != null)
                     {
                         DiceKey pressedDiceKey = go.GetComponent<DiceKey>();
 
@@ -837,65 +840,74 @@ public class BattleSystem : MonoBehaviour
                     }
 
                     //If the selected dice is a added one
-                    else if (go.GetComponent<Dice>().GetGoldStatus())
+                    else if (go.GetComponent<Dice>() != null)
                     {
                         Dice pressedDice = go.GetComponent<Dice>();
 
                         if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
                         {
-                            if (firstDicePair[1] != -1)
+                            if (go.GetComponent<Dice>().GetGoldStatus())
                             {
-                                if (pressedDice == diceObjects[firstDicePair[1]])
+                                if (firstDicePair[1] != -1)
                                 {
-                                    diceObjects[firstDicePair[1]].SetGold(false, -1);
-                                    diceObjects[firstDicePair[0]].SetInactiveStatus(false);
-                                    diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
-                                    diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
+                                    if (pressedDice == diceObjects[firstDicePair[1]])
+                                    {
+                                        diceObjects[firstDicePair[1]].SetGold(false, -1);
+                                        diceObjects[firstDicePair[0]].SetInactiveStatus(false);
+                                        diceNumbers[firstDicePair[1]] -= diceNumbers[firstDicePair[0]];
+                                        diceImages[firstDicePair[1]].sprite = diceSprites[diceNumbers[firstDicePair[1]] - 1];
 
-                                    firstDicePair[0] = -1;
-                                    firstDicePair[1] = -1;
+                                        firstDicePair[0] = -1;
+                                        firstDicePair[1] = -1;
+                                    }
+                                }
+
+                                if (secondDicePair[1] != -1)
+                                {
+                                    //argument out of range, kan inte cancla nr 2
+                                    if (pressedDice == diceObjects[secondDicePair[1]])
+                                    {
+                                        diceObjects[secondDicePair[1]].SetGold(false, -1);
+                                        diceObjects[secondDicePair[0]].SetInactiveStatus(false);
+                                        diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
+                                        diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+
+                                        secondDicePair[0] = -1;
+                                        secondDicePair[1] = -1;
+                                    }
                                 }
                             }
 
-                            if (secondDicePair[1] != -1)
+                            else if (go.GetComponent<Dice>().GetPlatinumStatus())
                             {
-                                //argument out of range, kan inte cancla nr 2
-                                if (pressedDice == diceObjects[secondDicePair[1]])
+                                if (thirdDicePair[1] != -1)
                                 {
-                                    diceObjects[secondDicePair[1]].SetGold(false, -1);
-                                    diceObjects[secondDicePair[0]].SetInactiveStatus(false);
-                                    diceNumbers[secondDicePair[1]] -= diceNumbers[secondDicePair[0]];
-                                    diceImages[secondDicePair[1]].sprite = diceSprites[diceNumbers[secondDicePair[1]] - 1];
+                                    if (pressedDice == diceObjects[thirdDicePair[1]])
+                                    {
+                                        diceObjects[thirdDicePair[1]].SetPlatinum(false, -1);
+                                        diceObjects[thirdDicePair[0]].SetInactiveStatus(false);
+                                        diceNumbers[thirdDicePair[1]] -= diceNumbers[thirdDicePair[0]];
+                                        diceObjects[thirdDicePair[0]].SetGold(true, diceNumbers[thirdDicePair[0]]);
+                                        diceObjects[thirdDicePair[1]].SetGold(true, diceNumbers[thirdDicePair[1]]);
+                                        diceImages[thirdDicePair[1]].sprite = diceSpritesGold[diceNumbers[thirdDicePair[1]] - 1];
 
-                                    secondDicePair[0] = -1;
-                                    secondDicePair[1] = -1;
+                                        thirdDicePair[0] = -1;
+                                        thirdDicePair[1] = -1;
+                                    }
                                 }
                             }
                         }
                     }
 
-                    else if (go.GetComponent<Dice>().GetPlatinumStatus())
+                    else if(go.GetComponent<BattleAbilityHolder>() != null)
                     {
-                        Dice pressedDice = go.GetComponent<Dice>();
+                        BattleAbilityHolder holder = go.GetComponent<BattleAbilityHolder>();
 
-                        if (!pressedDice.GetInactiveStatus() && !pressedDice.GetAssignedStatus() && !pressedDice.GetLockedStatus())
+                        if(holder.GetMarkedStatus())
                         {
-                            if (thirdDicePair[1] != -1)
-                            {
-                                if (pressedDice == diceObjects[thirdDicePair[1]])
-                                {
-                                    diceObjects[thirdDicePair[1]].SetPlatinum(false, -1);
-                                    diceObjects[thirdDicePair[0]].SetInactiveStatus(false);
-                                    diceNumbers[thirdDicePair[1]] -= diceNumbers[thirdDicePair[0]];
-                                    diceObjects[thirdDicePair[0]].SetGold(true, diceNumbers[thirdDicePair[0]]);
-                                    diceObjects[thirdDicePair[1]].SetGold(true, diceNumbers[thirdDicePair[1]]);
-                                    diceImages[thirdDicePair[1]].sprite = diceSpritesGold[diceNumbers[thirdDicePair[1]] - 1];
-
-                                    thirdDicePair[0] = -1;
-                                    thirdDicePair[1] = -1;
-                                }
-                            }
+                            holder.AbilityClicked();
                         }
+
                     }
                 }
             }

@@ -73,7 +73,6 @@ public class DungbeeBattle : EnemyBattleBase
     {
         if(attacksLaunched < 3)
         {
-            Debug.Log(attacksLaunched);
             StartCoroutine(ThrowDung());
             animator.SetBool("isAttacking", true);
         }
@@ -106,8 +105,9 @@ public class DungbeeBattle : EnemyBattleBase
 
     public override IEnumerator Die()
     {
-        mySprite.GetComponent<ThrowSimulation>().SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
-        yield return StartCoroutine(mySprite.GetComponent<ThrowSimulation>().StartThrowCoro());
+        var orb = Instantiate(myOrb, transform);
+        orb.SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
+        yield return StartCoroutine(orb.StartThrowCoro());
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         if (isDead)
         {

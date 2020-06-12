@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
 
@@ -35,11 +35,6 @@ public class BattleAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
         activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
         imageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
         animator = GetComponentInChildren<Animator>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void OnSelect(BaseEventData eventData)

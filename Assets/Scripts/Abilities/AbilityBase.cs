@@ -11,7 +11,7 @@ public class AbilityBase : MonoBehaviour
     [TextArea(3, 20)]
     protected string info;
 
-    [SerializeField] protected GameObject battleImageHolder;
+    protected GameObject battleImageHolder;
 
     [SerializeField] protected bool activeAbility = false;
 

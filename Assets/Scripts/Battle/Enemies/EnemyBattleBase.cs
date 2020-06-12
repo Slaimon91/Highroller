@@ -17,7 +17,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     [SerializeField] protected bool isInactive = false;
     [SerializeField] protected int damageAmount = 0;
     [SerializeField] protected Sprite icon;
-    [SerializeField] protected GameObject mySprite;
+    [SerializeField] protected ThrowSimulation myOrb;
 
     [SerializeField]
     [TextArea(3, 20)]

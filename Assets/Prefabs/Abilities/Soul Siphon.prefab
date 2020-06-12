@@ -194,6 +194,6 @@ MonoBehaviour:
   abilityName: Soul Siphon
   info: 'Passive:
 
-    Whenever this character kills an enemy, heal 2 HP.'
+    Whenever you kill an enemy, heal 2 HP.'
   activeAbility: 0
   healAmount: 2

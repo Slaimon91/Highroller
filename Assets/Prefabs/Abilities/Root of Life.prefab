@@ -194,6 +194,6 @@ MonoBehaviour:
   abilityName: Roof of Life
   info: 'Passive:
 
-    Gain 1 HP at the start of your turn.'
+    You gain 1 HP at the start of your turn.'
   activeAbility: 0
   healAmount: 1

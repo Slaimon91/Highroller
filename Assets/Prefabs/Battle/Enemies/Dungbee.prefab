@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127482270645473819}
-  - component: {fileID: 1052720663}
   - component: {fileID: 416673806}
+  - component: {fileID: 1052720663}
   - component: {fileID: 8936343702665396998}
   - component: {fileID: 8039541242697448645}
   - component: {fileID: 4870066657780052611}
@@ -37,25 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1052720663
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127482270645473796}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a68e5a0ff5e96f44dbad199860d2260f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &416673806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,13 +56,32 @@ MonoBehaviour:
   isInactive: 1
   damageAmount: 1
   icon: {fileID: 21300000, guid: 5e40efe83325aa845a6dd739a2838087, type: 3}
-  mySprite: {fileID: 127482270645473796}
+  myOrb: {fileID: 139349849566711026, guid: abbddaa596a552246a27f1b1fe2ca2c2, type: 3}
   infoText: "You can only match this enemy\u2019s dice key if it is the last remaining
     enemy."
   rockToThrow: {fileID: 8940644904525952771, guid: c76eb59baca04e44c9265e01e6d027fc,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
   rollSpeed: 6
+--- !u!95 &1052720663
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127482270645473796}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a68e5a0ff5e96f44dbad199860d2260f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &8936343702665396998
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +141,6 @@ GameObject:
   m_Component:
   - component: {fileID: 127482272032152837}
   - component: {fileID: 127482272032152836}
-  - component: {fileID: 6700130022201901500}
   m_Layer: 0
   m_Name: Enemy Sprite
   m_TagString: Untagged
@@ -214,22 +213,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6700130022201901500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127482272032152838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce3892dadb6e28429e162f62905af95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravity: 3
-  arcAmount: 10
-  heightOfShot: 1
-  Projectile: {fileID: 127482272032152837}
 --- !u!1 &7883337684873352535
 GameObject:
   m_ObjectHideFlags: 0

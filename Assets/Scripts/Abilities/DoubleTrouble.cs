@@ -2,17 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleTrouble : MonoBehaviour
+public class DoubleTrouble : AbilityBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerBattleController player;
+    private bool activeTurn = false;
+
+    IEnumerator Start()
     {
-        
+        while (FindObjectOfType<PlayerBattleController>() == null)
+        {
+            yield return null;
+        }
+        player = FindObjectOfType<PlayerBattleController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void TurnEnd()
     {
-        
+        if (GetComponentInParent<BattleAbilityHolder>().GetMarkedStatus())
+        {
+            activeTurn = true;
+        }
+    }
+
+    public override void TurnStart()
+    {
+        if (activeTurn)
+        {
+            inactive = true;
+            activeTurn = false;
+
+            GetComponentInParent<BattleAbilityHolder>().SetInactive();
+        }
+        else
+        {
+            base.TurnStart();
+        }
     }
 }
