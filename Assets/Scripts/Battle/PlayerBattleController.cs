@@ -17,6 +17,7 @@ public class PlayerBattleController : MonoBehaviour
     bool isInsideDodge = false;
     bool successBlock = false;
     bool successDodge = false;
+    bool nearDeath = false;
 
     PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
@@ -29,6 +30,7 @@ public class PlayerBattleController : MonoBehaviour
 
     private BattleSystem battleSystem;
     Animator animator;
+    AudioManager audioManager;
 
     void Awake()
     {
@@ -45,6 +47,8 @@ public class PlayerBattleController : MonoBehaviour
         battleSystem = FindObjectOfType<BattleSystem>();
         animator = GetComponent<Animator>();
         canvas = FindObjectOfType<Canvas>();
+        audioManager = FindObjectOfType<AudioManager>();
+        CheckHealthAnimation();
     }
 
     // Update is called once per frame
@@ -74,15 +78,17 @@ public class PlayerBattleController : MonoBehaviour
         {
             hasDefended = true;
             hasBlocked = true;
-            animator.SetTrigger("Block");
 
-            if (isInsideBlock && !isInsideDodge)
+            if (isInsideBlock)
             {
+                audioManager.Play("SuccessBlock");
+                animator.SetTrigger("Block");
                 Debug.Log("You blocked!");
                 successBlock = true;
             }
             else
             {
+                audioManager.Play("FailBlock");
                 Debug.Log("You failed the block!");
             }
         }
@@ -98,9 +104,11 @@ public class PlayerBattleController : MonoBehaviour
             {
                 Debug.Log("You dodged!");
                 successDodge = true;
+                audioManager.Play("SuccessDodge");
             }
             else
             {
+                audioManager.Play("FailDodge");
                 Debug.Log("You failed the dodge!");
             }
         }
@@ -217,24 +225,54 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         damageToTake = damage - reduction;
-        if (damageToTake < 0)
+        if (damageToTake <= 0)
         {
             damageToTake = 0;
         }
+        else
+        {
+            playerValues.healthPoints -= damageToTake;
+            StartCoroutine(DamageText(damageToTake));
+            
+            audioManager.Play("TakeDamage");
+            Debug.Log("You took " + (damageToTake) + " damage!");
 
-        playerValues.healthPoints -= damageToTake;
-        StartCoroutine(DamageText(damage));
-        EnemyTurnStart();
-        Debug.Log("You took " + (damageToTake) + " damage!");
+            if (!successBlock)
+            {
+                animator.SetTrigger("Damage");
+            }
+            EnemyTurnStart();
+            CheckHealthAnimation();
+        }
     }
 
     public void HealDamage(int damage)
     {
         playerValues.healthPoints += damage;
         StartCoroutine(HealText(damage));
-        if(playerValues.healthPoints > playerValues.maxHealthPoints)
+        audioManager.Play("HealHP");
+        animator.SetTrigger("Heal");
+        if (playerValues.healthPoints > playerValues.maxHealthPoints)
         {
             playerValues.healthPoints = playerValues.maxHealthPoints;
+        }
+        CheckHealthAnimation();
+    }
+
+    private void CheckHealthAnimation()
+    {
+        if((float)playerValues.healthPoints / (float)playerValues.maxHealthPoints <= 0.1)
+        {
+            nearDeath = true;
+            animator.SetFloat("IdleState", 2);
+        }
+        else
+        {
+            if(nearDeath)
+            {
+                nearDeath = false;
+                animator.SetFloat("IdleState", 0);
+            }
         }
     }
 
