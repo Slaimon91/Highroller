@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23995e53d68e9d4b878176b25d7b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: Roof of Life
+  abilityName: Seed Shell
   info: 'Passive:
 
     You gain 1 HP at the start of your turn.'

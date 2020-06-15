@@ -23,12 +23,6 @@ TextureImporter:
   - first:
       213: -8826112856948295102
     second: sprout_battle_guard_6
-  - first:
-      213: -8184759643004690705
-    second: sprout_battle_guard_7
-  - first:
-      213: -3083249831569533850
-    second: sprout_battle_guard_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -256,48 +250,6 @@ TextureImporter:
       bones: []
       spriteID: 24ab61e8e19538580800000000000000
       internalID: -8826112856948295102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprout_battle_guard_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fee90ca2874e96e80800000000000000
-      internalID: -8184759643004690705
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprout_battle_guard_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 664d38b2d981635d0800000000000000
-      internalID: -3083249831569533850
       vertices: []
       indices: 
       edges: []

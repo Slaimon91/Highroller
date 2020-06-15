@@ -13,12 +13,6 @@ public class TricksterBattle : EnemyBattleBase
         battleSystem = FindObjectOfType<BattleSystem>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void EnemySetup()
     {
 

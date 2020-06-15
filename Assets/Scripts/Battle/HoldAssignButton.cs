@@ -21,7 +21,7 @@ public class HoldAssignButton : MonoBehaviour
     [SerializeField] private Image fillImage;
     [SerializeField] private GameObject completedImage;
 
-    PlayerControls controls;
+    private PlayerControls controls;
     private GameObject savedSelectedGameObject;
     private EventSystem eventSystem;
     private AudioManager audioManager;

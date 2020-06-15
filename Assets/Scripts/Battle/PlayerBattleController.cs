@@ -9,28 +9,34 @@ public class PlayerBattleController : MonoBehaviour
 {
     private TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
-    bool isDead;
-    bool hasBlocked = false;
-    bool hasDodged = false;
-    bool hasDefended = false;
-    bool isInsideBlock = false;
-    bool isInsideDodge = false;
-    bool successBlock = false;
-    bool successDodge = false;
-    bool nearDeath = false;
+    private bool isDead;
+    private bool hasBlocked = false;
+    private bool hasDodged = false;
+    private bool hasDefended = false;
+    private bool isInsideBlock = false;
+    private bool isInsideDodge = false;
+    private bool successBlock = false;
+    private bool successDodge = false;
+    private bool nearDeath = false;
+    private int damageTaken = 0;
+    private int damageThreshold = 0;
+    private bool undershot = false;
 
     PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
     public Transform playerHead;
     public Transform playerBody;
     public Transform gaiaPoint;
-    public GameObject damageText;
-    public GameObject healText;
+    [SerializeField] private GameObject damageText;
+    [SerializeField] private GameObject healText;
     private Canvas canvas;
+    [SerializeField] GameObject dodgeCollider;
+    [SerializeField] GameObject blockCollider;
+    [SerializeField] GameObject easyBlockCollider;
 
     private BattleSystem battleSystem;
-    Animator animator;
-    AudioManager audioManager;
+    private Animator animator;
+    private AudioManager audioManager;
 
     void Awake()
     {
@@ -100,11 +106,12 @@ public class PlayerBattleController : MonoBehaviour
         {
             hasDefended = true;
             hasDodged = true;
-            if(isInsideDodge)
+            if (isInsideDodge)
             {
                 Debug.Log("You dodged!");
                 successDodge = true;
                 audioManager.Play("SuccessDodge");
+                animator.SetTrigger("Dodge");
             }
             else
             {
@@ -185,11 +192,12 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         TakeDamage(enemy.GetDamageAmount() - reduction);
+        ResetAction();
     }
 
     private void SuccessDodge()
     {
-
+        ResetAction();
     }
 
     public void EnteredBlockZone(GameObject other)
@@ -225,15 +233,25 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         damageToTake = damage - reduction;
-        if (damageToTake <= 0)
+
+        if(damageToTake > damageThreshold && damageThreshold != 0)
         {
-            damageToTake = 0;
+            damageToTake = damageThreshold;
         }
-        else
+
+        if (damageToTake >= playerValues.healthPoints && undershot)
+        {
+            undershot = false;
+            damageToTake = playerValues.healthPoints - 1;
+            FindObjectOfType<Undershot>().SetActiveTurn();
+        }
+
+        if (damageToTake >= 1)
         {
             playerValues.healthPoints -= damageToTake;
+            damageTaken += damageToTake;
             StartCoroutine(DamageText(damageToTake));
-            
+
             audioManager.Play("TakeDamage");
             Debug.Log("You took " + (damageToTake) + " damage!");
 
@@ -241,7 +259,7 @@ public class PlayerBattleController : MonoBehaviour
             {
                 animator.SetTrigger("Damage");
             }
-            EnemyTurnStart();
+            ResetAction();
             CheckHealthAnimation();
         }
     }
@@ -276,7 +294,7 @@ public class PlayerBattleController : MonoBehaviour
         }
     }
 
-    public void EnemyTurnStart()
+    public void ResetAction()
     {
         hasDefended = false;
         hasBlocked = false;
@@ -303,5 +321,36 @@ public class PlayerBattleController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         Destroy(text.gameObject);
+    }
+
+    public IEnumerator MissText(string missText)
+    {
+        var text = Instantiate(damageText, canvas.transform);
+        text.GetComponent<TextMeshProUGUI>().text = missText;
+
+        yield return new WaitForSeconds(1);
+
+        Destroy(text.gameObject);
+    }
+
+    public void EnableEasyBlocking()
+    {
+        blockCollider.SetActive(false);
+        easyBlockCollider.SetActive(true);
+    }
+
+    public int GetDamageTaken()
+    {
+        return damageTaken;
+    }
+
+    public void SetDamageThreshold(int newThreshold)
+    {
+        damageThreshold = newThreshold;
+    }
+
+    public void SetUndershot(bool status)
+    {
+        undershot = status;
     }
 }

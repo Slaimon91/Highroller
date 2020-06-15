@@ -60,7 +60,7 @@ public class BattleSystem : MonoBehaviour
 
 
     public BattleState state;
-    PlayerControls controls;
+    private PlayerControls controls;
     private GameObject lastselect;
     private PlayerBattleController player;
     private bool cancelPressed = false;
@@ -213,8 +213,8 @@ public class BattleSystem : MonoBehaviour
             rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
             Image enemiesInfoImage = enemiesInfo[i].GetComponent<Image>();
             enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetIcon();
-            enemiesInfo[i].unitName = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName();
-            enemiesInfo[i].unitText = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText();
+            enemiesInfo[i].SetUnitName(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName());
+            enemiesInfo[i].SetUnitText(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText());
         }
 
         //Instantiate player abilities
@@ -228,8 +228,8 @@ public class BattleSystem : MonoBehaviour
                 RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
                 Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
-                abilityHolder[i].unitName = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName();
-                abilityHolder[i].unitText = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo();
+                abilityHolder[i].SetAbilityName(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName());
+                abilityHolder[i].SetAbilityText(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo());
 
                 battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
@@ -246,8 +246,8 @@ public class BattleSystem : MonoBehaviour
                 rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
                 Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
                 //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
-                abilityHolder[i].unitName = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName();
-                abilityHolder[i].unitText = battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo();
+                abilityHolder[i].SetAbilityName(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName());
+                abilityHolder[i].SetAbilityText(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo());
 
                 battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
             }
@@ -609,7 +609,7 @@ public class BattleSystem : MonoBehaviour
         //Enemy Attack
         for(int i = enemiesGO.Count - 1; i >= 0; i--)
         {
-            player.EnemyTurnStart();
+            player.ResetAction();
             yield return StartCoroutine(enemiesGO[i].GetComponent<EnemyBattleBase>().EnemyAction());
         }
     }

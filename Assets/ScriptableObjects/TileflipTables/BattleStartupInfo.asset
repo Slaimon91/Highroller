@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BattleStartupInfo
   m_EditorClassIdentifier: 
   name: BattleStartupInfo
-  battleBackground: {fileID: 21300000, guid: 868ec6a12a94656459e360ae11615600, type: 3}
+  battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
   enemies:
   - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
   - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
@@ -21,6 +21,5 @@ MonoBehaviour:
   - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
   nrOfDices: 5
   abilities:
-  - {fileID: 7169479119645993484, guid: 194245fc3724f20468966aae2a4f3110, type: 3}
-  - {fileID: 1307271038169882144, guid: 4729881ee4717194a9822459a8eb59b5, type: 3}
-  - {fileID: 4943992635638335887, guid: bd83610fb98f05e4793f2522e9d8e341, type: 3}
+  - {fileID: -5330288948479464642, guid: 21663d30897f3ff4db779a049c6d8fac, type: 3}
+  - {fileID: -5941054001571754277, guid: 926cb30092327e34a9ebac38daf28437, type: 3}

@@ -4,21 +4,16 @@ using System.Collections;
 public class ThrowSimulation : MonoBehaviour
 {
     private Transform Target;
-    public float gravity = 9.8f;
-    public float arcAmount = 50f;
-    public float heightOfShot = 1f;
+    [SerializeField] float gravity = 9.8f;
+    [SerializeField] float arcAmount = 50f;
+    [SerializeField] float heightOfShot = 1f;
 
-    public Transform Projectile;
+    [SerializeField] Transform Projectile;
     private Transform myTransform;
 
     void Awake()
     {
         myTransform = transform;
-    }
-
-    void Start()
-    {
-        
     }
 
     public IEnumerator StartThrowCoro()

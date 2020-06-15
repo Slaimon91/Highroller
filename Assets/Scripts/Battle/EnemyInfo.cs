@@ -17,8 +17,8 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
     private GameObject infoTextImage;
     private TextMeshProUGUI infoName;
     private TextMeshProUGUI infoText;
-    [HideInInspector] public string unitName;
-    [HideInInspector] public string unitText;
+    private string unitName;
+    private string unitText;
 
     void Start()
     {
@@ -79,5 +79,15 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
                 GetComponent<Button>().navigation = nav;
                 break;
         }
+    }
+
+    public void SetUnitName(string newName)
+    {
+        unitName = newName;
+    }
+
+    public void SetUnitText(string newText)
+    {
+        unitText = newText;
     }
 }

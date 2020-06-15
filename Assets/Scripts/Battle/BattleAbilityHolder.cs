@@ -20,8 +20,8 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
     private GameObject infoTextImage;
     private TextMeshProUGUI infoName;
     private TextMeshProUGUI infoText;
-    [HideInInspector] public string unitName;
-    [HideInInspector] public string unitText;
+    private string abilityName;
+    private string abilityText;
     private bool activatable = false;
     private bool isMarked = false;
     Animator animator;
@@ -42,8 +42,8 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         buttonSelected = true;
         selected.SetActive(true);
         FindObjectOfType<AudioManager>().Play("MoveBattleCursor");
-        infoName.text = unitName;
-        infoText.text = unitText;
+        infoName.text = abilityName;
+        infoText.text = abilityText;
         infoTextImage.SetActive(true);
     }
 
@@ -78,7 +78,8 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         activatable = false;
         imageHolder.GetComponent<Image>().sprite = normal;
         inactive.SetActive(true);
-        animator.enabled = false;
+        if(animator != null)
+            animator.enabled = false;
     }
 
     public bool GetMarkedStatus()
@@ -108,5 +109,25 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
                 GetComponent<Button>().navigation = nav;
                 break;
         }
+    }
+
+    public string GetAbilityName()
+    {
+        return abilityName;
+    }
+
+    public string GetAbilityText()
+    {
+        return abilityText;
+    }
+
+    public void SetAbilityName(string newName)
+    {
+        abilityName = newName;
+    }
+
+    public void SetAbilityText(string newText)
+    {
+        abilityText = newText;
     }
 }

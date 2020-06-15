@@ -5,7 +5,7 @@ using UnityEngine;
 public class DungbeeBattle : EnemyBattleBase
 {
     [SerializeField] ThrowSimulation rockToThrow;
-    public Transform throwingHand;
+    [SerializeField] Transform throwingHand;
     private int attacksFinished = 0;
     private int attacksLaunched = 0;
     private bool exposed = false;

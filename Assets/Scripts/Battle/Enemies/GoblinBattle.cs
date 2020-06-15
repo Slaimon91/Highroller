@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class GoblinBattle : EnemyBattleBase
 {
     [SerializeField] ThrowSimulation rockToThrow;
-    public Transform throwingHand;
+    [SerializeField] Transform throwingHand;
     private bool attackFinished = false;
-    // Start is called before the first frame update
+
     void Awake()
     {
         if (GetComponent<Animator>() != null)

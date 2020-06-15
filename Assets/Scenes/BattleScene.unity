@@ -237,7 +237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609458937}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
@@ -780,6 +780,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 549468895, guid: 3e911584b4561ca4aa227456d35693fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2,
+        type: 3}
+    - target: {fileID: 549468895, guid: 3e911584b4561ca4aa227456d35693fb, type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 549468895, guid: 3e911584b4561ca4aa227456d35693fb, type: 3}
+      propertyPath: m_Size.y
+      value: 5.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 549468896, guid: 3e911584b4561ca4aa227456d35693fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7000813602035915060, guid: 3e911584b4561ca4aa227456d35693fb,
         type: 3}
       propertyPath: m_LocalPosition.x
