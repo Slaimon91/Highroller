@@ -32,8 +32,12 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         infoTextImage = abilityPanel.infoTextHolder;
         infoName = abilityPanel.infoName;
         infoText = abilityPanel.infoText;
-        activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
-        imageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+        if(GetComponentInChildren<AbilityBase>() != null)
+        {
+            activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
+            imageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+        }
+        
         animator = GetComponentInChildren<Animator>();
     }
 

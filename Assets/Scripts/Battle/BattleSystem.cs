@@ -564,6 +564,7 @@ public class BattleSystem : MonoBehaviour
 
         if (enemiesGO.Count == 0)
         {
+            yield return StartCoroutine(WaitSec(2f));
             FindObjectOfType<LevelLoader>().LoadOverworldScene();
             
         }
@@ -594,7 +595,11 @@ public class BattleSystem : MonoBehaviour
         {
             yield return null;
         }
-
+        if(sentToRemoveList.Count != 0)
+        {
+            player.AbsorbGaia();
+        }
+        
         yield return null;
 
     }
@@ -944,6 +949,11 @@ public class BattleSystem : MonoBehaviour
         {
             lastselect = EventSystem.current.currentSelectedGameObject;
         }
+    }
+
+    IEnumerator WaitSec(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     public void OnAssignButton()

@@ -196,4 +196,4 @@ MonoBehaviour:
 
     10% chance to completely dodge any attack.'
   activeAbility: 0
-  missChance: 10
+  missChance: 50

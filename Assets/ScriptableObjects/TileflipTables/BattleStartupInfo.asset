@@ -19,7 +19,5 @@ MonoBehaviour:
   - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
   - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
   - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-  nrOfDices: 5
-  abilities:
-  - {fileID: -5330288948479464642, guid: 21663d30897f3ff4db779a049c6d8fac, type: 3}
-  - {fileID: -5941054001571754277, guid: 926cb30092327e34a9ebac38daf28437, type: 3}
+  nrOfDices: 3
+  abilities: []

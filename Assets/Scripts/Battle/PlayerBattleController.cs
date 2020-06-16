@@ -353,4 +353,9 @@ public class PlayerBattleController : MonoBehaviour
     {
         undershot = status;
     }
+
+    public void AbsorbGaia()
+    {
+        animator.SetTrigger("AbsorbGaia");
+    }
 }
