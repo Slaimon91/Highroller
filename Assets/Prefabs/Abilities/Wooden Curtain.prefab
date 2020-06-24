@@ -196,4 +196,5 @@ MonoBehaviour:
 
     Reduce damage taken above 5.'
   activeAbility: 0
+  inventorySlotNr: 11
   damageThreshold: 5

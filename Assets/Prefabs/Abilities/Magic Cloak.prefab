@@ -196,6 +196,7 @@ MonoBehaviour:
   info: Stores all damage taken so far and then heals for half that amount at the
     start of your next turn.
   activeAbility: 1
+  inventorySlotNr: 6
 --- !u!95 &2285171461081071533
 Animator:
   serializedVersion: 3

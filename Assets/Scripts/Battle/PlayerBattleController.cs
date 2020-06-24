@@ -37,6 +37,7 @@ public class PlayerBattleController : MonoBehaviour
     private BattleSystem battleSystem;
     private Animator animator;
     private AudioManager audioManager;
+    private bool sleepTimer = false;
 
     void Awake()
     {
@@ -70,6 +71,29 @@ public class PlayerBattleController : MonoBehaviour
             }
 
             Dead();
+        }
+
+        if(battleSystem.state == BattleState.PLAYERTURN && !sleepTimer)
+        {
+            sleepTimer = true;
+            CheckHealthAnimation();
+            StartCoroutine(SleepyPlayer());
+        }
+        if (battleSystem.state != BattleState.PLAYERTURN)
+        {
+            sleepTimer = false;
+            CheckHealthAnimation();
+            StopCoroutine(SleepyPlayer());
+        }
+
+    }
+
+    IEnumerator SleepyPlayer()
+    {
+        yield return new WaitForSeconds(120f);
+        if(animator.GetFloat("IdleState") != 2)
+        {
+            animator.SetFloat("IdleState", 1);
         }
     }
 

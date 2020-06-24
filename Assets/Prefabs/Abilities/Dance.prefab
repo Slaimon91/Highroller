@@ -196,4 +196,5 @@ MonoBehaviour:
 
     10% chance to completely dodge any attack.'
   activeAbility: 0
+  inventorySlotNr: 2
   missChance: 50

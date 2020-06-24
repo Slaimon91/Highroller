@@ -196,3 +196,4 @@ MonoBehaviour:
 
     Easier guard timing.'
   activeAbility: 0
+  inventorySlotNr: 4

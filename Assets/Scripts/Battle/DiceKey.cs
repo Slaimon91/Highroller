@@ -23,6 +23,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     private Animator animator;
     private Animator animatorAssigned;
     private AudioManager audioManager;
+    private BattleSystem battleSystem;
 
     void Awake()
     {
@@ -30,8 +31,13 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         animatorAssigned = GetComponentInChildren<Animator>();
         animator.enabled = false;
         audioManager = FindObjectOfType<AudioManager>();
+        
     }
-    // Update is called once per frame
+    void Start()
+    {
+        battleSystem = FindObjectOfType<BattleSystem>();
+    }
+
     void Update()
     {
         if (animator.enabled == true)
@@ -155,4 +161,30 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
 
     }
+
+    /*public void SetupButtonText()
+    {
+        //blue
+        buttonPanel.SetEmptyBlueText();
+
+        //green
+        if (battleSystem.CheckDiceSelected())
+        {
+            buttonPanel.SetDeselectGreenText();
+        }
+        else
+        {
+            buttonPanel.SetEmptyGreenText();
+        }
+
+        //red
+        if (battleSystem.CheckDiceSelected())
+        {
+            buttonPanel.SetDeselectText();
+        }
+        else
+        {
+            buttonPanel.SetEmptyRedText();
+        }
+    }*/
 }

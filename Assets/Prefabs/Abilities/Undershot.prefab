@@ -197,3 +197,4 @@ MonoBehaviour:
     If you would die, you will survive with 1 hp, becomes inactive
     after first use.'
   activeAbility: 0
+  inventorySlotNr: 10

@@ -196,4 +196,5 @@ MonoBehaviour:
 
     Decreases all damage taken by 1.'
   activeAbility: 0
+  inventorySlotNr: 1
   reductionAmount: 1

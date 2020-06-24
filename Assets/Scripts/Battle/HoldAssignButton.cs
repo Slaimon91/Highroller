@@ -26,6 +26,7 @@ public class HoldAssignButton : MonoBehaviour
     private EventSystem eventSystem;
     private AudioManager audioManager;
     private Animator animatorPass;
+    private ButtonPanel buttonPanel;
 
     void Awake()
     {
@@ -35,6 +36,11 @@ public class HoldAssignButton : MonoBehaviour
         eventSystem = FindObjectOfType<EventSystem>();
         audioManager = FindObjectOfType<AudioManager>();
         animatorPass = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        buttonPanel = FindObjectOfType<ButtonPanel>();
     }
 
     // Update is called once per frame
@@ -49,7 +55,10 @@ public class HoldAssignButton : MonoBehaviour
             }
 
             eventSystem.SetSelectedGameObject(null);
-            
+            buttonPanel.SetEmptyRedText();
+            buttonPanel.SetEmptyGreenText();
+            buttonPanel.SetEmptyBlueText();
+
             buttonDownTimer += Time.deltaTime;
             if (buttonDownTimer >= requiredHoldTime)
             {

@@ -123,8 +123,8 @@ MonoBehaviour:
   info: 'Active:
 
     You cannot take damage this turn. '
-  battleImageHolder: {fileID: 0}
   activeAbility: 1
+  inventorySlotNr: 5
 --- !u!95 &8194898186937002328
 Animator:
   serializedVersion: 3

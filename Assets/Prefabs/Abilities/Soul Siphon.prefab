@@ -196,4 +196,5 @@ MonoBehaviour:
 
     Whenever you kill an enemy, heal 2 HP.'
   activeAbility: 0
+  inventorySlotNr: 9
   healAmount: 2

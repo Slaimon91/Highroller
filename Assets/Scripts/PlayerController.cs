@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityStandardAssets.CrossPlatformInput;
 using TMPro;
+
+public enum GameState { PLAYING, PAUSED };
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask whatStopsMovement;
 
     //State
+    public GameState state;
 
     //Cached component references
     Animator animator;
@@ -36,12 +38,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerValues playerValues;
 
     enum Direction { North, East, South, West, None};
+
     
     PlayerControls controls;
     [SerializeField] TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
     [SerializeField] TextMeshProUGUI gaiaText;
     private GameObject gaiaTextGameObject;
+    [SerializeField] GameObject overWorldCanvas;
 
     Vector2 move;
     void Awake()
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Tileflip.performed += ctx => PressedTileFlip();
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        state = GameState.PLAYING;
     }
 
     void Start()
@@ -74,6 +79,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(state != GameState.PLAYING)
+        {
+            return;
+        }
         healthText.text = playerValues.healthPoints.ToString() + " / " + playerValues.maxHealthPoints.ToString();
         gaiaText.text = playerValues.gaia.ToString();
         //Normal state
@@ -112,6 +121,20 @@ public class PlayerController : MonoBehaviour
     private void ChangeSceneHax()
     {
         FindObjectOfType<LevelLoader>().LoadBattleScene();
+    }
+
+    public void SetGameState(GameState gameState)
+    {
+        state = gameState;
+
+        if(state == GameState.PAUSED)
+        {
+            overWorldCanvas.SetActive(false);
+        }
+        else if (state == GameState.PLAYING)
+        {
+            overWorldCanvas.SetActive(true);
+        }
     }
 
     private void FlipTile()

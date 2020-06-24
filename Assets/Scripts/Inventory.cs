@@ -21,26 +21,30 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-    public delegate void OnItemChanged();
+    public delegate void OnItemChanged(Item item);
     public OnItemChanged onItemChangedCallback;
 
-    public int space = 20;
-
     public List<Item> items = new List<Item>();
+    public List<Item> abilities = new List<Item>();
 
     public bool Add (Item item)
     {
-        if(items.Count >= space)
+        //if it is an ability
+        if(item.prefab.GetComponent<AbilityBase>() != null)
         {
-            Debug.Log("Not enough room.");
+            //abilities.Add(item.prefab.GetComponent<AbilityBase>());
+            abilities.Add(item);
+        }
+        else
+        {
             return false;
         }
 
-        items.Add(item);
+        //items.Add(item);
 
         if(onItemChangedCallback != null)
         {
-            onItemChangedCallback.Invoke();
+            onItemChangedCallback.Invoke(item);
         }
 
         return true;
@@ -52,7 +56,7 @@ public class Inventory : MonoBehaviour
 
         if (onItemChangedCallback != null)
         {
-            onItemChangedCallback.Invoke();
+            onItemChangedCallback.Invoke(item);
         }
     }
 

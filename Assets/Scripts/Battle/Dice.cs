@@ -31,7 +31,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Sprite[] diceSpritesInactive;
     public Sprite[] diceSpritesAssigned;
 
-    PlayerControls controls;
+    private PlayerControls controls;
     void Awake()
     {
         controls = new PlayerControls();
@@ -267,4 +267,55 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         controls.Gameplay.Disable();
     }
+
+    /*public void SetupButtonText()
+    {
+        //blue
+        if (diceLocked)
+        {
+            buttonPanel.SetUnlockText();
+            //buttonPanel.SetEmptyGreenText();
+        }
+        else if (!diceInactive && !diceAssigned && !diceLocked)
+        {
+            buttonPanel.SetLockText();
+        }
+        else
+        {
+            buttonPanel.SetEmptyBlueText();
+        }
+
+        //green
+        if (diceMarked)
+        {
+            buttonPanel.SetDeselectGreenText();
+        }
+        else if (battleSystem.CheckDiceSelected() && !diceInactive && !diceAssigned && !diceLocked)
+        {
+            buttonPanel.SetCombineText();
+        }
+        
+        else if(!diceInactive && !diceAssigned && !diceLocked)
+        {
+            buttonPanel.SetSelectText();
+        }
+        else
+        {
+            buttonPanel.SetEmptyGreenText();
+        }
+
+        //red
+        if (diceMarked || battleSystem.CheckDiceSelected())
+        {
+            buttonPanel.SetDeselectText();
+        }
+        else if (isGold || isPlatinum && (!diceInactive && !diceAssigned && !diceLocked))
+        {
+            buttonPanel.SetSplitText();
+        }
+        else
+        {
+            buttonPanel.SetEmptyRedText();
+        }
+    }*/
 }

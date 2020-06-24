@@ -105,6 +105,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""InventoryLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e2c324c-a890-431f-9290-f41045b646bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""InventoryRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3219674-23ff-4914-9534-f3683c81b7f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -470,6 +486,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9e2e74d-afe1-430e-bad8-c1f92658d4c5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c471a684-6f28-48f1-bb5d-4989ad367f92"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0063980f-a7a9-4205-86bd-847407ae698f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34563bf0-48b1-4851-8068-2512c61127f5"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -489,6 +549,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay_ChangeSceneHax = m_Gameplay.FindAction("ChangeSceneHax", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Pass = m_Gameplay.FindAction("Pass", throwIfNotFound: true);
+        m_Gameplay_InventoryLeft = m_Gameplay.FindAction("InventoryLeft", throwIfNotFound: true);
+        m_Gameplay_InventoryRight = m_Gameplay.FindAction("InventoryRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -549,6 +611,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_ChangeSceneHax;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Pass;
+    private readonly InputAction m_Gameplay_InventoryLeft;
+    private readonly InputAction m_Gameplay_InventoryRight;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -564,6 +628,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @ChangeSceneHax => m_Wrapper.m_Gameplay_ChangeSceneHax;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Pass => m_Wrapper.m_Gameplay_Pass;
+        public InputAction @InventoryLeft => m_Wrapper.m_Gameplay_InventoryLeft;
+        public InputAction @InventoryRight => m_Wrapper.m_Gameplay_InventoryRight;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -606,6 +672,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pass.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPass;
                 @Pass.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPass;
                 @Pass.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPass;
+                @InventoryLeft.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryLeft;
+                @InventoryLeft.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryLeft;
+                @InventoryLeft.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryLeft;
+                @InventoryRight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryRight;
+                @InventoryRight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryRight;
+                @InventoryRight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInventoryRight;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -643,6 +715,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Pass.started += instance.OnPass;
                 @Pass.performed += instance.OnPass;
                 @Pass.canceled += instance.OnPass;
+                @InventoryLeft.started += instance.OnInventoryLeft;
+                @InventoryLeft.performed += instance.OnInventoryLeft;
+                @InventoryLeft.canceled += instance.OnInventoryLeft;
+                @InventoryRight.started += instance.OnInventoryRight;
+                @InventoryRight.performed += instance.OnInventoryRight;
+                @InventoryRight.canceled += instance.OnInventoryRight;
             }
         }
     }
@@ -660,5 +738,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnChangeSceneHax(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnPass(InputAction.CallbackContext context);
+        void OnInventoryLeft(InputAction.CallbackContext context);
+        void OnInventoryRight(InputAction.CallbackContext context);
     }
 }

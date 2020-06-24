@@ -12,10 +12,11 @@ public class AbilityBase : MonoBehaviour
     protected string info;
 
     protected GameObject battleImageHolder;
-
     [SerializeField] protected bool activeAbility = false;
 
     protected bool inactive = false;
+
+    [SerializeField] protected int inventorySlotNr;
 
     void Awake()
     {
@@ -44,9 +45,28 @@ public class AbilityBase : MonoBehaviour
         return battleImageHolder;
     }
 
+    public Sprite GetBattleImageSprite()
+    {
+        Image[] images = gameObject.GetComponentsInChildren<Image>();
+
+        foreach (Image image in images)
+        {
+            if (image.gameObject != battleImageHolder.gameObject)
+            {
+                return image.sprite;
+            }
+        }
+        return null;
+    }
+
     public bool GetInactiveStatus()
     {
         return inactive;
+    }
+
+    public int GetInventorySlotNr()
+    {
+        return inventorySlotNr;
     }
 
     //Abilities

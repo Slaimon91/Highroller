@@ -52,8 +52,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Transform enemiesInfoPanel;
     [SerializeField] Transform abilitiesPanel;
     [SerializeField] Transform abilitiesPanelThree;
-    [SerializeField] Sprite threeAbilitiesSprite;
     [SerializeField] Image buttonInfoBox;
+    [SerializeField] Sprite threeAbilitiesSprite;
     [SerializeField] Sprite playerturnButtonBox;
     [SerializeField] Sprite enemyturnButtonBox;
     [SerializeField] BattleStartupInfo battleStartupInfo;
@@ -68,6 +68,7 @@ public class BattleSystem : MonoBehaviour
     private Sprite battleBackground;
     private EventSystem eventSystem;
     private AudioManager audioManager;
+    private ButtonPanel buttonPanel;
 
     void Awake()
     {
@@ -83,6 +84,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         audioManager = FindObjectOfType<AudioManager>();
         eventSystem = FindObjectOfType<EventSystem>();
+        buttonPanel = FindObjectOfType<ButtonPanel>();
         SetUpBattle();
     }
 
@@ -408,6 +410,7 @@ public class BattleSystem : MonoBehaviour
         SetupButtonNavigation();
         state = BattleState.PLAYERTURN;
         RollDice();
+        buttonInfoBox.sprite = playerturnButtonBox;
     }
 
     void PlayerTurn()
@@ -751,7 +754,6 @@ public class BattleSystem : MonoBehaviour
                         {
                             if(pressedDiceKey.GetGoldStatus() && !firstPressedDice.GetGoldStatus() && !firstPressedDice.GetPlatinumStatus())
                             {
-                                Debug.Log("jek");
                                 break;
                                 //Play negative sound
                             }
@@ -864,6 +866,7 @@ public class BattleSystem : MonoBehaviour
 
                                         firstDicePair[0] = -1;
                                         firstDicePair[1] = -1;
+                                        buttonPanel.SetEmptyRedText();
                                     }
                                 }
 
@@ -879,6 +882,7 @@ public class BattleSystem : MonoBehaviour
 
                                         secondDicePair[0] = -1;
                                         secondDicePair[1] = -1;
+                                        buttonPanel.SetEmptyRedText();
                                     }
                                 }
                             }
@@ -898,6 +902,7 @@ public class BattleSystem : MonoBehaviour
 
                                         thirdDicePair[0] = -1;
                                         thirdDicePair[1] = -1;
+                                        buttonPanel.SetSplitText();
                                     }
                                 }
                             }
@@ -937,6 +942,19 @@ public class BattleSystem : MonoBehaviour
     public int GetEnemyIndex(GameObject enemy)
     {
         return enemiesGO.IndexOf(enemy);
+    }
+
+    public bool CheckDiceSelected()
+    {
+        for (int i = 0; i < diceObjects.Count; i++)
+        {
+            if (diceObjects[i].GetMarkedStatus())
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void PreventCursor()

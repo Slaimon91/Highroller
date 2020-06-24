@@ -1,14 +1,20 @@
-﻿using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
-    public GameObject inventoryUI;
+    public Transform abilityItemsParent;
+    public GameObject firstSlot;
 
     Inventory inventory;
 
-    InventorySlot[] slots;
+    private List<InventorySlot> seedSlots = new List<InventorySlot>();
+    private List<InventorySlot> abilitySlots = new List<InventorySlot>();
+
+    [SerializeField] List<GameObject> inventoryTabs = new List<GameObject>();
+    private GameObject currentActiveTab;
+    [SerializeField] GameObject inventoryInput;
 
     PlayerControls controls;
     void Awake()
@@ -22,24 +28,50 @@ public class InventoryUI : MonoBehaviour
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach(InventorySlot slot in abilityItemsParent.GetComponentsInChildren<InventorySlot>())
+        {
+            abilitySlots.Add(slot);
+        }
+        currentActiveTab = inventoryTabs[0];
+        currentActiveTab.SetActive(true);
+        //inventoryInput = GetComponentInChildren<InventoryInput>().gameObject;
     }
 
     void ShowInventory()
     {
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        if(!inventoryInput.activeSelf)
+        {
+            inventoryInput.SetActive(!inventoryInput.activeSelf);
+            FindObjectOfType<EventSystem>().SetSelectedGameObject(firstSlot);
+            FindObjectOfType<PlayerController>().SetGameState(GameState.PAUSED);
+        }
+        else
+        {
+            InventoryAbility[] abilities = FindObjectsOfType<InventoryAbility>();
+            foreach(InventoryAbility ability in abilities)
+            {
+                ability.ForceDeselect();
+            }
+
+            inventoryInput.SetActive(!inventoryInput.activeSelf);
+            FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
+            FindObjectOfType<PlayerController>().SetGameState(GameState.PLAYING);
+        }
+        
     }
 
-    void UpdateUI()
+    void UpdateUI(Item item)
     {
-        for (int i = 0; i < slots.Length; i++)
+        if (item.prefab.GetComponent<AbilityBase>() != null)
         {
+            int slotNr = item.prefab.GetComponent<AbilityBase>().GetInventorySlotNr();
+            abilitySlots[slotNr].AddItem(item);
+            //abilitySlots[slotNr].GetChildHolder().GetComponent<InventoryAbility>().Created();
+        }
+
+        /*for (int i = 0; i < slots.Length; i++)
+        {
+            
             if(i < inventory.items.Count)
             {
                 slots[i].AddItem(inventory.items[i]);
@@ -48,7 +80,27 @@ public class InventoryUI : MonoBehaviour
             {
                 slots[i].ClearSlot();
             }
+        }*/
+    }
+
+    public void ChangeInventoryTab(int tabValue)
+    {
+        int index = inventoryTabs.IndexOf(currentActiveTab);
+
+        currentActiveTab.SetActive(false);
+        index += tabValue;
+
+        if (index <= -1)
+        {
+            index = inventoryTabs.Count - 1;
         }
+        else if(index >= inventoryTabs.Count)
+        {
+            index = 0;
+        }
+
+        currentActiveTab = inventoryTabs[index];
+        currentActiveTab.SetActive(true);
     }
 
     void OnEnable()

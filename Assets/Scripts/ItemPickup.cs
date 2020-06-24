@@ -18,6 +18,5 @@ public class ItemPickup : MonoBehaviour, IInteractable
         {
             Destroy(gameObject);
         }
-        
     }
 }

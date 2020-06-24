@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Green Gem
   m_EditorClassIdentifier: 
   name: Green Gem
-  icon: {fileID: 21300000, guid: 115f2bb85e90ecc4d98e91fc74249b07, type: 3}
+  icon: {fileID: 21300000, guid: 20c6aab1b8622d546bd3379883911a72, type: 3}
+  prefab: {fileID: 4030386780676420098, guid: bd83610fb98f05e4793f2522e9d8e341, type: 3}

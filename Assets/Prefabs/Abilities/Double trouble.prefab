@@ -123,6 +123,7 @@ MonoBehaviour:
 
     You can damage two enemies with the same die roll.'
   activeAbility: 1
+  inventorySlotNr: 3
 --- !u!95 &-4364812144021820742
 Animator:
   serializedVersion: 3

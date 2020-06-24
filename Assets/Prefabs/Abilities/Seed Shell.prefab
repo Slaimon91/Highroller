@@ -196,4 +196,5 @@ MonoBehaviour:
 
     A successful guard prevents 1 extra damage.'
   activeAbility: 0
+  inventorySlotNr: 8
   reductionAmount: 1

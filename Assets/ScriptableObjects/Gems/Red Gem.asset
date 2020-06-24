@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Red Gem
   m_EditorClassIdentifier: 
   name: Red Gem
-  icon: {fileID: 21300000, guid: bb8daa4204a6e034b8a6d205cf22d228, type: 3}
+  icon: {fileID: 21300000, guid: 6a708edc18add5c4ebc528e963b7f9c7, type: 3}
+  prefab: {fileID: 4178549126158828900, guid: 8e743c6dd2ca4a248a51dfd59a2a42ce, type: 3}

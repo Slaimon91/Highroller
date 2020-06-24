@@ -196,4 +196,5 @@ MonoBehaviour:
 
     You gain 1 HP at the start of your turn.'
   activeAbility: 0
+  inventorySlotNr: 7
   healAmount: 1
