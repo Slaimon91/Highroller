@@ -51,11 +51,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.ChangeSceneHax.performed += ctx => ChangeSceneHax();
-        controls.Gameplay.Interact.performed += ctx => Interact();
-        controls.Gameplay.Tileflip.performed += ctx => PressedTileFlip();
-        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneHax();
+        controls.Overworld.Interact.performed += ctx => Interact();
+        controls.Overworld.Tileflip.performed += ctx => PressedTileFlip();
+        controls.Overworld.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Overworld.Move.canceled += ctx => move = Vector2.zero;
         state = GameState.PLAYING;
     }
 
@@ -101,6 +101,10 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
+        if (state != GameState.PLAYING)
+        {
+            return;
+        }
         //Flipping a tile
         if (!interacting && tileFlipping)
         {
@@ -170,6 +174,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("YOU GOT GAIA 20!");
                 playerValues.gaia += 20;
+                playerValues.seedStage++;
             }
             else
             {
@@ -183,6 +188,8 @@ public class PlayerController : MonoBehaviour
             if (pickedNumber < 20)
             {
                 Debug.Log("YOU GOT GAIA!");
+                playerValues.gaia += 20;
+                playerValues.seedStage++;
             }
             else
             {
@@ -197,6 +204,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("YOU GOT GAIA 20!");
                 playerValues.gaia += 20;
+                playerValues.seedStage++;
             }
             else
             {
@@ -248,6 +256,11 @@ public class PlayerController : MonoBehaviour
 
     private void PressedTileFlip()
     {
+        
+        if (state != GameState.PLAYING)
+        {
+            return;
+        }
         //Pressed tileflip
         if (!interacting)
         {
@@ -485,11 +498,11 @@ public class PlayerController : MonoBehaviour
     }
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.Overworld.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.Overworld.Disable();
     }
 }

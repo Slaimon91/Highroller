@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549468894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1718, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7000813602035915060}
@@ -70,12 +70,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 868ec6a12a94656459e360ae11615600, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10, y: 5.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -215,11 +215,12 @@ MonoBehaviour:
   enemiesInfoPanel: {fileID: 0}
   abilitiesPanel: {fileID: 0}
   abilitiesPanelThree: {fileID: 0}
+  buttonInfoBox: {fileID: 0}
   threeAbilitiesSprite: {fileID: 21300000, guid: 79c627b2ea87ce548ba1a9d14c779db7,
     type: 3}
-  buttonInfoBox: {fileID: 0}
   playerturnButtonBox: {fileID: 21300000, guid: c32a07db0036ac84aa4221535a1d4174,
     type: 3}
   enemyturnButtonBox: {fileID: 21300000, guid: e318e8f03415bd14d9d3d0f623bb8e2a, type: 3}
+  whiteAbilityBorder: {fileID: 21300000, guid: ab701fcc5520a3047bfc5f48bfff2303, type: 3}
   battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}
   state: 0

@@ -12,6 +12,7 @@ public class AbilityBase : MonoBehaviour
     protected string info;
 
     protected GameObject battleImageHolder;
+    protected GameObject inventoryImageHolder;
     [SerializeField] protected bool activeAbility = false;
 
     protected bool inactive = false;
@@ -21,7 +22,14 @@ public class AbilityBase : MonoBehaviour
     void Awake()
     {
         transform.SetSiblingIndex(0);
-        battleImageHolder = GetComponentInChildren<Image>().gameObject;
+        if(GetComponentInChildren<BattleAbilityTagger>() != null)
+        {
+            battleImageHolder = GetComponentInChildren<BattleAbilityTagger>().gameObject;
+        }
+        if(GetComponentInChildren<InventoryAbilityTagger>() != null)
+        {
+            inventoryImageHolder = GetComponentInChildren<InventoryAbilityTagger>().gameObject;
+        }
     }
 
     //Getters & Setters
@@ -45,13 +53,32 @@ public class AbilityBase : MonoBehaviour
         return battleImageHolder;
     }
 
+    public GameObject GetInventoryImageHolder()
+    {
+        return inventoryImageHolder;
+    }
+
     public Sprite GetBattleImageSprite()
     {
-        Image[] images = gameObject.GetComponentsInChildren<Image>();
+        Image[] images = battleImageHolder.GetComponentsInChildren<Image>();
 
         foreach (Image image in images)
         {
             if (image.gameObject != battleImageHolder.gameObject)
+            {
+                return image.sprite;
+            }
+        }
+        return null;
+    }
+
+    public Sprite GetInventoryImageSprite()
+    {
+        Image[] images = inventoryImageHolder.GetComponentsInChildren<Image>();
+
+        foreach (Image image in images)
+        {
+            if (image.gameObject != inventoryImageHolder.gameObject)
             {
                 return image.sprite;
             }

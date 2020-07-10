@@ -31,8 +31,8 @@ public class HoldAssignButton : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.Pass.performed += ctx => ButtonStarted();
-        controls.Gameplay.Pass.canceled += ctx => ButtonCanceled();
+        controls.Battle.Pass.performed += ctx => ButtonStarted();
+        controls.Battle.Pass.canceled += ctx => ButtonCanceled();
         eventSystem = FindObjectOfType<EventSystem>();
         audioManager = FindObjectOfType<AudioManager>();
         animatorPass = GetComponent<Animator>();
@@ -111,11 +111,11 @@ public class HoldAssignButton : MonoBehaviour
 
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.Battle.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.Battle.Disable();
     }
 }

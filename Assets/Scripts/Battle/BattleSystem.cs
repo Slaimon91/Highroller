@@ -56,6 +56,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Sprite threeAbilitiesSprite;
     [SerializeField] Sprite playerturnButtonBox;
     [SerializeField] Sprite enemyturnButtonBox;
+    [SerializeField] Sprite whiteAbilityBorder;
     [SerializeField] BattleStartupInfo battleStartupInfo;
 
 
@@ -73,7 +74,7 @@ public class BattleSystem : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.Cancel.performed += ctx => PressedCancel();   
+        controls.Battle.Cancel.performed += ctx => PressedCancel();   
     }
 
     // Start is called before the first frame update
@@ -220,40 +221,47 @@ public class BattleSystem : MonoBehaviour
         }
 
         //Instantiate player abilities
-        for (int i = 0; i < battleStartupInfo.abilities.Count; i++)
+        if(FindObjectOfType<InventoryUI>() != null)
         {
-            if(battleStartupInfo.abilities.Count == 1 || battleStartupInfo.abilities.Count == 2)
+            List<AbilityBase> equippedAbilities = FindObjectOfType<InventoryUI>().GetPlayerAbilities();
+
+            for (int i = 0; i < equippedAbilities.Count; i++)
             {
-                int offset = 22;
+                if (equippedAbilities.Count == 1 || equippedAbilities.Count == 2)
+                {
+                    int offset = 22;
 
-                abilityHolder.Add(Instantiate(abilitiesPrefab, abilitiesPanel.transform));
-                RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
-                rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
-                Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
-                abilityHolder[i].SetAbilityName(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName());
-                abilityHolder[i].SetAbilityText(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo());
+                    abilityHolder.Add(Instantiate(abilitiesPrefab, abilitiesPanel.transform));
+                    RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
+                    rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
+                    Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
+                    abilityHolder[i].SetAbilityName(equippedAbilities[i].GetComponent<AbilityBase>().GetAbilityName());
+                    abilityHolder[i].SetAbilityText(equippedAbilities[i].GetComponent<AbilityBase>().GetInfo());
 
-                battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
-            }
+                    battleAbilites.Add(Instantiate(equippedAbilities[i], abilityHolder[i].transform));
+                }
 
-            else if(battleStartupInfo.abilities.Count == 3)
-            {
-                abilitiesPanel.gameObject.SetActive(false);
-                abilitiesPanelThree.gameObject.SetActive(true);
+                else if (equippedAbilities.Count == 3)
+                {
+                    abilitiesPanel.gameObject.SetActive(false);
+                    abilitiesPanelThree.gameObject.SetActive(true);
 
-                int offset = 22;
+                    int offset = 22;
 
-                abilityHolder.Add(Instantiate(abilitiesPrefabThree, abilitiesPanelThree.transform));
-                RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
-                rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
-                Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
-                //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
-                abilityHolder[i].SetAbilityName(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetAbilityName());
-                abilityHolder[i].SetAbilityText(battleStartupInfo.abilities[i].GetComponent<AbilityBase>().GetInfo());
+                    abilityHolder.Add(Instantiate(abilitiesPrefabThree, abilitiesPanelThree.transform));
+                    RectTransform rt = abilityHolder[i].GetComponent<RectTransform>();
+                    rt.anchoredPosition = new Vector3(0 + offset * i, 0, 0);
+                    Image abilitiesImage = abilityHolder[i].GetComponent<Image>();
+                    //abilitiesImage.sprite = battleStartupInfo.abilities[i].GetComponent<SpriteRenderer>().sprite;
+                    abilityHolder[i].SetAbilityName(equippedAbilities[i].GetComponent<AbilityBase>().GetAbilityName());
+                    abilityHolder[i].SetAbilityText(equippedAbilities[i].GetComponent<AbilityBase>().GetInfo());
 
-                battleAbilites.Add(Instantiate(battleStartupInfo.abilities[i], abilityHolder[i].transform));
+                    battleAbilites.Add(Instantiate(equippedAbilities[i], abilityHolder[i].transform));
+                }
             }
         }
+
+        
     }
 
     void SetupButtonNavigation()
@@ -985,11 +993,11 @@ public class BattleSystem : MonoBehaviour
 
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.Battle.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.Battle.Disable();
     }
 }

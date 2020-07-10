@@ -26,21 +26,26 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
     public List<Item> abilities = new List<Item>();
+    public List<Item> seeds = new List<Item>();
 
     public bool Add (Item item)
     {
+        Debug.Log(item.prefab);
         //if it is an ability
         if(item.prefab.GetComponent<AbilityBase>() != null)
         {
-            //abilities.Add(item.prefab.GetComponent<AbilityBase>());
             abilities.Add(item);
+        }
+        //if it is a seed
+        else if (item.prefab.GetComponent<SeedBase>() != null)
+        {
+            seeds.Add(item);
         }
         else
         {
             return false;
         }
 
-        //items.Add(item);
 
         if(onItemChangedCallback != null)
         {

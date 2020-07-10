@@ -35,7 +35,7 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.LockDice.performed += ctx => ToggleLockDice();
+        controls.Battle.LockDice.performed += ctx => ToggleLockDice();
     }
 
     void Start()
@@ -260,12 +260,12 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     }
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.Battle.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.Battle.Disable();
     }
 
     /*public void SetupButtonText()

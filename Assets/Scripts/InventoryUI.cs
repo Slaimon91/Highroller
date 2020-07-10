@@ -1,26 +1,46 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class InventoryUI : MonoBehaviour
 {
     public Transform abilityItemsParent;
-    public GameObject firstSlot;
+    public Transform seedItemsParent;
 
     Inventory inventory;
 
     private List<InventorySlot> seedSlots = new List<InventorySlot>();
+    private Item equippedSeed;
     private List<InventorySlot> abilitySlots = new List<InventorySlot>();
+    [SerializeField] List<InventorySlot> equippedAbilitySlots = new List<InventorySlot>();
 
-    [SerializeField] List<GameObject> inventoryTabs = new List<GameObject>();
-    private GameObject currentActiveTab;
+    [SerializeField] List<InventoryTab> inventoryTabs = new List<InventoryTab>();
+    private InventoryTab currentActiveTab;
     [SerializeField] GameObject inventoryInput;
 
+    EventSystem eventSystem;
+    PlayerController playerController;
     PlayerControls controls;
+    [SerializeField] PlayerValues playerValues;
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.Inventory.performed += ctx => ShowInventory();
+        //controls.InventoryUI.SetCallbacks(this);
+        //controls.Battl
+        //controls.InventoryUI.Inventory.performed += ctx => ShowInventory();
+
+        int GameStatusCount = FindObjectsOfType<InventoryUI>().Length;
+        if (GameStatusCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void Start()
@@ -32,32 +52,59 @@ public class InventoryUI : MonoBehaviour
         {
             abilitySlots.Add(slot);
         }
+        foreach (InventorySlot slot in seedItemsParent.GetComponentsInChildren<InventorySlot>())
+        {
+            seedSlots.Add(slot);
+        }
+
         currentActiveTab = inventoryTabs[0];
-        currentActiveTab.SetActive(true);
-        //inventoryInput = GetComponentInChildren<InventoryInput>().gameObject;
+        currentActiveTab.gameObject.SetActive(true);
+
+        eventSystem = FindObjectOfType<EventSystem>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
-    void ShowInventory()
+    public void ShowInventory()
     {
-        if(!inventoryInput.activeSelf)
+        controls.InventoryUI.Disable();
+        controls.Overworld.Disable();
+        controls.Battle.Disable();
+        controls.DialogueOptions.Enable();
+        if (!inventoryInput.activeSelf)
         {
+            currentActiveTab.gameObject.SetActive(true);
             inventoryInput.SetActive(!inventoryInput.activeSelf);
-            FindObjectOfType<EventSystem>().SetSelectedGameObject(firstSlot);
-            FindObjectOfType<PlayerController>().SetGameState(GameState.PAUSED);
+            eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
+            playerController.SetGameState(GameState.PAUSED);
+            InitiateItems();
+            FindObjectOfType<PlayerControlsManager>().ChangeToBattle();
+            
         }
         else
         {
-            InventoryAbility[] abilities = FindObjectsOfType<InventoryAbility>();
-            foreach(InventoryAbility ability in abilities)
-            {
-                ability.ForceDeselect();
-            }
-
+            DeselectAll();
             inventoryInput.SetActive(!inventoryInput.activeSelf);
-            FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
-            FindObjectOfType<PlayerController>().SetGameState(GameState.PLAYING);
+            eventSystem.SetSelectedGameObject(null);
+            playerController.SetGameState(GameState.PLAYING);
+            FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         }
-        
+    }
+
+    public List<AbilityBase> GetPlayerAbilities()
+    {
+        List<AbilityBase> abilities = new List<AbilityBase>();
+
+        foreach (InventorySlot slot in equippedAbilitySlots)
+        {
+            if(slot.item != null)
+            {
+                if (slot.item.prefab.GetComponent<AbilityBase>() != null)
+                {
+                    abilities.Add(slot.item.prefab.GetComponent<AbilityBase>());
+                }
+            }
+        }
+        return abilities;
     }
 
     void UpdateUI(Item item)
@@ -66,28 +113,20 @@ public class InventoryUI : MonoBehaviour
         {
             int slotNr = item.prefab.GetComponent<AbilityBase>().GetInventorySlotNr();
             abilitySlots[slotNr].AddItem(item);
-            //abilitySlots[slotNr].GetChildHolder().GetComponent<InventoryAbility>().Created();
         }
-
-        /*for (int i = 0; i < slots.Length; i++)
+        if (item.prefab.GetComponent<SeedBase>() != null)
         {
-            
-            if(i < inventory.items.Count)
-            {
-                slots[i].AddItem(inventory.items[i]);
-            }
-            else
-            {
-                slots[i].ClearSlot();
-            }
-        }*/
+            int slotNr = item.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
+            seedSlots[slotNr].AddItem(item);
+        }
     }
 
     public void ChangeInventoryTab(int tabValue)
     {
+        DeselectAll();
         int index = inventoryTabs.IndexOf(currentActiveTab);
 
-        currentActiveTab.SetActive(false);
+        currentActiveTab.gameObject.SetActive(false);
         index += tabValue;
 
         if (index <= -1)
@@ -100,16 +139,117 @@ public class InventoryUI : MonoBehaviour
         }
 
         currentActiveTab = inventoryTabs[index];
-        currentActiveTab.SetActive(true);
+        currentActiveTab.gameObject.SetActive(true);
+        eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
+
+        InitiateItems();
+    }
+
+    public void InitiateItems()
+    {
+        InventoryAbility[] abilities = FindObjectsOfType<InventoryAbility>();
+        foreach (InventoryAbility ability in abilities)
+        {
+            ability.Created();
+        }
+
+        InventorySeed[] seeds = FindObjectsOfType<InventorySeed>();
+        foreach (InventorySeed seed in seeds)
+        {
+            seed.Created();
+        }
+    }
+
+    public void InitiateEquippedAbilities()
+    {
+        InventoryAbilityEquipped[] abilities = FindObjectsOfType<InventoryAbilityEquipped>();
+        foreach (InventoryAbilityEquipped ability in abilities)
+        {
+            ability.Created();
+        }
+    }
+
+    public void InitiateEquippedSeed(SeedBase seedToEquip)
+    {
+        EquippedInventorySeed seed = FindObjectOfType<EquippedInventorySeed>();
+        seed.Created(seedToEquip);
+    }
+
+    public void DeselectAll()
+    {
+        var go = EventSystem.current.currentSelectedGameObject;
+
+        if(go.GetComponent<InventoryAbility>() != null)
+        {
+            InventoryAbility ability = go.GetComponent<InventoryAbility>();
+            ability.ForceDeselect();
+        }
+        if (go.GetComponent<InventorySeed>() != null)
+        {
+            InventorySeed seed = go.GetComponent<InventorySeed>();
+            seed.ForceDeselect();
+        }
+    }
+
+    public void EquipAbility(AbilityBase abilityToEquip)
+    {
+        Item newItem = ScriptableObject.CreateInstance("Item") as Item;
+        newItem.name = abilityToEquip.name;
+        newItem.prefab = abilityToEquip.gameObject;
+
+        foreach(InventorySlot inventorySlot in equippedAbilitySlots)
+        {
+            if(inventorySlot.GetItem() == null)
+            {
+                inventorySlot.AddItem(newItem);
+                InitiateEquippedAbilities();
+                break;
+            }
+        }
+    }
+
+    public void EquipSeed(SeedBase seedToEquip)
+    {
+        InventorySeed[] seeds = FindObjectsOfType<InventorySeed>();
+        foreach (InventorySeed seed in seeds)
+        {
+            seed.Unequip();
+        }
+
+        Item newItem = ScriptableObject.CreateInstance("Item") as Item;
+        newItem.name = seedToEquip.name;
+        newItem.prefab = seedToEquip.gameObject;
+
+        equippedSeed = newItem;
+        //equippedSeedSlot.AddItem(newItem);
+        InitiateEquippedSeed(seedToEquip);
+    }
+
+    public void UnequipAbility(int abilityToUnequip)
+    {
+        abilitySlots[abilityToUnequip].GetComponentInChildren<InventoryAbility>().Unequip();
+        
+        foreach (InventorySlot inventorySlot in equippedAbilitySlots)
+        {
+            if(inventorySlot.GetItem() != null)
+            {
+                if (inventorySlot.GetItem().prefab.GetComponent<AbilityBase>().GetAbilityName() == abilitySlots[abilityToUnequip].GetItem().prefab.GetComponent<AbilityBase>().GetAbilityName())
+                {
+
+                    inventorySlot.ClearSlot();
+                    break;
+                }
+            }
+        }
     }
 
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.InventoryUI.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.InventoryUI.Disable();
     }
 }

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    Item item;
+    public Item item = null;
 
     //public Sprite dot;
     //public Sprite holder;
@@ -20,7 +21,6 @@ public class InventorySlot : MonoBehaviour
         item = newItem;
 
         Instantiate(newItem.prefab, childHolder.transform);
-
         //slotImage.sprite = holder;
         //icon.sprite = item.icon;
         //icon.enabled = true;
@@ -46,12 +46,19 @@ public class InventorySlot : MonoBehaviour
         return childHolder;
     }
 
+    public Item GetItem()
+    {
+        return item;
+    }
+
     public void UseItem()
     {
-        if(item != null)
+
+
+        /*if(item != null)
         {
             item.Use();
-        }
+        }*/
     }
 
 }

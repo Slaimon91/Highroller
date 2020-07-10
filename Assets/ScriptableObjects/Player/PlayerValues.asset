@@ -15,4 +15,6 @@ MonoBehaviour:
   name: PlayerValues
   healthPoints: 45
   maxHealthPoints: 50
-  gaia: 70
+  gaia: 870
+  maxGaia: 0
+  seedStage: 1

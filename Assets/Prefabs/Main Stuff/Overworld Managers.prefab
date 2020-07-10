@@ -46,6 +46,7 @@ MonoBehaviour:
   tables:
   - {fileID: 11400000, guid: 91371669b82e46a4fbe01209fd37e9f7, type: 2}
   - {fileID: 11400000, guid: 12efbbd03de67854bbc7985d53d0180d, type: 2}
+  battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}
 --- !u!1 &1970912385
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa729635b59b2414fa4c9b3409c5912d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 12
   items: []
+  abilities: []
 --- !u!1 &4196161563853621183
 GameObject:
   m_ObjectHideFlags: 0

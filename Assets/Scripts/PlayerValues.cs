@@ -8,6 +8,8 @@ public class PlayerValues : ScriptableObject
     public int healthPoints;
     public int maxHealthPoints;
     public int gaia;
+    public int maxGaia;
+    public int seedStage;
 
     public virtual void Use()
     {

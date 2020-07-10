@@ -15,7 +15,8 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
     [SerializeField] Sprite marked;
     [SerializeField] GameObject selected;
     [SerializeField] GameObject inactive;
-    private GameObject imageHolder;
+    private GameObject battleImageHolder;
+    private GameObject inventoryImageHolder;
 
     private GameObject infoTextImage;
     private TextMeshProUGUI infoName;
@@ -35,10 +36,17 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         if(GetComponentInChildren<AbilityBase>() != null)
         {
             activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
-            imageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+            battleImageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+            inventoryImageHolder = GetComponentInChildren<AbilityBase>().GetInventoryImageHolder();
+            battleImageHolder.GetComponent<Image>().enabled = true;
+            inventoryImageHolder.GetComponent<Image>().enabled = false;
         }
         
-        animator = GetComponentInChildren<Animator>();
+        if(GetComponentInChildren<Animator>() != null)
+        {
+            animator = GetComponentInChildren<Animator>();
+            animator.enabled = true;
+        }
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -63,14 +71,14 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         if (!isMarked && activatable)
         {
             isMarked = true;
-            imageHolder.GetComponent<Image>().sprite = marked;
+            battleImageHolder.GetComponent<Image>().sprite = marked;
             animator.SetBool("isMarked", true);
             //selected.SetActive(false);
         }
         else if (isMarked && activatable)
         {
             isMarked = false;
-            imageHolder.GetComponent<Image>().sprite = normal;
+            battleImageHolder.GetComponent<Image>().sprite = normal;
             animator.SetBool("isMarked", false);
             //selected.SetActive(true);
         }
@@ -80,7 +88,7 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
     {
         isMarked = false;
         activatable = false;
-        imageHolder.GetComponent<Image>().sprite = normal;
+        battleImageHolder.GetComponent<Image>().sprite = normal;
         inactive.SetActive(true);
         if(animator != null)
             animator.enabled = false;

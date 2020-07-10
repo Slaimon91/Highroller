@@ -42,9 +42,9 @@ public class PlayerBattleController : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.ChangeSceneHax.performed += ctx => LoadSceneHax();
-        controls.Gameplay.Dodge.performed += ctx => DodgePushed();
-        controls.Gameplay.Block.performed += ctx => BlockPushed();
+        controls.Battle.ChangeSceneHax.performed += ctx => LoadSceneHax();
+        controls.Battle.Dodge.performed += ctx => DodgePushed();
+        controls.Battle.Block.performed += ctx => BlockPushed();
     }
 
     void Start()
@@ -147,12 +147,12 @@ public class PlayerBattleController : MonoBehaviour
 
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.Battle.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.Battle.Disable();
     }
 
     private void Dead()

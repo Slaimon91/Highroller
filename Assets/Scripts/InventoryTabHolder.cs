@@ -9,9 +9,9 @@ public class InventoryTabHolder : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.InventoryLeft.performed += ctx => TabLeft();
-        controls.Gameplay.InventoryRight.performed += ctx => TabRight();
-        controls.Gameplay.Inventory.performed += ctx => TabLeft();
+        controls.InventoryUI.InventoryLeft.performed += ctx => TabLeft();
+        controls.InventoryUI.InventoryRight.performed += ctx => TabRight();
+        controls.InventoryUI.Inventory.performed += ctx => TabLeft();
         inventoryUI = GetComponentInParent<InventoryUI>();
     }
 
@@ -27,11 +27,11 @@ public class InventoryTabHolder : MonoBehaviour
 
     void OnEnable()
     {
-        controls.Gameplay.Enable();
+        controls.InventoryUI.Enable();
     }
 
     void OnDisable()
     {
-        controls.Gameplay.Disable();
+        controls.InventoryUI.Disable();
     }
 }
