@@ -9,9 +9,9 @@ public class InventoryTabHolder : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controls.InventoryUI.InventoryLeft.performed += ctx => TabLeft();
-        controls.InventoryUI.InventoryRight.performed += ctx => TabRight();
-        controls.InventoryUI.Inventory.performed += ctx => TabLeft();
+        //controls.InventoryUI.InventoryLeft.performed += ctx => TabLeft();
+        //controls.InventoryUI.InventoryRight.performed += ctx => TabRight();
+        //controls.InventoryUI.Inventory.performed += ctx => TabLeft();
         inventoryUI = GetComponentInParent<InventoryUI>();
     }
 

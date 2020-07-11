@@ -22,15 +22,9 @@ public class InventoryUI : MonoBehaviour
 
     EventSystem eventSystem;
     PlayerController playerController;
-    PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
     void Awake()
     {
-        controls = new PlayerControls();
-        //controls.InventoryUI.SetCallbacks(this);
-        //controls.Battl
-        //controls.InventoryUI.Inventory.performed += ctx => ShowInventory();
-
         int GameStatusCount = FindObjectsOfType<InventoryUI>().Length;
         if (GameStatusCount > 1)
         {
@@ -64,29 +58,26 @@ public class InventoryUI : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
     }
 
-    public void ShowInventory()
+    public void OpenInventory()
     {
-        controls.InventoryUI.Disable();
-        controls.Overworld.Disable();
-        controls.Battle.Disable();
-        controls.DialogueOptions.Enable();
         if (!inventoryInput.activeSelf)
         {
             currentActiveTab.gameObject.SetActive(true);
             inventoryInput.SetActive(!inventoryInput.activeSelf);
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
-            playerController.SetGameState(GameState.PAUSED);
-            InitiateItems();
-            FindObjectOfType<PlayerControlsManager>().ChangeToBattle();
-            
+            //playerController.SetGameState(GameState.PAUSED);
+            InitiateItems();            
         }
-        else
+    }
+
+    public void CloseInventory()
+    {
+        if (inventoryInput.activeSelf)
         {
             DeselectAll();
             inventoryInput.SetActive(!inventoryInput.activeSelf);
             eventSystem.SetSelectedGameObject(null);
             playerController.SetGameState(GameState.PLAYING);
-            FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         }
     }
 
@@ -241,15 +232,5 @@ public class InventoryUI : MonoBehaviour
                 }
             }
         }
-    }
-
-    void OnEnable()
-    {
-        controls.InventoryUI.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.InventoryUI.Disable();
     }
 }

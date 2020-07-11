@@ -354,7 +354,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""DialogueOptions"",
+            ""name"": ""GenericUI"",
             ""id"": ""cbfb5d60-caf1-4a95-b2e9-3f8a0d2ebd34"",
             ""actions"": [
                 {
@@ -911,10 +911,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_Submit = m_Overworld.FindAction("Submit", throwIfNotFound: true);
         m_Overworld_ChangeSceneHax = m_Overworld.FindAction("ChangeSceneHax", throwIfNotFound: true);
         m_Overworld_Move = m_Overworld.FindAction("Move", throwIfNotFound: true);
-        // DialogueOptions
-        m_DialogueOptions = asset.FindActionMap("DialogueOptions", throwIfNotFound: true);
-        m_DialogueOptions_Submit = m_DialogueOptions.FindAction("Submit", throwIfNotFound: true);
-        m_DialogueOptions_Cancel = m_DialogueOptions.FindAction("Cancel", throwIfNotFound: true);
+        // GenericUI
+        m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
+        m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
+        m_GenericUI_Cancel = m_GenericUI.FindAction("Cancel", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         m_Battle_Pass = m_Battle.FindAction("Pass", throwIfNotFound: true);
@@ -1057,34 +1057,34 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     }
     public OverworldActions @Overworld => new OverworldActions(this);
 
-    // DialogueOptions
-    private readonly InputActionMap m_DialogueOptions;
-    private IDialogueOptionsActions m_DialogueOptionsActionsCallbackInterface;
-    private readonly InputAction m_DialogueOptions_Submit;
-    private readonly InputAction m_DialogueOptions_Cancel;
-    public struct DialogueOptionsActions
+    // GenericUI
+    private readonly InputActionMap m_GenericUI;
+    private IGenericUIActions m_GenericUIActionsCallbackInterface;
+    private readonly InputAction m_GenericUI_Submit;
+    private readonly InputAction m_GenericUI_Cancel;
+    public struct GenericUIActions
     {
         private @PlayerControls m_Wrapper;
-        public DialogueOptionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Submit => m_Wrapper.m_DialogueOptions_Submit;
-        public InputAction @Cancel => m_Wrapper.m_DialogueOptions_Cancel;
-        public InputActionMap Get() { return m_Wrapper.m_DialogueOptions; }
+        public GenericUIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Submit => m_Wrapper.m_GenericUI_Submit;
+        public InputAction @Cancel => m_Wrapper.m_GenericUI_Cancel;
+        public InputActionMap Get() { return m_Wrapper.m_GenericUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DialogueOptionsActions set) { return set.Get(); }
-        public void SetCallbacks(IDialogueOptionsActions instance)
+        public static implicit operator InputActionMap(GenericUIActions set) { return set.Get(); }
+        public void SetCallbacks(IGenericUIActions instance)
         {
-            if (m_Wrapper.m_DialogueOptionsActionsCallbackInterface != null)
+            if (m_Wrapper.m_GenericUIActionsCallbackInterface != null)
             {
-                @Submit.started -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnSubmit;
-                @Submit.performed -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnSubmit;
-                @Submit.canceled -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnSubmit;
-                @Cancel.started -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnCancel;
-                @Cancel.performed -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnCancel;
-                @Cancel.canceled -= m_Wrapper.m_DialogueOptionsActionsCallbackInterface.OnCancel;
+                @Submit.started -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnSubmit;
+                @Submit.performed -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnSubmit;
+                @Submit.canceled -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnSubmit;
+                @Cancel.started -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
             }
-            m_Wrapper.m_DialogueOptionsActionsCallbackInterface = instance;
+            m_Wrapper.m_GenericUIActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Submit.started += instance.OnSubmit;
@@ -1096,7 +1096,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             }
         }
     }
-    public DialogueOptionsActions @DialogueOptions => new DialogueOptionsActions(this);
+    public GenericUIActions @GenericUI => new GenericUIActions(this);
 
     // Battle
     private readonly InputActionMap m_Battle;
@@ -1263,7 +1263,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnChangeSceneHax(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
     }
-    public interface IDialogueOptionsActions
+    public interface IGenericUIActions
     {
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);

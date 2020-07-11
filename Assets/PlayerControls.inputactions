@@ -341,7 +341,7 @@
             ]
         },
         {
-            "name": "DialogueOptions",
+            "name": "GenericUI",
             "id": "cbfb5d60-caf1-4a95-b2e9-3f8a0d2ebd34",
             "actions": [
                 {

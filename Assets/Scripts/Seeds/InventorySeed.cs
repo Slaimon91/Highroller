@@ -21,7 +21,7 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] Sprite emptyBerry;
     [SerializeField] Sprite emptyClock;
     [SerializeField] Sprite clock;
-    [SerializeField] GameObject popup;
+    [SerializeField] GameObject popupPrefab;
 
     private string seedName = "";
     private string seedText = "";
@@ -87,12 +87,16 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         if(created && !isInactive)
         {
-            popup.SetActive(true);
-
-            inventoryUI.EquipSeed(GetComponentInChildren<SeedBase>());
-            isInactive = true;
-            inactive.SetActive(true);
+            GameObject popup = Instantiate(popupPrefab, gameObject.transform.parent.transform.parent.transform.parent);
+            popup.GetComponent<PopupQuestion>().onYesAnswerCallback += YesEquip;
         }
+    }
+
+    public void YesEquip()
+    {
+        inventoryUI.EquipSeed(GetComponentInChildren<SeedBase>());
+        isInactive = true;
+        inactive.SetActive(true);
     }
 
     public void Unequip()

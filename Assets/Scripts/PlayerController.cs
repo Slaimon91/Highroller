@@ -39,23 +39,15 @@ public class PlayerController : MonoBehaviour
 
     enum Direction { North, East, South, West, None};
 
-    
-    PlayerControls controls;
     [SerializeField] TextMeshProUGUI healthText;
     private GameObject healthTextGameObject;
     [SerializeField] TextMeshProUGUI gaiaText;
     private GameObject gaiaTextGameObject;
     [SerializeField] GameObject overWorldCanvas;
 
-    Vector2 move;
+    public Vector2 move;
     void Awake()
     {
-        controls = new PlayerControls();
-        controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneHax();
-        controls.Overworld.Interact.performed += ctx => Interact();
-        controls.Overworld.Tileflip.performed += ctx => PressedTileFlip();
-        controls.Overworld.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Overworld.Move.canceled += ctx => move = Vector2.zero;
         state = GameState.PLAYING;
     }
 
@@ -99,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Interact()
+    public void Interact()
     {
         if (state != GameState.PLAYING)
         {
@@ -120,11 +112,6 @@ public class PlayerController : MonoBehaviour
                 colliding.GetComponent<IInteractable>().Interact();
             }
         }
-    }
-
-    private void ChangeSceneHax()
-    {
-        FindObjectOfType<LevelLoader>().LoadBattleScene();
     }
 
     public void SetGameState(GameState gameState)
@@ -254,7 +241,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PressedTileFlip()
+    public void PressedTileFlip()
     {
         
         if (state != GameState.PLAYING)
@@ -495,14 +482,5 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Walking", true);
         }
-    }
-    void OnEnable()
-    {
-        controls.Overworld.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Overworld.Disable();
     }
 }
