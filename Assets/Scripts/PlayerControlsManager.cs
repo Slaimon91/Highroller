@@ -25,6 +25,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.InventoryUI.InventoryLeft.performed += ctx => TriggerTabLeft();
         controls.InventoryUI.InventoryRight.performed += ctx => TriggerTabRight();
 
+
         controls.Battle.ChangeSceneHax.performed += ctx => ChangeSceneHax();
     }
 
@@ -145,6 +146,14 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Enable();
         controls.Battle.Disable();
         controls.GenericUI.Disable();
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+        playerController.SetGameState(GameState.PLAYING);
     }
     public void ChangeToInventory()
     {
@@ -152,6 +161,14 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Disable();
         controls.Battle.Disable();
         controls.GenericUI.Disable();
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+        playerController.SetGameState(GameState.PAUSED);
     }
     public void ChangeToBattle()
     {
@@ -199,6 +216,11 @@ public class PlayerControlsManager : MonoBehaviour
         savedControlStates[1] = false;
         savedControlStates[2] = false;
         controls.GenericUI.Disable();
+    }
+
+    public PlayerControls GetControls()
+    {
+        return controls;
     }
 
     void OnEnable()

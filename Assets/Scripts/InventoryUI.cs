@@ -15,6 +15,7 @@ public class InventoryUI : MonoBehaviour
     private Item equippedSeed;
     private List<InventorySlot> abilitySlots = new List<InventorySlot>();
     [SerializeField] List<InventorySlot> equippedAbilitySlots = new List<InventorySlot>();
+    
 
     [SerializeField] List<InventoryTab> inventoryTabs = new List<InventoryTab>();
     private InventoryTab currentActiveTab;

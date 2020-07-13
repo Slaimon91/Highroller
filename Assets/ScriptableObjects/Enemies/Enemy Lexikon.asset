@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a97ed945ab117245ac036dbc71fcb50, type: 3}
+  m_Name: Enemy Lexikon
+  m_EditorClassIdentifier: 
+  name: Enemy Lexikon
+  entries:
+  - enemyNumber: 1
+    enemyName: Goblin
+    info: The goblin is a dumb and green creature.
+    enemyIcon: {fileID: 21300000, guid: 6ef6e71f6d87ca34b99607a6c58e9f44, type: 3}
+  - enemyNumber: 2
+    enemyName: Dungbee
+    info: He will hide in his shell until the right time.
+    enemyIcon: {fileID: 21300000, guid: 52291a79e3a91314ba18ea0c8b16a7ac, type: 3}
+  - enemyNumber: 3
+    enemyName: Bushcrab
+    info: There's a lot of bushes for this critter to grab, who knows which one he
+      might nab.
+    enemyIcon: {fileID: 21300000, guid: f9441c230bfdd3449863c46ad8a1a53f, type: 3}
+  - enemyNumber: 4
+    enemyName: Nikklaas
+    info: The finnish version of NIklas.
+    enemyIcon: {fileID: 21300000, guid: 4c0378629ba0a7b43ba1fa8cdbbeeb08, type: 3}
+  - enemyNumber: 5
+    enemyName: El Niklas
+    info: The spanish version of Niklas.
+    enemyIcon: {fileID: 21300000, guid: c22a6562d54af0a4eb0a48d237b4e37e, type: 3}
+  - enemyNumber: 6
+    enemyName: Salkin
+    info: The inverse version of Niklas.
+    enemyIcon: {fileID: 21300000, guid: 2bec40ac58a6c5943b331d10d1859ed8, type: 3}
