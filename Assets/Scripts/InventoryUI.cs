@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform abilityItemsParent;
     public Transform seedItemsParent;
+    public Transform trinketItemsParent;
 
     Inventory inventory;
 
@@ -15,7 +16,7 @@ public class InventoryUI : MonoBehaviour
     private Item equippedSeed;
     private List<InventorySlot> abilitySlots = new List<InventorySlot>();
     [SerializeField] List<InventorySlot> equippedAbilitySlots = new List<InventorySlot>();
-    
+    private List<InventorySlot> trinketSlots = new List<InventorySlot>();
 
     [SerializeField] List<InventoryTab> inventoryTabs = new List<InventoryTab>();
     private InventoryTab currentActiveTab;
@@ -51,6 +52,10 @@ public class InventoryUI : MonoBehaviour
         {
             seedSlots.Add(slot);
         }
+        foreach (InventorySlot slot in trinketItemsParent.GetComponentsInChildren<InventorySlot>())
+        {
+            trinketSlots.Add(slot);
+        }
 
         currentActiveTab = inventoryTabs[0];
         currentActiveTab.gameObject.SetActive(true);
@@ -66,6 +71,7 @@ public class InventoryUI : MonoBehaviour
             currentActiveTab.gameObject.SetActive(true);
             inventoryInput.SetActive(!inventoryInput.activeSelf);
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
+            Debug.Log(EventSystem.current.currentSelectedGameObject);
             //playerController.SetGameState(GameState.PAUSED);
             InitiateItems();            
         }
@@ -111,6 +117,10 @@ public class InventoryUI : MonoBehaviour
             int slotNr = item.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
             seedSlots[slotNr].AddItem(item);
         }
+        if (item.prefab.GetComponent<TrinketBase>() != null)
+        {
+            trinketSlots[trinketSlots.Count - 1].AddItem(item);
+        }
     }
 
     public void ChangeInventoryTab(int tabValue)
@@ -132,7 +142,10 @@ public class InventoryUI : MonoBehaviour
 
         currentActiveTab = inventoryTabs[index];
         currentActiveTab.gameObject.SetActive(true);
-        eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
+        if(currentActiveTab.GetFirstSlot() != null)
+        {
+            eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
+        }
 
         InitiateItems();
     }
@@ -149,6 +162,12 @@ public class InventoryUI : MonoBehaviour
         foreach (InventorySeed seed in seeds)
         {
             seed.Created();
+        }
+
+        InventoryTrinket[] trinkets = FindObjectsOfType<InventoryTrinket>();
+        foreach (InventoryTrinket trinket in trinkets)
+        {
+            trinket.Created();
         }
     }
 
@@ -169,17 +188,25 @@ public class InventoryUI : MonoBehaviour
 
     public void DeselectAll()
     {
-        var go = EventSystem.current.currentSelectedGameObject;
+        if(EventSystem.current.currentSelectedGameObject != null)
+        {
+            var go = EventSystem.current.currentSelectedGameObject;
 
-        if(go.GetComponent<InventoryAbility>() != null)
-        {
-            InventoryAbility ability = go.GetComponent<InventoryAbility>();
-            ability.ForceDeselect();
-        }
-        if (go.GetComponent<InventorySeed>() != null)
-        {
-            InventorySeed seed = go.GetComponent<InventorySeed>();
-            seed.ForceDeselect();
+            if (go.GetComponent<InventoryAbility>() != null)
+            {
+                InventoryAbility ability = go.GetComponent<InventoryAbility>();
+                ability.ForceDeselect();
+            }
+            if (go.GetComponent<InventorySeed>() != null)
+            {
+                InventorySeed seed = go.GetComponent<InventorySeed>();
+                seed.ForceDeselect();
+            }
+            if (go.GetComponent<InventoryTrinket>() != null)
+            {
+                InventoryTrinket trinket = go.GetComponent<InventoryTrinket>();
+                trinket.ForceDeselect();
+            }
         }
     }
 

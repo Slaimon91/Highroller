@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e25dd19f2ebc94ebbeebd49625b8d0, type: 3}
-  m_Name: PlayerValues
+  m_Script: {fileID: 11500000, guid: decf11b14a6bc4f45bbcd9e6fa70d4d4, type: 3}
+  m_Name: Ivory Shard
   m_EditorClassIdentifier: 
-  name: PlayerValues
-  healthPoints: 45
-  maxHealthPoints: 50
-  gaia: 150
-  maxGaia: 300
-  seedStage: 1
-  currency: 368
+  name: Ivory Shard
+  prefab: {fileID: 5684600831244466508, guid: 69ab6a43bda8cb14f98f73403f66e262, type: 3}

@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged(Item item);
     public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>();
+    public List<Item> trinkets = new List<Item>();
     public List<Item> abilities = new List<Item>();
     public List<Item> seeds = new List<Item>();
 
@@ -40,6 +40,11 @@ public class Inventory : MonoBehaviour
         else if (item.prefab.GetComponent<SeedBase>() != null)
         {
             seeds.Add(item);
+        }
+        //if it is an item
+        else if (item.prefab.GetComponent<TrinketBase>() != null)
+        {
+            trinkets.Add(item);
         }
         else
         {
@@ -57,7 +62,7 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item item)
     {
-        items.Remove(item);
+        //items.Remove(item);
 
         if (onItemChangedCallback != null)
         {

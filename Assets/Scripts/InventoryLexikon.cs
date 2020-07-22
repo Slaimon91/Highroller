@@ -81,7 +81,7 @@ public class InventoryLexikon : MonoBehaviour
 
     IEnumerator TriggerCooldown()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.125f);
 
         movementOffCooldown = true;
     }

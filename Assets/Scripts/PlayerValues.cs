@@ -10,6 +10,7 @@ public class PlayerValues : ScriptableObject
     public int gaia;
     public int maxGaia;
     public int seedStage;
+    public int currency;
 
     public virtual void Use()
     {
