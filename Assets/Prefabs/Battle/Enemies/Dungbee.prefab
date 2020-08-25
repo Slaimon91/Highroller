@@ -62,7 +62,7 @@ MonoBehaviour:
   rockToThrow: {fileID: 8940644904525952771, guid: c76eb59baca04e44c9265e01e6d027fc,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
-  rollSpeed: 6
+  rollSpeed: 8
 --- !u!95 &1052720663
 Animator:
   serializedVersion: 3

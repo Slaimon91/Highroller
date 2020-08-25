@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce3892dadb6e28429e162f62905af95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 6
+  gravity: 8
   arcAmount: 10
   heightOfShot: 1
   Projectile: {fileID: 5096511894264830750}
