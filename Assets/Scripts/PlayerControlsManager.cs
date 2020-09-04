@@ -1,32 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerControlsManager : MonoBehaviour
 {
     private PlayerControls controls;
+    [SerializeField] PlayerValues playerValues;
+    
+    //OW
     private InventoryUI inventoryUI;
     private PlayerController playerController;
+
+    //Battle
+    private HoldAssignButton holdAssignButton;
+    private BattleSystem battleSystem;
+    private PlayerBattleController playerBattleController;
+    private EventSystem eventSystem;
+
     private Vector2 movement;
     private bool[] savedControlStates  = { false, false, false};
     void Awake()
     {
+        int GameStatusCount = FindObjectsOfType<PlayerControlsManager>().Length;
+        if (GameStatusCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.transform.parent = null;
+            DontDestroyOnLoad(gameObject);
+        }
+
         controls = new PlayerControls();
 
         controls.Overworld.Inventory.performed += ctx => TriggerOpenInventory();
         controls.Overworld.Interact.performed += ctx => TriggerInteract();
         controls.Overworld.Tileflip.performed += ctx => TriggerPressedTileFlip();
-        controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneHax();
+        controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneToBattleHax();
         controls.Overworld.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Overworld.Move.canceled += ctx => movement = Vector2.zero;
+
+        controls.Overworld.HPHAX.performed += ctx => HPHAX();
+        controls.Overworld.GAIAHAX.performed += ctx => GAIAHAX();
+        controls.Overworld.MONEYHAX.performed += ctx => MONEYHAX();
 
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
         controls.InventoryUI.InventoryLeft.performed += ctx => TriggerTabLeft();
         controls.InventoryUI.InventoryRight.performed += ctx => TriggerTabRight();
 
 
-        controls.Battle.ChangeSceneHax.performed += ctx => ChangeSceneHax();
+        controls.Battle.ChangeSceneHax.performed += ctx => ChangeSceneToOverworldHax();
+        controls.Battle.Pass.performed += ctx => TriggerHoldButtonStarted();
+        controls.Battle.Pass.canceled += ctx => TriggerHoldButtonCanceled();
+        controls.Battle.Cancel.performed += ctx => TriggerPressedCancel();
+        controls.Battle.Dodge.performed += ctx => TriggerDodgePushed();
+        controls.Battle.Block.performed += ctx => TriggerBlockPushed();
+        controls.Battle.LockDice.performed += ctx => TriggerToggleLockDice();
     }
 
     void Update()
@@ -53,6 +86,21 @@ public class PlayerControlsManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private void HPHAX()
+    {
+        playerValues.healthPoints += 100;
+    }
+
+    private void GAIAHAX()
+    {
+        playerValues.gaia += 100;
+    }
+
+    private void MONEYHAX()
+    {
+        playerValues.currency += 100;
     }
 
     public void TriggerOpenInventory()
@@ -135,9 +183,99 @@ public class PlayerControlsManager : MonoBehaviour
         playerController.PressedTileFlip();
     }
 
-    public void ChangeSceneHax()
+    public void ChangeSceneToBattleHax()
     {
+        ChangeToBattle();
         FindObjectOfType<LevelLoader>().LoadBattleScene();
+    }
+    public void ChangeSceneToOverworldHax()
+    {
+        ChangeToOverworld();
+        FindObjectOfType<LevelLoader>().LoadOverworldScene();
+    }
+
+    public void TriggerHoldButtonStarted()
+    {
+        if (holdAssignButton == null)
+        {
+            if ((holdAssignButton = FindObjectOfType<HoldAssignButton>()) == null)
+            {
+                return;
+            }
+        }
+
+        holdAssignButton.ButtonStarted();
+    }
+
+    public void TriggerHoldButtonCanceled()
+    {
+        if (holdAssignButton == null)
+        {
+            if ((holdAssignButton = FindObjectOfType<HoldAssignButton>()) == null)
+            {
+                return;
+            }
+        }
+
+        holdAssignButton.ButtonCanceled();
+    }
+
+    public void TriggerPressedCancel()
+    {
+        if (battleSystem == null)
+        {
+            if ((battleSystem = FindObjectOfType<BattleSystem>()) == null)
+            {
+                return;
+            }
+        }
+
+        battleSystem.PressedCancel();
+    }
+
+    public void TriggerDodgePushed()
+    {
+        if (playerBattleController == null)
+        {
+            if ((playerBattleController = FindObjectOfType<PlayerBattleController>()) == null)
+            {
+                return;
+            }
+        }
+
+        playerBattleController.DodgePushed();
+    }
+
+    public void TriggerBlockPushed()
+    {
+        if (playerBattleController == null)
+        {
+            if ((playerBattleController = FindObjectOfType<PlayerBattleController>()) == null)
+            {
+                return;
+            }
+        }
+
+        playerBattleController.BlockPushed();
+    }
+
+    public void TriggerToggleLockDice()
+    {
+        if (eventSystem == null)
+        {
+            if ((eventSystem = FindObjectOfType<EventSystem>()) == null)
+            {
+                return;
+            }
+        }
+
+        if (eventSystem.currentSelectedGameObject != null)
+        {
+            if(eventSystem.currentSelectedGameObject.GetComponent<Dice>() != null)
+            {
+                eventSystem.currentSelectedGameObject.GetComponent<Dice>().ToggleLockDice();
+            }
+        }
     }
 
     public void ChangeToOverworld()
@@ -154,6 +292,10 @@ public class PlayerControlsManager : MonoBehaviour
             }
         }
         playerController.SetGameState(GameState.PLAYING);
+        battleSystem = null;
+        holdAssignButton = null;
+        playerBattleController = null;
+        eventSystem = null;
     }
     public void ChangeToInventory()
     {
@@ -176,6 +318,9 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Disable();
         controls.Battle.Enable();
         controls.GenericUI.Disable();
+        inventoryUI = null;
+        playerController = null;
+
     }
     public void ToggleOnGenericUI()
     {
@@ -233,6 +378,6 @@ public class PlayerControlsManager : MonoBehaviour
 
     void OnDisable()
     {
-        controls.Disable();
+      //  controls.Disable();
     }
 }

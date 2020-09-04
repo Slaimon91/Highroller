@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GroundTile currentTile;
     Direction dir;
     bool tileFlipAxisPressed = false;
+    int pendingGaiaReward = 0;
+    int pendingHPReward = 0;
+
 
     [SerializeField] LayerMask whatStopsMovement;
 
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour
     private GameObject selectedTile;
     private List<GameObject> availableTiles;
     [SerializeField] PlayerValues playerValues;
+    [SerializeField] GameObject rewardbox;
+    [SerializeField] Sprite gaiaSprite;
+    [SerializeField] Sprite HPSprite;
 
     enum Direction { North, East, South, West, None};
 
@@ -43,7 +49,8 @@ public class PlayerController : MonoBehaviour
     private GameObject healthTextGameObject;
     [SerializeField] TextMeshProUGUI gaiaText;
     private GameObject gaiaTextGameObject;
-    [SerializeField] GameObject overWorldCanvas;
+    private GameObject overWorldCanvas;
+    private EncounterManager encounterManager;
 
     public Vector2 move;
     void Awake()
@@ -67,6 +74,8 @@ public class PlayerController : MonoBehaviour
         gaiaText = gaiaTextGameObject.GetComponent<TextMeshProUGUI>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        overWorldCanvas = FindObjectOfType<OverworldCanvas>().gameObject;
+        encounterManager = FindObjectOfType<EncounterManager>();
     }
 
     void Update()
@@ -155,48 +164,15 @@ public class PlayerController : MonoBehaviour
     {
         if (groundTile == GroundType.GreenforestGrass)
         {
-            float pickedNumber = Random.Range(0, 100);
-
-            if(pickedNumber < 20)
-            {
-                Debug.Log("YOU GOT GAIA 20!");
-                playerValues.gaia += 20;
-                playerValues.seedStage++;
-            }
-            else
-            {
-                FindObjectOfType<EncounterManager>().GreenforestGrass();
-            }
+            encounterManager.GreenforestGrass();
         }
         if (groundTile == GroundType.GreenforestSwamp)
         {
-            float pickedNumber = Random.Range(0, 100);
-
-            if (pickedNumber < 20)
-            {
-                Debug.Log("YOU GOT GAIA!");
-                playerValues.gaia += 20;
-                playerValues.seedStage++;
-            }
-            else
-            {
-                FindObjectOfType<EncounterManager>().GreenforestSwamp();
-            }
+            encounterManager.GreenforestSwamp();
         }
         if (groundTile == GroundType.GreenforestWater)
         {
-            float pickedNumber = Random.Range(0, 100);
-
-            if (pickedNumber < 101)
-            {
-                Debug.Log("YOU GOT GAIA 20!");
-                playerValues.gaia += 20;
-                playerValues.seedStage++;
-            }
-            else
-            {
-                FindObjectOfType<EncounterManager>().GreenforestWater();
-            }
+            encounterManager.GreenforestWater();
         }
     }
 
@@ -261,15 +237,20 @@ public class PlayerController : MonoBehaviour
             //Stop flipping
             else if (tileFlipping && hasFinishedWalking)
             {
-                tileFlipping = false;
-                Destroy(selectedTile);
-                foreach (GameObject tile in availableTiles)
-                {
-                    Destroy(tile);
-                }
-                availableTiles.Clear();
+                CancelTileflip();
             }
         }
+    }
+
+    private void CancelTileflip()
+    {
+        tileFlipping = false;
+        Destroy(selectedTile);
+        foreach (GameObject tile in availableTiles)
+        {
+            Destroy(tile);
+        }
+        availableTiles.Clear();
     }
 
     private bool IsCollidingNotInFront()
@@ -481,6 +462,41 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Walking", true);
+        }
+    }
+
+    public void LanuchGaiaRewardbox(int amount)
+    {
+        string gaiaText = amount + " Gaia";
+        GameObject popup = Instantiate(rewardbox, overWorldCanvas.transform);
+        popup.GetComponent<TileflipRewardbox>().AssignInfo(gaiaText, gaiaSprite);
+        popup.GetComponent<TileflipRewardbox>().onAcceptRewardCallback += AcceptReward;
+        pendingGaiaReward = amount;
+        CancelTileflip();
+    }
+
+    public void LanuchHPRewardbox(int amount)
+    {
+        string HPText = amount + " HP";
+        GameObject popup = Instantiate(rewardbox, overWorldCanvas.transform);
+        popup.GetComponent<TileflipRewardbox>().AssignInfo(HPText, HPSprite);
+        popup.GetComponent<TileflipRewardbox>().onAcceptRewardCallback += AcceptReward;
+        pendingHPReward = amount;
+        CancelTileflip();
+    }
+
+    public void AcceptReward()
+    {
+        if(pendingGaiaReward > 0)
+        {
+            playerValues.gaia += pendingGaiaReward;
+            pendingGaiaReward = 0;
+        }
+
+        if (pendingHPReward > 0)
+        {
+            playerValues.healthPoints += pendingHPReward;
+            pendingHPReward = 0;
         }
     }
 }

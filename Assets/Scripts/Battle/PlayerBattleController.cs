@@ -22,7 +22,6 @@ public class PlayerBattleController : MonoBehaviour
     private int damageThreshold = 0;
     private bool undershot = false;
 
-    PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
     public Transform playerHead;
     public Transform playerBody;
@@ -38,14 +37,6 @@ public class PlayerBattleController : MonoBehaviour
     private Animator animator;
     private AudioManager audioManager;
     private bool sleepTimer = false;
-
-    void Awake()
-    {
-        controls = new PlayerControls();
-        controls.Battle.ChangeSceneHax.performed += ctx => LoadSceneHax();
-        controls.Battle.Dodge.performed += ctx => DodgePushed();
-        controls.Battle.Block.performed += ctx => BlockPushed();
-    }
 
     void Start()
     {
@@ -73,19 +64,15 @@ public class PlayerBattleController : MonoBehaviour
             Dead();
         }
 
-        if(battleSystem.state == BattleState.PLAYERTURN && !sleepTimer)
+        if(battleSystem.state == BattleState.PLAYERTURN)
         {
-            sleepTimer = true;
             CheckHealthAnimation();
-            StartCoroutine(SleepyPlayer());
+            if (!sleepTimer)
+            {
+                sleepTimer = true;
+                StartCoroutine(SleepyPlayer());
+            }
         }
-        if (battleSystem.state != BattleState.PLAYERTURN)
-        {
-            sleepTimer = false;
-            CheckHealthAnimation();
-            StopCoroutine(SleepyPlayer());
-        }
-
     }
 
     IEnumerator SleepyPlayer()
@@ -97,13 +84,19 @@ public class PlayerBattleController : MonoBehaviour
         }
     }
 
-    void LoadSceneHax()
+    public void WakeUpSleep()
     {
-        FindObjectOfType<LevelLoader>().LoadOverworldScene();
+        sleepTimer = false;
+        StopCoroutine(SleepyPlayer());
+        if (animator.GetFloat("IdleState") != 2)
+        {
+            animator.SetFloat("IdleState", 0);
+        }
     }
 
-    void BlockPushed()
+    public void BlockPushed()
     {
+        WakeUpSleep();
         if (battleSystem.state == BattleState.ENEMYTURN && !hasDefended)
         {
             hasDefended = true;
@@ -124,8 +117,9 @@ public class PlayerBattleController : MonoBehaviour
         }
     }
 
-    void DodgePushed()
+    public void DodgePushed()
     {
+        WakeUpSleep();
         if (battleSystem.state == BattleState.ENEMYTURN && !hasDefended)
         {
             hasDefended = true;
@@ -143,16 +137,6 @@ public class PlayerBattleController : MonoBehaviour
                 Debug.Log("You failed the dodge!");
             }
         }
-    }
-
-    void OnEnable()
-    {
-        controls.Battle.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Battle.Disable();
     }
 
     private void Dead()

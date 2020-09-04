@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 9ef3378809bf2e8499f2c1b064d2501c
+guid: 1ff6576198c5d434ebc55db23b246d2c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7555566694506404695
-    second: character_sprout_left_idle_0
+      213: -8578132722845067349
+    second: sprout_idle_animation_left_32x39_0
   - first:
-      213: 6714500456206546658
-    second: character_sprout_left_idle_1
+      213: 4561317347596164405
+    second: sprout_idle_animation_left_32x39_1
   - first:
-      213: 8550869643375252224
-    second: character_sprout_left_idle_2
+      213: -5031661982086675105
+    second: sprout_idle_animation_left_32x39_2
   - first:
-      213: -7920978188488430506
-    second: character_sprout_left_idle_3
+      213: 9187284039287070142
+    second: sprout_idle_animation_left_32x39_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_sprout_left_idle_0
+      name: sprout_idle_animation_left_32x39_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75b93d6a0e3cad860800000000000000
-      internalID: 7555566694506404695
+      spriteID: ba75aaaccb954f880800000000000000
+      internalID: -8578132722845067349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_left_idle_1
+      name: sprout_idle_animation_left_32x39_1
       rect:
         serializedVersion: 2
         x: 32
@@ -134,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e6b3680792be2d50800000000000000
-      internalID: 6714500456206546658
+      spriteID: 53ddb43f5fd0d4f30800000000000000
+      internalID: 4561317347596164405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_left_idle_2
+      name: sprout_idle_animation_left_32x39_2
       rect:
         serializedVersion: 2
         x: 64
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0039d0ed2aacaa670800000000000000
-      internalID: 8550869643375252224
+      spriteID: f55c2ef0612fb2ab0800000000000000
+      internalID: -5031661982086675105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_left_idle_3
+      name: sprout_idle_animation_left_32x39_3
       rect:
         serializedVersion: 2
         x: 96
@@ -176,8 +176,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65ca7810e48031290800000000000000
-      internalID: -7920978188488430506
+      spriteID: ebd525c482acf7f70800000000000000
+      internalID: 9187284039287070142
       vertices: []
       indices: 
       edges: []

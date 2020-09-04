@@ -31,7 +31,7 @@ public class InventoryUI : MonoBehaviour
         if (GameStatusCount > 1)
         {
             gameObject.SetActive(false);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
@@ -71,7 +71,6 @@ public class InventoryUI : MonoBehaviour
             currentActiveTab.gameObject.SetActive(true);
             inventoryInput.SetActive(!inventoryInput.activeSelf);
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
-            Debug.Log(EventSystem.current.currentSelectedGameObject);
             //playerController.SetGameState(GameState.PAUSED);
             InitiateItems();            
         }

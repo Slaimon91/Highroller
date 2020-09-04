@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: e5455449d861b624db475b2426327f02
+guid: f72aec583a3d4394ca303f423e7fd542
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9017017132600821809
-    second: character_sprout_up-sheet_0
+      213: -3952794782938681821
+    second: sprout_walking_animation_up_32x39_0
   - first:
-      213: 8182969247637528532
-    second: character_sprout_up-sheet_1
+      213: -7794906548732758101
+    second: sprout_walking_animation_up_32x39_1
   - first:
-      213: 150642783833141716
-    second: character_sprout_up-sheet_2
+      213: -1108116341112202781
+    second: sprout_walking_animation_up_32x39_2
   - first:
-      213: 8770357601123245529
-    second: character_sprout_up-sheet_3
+      213: -679972879620805644
+    second: sprout_walking_animation_up_32x39_3
+  - first:
+      213: 79880129870141951
+    second: sprout_walking_animation_up_32x39_4
+  - first:
+      213: 7076127944572927975
+    second: sprout_walking_animation_up_32x39_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_sprout_up-sheet_0
+      name: sprout_walking_animation_up_32x39_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1388842de41e22d70800000000000000
-      internalID: 9017017132600821809
+      spriteID: 32e2ce4761ad429c0800000000000000
+      internalID: -3952794782938681821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_up-sheet_1
+      name: sprout_walking_animation_up_32x39_1
       rect:
         serializedVersion: 2
         x: 32
@@ -134,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4df516dec2fbf8170800000000000000
-      internalID: 8182969247637528532
+      spriteID: ba7fa690bcde2d390800000000000000
+      internalID: -7794906548732758101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_up-sheet_2
+      name: sprout_walking_animation_up_32x39_2
       rect:
         serializedVersion: 2
         x: 64
@@ -155,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d1b95250d0371200800000000000000
-      internalID: 150642783833141716
+      spriteID: 3e9933e0f0e2f90f0800000000000000
+      internalID: -1108116341112202781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_sprout_up-sheet_3
+      name: sprout_walking_animation_up_32x39_3
       rect:
         serializedVersion: 2
         x: 96
@@ -176,8 +182,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dd191855c196b970800000000000000
-      internalID: 8770357601123245529
+      spriteID: 4fb6d45c4404096f0800000000000000
+      internalID: -679972879620805644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprout_walking_animation_up_32x39_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff9958d0e8acb1100800000000000000
+      internalID: 79880129870141951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprout_walking_animation_up_32x39_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7effb79efd4733260800000000000000
+      internalID: 7076127944572927975
       vertices: []
       indices: 
       edges: []

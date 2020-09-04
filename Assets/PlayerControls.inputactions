@@ -60,6 +60,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "HPHAX",
+                    "type": "Button",
+                    "id": "01924b1d-0cfe-40bc-b065-61c6c78266c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "GAIAHAX",
+                    "type": "Button",
+                    "id": "d0005f8f-e3b3-4640-abd5-7fa426550313",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MONEYHAX",
+                    "type": "Button",
+                    "id": "75e50c6c-ae7c-462e-99e1-81b1022c9c2b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -337,6 +361,39 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4913f324-d325-498c-a116-ecf40cc27597",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HPHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "163726fe-0fc7-4a95-ad00-69529d501f14",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GAIAHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c38fb34-52ff-4c5f-bc83-32790b9175ba",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MONEYHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

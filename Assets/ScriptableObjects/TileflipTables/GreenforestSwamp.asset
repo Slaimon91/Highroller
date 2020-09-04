@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: GreenforestSwamp
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
+  gaiaChance: 20
+  HPChance: 20
+  monsterChance: 60
+  gaiaRewardAmount: 10
+  HPRewardAmount: 5
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}

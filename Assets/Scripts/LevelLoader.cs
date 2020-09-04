@@ -33,10 +33,12 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadOverworldScene()
     {
+        FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         SceneManager.LoadScene("OverworldScene");
     }
     public void LoadBattleScene()
     {
+        FindObjectOfType<PlayerControlsManager>().ChangeToBattle();
         SceneManager.LoadScene("BattleScene");
     }
 

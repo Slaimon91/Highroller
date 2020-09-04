@@ -48,7 +48,6 @@ public class InventoryLexikon : MonoBehaviour
     void Update()
     {
         DetectMove();
-        Debug.Log(currentlySelectedPos);
     }
 
     void DetectMove()

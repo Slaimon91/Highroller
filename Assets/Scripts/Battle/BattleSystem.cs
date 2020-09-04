@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-//using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.InputSystem;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST };
@@ -61,7 +60,6 @@ public class BattleSystem : MonoBehaviour
 
 
     public BattleState state;
-    private PlayerControls controls;
     private GameObject lastselect;
     private PlayerBattleController player;
     private bool cancelPressed = false;
@@ -70,12 +68,6 @@ public class BattleSystem : MonoBehaviour
     private EventSystem eventSystem;
     private AudioManager audioManager;
     private ButtonPanel buttonPanel;
-
-    void Awake()
-    {
-        controls = new PlayerControls();
-        controls.Battle.Cancel.performed += ctx => PressedCancel();   
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -792,7 +784,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private void PressedCancel()
+    public void PressedCancel()
     {
         if(state == BattleState.PLAYERTURN)
         {
@@ -989,15 +981,5 @@ public class BattleSystem : MonoBehaviour
             return;
         }
         StartCoroutine(EnemyTurn());
-    }
-
-    void OnEnable()
-    {
-        controls.Battle.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Battle.Disable();
     }
 }

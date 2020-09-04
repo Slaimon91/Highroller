@@ -73,6 +73,30 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""HPHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""01924b1d-0cfe-40bc-b065-61c6c78266c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""GAIAHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0005f8f-e3b3-4640-abd5-7fa426550313"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MONEYHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""75e50c6c-ae7c-462e-99e1-81b1022c9c2b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -350,6 +374,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4913f324-d325-498c-a116-ecf40cc27597"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HPHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""163726fe-0fc7-4a95-ad00-69529d501f14"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GAIAHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c38fb34-52ff-4c5f-bc83-32790b9175ba"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MONEYHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -911,6 +968,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_Submit = m_Overworld.FindAction("Submit", throwIfNotFound: true);
         m_Overworld_ChangeSceneHax = m_Overworld.FindAction("ChangeSceneHax", throwIfNotFound: true);
         m_Overworld_Move = m_Overworld.FindAction("Move", throwIfNotFound: true);
+        m_Overworld_HPHAX = m_Overworld.FindAction("HPHAX", throwIfNotFound: true);
+        m_Overworld_GAIAHAX = m_Overworld.FindAction("GAIAHAX", throwIfNotFound: true);
+        m_Overworld_MONEYHAX = m_Overworld.FindAction("MONEYHAX", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
@@ -986,6 +1046,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_Submit;
     private readonly InputAction m_Overworld_ChangeSceneHax;
     private readonly InputAction m_Overworld_Move;
+    private readonly InputAction m_Overworld_HPHAX;
+    private readonly InputAction m_Overworld_GAIAHAX;
+    private readonly InputAction m_Overworld_MONEYHAX;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -997,6 +1060,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Submit => m_Wrapper.m_Overworld_Submit;
         public InputAction @ChangeSceneHax => m_Wrapper.m_Overworld_ChangeSceneHax;
         public InputAction @Move => m_Wrapper.m_Overworld_Move;
+        public InputAction @HPHAX => m_Wrapper.m_Overworld_HPHAX;
+        public InputAction @GAIAHAX => m_Wrapper.m_Overworld_GAIAHAX;
+        public InputAction @MONEYHAX => m_Wrapper.m_Overworld_MONEYHAX;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1027,6 +1093,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMove;
+                @HPHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnHPHAX;
+                @HPHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnHPHAX;
+                @HPHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnHPHAX;
+                @GAIAHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnGAIAHAX;
+                @GAIAHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnGAIAHAX;
+                @GAIAHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnGAIAHAX;
+                @MONEYHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
+                @MONEYHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
+                @MONEYHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1052,6 +1127,15 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @HPHAX.started += instance.OnHPHAX;
+                @HPHAX.performed += instance.OnHPHAX;
+                @HPHAX.canceled += instance.OnHPHAX;
+                @GAIAHAX.started += instance.OnGAIAHAX;
+                @GAIAHAX.performed += instance.OnGAIAHAX;
+                @GAIAHAX.canceled += instance.OnGAIAHAX;
+                @MONEYHAX.started += instance.OnMONEYHAX;
+                @MONEYHAX.performed += instance.OnMONEYHAX;
+                @MONEYHAX.canceled += instance.OnMONEYHAX;
             }
         }
     }
@@ -1262,6 +1346,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnChangeSceneHax(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnHPHAX(InputAction.CallbackContext context);
+        void OnGAIAHAX(InputAction.CallbackContext context);
+        void OnMONEYHAX(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {

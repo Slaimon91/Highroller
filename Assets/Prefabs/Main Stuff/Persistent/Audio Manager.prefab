@@ -93,3 +93,45 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
+  - name: FailBlock
+    clip: {fileID: 8300000, guid: d7746cb2fd8457841b985bd6b294461f, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: SuccessBlock
+    clip: {fileID: 8300000, guid: 6386cba38437f9f46a5f220d694b6fcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: FailDodge
+    clip: {fileID: 8300000, guid: b32d8809521ebe344ac0415caed2b534, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: SuccessDodge
+    clip: {fileID: 8300000, guid: 43ef84c8f4b4ca749b1f5db1118d67e2, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: TakeDamage
+    clip: {fileID: 8300000, guid: 563060d5253e99a4bae1f7b021ed8393, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: HealHP
+    clip: {fileID: 8300000, guid: c67d8950431644d48b770106c79e36b0, type: 3}
+    volume: 0.5
+    pitch: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}

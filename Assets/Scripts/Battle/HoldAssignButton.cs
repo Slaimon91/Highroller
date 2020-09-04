@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class HoldAssignButton : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class HoldAssignButton : MonoBehaviour
     [SerializeField] private Image fillImage;
     [SerializeField] private GameObject completedImage;
 
-    private PlayerControls controls;
     private GameObject savedSelectedGameObject;
     private EventSystem eventSystem;
     private AudioManager audioManager;
@@ -30,9 +28,6 @@ public class HoldAssignButton : MonoBehaviour
 
     void Awake()
     {
-        controls = new PlayerControls();
-        controls.Battle.Pass.performed += ctx => ButtonStarted();
-        controls.Battle.Pass.canceled += ctx => ButtonCanceled();
         eventSystem = FindObjectOfType<EventSystem>();
         audioManager = FindObjectOfType<AudioManager>();
         animatorPass = GetComponent<Animator>();
@@ -94,28 +89,18 @@ public class HoldAssignButton : MonoBehaviour
         eventSystem.SetSelectedGameObject(savedSelectedGameObject);
     }
     
-    private void ButtonStarted()
+    public void ButtonStarted()
     {
         holding = true;
         buttonDown = true;
     }
 
-    private void ButtonCanceled()
+    public void ButtonCanceled()
     {
         if (holding && !passCompleted)
         {
             holding = false;
             Reset();
         }
-    }
-
-    void OnEnable()
-    {
-        controls.Battle.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Battle.Disable();
     }
 }

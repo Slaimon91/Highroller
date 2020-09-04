@@ -22,7 +22,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Sprite[] diceSpritesAssigned;
     private Animator animator;
     private Animator animatorAssigned;
-    private AudioManager audioManager;
+    public AudioManager audioManager;
     private BattleSystem battleSystem;
 
     void Awake()
@@ -36,6 +36,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     void Start()
     {
         battleSystem = FindObjectOfType<BattleSystem>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
