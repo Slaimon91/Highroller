@@ -502,6 +502,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1957608237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957608239}
+  - component: {fileID: 1957608238}
+  m_Layer: 0
+  m_Name: Battle Bounty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1957608238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957608237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca06962738b62042aed6593dbb0757f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
+--- !u!4 &1957608239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957608237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3132002511308266171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,16 +631,6 @@ PrefabInstance:
       propertyPath: onLongClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1305788920}
-    - target: {fileID: 401180704815549796, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445258025929743939, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2839460926826498860, guid: 4103e730896d542468b516036b855c84,
         type: 3}
       propertyPath: m_Camera
@@ -712,118 +746,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battle Canvas Updated
       objectReference: {fileID: 0}
-    - target: {fileID: 6050421645865679835, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6450825377714118570, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: emptyText
-      value: 
-      objectReference: {fileID: 21300000, guid: d8bd11e1bf801ff49a334e57c5d5a186,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: assignText
-      value: 
-      objectReference: {fileID: 21300000, guid: 05a43f68985324f429ce5707c653f946,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: combineText
-      value: 
-      objectReference: {fileID: 21300000, guid: 2eeb478010d84a24086b36f5cde9465c,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: deselectText
-      value: 
-      objectReference: {fileID: 21300000, guid: dccea96663d24704eb9327a850e9a6e2,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: dodgeText
-      value: 
-      objectReference: {fileID: 21300000, guid: 30b5fe1f09ce1b345b439575dc3602ec,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: guardText
-      value: 
-      objectReference: {fileID: 21300000, guid: 0b855d82ecca8534c886c3a9d8858621,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: lockText
-      value: 
-      objectReference: {fileID: 21300000, guid: ad3dc13be7d1a3a459ebb878fe2eeb7a,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: passText
-      value: 
-      objectReference: {fileID: 21300000, guid: 1146dd7f9696d5346948aa019a3828ee,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: selectText
-      value: 
-      objectReference: {fileID: 21300000, guid: 4e0a6309160d78b43b7dee542143d623,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: toggleText
-      value: 
-      objectReference: {fileID: 21300000, guid: 368e33817c41e2c44bbd566af49546af,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: unlockText
-      value: 
-      objectReference: {fileID: 21300000, guid: 32c91068cb389164190a226677fa4794,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: deselectGreenText
-      value: 
-      objectReference: {fileID: 21300000, guid: 473a6b61e767e694e9481589c6294d30,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: splitText
-      value: 
-      objectReference: {fileID: 21300000, guid: 4559a8d46b7c500498ade7793ec6f067,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: bluenaText
-      value: 
-      objectReference: {fileID: 21300000, guid: 93d26f4de3cb6044b9374d60e3d840e7,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: greennaText
-      value: 
-      objectReference: {fileID: 21300000, guid: 95322af4e961fca4ea27f96ae6bb2e09,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: orangenaText
-      value: 
-      objectReference: {fileID: 21300000, guid: d0ead49b289ca8741a95f8b125d0e010,
-        type: 3}
-    - target: {fileID: 7112905558122666828, guid: 4103e730896d542468b516036b855c84,
-        type: 3}
-      propertyPath: rednaText
-      value: 
-      objectReference: {fileID: 21300000, guid: 4c4a536b18d27744d8f99482af778951,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4103e730896d542468b516036b855c84, type: 3}
 --- !u!1001 &7000813603339507917

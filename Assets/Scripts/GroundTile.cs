@@ -6,6 +6,7 @@ using UnityEditor;
 
 public enum GroundType { GreenforestGrass, GreenforestWater, GreenforestSwamp}
 
+[CreateAssetMenu(fileName = "New Ground Tile", menuName = "Highroller/GroundTile")]
 public class GroundTile : Tile
 {
     public Sprite tileSprite;
@@ -25,9 +26,9 @@ public class GroundTile : Tile
     {
         return groundType;
     }*/
-
+    /*
 #if UNITY_EDITOR
-    [MenuItem("Assets/Create/Ground Tile")]
+    [MenuItem("Assets/Create/Highroller/Ground Tile")]
     public static void CreateGroundTile()
     {
         string path = EditorUtility.SaveFilePanelInProject("Save Ground Tile", "New Ground Tile", "asset", "Save Ground Tile", "Assets");
@@ -35,7 +36,7 @@ public class GroundTile : Tile
             return;
         AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<GroundTile>(), path);
     }
-#endif
+#endif*/
 }
 
 #if UNITY_EDITOR

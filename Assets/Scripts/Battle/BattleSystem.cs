@@ -68,6 +68,7 @@ public class BattleSystem : MonoBehaviour
     private EventSystem eventSystem;
     private AudioManager audioManager;
     private ButtonPanel buttonPanel;
+    private BattleBounty battleBounty;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +79,7 @@ public class BattleSystem : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         eventSystem = FindObjectOfType<EventSystem>();
         buttonPanel = FindObjectOfType<ButtonPanel>();
+        battleBounty = FindObjectOfType<BattleBounty>();
         SetUpBattle();
     }
 
@@ -582,10 +584,14 @@ public class BattleSystem : MonoBehaviour
     {
         enemiesToDie = sentToRemoveList.Count;
 
+        int xpToAdd = 0;
+        int xpToMultiply = enemiesToDie;
+
         //Actually kill them
         for (int i = sentToRemoveList.Count - 1; i >= 0; i--)
         {
             int index = enemiesGO.IndexOf(sentToRemoveList[i]);
+            xpToAdd += enemiesGO[index].GetComponent<EnemyBattleBase>().GetXPAmount();
             enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
             Destroy(enemiesInfo[index].gameObject);
             Destroy(diceKeys[index].gameObject);
@@ -601,6 +607,12 @@ public class BattleSystem : MonoBehaviour
         if(sentToRemoveList.Count != 0)
         {
             player.AbsorbGaia();
+        }
+
+        if(xpToAdd > 0)
+        {
+            battleBounty.AddXP(xpToAdd);
+            battleBounty.SetXPMultiplier(xpToMultiply);
         }
         
         yield return null;

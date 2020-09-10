@@ -12,6 +12,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     [SerializeField] protected string unitName = "Name";
     [SerializeField] protected int diceKeyNumber = 1;
+    [SerializeField] protected int xpAmount = 1;
     [SerializeField] protected bool isGold = false;
     [SerializeField] protected bool isPlatinum = false;
     [SerializeField] protected bool isInactive = false;
@@ -68,6 +69,10 @@ public abstract class EnemyBattleBase : MonoBehaviour
     }
 
     //Getters & Setters
+    public int GetXPAmount()
+    {
+        return xpAmount;
+    }
     public string GetInfoText()
     {
         return infoText;

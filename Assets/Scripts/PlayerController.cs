@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     bool tileFlipAxisPressed = false;
     int pendingGaiaReward = 0;
     int pendingHPReward = 0;
+    int pendingXPReward = 0;
 
 
     [SerializeField] LayerMask whatStopsMovement;
@@ -40,8 +41,10 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> availableTiles;
     [SerializeField] PlayerValues playerValues;
     [SerializeField] GameObject rewardbox;
+    [SerializeField] GameObject battleRewardbox;
     [SerializeField] Sprite gaiaSprite;
     [SerializeField] Sprite HPSprite;
+    [SerializeField] Sprite XPSprite;
 
     enum Direction { North, East, South, West, None};
 
@@ -84,8 +87,8 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        healthText.text = playerValues.healthPoints.ToString() + " / " + playerValues.maxHealthPoints.ToString();
-        gaiaText.text = playerValues.gaia.ToString();
+        healthText.text = playerValues.healthPoints.ToString() + "/" + playerValues.maxHealthPoints.ToString();
+        gaiaText.text = playerValues.gaia.ToString() + "/" + playerValues.maxGaia.ToString();
         //Normal state
         if (!interacting && !tileFlipping)
         {
@@ -485,6 +488,38 @@ public class PlayerController : MonoBehaviour
         CancelTileflip();
     }
 
+    public void LanuchBattleRewardbox(int amount, int multiplier)
+    {
+        string XPText;
+        if (multiplier > 1)
+        {
+            XPText = amount + "XP";
+        }
+        else
+        {
+            XPText = amount + "XP";
+        }
+        
+        GameObject popup = Instantiate(battleRewardbox, overWorldCanvas.transform);
+        popup.GetComponent<TileflipRewardbox>().AssignInfo(XPText, XPSprite);
+        popup.GetComponent<TileflipRewardbox>().onAcceptRewardCallback += AcceptReward;
+        StartCoroutine(ShowXP(popup, amount, multiplier));
+        pendingHPReward = amount*multiplier;
+    }
+
+    IEnumerator ShowXP(GameObject popup, int amount, int multiplier)
+    {
+        string XPText;
+        yield return new WaitForSeconds(2);
+        XPText = amount + "XP x" + multiplier;
+        popup.GetComponent<TileflipRewardbox>().AssignInfo(XPText, XPSprite);
+        yield return new WaitForSeconds(2);
+        XPText = amount * multiplier + "XP";
+        popup.GetComponent<TileflipRewardbox>().AssignInfo(XPText, XPSprite);
+
+
+    }
+
     public void AcceptReward()
     {
         if(pendingGaiaReward > 0)
@@ -497,6 +532,12 @@ public class PlayerController : MonoBehaviour
         {
             playerValues.healthPoints += pendingHPReward;
             pendingHPReward = 0;
+        }
+
+        if (pendingXPReward > 0)
+        {
+            playerValues.xp += pendingXPReward;
+            pendingXPReward = 0;
         }
     }
 }
