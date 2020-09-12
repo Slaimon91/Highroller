@@ -226,7 +226,8 @@ public class Dice : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         buttonSelected = true;
         selected.SetActive(true);
-        audioManager.Play("MoveBattleCursor");
+        if(audioManager != null)
+            audioManager.Play("MoveBattleCursor");
     }
 
     public void OnDeselect(BaseEventData eventData)

@@ -6,15 +6,18 @@ public class EncounterManager : MonoBehaviour
 {
     public List<TileflipTable> tables = new List<TileflipTable>();
     [SerializeField] BattleStartupInfo battleStartupInfo;
+    private bool waitForAnim = false;
+    private GameObject selectedTile;
 
-    private void ActivateTile(TileflipTable matchedTable)
+    IEnumerator ActivateTile(TileflipTable matchedTable)
     {
         if(matchedTable == null)
         {
-            return;
+            yield return null;
         }
 
         float totalWeight = 0;
+        int pickedOption = 0;
         totalWeight += matchedTable.gaiaChance;
         totalWeight += matchedTable.HPChance;
         totalWeight += matchedTable.monsterChance;
@@ -25,28 +28,69 @@ public class EncounterManager : MonoBehaviour
         }
 
         float pickedNumber = Random.Range(0, totalWeight);
+        TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
+        tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
 
-        if(pickedNumber < matchedTable.gaiaChance)
+        if (pickedNumber < matchedTable.gaiaChance)
         {
-            FindObjectOfType<PlayerController>().LanuchGaiaRewardbox(matchedTable.gaiaRewardAmount);
-            return;
+            pickedOption = 1;
+            pickedNumber = 999;
+            tfv.TriggerGaiaAnimation();
         }
 
         pickedNumber -= matchedTable.gaiaChance;
 
         if (pickedNumber < matchedTable.HPChance)
         {
-            FindObjectOfType<PlayerController>().LanuchHPRewardbox(matchedTable.HPRewardAmount);
-            return;
+            pickedOption = 2;
+            pickedNumber = 999;
+            tfv.TriggerHPAnimation();
         }
 
         pickedNumber -= matchedTable.HPChance;
 
         if (pickedNumber < matchedTable.monsterChance)
         {
-            LaunchBattle(matchedTable);
-            return;
+            pickedOption = 3;
+            tfv.TriggerMonsterAnimation();
         }
+
+        waitForAnim = true;
+        FindObjectOfType<PlayerController>().RemoveFlipSquares();
+
+        yield return StartCoroutine(WaitForFlipAnimation());
+
+        tfv.onFlipAnimationDoneCallback -= WaitForAnimDone;
+
+        if(pickedOption == 1)
+        {
+            FindObjectOfType<PlayerController>().LanuchGaiaRewardbox(matchedTable.gaiaRewardAmount);
+        }
+        else if (pickedOption == 2)
+        {
+            FindObjectOfType<PlayerController>().LanuchHPRewardbox(matchedTable.HPRewardAmount);
+        }
+        else if (pickedOption == 3)
+        {
+            LaunchBattle(matchedTable);
+        }
+
+        yield return null;
+    }
+
+    IEnumerator WaitForFlipAnimation()
+    {
+        while(waitForAnim)
+        {
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    public void WaitForAnimDone()
+    {
+        waitForAnim = false;
     }
 
     private void LaunchBattle(TileflipTable matchedTable)
@@ -89,20 +133,62 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
-    public void GreenforestGrass()
+    public TileflipTable TestGroundType(GroundType groundTile, GameObject tile, bool isTest)
     {
-        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestGrass"));
-        ActivateTile(tableToSend);
+        selectedTile = tile;
+        switch(groundTile)
+        {
+            case GroundType.GreenforestGrass:
+                return GreenforestGrass(isTest);
+            case GroundType.GreenforestSwamp:
+                return GreenforestSwamp(isTest);
+            case GroundType.GreenforestWater:
+                return GreenforestWater(isTest);
+            default:
+                selectedTile = null;
+                return null;
+        }
     }
 
-    public void GreenforestSwamp()
+    public TileflipTable GreenforestGrass(bool isTest)
+    {
+        
+        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestGrass"));
+        if(isTest)
+        {
+            return tableToSend;
+        }
+        else
+        {
+            StartCoroutine(ActivateTile(tableToSend));
+            return null;
+        }
+    }
+
+    public TileflipTable GreenforestSwamp(bool isTest)
     {
         TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestSwamp"));
-        ActivateTile(tableToSend);
+        if (isTest)
+        {
+            return tableToSend;
+        }
+        else
+        {
+            StartCoroutine(ActivateTile(tableToSend));
+            return null;
+        }
     }
-    public void GreenforestWater()
+    public TileflipTable GreenforestWater(bool isTest)
     {
         TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestWater"));
-        ActivateTile(tableToSend);
+        if (isTest)
+        {
+            return tableToSend;
+        }
+        else
+        {
+            StartCoroutine(ActivateTile(tableToSend));
+            return null;
+        }
     }
 }

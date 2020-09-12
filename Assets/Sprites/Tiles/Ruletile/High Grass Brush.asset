@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
-  m_Name: Evil Eye Brush
+  m_Name: High Grass Brush
   m_EditorClassIdentifier: 
   m_Cells:
-  - m_Tile: {fileID: 11400000, guid: 5f479a1a9015fd24bbe64ddb90851075, type: 2}
+  - m_Tile: {fileID: 11400000, guid: c5fe7b27d5cd94c4cb3a147731241c35, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -36,6 +36,6 @@ MonoBehaviour:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_CanChangeZPosition: 0
   m_Prefabs:
-  - {fileID: 8763083304203931975, guid: 20bec24d73870074dad7bfece63c54b3, type: 3}
+  - {fileID: 8969278209904637716, guid: 20bec24d73870074dad7bfece63c54b3, type: 3}
   m_PerlinScale: 0.001
   m_Anchor: {x: 0.5, y: 0.5, z: 0}

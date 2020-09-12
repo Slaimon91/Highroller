@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 929540450231260872}
   - component: {fileID: 169148709869075643}
   m_Layer: 0
-  m_Name: Evil Eye
+  m_Name: High Grass
   m_TagString: InteractableTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1968413009
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7829621981073671818, guid: c1e8b395c62d1c84587528c971c50ded,
+  m_Sprite: {fileID: -7207094425441690202, guid: 27fe230cf4475ec43a74066566d14735,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

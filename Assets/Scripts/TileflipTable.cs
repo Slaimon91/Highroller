@@ -6,6 +6,7 @@ public class TileflipTable : ScriptableObject
 {
     public new string name = "New Item";
     public Sprite battleBackground;
+    public string displayName;
     public int gaiaChance;
     public int HPChance;
     public int monsterChance;

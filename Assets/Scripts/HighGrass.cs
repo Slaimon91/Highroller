@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class EvilEye : MonoBehaviour, TTileable
+public class HighGrass : MonoBehaviour, TTileable
 {
     Animator animator;
     GroundType groundType;
 
     void Start()
     {
-        groundType = GroundType.GreenforestWater;
+        groundType = GroundType.GreenforestGrass;
         animator = gameObject.GetComponent<Animator>();
     }
 

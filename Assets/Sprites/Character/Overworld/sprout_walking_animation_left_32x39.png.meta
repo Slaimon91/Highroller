@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 131350366c6e9a1469a6d18f7bddc915
+guid: c785c1737cde4594e93277f0646a4983
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5970045507463427365
-    second: sprout_walking_left_animation 1_0
+      213: 7102737830289499595
+    second: sprout_walking_animation_left_32x39_0
   - first:
-      213: -910086433074341513
-    second: sprout_walking_left_animation 1_1
+      213: 4350979667274824769
+    second: sprout_walking_animation_left_32x39_1
   - first:
-      213: -4277687819171347769
-    second: sprout_walking_left_animation 1_2
+      213: 3331451900560417085
+    second: sprout_walking_animation_left_32x39_2
   - first:
-      213: 6535193080219045770
-    second: sprout_walking_left_animation 1_3
+      213: -4983937063664362864
+    second: sprout_walking_animation_left_32x39_3
   - first:
-      213: -175286603267090826
-    second: sprout_walking_left_animation 1_4
+      213: 6591948436885377225
+    second: sprout_walking_animation_left_32x39_4
   - first:
-      213: -8476589742023077446
-    second: sprout_walking_left_animation 1_5
+      213: -6524908316649882442
+    second: sprout_walking_animation_left_32x39_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_0
+      name: sprout_walking_animation_left_32x39_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdac9badd33262da0800000000000000
-      internalID: -5970045507463427365
+      spriteID: bc5622bbc6ef19260800000000000000
+      internalID: 7102737830289499595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_1
+      name: sprout_walking_animation_left_32x39_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77993b10639be53f0800000000000000
-      internalID: -910086433074341513
+      spriteID: 14cfcd474f8c16c30800000000000000
+      internalID: 4350979667274824769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_2
+      name: sprout_walking_animation_left_32x39_2
       rect:
         serializedVersion: 2
         x: 64
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c2c646b79992a4c0800000000000000
-      internalID: -4277687819171347769
+      spriteID: d31243f4ad1bb3e20800000000000000
+      internalID: 3331451900560417085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_3
+      name: sprout_walking_animation_left_32x39_3
       rect:
         serializedVersion: 2
         x: 96
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8f0c054b7ba1ba50800000000000000
-      internalID: 6535193080219045770
+      spriteID: 09ad16985af75dab0800000000000000
+      internalID: -4983937063664362864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_4
+      name: sprout_walking_animation_left_32x39_4
       rect:
         serializedVersion: 2
         x: 128
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 676516653c1419df0800000000000000
-      internalID: -175286603267090826
+      spriteID: 9c09e3e7d2e4b7b50800000000000000
+      internalID: 6591948436885377225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprout_walking_left_animation 1_5
+      name: sprout_walking_animation_left_32x39_5
       rect:
         serializedVersion: 2
         x: 160
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab19eff5a8a1d5a80800000000000000
-      internalID: -8476589742023077446
+      spriteID: 6bc771ad47ed275a0800000000000000
+      internalID: -6524908316649882442
       vertices: []
       indices: 
       edges: []
