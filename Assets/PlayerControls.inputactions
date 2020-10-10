@@ -516,6 +516,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "KILLALL",
+                    "type": "Button",
+                    "id": "8c5d3a04-0135-47b0-857e-28f3b0134013",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -637,6 +645,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c1acbe1-1024-4a41-aec8-79369bf350ae",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KILLALL",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

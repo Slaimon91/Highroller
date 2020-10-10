@@ -21,7 +21,7 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     [SerializeField] Sprite emptyBerry;
     [SerializeField] Sprite emptyClock;
     [SerializeField] Sprite clock;
-    [SerializeField] GameObject popupPrefab;
+    //[SerializeField] GameObject popupPrefab;
 
     private string seedName = "";
     private string seedText = "";
@@ -83,7 +83,7 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
         selected.SetActive(false);
     }
 
-    public void Equip()
+    /*public void Equip()
     {
         if(created && !isInactive)
         {
@@ -103,5 +103,5 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         isInactive = false;
         inactive.SetActive(false);
-    }
+    }*/
 }

@@ -16,26 +16,33 @@ MonoBehaviour:
   entries:
   - enemyNumber: 1
     enemyName: Goblin
+    soulCount: 3
     info: The goblin is a dumb and green creature.
     enemyIcon: {fileID: 21300000, guid: 6ef6e71f6d87ca34b99607a6c58e9f44, type: 3}
   - enemyNumber: 2
     enemyName: Dungbee
+    soulCount: 1
     info: He will hide in his shell until the right time.
     enemyIcon: {fileID: 21300000, guid: 52291a79e3a91314ba18ea0c8b16a7ac, type: 3}
   - enemyNumber: 3
+    enemyName: Swinecone
+    soulCount: 8
+    info: This hog woke up on the wrong side of his bacon, and his goldfish just
+      died.
+    enemyIcon: {fileID: 21300000, guid: f395270ac8a69e24b87dbbd4b25bd896, type: 3}
+  - enemyNumber: 4
     enemyName: Bushcrab
+    soulCount: 3
     info: There's a lot of bushes for this critter to grab, who knows which one he
       might nab.
     enemyIcon: {fileID: 21300000, guid: f9441c230bfdd3449863c46ad8a1a53f, type: 3}
-  - enemyNumber: 4
-    enemyName: Nikklaas
-    info: The finnish version of NIklas.
-    enemyIcon: {fileID: 21300000, guid: 4c0378629ba0a7b43ba1fa8cdbbeeb08, type: 3}
   - enemyNumber: 5
-    enemyName: El Niklas
-    info: The spanish version of Niklas.
-    enemyIcon: {fileID: 21300000, guid: c22a6562d54af0a4eb0a48d237b4e37e, type: 3}
+    enemyName: Fire Monster
+    soulCount: 0
+    info: A fire monster.
+    enemyIcon: {fileID: 21300000, guid: 611fae60ceccc7847983c189762d9342, type: 3}
   - enemyNumber: 6
-    enemyName: Salkin
-    info: The inverse version of Niklas.
-    enemyIcon: {fileID: 21300000, guid: 2bec40ac58a6c5943b331d10d1859ed8, type: 3}
+    enemyName: Ice Monster
+    soulCount: 2
+    info: An ice monster.
+    enemyIcon: {fileID: 21300000, guid: 76f516b0564685a468fcc0f147214e8f, type: 3}

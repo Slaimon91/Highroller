@@ -70,6 +70,10 @@ public class InventoryUI : MonoBehaviour
         {
             currentActiveTab.gameObject.SetActive(true);
             inventoryInput.SetActive(!inventoryInput.activeSelf);
+            if (eventSystem == null)
+            {
+                eventSystem = FindObjectOfType<EventSystem>();
+            }
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
             //playerController.SetGameState(GameState.PAUSED);
             InitiateItems();            
@@ -83,6 +87,10 @@ public class InventoryUI : MonoBehaviour
             DeselectAll();
             inventoryInput.SetActive(!inventoryInput.activeSelf);
             eventSystem.SetSelectedGameObject(null);
+            if(playerController == null)
+            {
+                playerController = FindObjectOfType<PlayerController>();
+            }
             playerController.SetGameState(GameState.PLAYING);
         }
     }
@@ -145,7 +153,6 @@ public class InventoryUI : MonoBehaviour
         {
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
         }
-
         InitiateItems();
     }
 
@@ -226,7 +233,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void EquipSeed(SeedBase seedToEquip)
+    /*public void EquipSeed(SeedBase seedToEquip)
     {
         InventorySeed[] seeds = FindObjectsOfType<InventorySeed>();
         foreach (InventorySeed seed in seeds)
@@ -241,7 +248,7 @@ public class InventoryUI : MonoBehaviour
         equippedSeed = newItem;
         //equippedSeedSlot.AddItem(newItem);
         InitiateEquippedSeed(seedToEquip);
-    }
+    }*/
 
     public void UnequipAbility(int abilityToUnequip)
     {

@@ -13,11 +13,6 @@ public class TricksterBattle : EnemyBattleBase
         battleSystem = FindObjectOfType<BattleSystem>();
     }
 
-    public override void EnemySetup()
-    {
-
-    }
-
     public override IEnumerator EnemyAction()
     {
         int newDiceKeyNumber = diceKeyNumber;

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decf11b14a6bc4f45bbcd9e6fa70d4d4, type: 3}
   m_Name: Red Gem
   m_EditorClassIdentifier: 
-  name: Red Gem
+  name: Luck Berry
   prefab: {fileID: 5655952655308497353, guid: 8b2a48bc49427c944ae6603eb268ed87, type: 3}

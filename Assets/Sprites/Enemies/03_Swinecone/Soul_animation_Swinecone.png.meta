@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: a16d88bd45aec3c4a82fbb2b38167238
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8720293068440922626
+    second: Soul_animation_Swinecone_0
+  - first:
+      213: -1858719616118309946
+    second: Soul_animation_Swinecone_1
+  - first:
+      213: -3911441938510854504
+    second: Soul_animation_Swinecone_2
+  - first:
+      213: 2701140069329863930
+    second: Soul_animation_Swinecone_3
+  - first:
+      213: -1086991534736699109
+    second: Soul_animation_Swinecone_4
+  - first:
+      213: 3628315063183786969
+    second: Soul_animation_Swinecone_5
+  - first:
+      213: -2578151291641773985
+    second: Soul_animation_Swinecone_6
+  - first:
+      213: -2623091619628249673
+    second: Soul_animation_Swinecone_7
+  - first:
+      213: 3449647245231192796
+    second: Soul_animation_Swinecone_8
+  - first:
+      213: 2777491736998877632
+    second: Soul_animation_Swinecone_9
+  - first:
+      213: -5736568041273690109
+    second: Soul_animation_Swinecone_10
+  - first:
+      213: -4783211085825342732
+    second: Soul_animation_Swinecone_11
+  - first:
+      213: -263175832321519808
+    second: Soul_animation_Swinecone_12
+  - first:
+      213: 6977801391627304545
+    second: Soul_animation_Swinecone_13
+  - first:
+      213: -4854709161007115948
+    second: Soul_animation_Swinecone_14
+  - first:
+      213: 100189461555461130
+    second: Soul_animation_Swinecone_15
+  - first:
+      213: 2244097149809360151
+    second: Soul_animation_Swinecone_16
+  - first:
+      213: -990988826982962658
+    second: Soul_animation_Swinecone_17
+  - first:
+      213: 4702819066246743833
+    second: Soul_animation_Swinecone_18
+  - first:
+      213: -1628530606280474757
+    second: Soul_animation_Swinecone_19
+  - first:
+      213: 1762757567638170745
+    second: Soul_animation_Swinecone_20
+  - first:
+      213: 2547962476690048266
+    second: Soul_animation_Swinecone_21
+  - first:
+      213: 2421912644085777323
+    second: Soul_animation_Swinecone_22
+  - first:
+      213: 5530639270516443849
+    second: Soul_animation_Swinecone_23
+  - first:
+      213: -8632272389911447110
+    second: Soul_animation_Swinecone_24
+  - first:
+      213: 7018446128812234161
+    second: Soul_animation_Swinecone_25
+  - first:
+      213: -5316981420512483558
+    second: Soul_animation_Swinecone_26
+  - first:
+      213: -5067922579633646346
+    second: Soul_animation_Swinecone_27
+  - first:
+      213: -3822893135792758449
+    second: Soul_animation_Swinecone_28
+  - first:
+      213: 6537483373376086086
+    second: Soul_animation_Swinecone_29
+  - first:
+      213: 7870380083741459666
+    second: Soul_animation_Swinecone_30
+  - first:
+      213: -2622595882925811897
+    second: Soul_animation_Swinecone_31
+  - first:
+      213: 4809646302347208390
+    second: Soul_animation_Swinecone_32
+  - first:
+      213: 8155006855675416936
+    second: Soul_animation_Swinecone_33
+  - first:
+      213: 7853816516990105881
+    second: Soul_animation_Swinecone_34
+  - first:
+      213: -7351920679358785812
+    second: Soul_animation_Swinecone_35
+  - first:
+      213: -3226246547784502003
+    second: Soul_animation_Swinecone_36
+  - first:
+      213: 1525131849475397155
+    second: Soul_animation_Swinecone_37
+  - first:
+      213: -9055091124612959483
+    second: Soul_animation_Swinecone_38
+  - first:
+      213: 6555215934483030380
+    second: Soul_animation_Swinecone_39
+  - first:
+      213: 7209826184050628754
+    second: Soul_animation_Swinecone_40
+  - first:
+      213: -1364787283777389887
+    second: Soul_animation_Swinecone_41
+  - first:
+      213: -6581097015397676284
+    second: Soul_animation_Swinecone_42
+  - first:
+      213: -3470464105077396753
+    second: Soul_animation_Swinecone_43
+  - first:
+      213: 2093832406104660920
+    second: Soul_animation_Swinecone_44
+  - first:
+      213: -853582588831281034
+    second: Soul_animation_Swinecone_45
+  - first:
+      213: -3377107274010480794
+    second: Soul_animation_Swinecone_46
+  - first:
+      213: 7241656222503670693
+    second: Soul_animation_Swinecone_47
+  - first:
+      213: -4957117865484566330
+    second: Soul_animation_Swinecone_48
+  - first:
+      213: 3745705635844576213
+    second: Soul_animation_Swinecone_49
+  - first:
+      213: -4033816836909353323
+    second: Soul_animation_Swinecone_50
+  - first:
+      213: 4908136739234961931
+    second: Soul_animation_Swinecone_51
+  - first:
+      213: 4258808650572828126
+    second: Soul_animation_Swinecone_52
+  - first:
+      213: -1060541706484108025
+    second: Soul_animation_Swinecone_53
+  - first:
+      213: 5417575669662371238
+    second: Soul_animation_Swinecone_54
+  - first:
+      213: 5573375058462942574
+    second: Soul_animation_Swinecone_55
+  - first:
+      213: -2598249501496286168
+    second: Soul_animation_Swinecone_56
+  - first:
+      213: -8427788577046730499
+    second: Soul_animation_Swinecone_57
+  - first:
+      213: 3094786492025717976
+    second: Soul_animation_Swinecone_58
+  - first:
+      213: 2715951599830467351
+    second: Soul_animation_Swinecone_59
+  - first:
+      213: 6869989858816900584
+    second: Soul_animation_Swinecone_60
+  - first:
+      213: -766634083256567547
+    second: Soul_animation_Swinecone_61
+  - first:
+      213: -8485011399692039944
+    second: Soul_animation_Swinecone_62
+  - first:
+      213: 8508274327515016019
+    second: Soul_animation_Swinecone_63
+  - first:
+      213: 1635848441689216936
+    second: Soul_animation_Swinecone_64
+  - first:
+      213: -6937083873210969039
+    second: Soul_animation_Swinecone_65
+  - first:
+      213: 3666852169738557664
+    second: Soul_animation_Swinecone_66
+  - first:
+      213: 3129995524841006774
+    second: Soul_animation_Swinecone_67
+  - first:
+      213: 5223814875799622461
+    second: Soul_animation_Swinecone_68
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ae8b9f754b40970800000000000000
+      internalID: 8720293068440922626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cbb7386b508436e0800000000000000
+      internalID: -1858719616118309946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896ce77d744c7b9c0800000000000000
+      internalID: -3911441938510854504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_3
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af40bf0f4906c7520800000000000000
+      internalID: 2701140069329863930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_4
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b11992255fa3ae0f0800000000000000
+      internalID: -1086991534736699109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3c44a835d5a5230800000000000000
+      internalID: 3628315063183786969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_6
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f504a745f01983cd0800000000000000
+      internalID: -2578151291641773985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_7
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd01c6d118e89bd0800000000000000
+      internalID: -2623091619628249673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_8
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdaf86c74eb9fdf20800000000000000
+      internalID: 3449647245231192796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_9
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9966ed402ab8620800000000000000
+      internalID: 2777491736998877632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_10
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308f50692cd9360b0800000000000000
+      internalID: -5736568041273690109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soul_animation_Swinecone_11
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 0
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f28ba72cde9e9db0800000000000000
+      internalID: -4783211085825342732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -47,6 +47,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.HPHAX.performed += ctx => HPHAX();
         controls.Overworld.GAIAHAX.performed += ctx => GAIAHAX();
         controls.Overworld.MONEYHAX.performed += ctx => MONEYHAX();
+        controls.Battle.KILLALL.performed += ctx => KILLALL();
 
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
         controls.InventoryUI.InventoryLeft.performed += ctx => TriggerTabLeft();
@@ -101,6 +102,18 @@ public class PlayerControlsManager : MonoBehaviour
     private void MONEYHAX()
     {
         playerValues.currency += 100;
+    }
+    private void KILLALL()
+    {
+        if (battleSystem == null)
+        {
+            if ((battleSystem = FindObjectOfType<BattleSystem>()) == null)
+            {
+                return;
+            }
+        }
+
+        battleSystem.KillAllEnemies();
     }
 
     public void TriggerOpenInventory()

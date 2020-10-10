@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ThrowSimulation : MonoBehaviour
 {
-    private Transform Target;
+    private Vector3 Target;
     [SerializeField] float gravity = 9.8f;
     [SerializeField] float arcAmount = 50f;
     [SerializeField] float heightOfShot = 1f;
@@ -18,12 +18,12 @@ public class ThrowSimulation : MonoBehaviour
 
     public IEnumerator StartThrowCoro()
     {
-        yield return StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target.position));
+        yield return StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target));
     }
 
     public void StartThrow()
     {
-        StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target.position));
+        StartCoroutine(SimulateProjectileCR(Projectile, myTransform.position, Target));
     }
 
     IEnumerator SimulateProjectileCR(Transform projectile, Vector3 startPosition, Vector3 endPosition)
@@ -82,7 +82,7 @@ public class ThrowSimulation : MonoBehaviour
         
     }
 
-    public void SetTarget(Transform newTarget)
+    public void SetTarget(Vector3 newTarget)
     {
         Target = newTarget;
     }

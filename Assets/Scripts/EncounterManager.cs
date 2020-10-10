@@ -8,6 +8,7 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] BattleStartupInfo battleStartupInfo;
     private bool waitForAnim = false;
     private GameObject selectedTile;
+    [SerializeField] PlayerValues playerValues;
 
     IEnumerator ActivateTile(TileflipTable matchedTable)
     {
@@ -31,6 +32,15 @@ public class EncounterManager : MonoBehaviour
         TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
         tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
 
+        if (pickedNumber < matchedTable.HPChance && playerValues.healthPoints != playerValues.maxHealthPoints)
+        {
+            pickedOption = 2;
+            pickedNumber = 999;
+            tfv.TriggerHPAnimation();
+        }
+
+        pickedNumber -= matchedTable.HPChance;
+
         if (pickedNumber < matchedTable.gaiaChance)
         {
             pickedOption = 1;
@@ -39,15 +49,6 @@ public class EncounterManager : MonoBehaviour
         }
 
         pickedNumber -= matchedTable.gaiaChance;
-
-        if (pickedNumber < matchedTable.HPChance)
-        {
-            pickedOption = 2;
-            pickedNumber = 999;
-            tfv.TriggerHPAnimation();
-        }
-
-        pickedNumber -= matchedTable.HPChance;
 
         if (pickedNumber < matchedTable.monsterChance)
         {

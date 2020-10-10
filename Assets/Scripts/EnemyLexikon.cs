@@ -14,6 +14,7 @@ public class EnemyEntry
 {
     public int enemyNumber;
     public string enemyName;
+    public int soulCount;
 
     [TextArea(3, 20)]
     public string info;

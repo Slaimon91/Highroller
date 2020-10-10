@@ -17,8 +17,9 @@ public abstract class EnemyBattleBase : MonoBehaviour
     [SerializeField] protected bool isPlatinum = false;
     [SerializeField] protected bool isInactive = false;
     [SerializeField] protected int damageAmount = 0;
+    [SerializeField] protected int soulDropPercentage = 0;
     [SerializeField] protected Sprite icon;
-    [SerializeField] protected ThrowSimulation myOrb;
+    [SerializeField] protected int preferedSpawnLocation = -1;
 
     [SerializeField]
     [TextArea(3, 20)]
@@ -27,7 +28,10 @@ public abstract class EnemyBattleBase : MonoBehaviour
     protected Animator animator;
 
     //Enemy actions
-    public abstract void EnemySetup();
+    public virtual IEnumerator EnemySetup()
+    {
+        yield return null;
+    }
 
     public virtual void Assign(bool status)
     {
@@ -68,7 +72,21 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     }
 
+    public void RollSoulDrop()
+    {
+        int num = Random.Range(1, 101);
+        if(num <= soulDropPercentage)
+        {
+            FindObjectOfType<BattleBounty>().AddSoul(unitName);
+        }
+    }
+
     //Getters & Setters
+
+    public int GetPreferedSpawnLocation()
+    {
+        return preferedSpawnLocation;
+    }
     public int GetXPAmount()
     {
         return xpAmount;
@@ -129,9 +147,24 @@ public abstract class EnemyBattleBase : MonoBehaviour
         return isInactive;
     }
 
+    public int GetSoulDropPercentage()
+    {
+        return soulDropPercentage;
+    }
+
+    public void SetSoulDropPercentage(int percentage)
+    {
+        soulDropPercentage = percentage;
+    }
+
     public void SetDiceKeyGO(DiceKey diceKey)
     {
         diceKeyGO = diceKey;
         diceKeyImage = diceKeyGO.GetComponent<Image>();
+    }
+
+    public void SetDamageAmount(int amount)
+    {
+        damageAmount = amount;
     }
 }

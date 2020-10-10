@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
   name: PlayerValues
-  healthPoints: 45
-  maxHealthPoints: 50
-  gaia: 150
-  maxGaia: 300
+  healthPoints: 75
+  maxHealthPoints: 135
+  gaia: 230
+  maxGaia: 325
   seedStage: 1
   currency: 368
+  xp: 172
+  level: 4

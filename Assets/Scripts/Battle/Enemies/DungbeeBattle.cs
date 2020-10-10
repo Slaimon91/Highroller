@@ -23,10 +23,6 @@ public class DungbeeBattle : EnemyBattleBase
         targetPosition = FindObjectOfType<BattleSystem>().leftOOB.position;
         targetPosition.y = startPosition.y;
     }
-    public override void EnemySetup()
-    {
-
-    }
 
     public void Expose()
     {
@@ -86,7 +82,7 @@ public class DungbeeBattle : EnemyBattleBase
     {
         attacksLaunched++;
         var rock = Instantiate(rockToThrow, throwingHand);
-        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
+        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead.position);
         rock.StartThrow();
 
         while (rock != null)
@@ -105,13 +101,12 @@ public class DungbeeBattle : EnemyBattleBase
 
     public override IEnumerator Die()
     {
-        var orb = Instantiate(myOrb, transform);
-        orb.SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
-        yield return StartCoroutine(orb.StartThrowCoro());
+        RollSoulDrop();
+        yield return null;
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
-        if (isDead)
+        /*if (isDead)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 }

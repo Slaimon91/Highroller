@@ -14,6 +14,7 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     //selectedTile.SetActive(false);
     [SerializeField] GameObject selected;
+    [SerializeField] Image enemyPortraitImage;
     private GameObject infoTextImage;
     private TextMeshProUGUI infoName;
     private TextMeshProUGUI infoText;
@@ -89,5 +90,10 @@ public class EnemyInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void SetUnitText(string newText)
     {
         unitText = newText;
+    }
+
+    public Image GetEnemyPortrait()
+    {
+        return enemyPortraitImage;
     }
 }

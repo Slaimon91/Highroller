@@ -33,10 +33,6 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadOverworldScene()
     {
-        if(SceneManager.GetActiveScene().name == "BattleScene")
-        {
-            StartCoroutine(GiveBattleBounty());
-        }
         FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         SceneManager.LoadScene("OverworldScene");
     }
@@ -46,20 +42,6 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("BattleScene");
     }
 
-    IEnumerator GiveBattleBounty()
-    {
-        while (SceneManager.GetActiveScene().name != "OverworldScene")
-        {
-            yield return null;
-        }
-
-        // Do anything after proper scene has been loaded
-        if (SceneManager.GetActiveScene().name == "OverworldScene")
-        {
-            FindObjectOfType<BattleBounty>().GiveBounty();
-        }
-        yield return null;
-    }
     /*
      * int currentSceneIndex;
     [SerializeField] int timeToWait = 4;

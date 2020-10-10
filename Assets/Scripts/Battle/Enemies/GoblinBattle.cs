@@ -9,38 +9,12 @@ public class GoblinBattle : EnemyBattleBase
     [SerializeField] ThrowSimulation rockToThrow;
     [SerializeField] Transform throwingHand;
     private bool attackFinished = false;
+    private bool distractedFinished = false;
 
     void Awake()
     {
         if (GetComponent<Animator>() != null)
             animator = GetComponent<Animator>();
-    }
-
-    void Start()
-    {
-        StartCoroutine(NewIdle());
-    }
-
-    IEnumerator NewIdle()
-    {
-        yield return new WaitForSeconds(Random.Range(30f, 45f));
-        animator.ResetTrigger("Idle2");
-        animator.ResetTrigger("Idle3");
-        if (Random.Range(0f, 1f) >= 0.5f)
-        {
-            animator.SetTrigger("Idle2");
-        }
-        else
-        {
-            animator.SetTrigger("Idle3");
-        }
-        
-        StartCoroutine(NewIdle());
-    }
-
-    public override void EnemySetup()
-    {
-
     }
 
     public override void Assign(bool status)
@@ -65,20 +39,43 @@ public class GoblinBattle : EnemyBattleBase
 
     public override IEnumerator EnemyAction()
     {
-        attackFinished = false;
-        animator.SetTrigger("isAttacking");
-
-        while (!attackFinished)
+        if (Random.Range(0f, 1f) >= 0.5f)
         {
-            yield return null;
+            attackFinished = false;
+            animator.SetTrigger("isAttacking");
+
+            while (!attackFinished)
+            {
+                yield return null;
+            }
         }
+        else
+        {
+            distractedFinished = false;
+            animator.ResetTrigger("Idle2");
+            animator.ResetTrigger("Idle3");
+            if (Random.Range(0f, 1f) >= 0.5f)
+            {
+                animator.SetTrigger("Idle2");
+            }
+            else
+            {
+                animator.SetTrigger("Idle3");
+            }
+
+            while (!distractedFinished)
+            {
+                yield return null;
+            }
+        }
+        
         yield return null;
     }
 
     public IEnumerator ThrowRock()
     {
         var rock = Instantiate(rockToThrow, throwingHand);
-        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead);
+        rock.SetTarget(FindObjectOfType<PlayerBattleController>().playerHead.position);
         rock.StartThrow();
 
         while (rock != null)
@@ -97,13 +94,17 @@ public class GoblinBattle : EnemyBattleBase
 
     public override IEnumerator Die()
     {
-        var orb = Instantiate(myOrb, transform);
-        orb.SetTarget(FindObjectOfType<PlayerBattleController>().gaiaPoint);
-        yield return StartCoroutine(orb.StartThrowCoro());
+        RollSoulDrop();
+        yield return null;
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
         if (isDead)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void DistractedAnimFinished()
+    {
+        distractedFinished = true;
     }
 }

@@ -15,6 +15,7 @@ public class InventoryLexikon : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI infoName;
     [SerializeField] TextMeshProUGUI infoText;
+    [SerializeField] TextMeshProUGUI infoSouls;
 
     [SerializeField] EnemyLexikon enemyLexikon;
     private List<bool> seenLexikon = new List<bool>();
@@ -26,25 +27,28 @@ public class InventoryLexikon : MonoBehaviour
     private Vector2 movement;
     private float registeredMovement = 0f;
     private bool movementOffCooldown = true;
-
+    [SerializeField] Animator soulAnimator;
+    [SerializeField] Animator idleAnimator;
     void Awake()
     {
         inventoryUI = FindObjectOfType<InventoryUI>();
-
         controls = FindObjectOfType<PlayerControlsManager>().GetControls();
         controls.InventoryUI.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.InventoryUI.Move.canceled += ctx => movement = Vector2.zero;
     }
 
-    void Start()
+    void PopulateLexikon()
     {
         for (int i = 0; i < enemyLexikon.entries.Count; i++)
         {
             seenLexikon.Add(false);
-            soulsLexikon.Add(0);
+            soulsLexikon.Add(enemyLexikon.entries[i].soulCount);
         }
         UpdateLexikonPos();
+        soulAnimator.SetFloat("SoulNumber", currentlySelectedPos);
+        idleAnimator.SetFloat("IdleNumber", currentlySelectedPos);
     }
+
     void Update()
     {
         DetectMove();
@@ -56,23 +60,31 @@ public class InventoryLexikon : MonoBehaviour
         {
             if(movement.y > 0)
             {
+
                 currentlySelectedPos--;
-                if(currentlySelectedPos < 0)
+                soulAnimator.SetFloat("SoulNumber", currentlySelectedPos);
+                idleAnimator.SetFloat("IdleNumber", currentlySelectedPos);
+                if (currentlySelectedPos < 0)
                 {
                     currentlySelectedPos = enemyLexikon.entries.Count - 1;
+                    soulAnimator.SetFloat("SoulNumber", enemyLexikon.entries.Count - 1);
+                    idleAnimator.SetFloat("IdleNumber", enemyLexikon.entries.Count - 1);
                 }
-                UpdateLexikonPos();
             }
             else
             {
+                
                 currentlySelectedPos++;
-                if (currentlySelectedPos > enemyLexikon.entries.Count)
+                soulAnimator.SetFloat("SoulNumber", currentlySelectedPos);
+                idleAnimator.SetFloat("IdleNumber", currentlySelectedPos);
+                if (currentlySelectedPos > enemyLexikon.entries.Count - 1)
                 {
                     currentlySelectedPos = 0;
+                    soulAnimator.SetFloat("SoulNumber", 0);
+                    idleAnimator.SetFloat("IdleNumber", 0);
                 }
-                UpdateLexikonPos();
             }
-
+            UpdateLexikonPos();
             movementOffCooldown = false;
             StartCoroutine(TriggerCooldown());
         }
@@ -80,7 +92,7 @@ public class InventoryLexikon : MonoBehaviour
 
     IEnumerator TriggerCooldown()
     {
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(0.2f);
 
         movementOffCooldown = true;
     }
@@ -89,6 +101,7 @@ public class InventoryLexikon : MonoBehaviour
     {
         infoName.text = enemyLexikon.entries[currentlySelectedPos].enemyName;
         infoText.text = enemyLexikon.entries[currentlySelectedPos].info;
+        infoSouls.text = enemyLexikon.entries[currentlySelectedPos].soulCount.ToString();
 
         int relativeCounter = -2;
         for(int i = 0; i < 5; i++)
@@ -131,5 +144,6 @@ public class InventoryLexikon : MonoBehaviour
     void OnEnable()
     {
         controls = FindObjectOfType<PlayerControlsManager>().GetControls();
+        PopulateLexikon();
     }
 }
