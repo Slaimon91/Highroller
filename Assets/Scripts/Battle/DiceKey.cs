@@ -18,6 +18,10 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     
     [SerializeField] GameObject selected;
     [SerializeField] GameObject assigned;
+    [SerializeField] List<GameObject> moreDices = new List<GameObject>();
+    [SerializeField] List<Sprite> emptyDiceImages = new List<Sprite>();
+    private List<string> moreStatuses = new List<string>();
+    private List<int> moreDiceNumbers = new List<int>();
 
     public Sprite[] diceSpritesAssigned;
     private Animator animator;
@@ -163,29 +167,33 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     }
 
-    /*public void SetupButtonText()
+    public void SetupMoreDices(List<string> moTypes, List<int> moDiceNumbers)
     {
-        //blue
-        buttonPanel.SetEmptyBlueText();
+        for(int i = 0; i < moDiceNumbers.Count; i++)
+        {
+            moreDices[i].SetActive(true);
+            moreStatuses.Add(moTypes[i]);
+            moreDiceNumbers.Add(moDiceNumbers[i]);
 
-        //green
-        if (battleSystem.CheckDiceSelected())
-        {
-            buttonPanel.SetDeselectGreenText();
-        }
-        else
-        {
-            buttonPanel.SetEmptyGreenText();
-        }
+            if(moTypes[i] == "normal")
+            {
+                moreDices[i].GetComponent<Image>().sprite = emptyDiceImages[0];
+            }
 
-        //red
-        if (battleSystem.CheckDiceSelected())
-        {
-            buttonPanel.SetDeselectText();
+            if (moTypes[i] == "gold")
+            {
+                moreDices[i].GetComponent<Image>().sprite = emptyDiceImages[1];
+            }
+
+            if (moTypes[i] == "plat")
+            {
+                moreDices[i].GetComponent<Image>().sprite = emptyDiceImages[2];
+            }
+
+            if (moTypes[i] == "deactivated")
+            {
+                moreDices[i].GetComponent<Image>().sprite = emptyDiceImages[3];
+            }
         }
-        else
-        {
-            buttonPanel.SetEmptyRedText();
-        }
-    }*/
+    }
 }

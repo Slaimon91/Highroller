@@ -20,6 +20,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     [SerializeField] protected int soulDropPercentage = 0;
     [SerializeField] protected Sprite icon;
     [SerializeField] protected int preferedSpawnLocation = -1;
+    [SerializeField] protected List<MoreDices> moreDices = new List<MoreDices>();
 
     [SerializeField]
     [TextArea(3, 20)]
@@ -79,6 +80,39 @@ public abstract class EnemyBattleBase : MonoBehaviour
         {
             FindObjectOfType<BattleBounty>().AddSoul(unitName);
         }
+    }
+
+    public void ExtraDiceSetup()
+    {
+        List<int> diceNumbers = new List<int>();
+        List<string> diceStatuses = new List<string>();
+
+        for (int i = 0; i < moreDices.Count; i++)
+        {
+            diceNumbers.Add(moreDices[i].diceKeyNumber);
+
+            if (moreDices[i].isGold)
+            {
+                diceStatuses.Add("gold");
+            }
+
+            else if (moreDices[i].isPlatinum)
+            {
+                diceStatuses.Add("plat");
+            }
+
+            else if (moreDices[i].isInactive)
+            {
+                diceStatuses.Add("deactivated");
+            }
+
+            else
+            {
+                diceStatuses.Add("normal");
+            }
+        }
+
+        diceKeyGO.SetupMoreDices(diceStatuses, diceNumbers);
     }
 
     //Getters & Setters
@@ -167,4 +201,13 @@ public abstract class EnemyBattleBase : MonoBehaviour
     {
         damageAmount = amount;
     }
+}
+
+[System.Serializable]
+public class MoreDices
+{
+    public int diceKeyNumber = 1;
+    public bool isGold = false;
+    public bool isPlatinum = false;
+    public bool isInactive = false;
 }

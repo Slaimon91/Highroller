@@ -59,7 +59,6 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Sprite whiteAbilityBorder;
     [SerializeField] BattleStartupInfo battleStartupInfo;
 
-
     public BattleState state;
     private GameObject lastselect;
     private PlayerBattleController player;
@@ -246,7 +245,7 @@ public class BattleSystem : MonoBehaviour
                 if(enemySpotOccupied[i] == true)
                 {
                     k = i;
-                    if (k < battleStartupInfo.enemies.Count -1)
+                    if (k >= battleStartupInfo.enemies.Count - 1)
                     {
                         k = 0;
                     }
@@ -254,10 +253,9 @@ public class BattleSystem : MonoBehaviour
                     {
                         k++;
                     }
-
                     if (enemySpotOccupied[k] == true)
                     {
-                        if (k < battleStartupInfo.enemies.Count - 1)
+                        if (k >= battleStartupInfo.enemies.Count - 1)
                         {
                             k = 0;
                         }
@@ -267,7 +265,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         if (enemySpotOccupied[k] == true)
                         {
-                            if (k < battleStartupInfo.enemies.Count - 1)
+                            if (k >= battleStartupInfo.enemies.Count - 1)
                             {
                                 k = 0;
                             }
@@ -301,7 +299,6 @@ public class BattleSystem : MonoBehaviour
             enemiesInfo[i].SetUnitName(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName());
             enemiesInfo[i].SetUnitText(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText());
 
-
             enemyPrefabs.Add(battleStartupInfo.enemies[i]);
             var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[k]);
             enemyGO.GetComponentInChildren<SpriteRenderer>().sortingOrder = nrOfEnemies - k;
@@ -313,12 +310,55 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void SpawnNewMonster()
+    public void SpawnNewMonster(GameObject enemyPrefab)
     {
+        int spawnOffset = 0;
         int offset = 31;
         int offsetInfo = 22;
 
+        if(enemyPrefab.GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation() != -1)
+        {
+            if(enemySpotOccupied[enemyPrefab.GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation()] != true)
+            {
+                spawnOffset = enemyPrefab.GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation();
+            }
+        }
 
+        if(spawnOffset == 0)
+        {
+            for(int j = 0; j < enemySpotOccupied.Length; j++)
+            {
+                if(enemySpotOccupied[j] != true)
+                {
+                    spawnOffset = j;
+                    break;
+                }
+            }
+        }
+
+        int i = enemiesGO.Count;
+        diceKeys.Add(Instantiate(diceKeyPrefab, diceKeyPanel.transform));
+        RectTransform rt = diceKeys[i].GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector3(0 - offset * spawnOffset, 0, 0);
+        diceKeyImages.Add(diceKeys[i].GetComponent<Image>());
+        diceKeys[i].GetComponent<Button>().onClick.AddListener(OnKeyPressed);
+
+        enemiesInfo.Add(Instantiate(enemiesInfoPrefab, enemiesInfoPanel.transform));
+        RectTransform rtInfo = enemiesInfo[i].GetComponent<RectTransform>();
+        rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * spawnOffset, 0, 0);
+        Image enemiesInfoImage = enemiesInfo[i].GetEnemyPortrait();
+        enemiesInfoImage.sprite = enemyPrefab.GetComponent<EnemyBattleBase>().GetIcon();
+        enemiesInfo[i].SetUnitName(enemyPrefab.GetComponent<EnemyBattleBase>().GetUnitName());
+        enemiesInfo[i].SetUnitText(enemyPrefab.GetComponent<EnemyBattleBase>().GetInfoText());
+
+        enemyPrefabs.Add(enemyPrefab);
+        var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[spawnOffset]);
+        enemyGO.GetComponentInChildren<SpriteRenderer>().sortingOrder = i - spawnOffset;
+        enemiesGO.Add(enemyGO);
+        diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
+        SetDiceKey(i);
+        enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
+        enemySpotOccupied[spawnOffset] = true;
     }
 
     void CheckSpawnLocationAvailability()

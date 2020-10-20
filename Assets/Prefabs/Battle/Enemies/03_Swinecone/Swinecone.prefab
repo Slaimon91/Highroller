@@ -88,7 +88,12 @@ MonoBehaviour:
   damageAmount: 1
   soulDropPercentage: 5
   icon: {fileID: 21300000, guid: f395270ac8a69e24b87dbbd4b25bd896, type: 3}
-  preferedSpawnLocation: 2
+  preferedSpawnLocation: 1
+  moreDices:
+  - diceKeyNumber: 0
+    isGold: 0
+    isPlatinum: 0
+    isInactive: 0
   infoText: Swinecone will get angrier every turn, increasing their damage and dice
     key by 1 up to 6.
   runSpeed: 7

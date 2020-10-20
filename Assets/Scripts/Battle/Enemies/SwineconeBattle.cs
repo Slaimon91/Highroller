@@ -14,15 +14,17 @@ public class SwineconeBattle : EnemyBattleBase
     private bool done = false;
     private bool hitTarget = false;
     private bool finishedWaiting = false;
+    private CameraShake cameraShake;
 
     void Awake()
     {
+        cameraShake = FindObjectOfType<CameraShake>();
         if (GetComponent<Animator>() != null)
             animator = GetComponent<Animator>();
         battleSystem = FindObjectOfType<BattleSystem>();
         startPosition = transform.position;
         targetPosition = FindObjectOfType<BattleSystem>().playerSpawnPoint.position;
-        targetPosition.x = targetPosition.x + 0.95f;
+        targetPosition.x = targetPosition.x + 0.91f;
         targetPosition.y = startPosition.y;
     }
 
@@ -41,6 +43,11 @@ public class SwineconeBattle : EnemyBattleBase
         }
 
         yield return null;
+    }
+
+    public override void CollideWithPlayer()
+    {
+        StartCoroutine(cameraShake.Shake(0.2f, 0.15f));
     }
 
     public override IEnumerator EnemyAction()
@@ -70,6 +77,7 @@ public class SwineconeBattle : EnemyBattleBase
         {
             yield return null;
         }
+
         
         yield return GetComponent<ThrowSimulation>().StartThrowCoro();
 

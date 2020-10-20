@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Blue Gem
   m_EditorClassIdentifier: 
   name: Blue Gem
-  prefab: {fileID: 5655952655308497353, guid: caeb54675262b0b41af62e9f7cb83e04, type: 3}
+  prefab: {fileID: 4178549126158828900, guid: 8e743c6dd2ca4a248a51dfd59a2a42ce, type: 3}

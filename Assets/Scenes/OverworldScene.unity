@@ -14224,6 +14224,12 @@ PrefabInstance:
       propertyPath: dialogueBox
       value: 
       objectReference: {fileID: 930514299}
+    - target: {fileID: 6999416645313447327, guid: f1dc48db5662358478767f6cdd689d73,
+        type: 3}
+      propertyPath: playerValues
+      value: 
+      objectReference: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1dc48db5662358478767f6cdd689d73, type: 3}
 --- !u!1001 &6925011576523888028

@@ -160,6 +160,7 @@ public class PlayerBattleController : MonoBehaviour
             }
             else
             {
+                Debug.Log(collidingEnemy);
                 TakeDamage(collidingEnemy.GetDamageAmount());
                 collidingEnemy.CollideWithPlayer();
             }
@@ -314,7 +315,7 @@ public class PlayerBattleController : MonoBehaviour
     IEnumerator DamageText(int damage)
     {
         var text = Instantiate(damageText, canvas.transform);
-        text.GetComponent<TextMeshProUGUI>().text = "-" + damage;
+        text.GetComponent<TextMeshProUGUI>().text = "" + damage;
 
         yield return new WaitForSeconds(1);
 
@@ -324,7 +325,7 @@ public class PlayerBattleController : MonoBehaviour
     IEnumerator HealText(int damage)
     {
         var text = Instantiate(healText, canvas.transform);
-        text.GetComponent<TextMeshProUGUI>().text = "+ " + damage;
+        text.GetComponent<TextMeshProUGUI>().text = "" + damage;
 
         yield return new WaitForSeconds(1);
 
@@ -339,6 +340,11 @@ public class PlayerBattleController : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         Destroy(text.gameObject);
+    }
+
+    public IEnumerator TextRise(GameObject textObject)
+    {
+        yield return null;
     }
 
     public void EnableEasyBlocking()
