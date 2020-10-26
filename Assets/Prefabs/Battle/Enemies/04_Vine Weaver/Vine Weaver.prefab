@@ -85,7 +85,7 @@ MonoBehaviour:
   isInactive: 0
   damageAmount: 0
   soulDropPercentage: 25
-  icon: {fileID: 21300000, guid: f395270ac8a69e24b87dbbd4b25bd896, type: 3}
+  icon: {fileID: 21300000, guid: 4a96f79a52768714ba07ef85309da5b3, type: 3}
   preferedSpawnLocation: 0
   moreDices:
   - diceKeyNumber: 5

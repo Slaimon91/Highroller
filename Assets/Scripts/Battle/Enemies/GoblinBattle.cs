@@ -17,13 +17,13 @@ public class GoblinBattle : EnemyBattleBase
             animator = GetComponent<Animator>();
     }
 
-    public override void Assign(bool status)
+    public override void Assign(bool status, int number)
     {
         if (!status)
         {
             isAssigned = false;
 
-            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
+            diceKeyGO.SetAssignedStatus(false, number);
 
             animator.SetBool("isMatched", false);
         }
@@ -31,7 +31,7 @@ public class GoblinBattle : EnemyBattleBase
         {
             isAssigned = true;
 
-            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
+            diceKeyGO.SetAssignedStatus(true, number);
 
             animator.SetBool("isMatched", true);
         }

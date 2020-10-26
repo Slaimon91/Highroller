@@ -22,26 +22,26 @@ AnimationClip:
     - time: 0
       value: {fileID: -2607296782455675784, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
-    - time: 0.1
+    - time: 0.083333336
       value: {fileID: -3357470906550807611, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
-    - time: 0.2
+    - time: 0.16666667
       value: {fileID: -1246076334073453045, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
-    - time: 0.3
+    - time: 0.25
       value: {fileID: -3568524943183732238, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
-    - time: 0.4
+    - time: 0.33333334
       value: {fileID: 7654138127048372910, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
-    - time: 0.5
+    - time: 0.41666666
       value: {fileID: 7307908329447274214, guid: 7711df1d8e282aa4e90f24efe185029f,
         type: 3}
     attribute: m_Sprite
     path: Enemy Sprite
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 10
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -67,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -86,4 +86,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.41666666
+    functionName: Die
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

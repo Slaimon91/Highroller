@@ -262,7 +262,6 @@ public class PlayerBattleController : MonoBehaviour
             StartCoroutine(DamageText(damageToTake));
 
             audioManager.Play("TakeDamage");
-            Debug.Log("You took " + (damageToTake) + " damage!");
 
             if (!successBlock)
             {

@@ -134,6 +134,24 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
+    public IEnumerator LaunchCustomBattle(GameObject monsterIConVisualGO, List<GameObject> enemies, Sprite background)
+    {
+        selectedTile = monsterIConVisualGO;
+        TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
+        tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
+        tfv.TriggerMonsterAnimation();
+        waitForAnim = true;
+        yield return StartCoroutine(WaitForFlipAnimation());
+        battleStartupInfo.enemies.Clear();
+        for (int k = 0; k < enemies.Count; k++)
+        {
+            battleStartupInfo.enemies.Add(enemies[k]);
+        }
+        battleStartupInfo.battleBackground = background;
+        yield return null;
+        FindObjectOfType<LevelLoader>().LoadBattleScene();
+    }
+
     public TileflipTable TestGroundType(GroundType groundTile, GameObject tile, bool isTest)
     {
         selectedTile = tile;

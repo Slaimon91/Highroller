@@ -16,7 +16,7 @@ public class BattleSystem : MonoBehaviour
     private List<EnemyInfo> enemiesInfo = new List<EnemyInfo>();
     private List<BattleAbilityHolder> abilityHolder = new List<BattleAbilityHolder>();
     [HideInInspector] public List<AbilityBase> battleAbilites = new List<AbilityBase>();
-    private bool[] enemySpotOccupied = {false, false, false, false};
+    private GameObject[] enemySpotOccupied = {null, null, null, null};
 
     //Spawnpoints
     public Transform playerSpawnPoint;
@@ -129,6 +129,50 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    public void ActivateNextDK(DiceKey DK, string status, int number)
+    {
+        int index = 0;
+        
+        for (int i = 0; i < diceKeys.Count; i++)
+        {
+            if(diceKeys[i] == DK)
+            {
+                index = i;
+            }
+        }
+
+        if (status == "deactivated")
+        {
+            diceKeys[index].SetInactive(true, number);
+            diceKeys[index].SetGold(false, number);
+            diceKeys[index].SetPlatinum(false, number);
+            diceKeyImages[index].sprite = diceSpritesInactive[number - 1];
+        }
+        else if (status == "gold")
+        {
+            diceKeys[index].SetInactive(false, number);
+            diceKeys[index].SetGold(true, number);
+            diceKeys[index].SetPlatinum(false, number);
+            diceKeyImages[index].sprite = diceSpritesGold[number - 1];
+        }
+        else if (status == "plat")
+        {
+            diceKeys[index].SetInactive(false, number);
+            diceKeys[index].SetGold(false, number);
+            diceKeys[index].SetPlatinum(true, number);
+            diceKeyImages[index].sprite = diceSpritesPlatinum[number - 1];
+        }
+        else
+        {
+            diceKeys[index].SetInactive(false, number);
+            diceKeys[index].SetGold(false, number);
+            diceKeys[index].SetPlatinum(false, number);
+            diceKeyImages[index].sprite = diceSprites[number - 1];
+        }
+
+        DK.SetAssignedStatus(false, number);
+        diceKeyNumbers[index] = number;
+    }
 
     void InstantiateDices()
     {
@@ -242,7 +286,7 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                if(enemySpotOccupied[i] == true)
+                if(enemySpotOccupied[i] != null)
                 {
                     k = i;
                     if (k >= battleStartupInfo.enemies.Count - 1)
@@ -253,7 +297,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         k++;
                     }
-                    if (enemySpotOccupied[k] == true)
+                    if (enemySpotOccupied[k] != null)
                     {
                         if (k >= battleStartupInfo.enemies.Count - 1)
                         {
@@ -263,7 +307,7 @@ public class BattleSystem : MonoBehaviour
                         {
                             k++;
                         }
-                        if (enemySpotOccupied[k] == true)
+                        if (enemySpotOccupied[k] != null)
                         {
                             if (k >= battleStartupInfo.enemies.Count - 1)
                             {
@@ -306,11 +350,11 @@ public class BattleSystem : MonoBehaviour
             diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
             SetDiceKey(i);
             enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
-            enemySpotOccupied[k] = true;
+            enemySpotOccupied[k] = enemyGO;
         }
     }
 
-    public void SpawnNewMonster(GameObject enemyPrefab)
+    public IEnumerator SpawnNewMonster(GameObject enemyPrefab)
     {
         int spawnOffset = 0;
         int offset = 31;
@@ -328,7 +372,7 @@ public class BattleSystem : MonoBehaviour
         {
             for(int j = 0; j < enemySpotOccupied.Length; j++)
             {
-                if(enemySpotOccupied[j] != true)
+                if(enemySpotOccupied[j] == null)
                 {
                     spawnOffset = j;
                     break;
@@ -358,7 +402,9 @@ public class BattleSystem : MonoBehaviour
         diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
         SetDiceKey(i);
         enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
-        enemySpotOccupied[spawnOffset] = true;
+        enemySpotOccupied[spawnOffset] = enemyGO;
+
+        yield return null;
     }
 
     void CheckSpawnLocationAvailability()
@@ -673,7 +719,20 @@ public class BattleSystem : MonoBehaviour
                 ability.EnemyDeath();
             }
         }
-            
+
+        //See if someones front DK was assigned
+        List<GameObject> tempGO = new List<GameObject>();
+        foreach (var enemyGO in enemiesGO)
+        {
+            tempGO.Add(enemyGO);
+        }
+        foreach (var enemyGO in tempGO)
+        {
+            if (enemyGO.GetComponent<EnemyBattleBase>().GetFrontDKAssignedStatus())
+            {
+                yield return StartCoroutine(enemyGO.GetComponent<EnemyBattleBase>().ActivateNextDK());
+            }
+        }
 
         if (enemiesGO.Count == 0) //Battle is over
         {
@@ -702,6 +761,16 @@ public class BattleSystem : MonoBehaviour
         for (int i = sentToRemoveList.Count - 1; i >= 0; i--)
         {
             int index = enemiesGO.IndexOf(sentToRemoveList[i]);
+            for (int j = 0; j < enemySpotOccupied.Length; j++)
+            {
+                if(enemySpotOccupied[j] != null)
+                {
+                    if (enemySpotOccupied[j].gameObject == enemiesGO[index].gameObject)
+                    {
+                        enemySpotOccupied[j] = null;
+                    }
+                }
+            }
             xpToAdd += enemiesGO[index].GetComponent<EnemyBattleBase>().GetXPAmount();
             enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
             Destroy(enemiesInfo[index].gameObject);
@@ -879,9 +948,10 @@ public class BattleSystem : MonoBehaviour
                 //Get the dicekey number
                 foreach(var enemyGO in enemiesGO)
                 {
-                    if(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
+                    if (enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                     {
-                        secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
+                        secondPressedNumber = pressedDiceKey.GetDKNumber();
+                        //secondPressedNumber = enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber();
                         if (secondPressedNumber == firstPressedNumber && !pressedDiceKey.GetAssignedStatus() && !pressedDiceKey.GetInactiveStatus())
                         {
                             if(pressedDiceKey.GetGoldStatus() && !firstPressedDice.GetGoldStatus() && !firstPressedDice.GetPlatinumStatus())
@@ -901,7 +971,7 @@ public class BattleSystem : MonoBehaviour
                                 firstPressedDice.SetMarkedStatus(false);
                                 //pressedDiceKey.SetAssignedStatus(true);
                                 firstPressedDice.SetAssignedTo(pressedDiceKey.gameObject);
-                                enemyGO.GetComponent<EnemyBattleBase>().Assign(true);
+                                enemyGO.GetComponent<EnemyBattleBase>().Assign(true, secondPressedNumber);
                             }
                         }
                         else
@@ -947,7 +1017,7 @@ public class BattleSystem : MonoBehaviour
                         {
                             if (enemyGO.GetComponent<EnemyBattleBase>().GetDiceKey() == pressedDiceKey)
                             {
-                                enemyGO.GetComponent<EnemyBattleBase>().Assign(false);
+                                enemyGO.GetComponent<EnemyBattleBase>().Assign(false, 0);
 
                                 for (int k = 0; k < diceObjects.Count; k++)
                                 {
@@ -1115,11 +1185,12 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(EnemyTurn());
     }
 
+    //This is for the cmd cheat to kill all enemies
     public void KillAllEnemies()
     {
         foreach (var enemyGO in enemiesGO)
         {
-            enemyGO.GetComponent<EnemyBattleBase>().Assign(true);
+            enemyGO.GetComponent<EnemyBattleBase>().Assign(true, 1);
         }
         StartCoroutine(EnemyTurn());
     }

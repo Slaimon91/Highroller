@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6321848474359423236}
   - component: {fileID: 8589462616363545291}
   - component: {fileID: 1774935674830647321}
-  - component: {fileID: 6399570762763694903}
+  - component: {fileID: 4850881993956526741}
   m_Layer: 0
   m_Name: Spiderling
   m_TagString: Untagged
@@ -86,11 +86,11 @@ MonoBehaviour:
   isInactive: 0
   damageAmount: 1
   soulDropPercentage: 0
-  icon: {fileID: 21300000, guid: f395270ac8a69e24b87dbbd4b25bd896, type: 3}
+  icon: {fileID: 21300000, guid: bdff438d050ab9d4abc7cf572b245113, type: 3}
   preferedSpawnLocation: 3
   moreDices: []
   infoText: 
-  rockToThrow: {fileID: 8940644904525952771, guid: 0ab6f3dca8c87c94fb0f855f2d24a8c9,
+  slimeToThrow: {fileID: 3954603286891809269, guid: 2913450e051031240b1ce61629111303,
     type: 3}
   throwingHand: {fileID: 1492344989572751880}
 --- !u!95 &8589462616363545291
@@ -133,7 +133,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6399570762763694903
+--- !u!114 &4850881993956526741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

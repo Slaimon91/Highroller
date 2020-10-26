@@ -1305,6 +1305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soul Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 5331234533967374051, guid: cb19fb07711342844b88ecdbefc8e181,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7032839098168329383, guid: cb19fb07711342844b88ecdbefc8e181,
         type: 3}
       propertyPath: m_LocalPosition.x

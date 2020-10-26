@@ -40,6 +40,7 @@ public class SwineconeBattle : EnemyBattleBase
         if (diceKeyGO != null)
         {
             diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
+            diceKeyGO.SetDKNumber(diceKeyNumber);
         }
 
         yield return null;

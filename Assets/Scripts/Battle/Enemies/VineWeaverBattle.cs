@@ -7,6 +7,7 @@ public class VineWeaverBattle : EnemyBattleBase
     private BattleSystem battleSystem;
     [SerializeField] GameObject spiderlingPrefab;
     private int spiderlingCount = 0;
+    private bool spiderlingSpawned = false;
     void Awake()
     {
         if (GetComponent<Animator>() != null)
@@ -20,30 +21,54 @@ public class VineWeaverBattle : EnemyBattleBase
     {
         yield return new WaitForEndOfFrame();
         ExtraDiceSetup();
-        diceKeyGO.gameObject.SetActive(false);
+        //diceKeyGO.gameObject.SetActive(false);
     }
 
     public void ShowDices()
     {
-        diceKeyGO.gameObject.SetActive(true);
+        //diceKeyGO.gameObject.SetActive(true);
     }
 
-    public void SpawnSpiderling()
+    public override IEnumerator NextDKWasActivated()
+    {
+        yield return StartCoroutine(EnemyAction());
+    }
+
+    public IEnumerator SpawnSpiderling()
     {
         if(spiderlingCount == 0)
         {
             spiderlingCount++;
-            battleSystem.SpawnNewMonster(spiderlingPrefab);
+            yield return StartCoroutine(battleSystem.SpawnNewMonster(spiderlingPrefab));
         }
+
+        else if (spiderlingCount > 0)
+        {
+            spiderlingCount++;
+            SpiderlingBattle firstSpiderling = FindObjectOfType<SpiderlingBattle>();
+            Instantiate(spiderlingPrefab, firstSpiderling.transform.parent);
+        }
+
+        yield return null;
     }
 
     public override IEnumerator EnemyAction()
     {
-        animator.SetBool("isAttacking", true);
+        if (spiderlingCount < 3)
+        {
+            animator.SetTrigger("isAttacking");
 
-        yield return null;
-
-        animator.SetBool("isAttacking", false);
+            while(!spiderlingSpawned)
+            {
+                yield return null;
+            }
+            spiderlingSpawned = false;
+            yield return null;
+        }
+        else
+        {
+            yield return null;
+        }
     }
 
     public override void TriggerDying()
@@ -66,5 +91,15 @@ public class VineWeaverBattle : EnemyBattleBase
     public int GetSpiderlingCount()
     {
         return spiderlingCount;
+    }
+
+    public void SetSpiderlingCount(int count)
+    {
+        spiderlingCount = count;
+    }
+
+    public void SpiderlingHasSpawned()
+    {
+        spiderlingSpawned = true;
     }
 }

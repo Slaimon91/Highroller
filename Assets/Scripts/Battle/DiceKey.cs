@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using UnityStandardAssets.CrossPlatformInput;
+using System.Linq;
 
 public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
@@ -14,7 +15,7 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
     private bool diceInactive = false;
     private bool isGold = false;
     private bool isPlatinum = false;
-    private float diceNumber = -1;
+    private int diceNumber = -1;
     
     [SerializeField] GameObject selected;
     [SerializeField] GameObject assigned;
@@ -64,6 +65,24 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         selected.SetActive(false);
     }
 
+    public bool TestMoreDices()
+    {
+        bool isEmpty = !moreDiceNumbers.Any();
+        if (isEmpty)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void SetDKNumber(int DKNumber)
+    {
+        diceNumber = DKNumber;
+    }
+
     public void SetAssignedStatus(bool status, int keyNumber)
     {
         if (!status)
@@ -105,6 +124,12 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void SetGold(bool status, int number)
     {
+        if(status)
+        {
+            isPlatinum = !status;
+            diceInactive = !status;
+        }
+
         isGold = status;
         diceNumber = number;
         animator.SetBool("isGold", status);
@@ -121,6 +146,12 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void SetPlatinum(bool status, int number)
     {
+        if(status)
+        {
+            isGold = !status;
+            diceInactive = !status;
+        }
+
         isPlatinum = status;
         diceNumber = number;
         animator.SetBool("isPlatinum", status);
@@ -167,9 +198,22 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     }
 
+    public int GetDKNumber()
+    {
+        return diceNumber;
+    }
+
     public void SetupMoreDices(List<string> moTypes, List<int> moDiceNumbers)
     {
-        for(int i = 0; i < moDiceNumbers.Count; i++)
+        for (int i = 0; i < moreDices.Count; i++)
+        {
+            moreDices[i].SetActive(false);
+        }
+
+        moreStatuses.Clear();
+        moreDiceNumbers.Clear();
+
+        for (int i = 0; i < moDiceNumbers.Count; i++)
         {
             moreDices[i].SetActive(true);
             moreStatuses.Add(moTypes[i]);
@@ -195,5 +239,29 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
                 moreDices[i].GetComponent<Image>().sprite = emptyDiceImages[3];
             }
         }
+    }
+
+    public void ActivateNextDK()
+    {
+        string status = moreStatuses[0];
+        int number = moreDiceNumbers[0];
+
+        battleSystem.ActivateNextDK(gameObject.GetComponent<DiceKey>(), status, number);
+
+        moreStatuses.RemoveAt(0);
+        moreDiceNumbers.RemoveAt(0);
+
+        List<string> tempStatuses = new List<string>();
+        foreach(string stat in moreStatuses)
+        {
+            tempStatuses.Add(stat);
+        }
+        List<int> tempNumbers = new List<int>();
+        foreach (int num in moreDiceNumbers)
+        {
+            tempNumbers.Add(num);
+        }
+
+        SetupMoreDices(tempStatuses, tempNumbers);
     }
 }

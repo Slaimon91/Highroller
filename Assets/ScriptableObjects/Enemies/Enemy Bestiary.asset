@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a97ed945ab117245ac036dbc71fcb50, type: 3}
-  m_Name: Enemy Lexikon
+  m_Name: Enemy Bestiary
   m_EditorClassIdentifier: 
-  name: Enemy Lexikon
+  name: Enemy Bestiary
   entries:
   - enemyNumber: 1
     enemyName: Goblin
     soulCount: 3
     info: The goblin is a dumb and green creature.
-    enemyIcon: {fileID: 21300000, guid: 6ef6e71f6d87ca34b99607a6c58e9f44, type: 3}
+    enemyIcon: {fileID: 21300000, guid: e6a600744c0044246a92b8b456bc6da3, type: 3}
   - enemyNumber: 2
     enemyName: Dungbee
     soulCount: 1
     info: He will hide in his shell until the right time.
-    enemyIcon: {fileID: 21300000, guid: 52291a79e3a91314ba18ea0c8b16a7ac, type: 3}
+    enemyIcon: {fileID: 21300000, guid: 5c139cf3898870f48a3e7b52b5c88097, type: 3}
   - enemyNumber: 3
     enemyName: Swinecone
     soulCount: 8
     info: This hog woke up on the wrong side of his bacon, and his goldfish just
       died.
-    enemyIcon: {fileID: 21300000, guid: f395270ac8a69e24b87dbbd4b25bd896, type: 3}
+    enemyIcon: {fileID: 21300000, guid: 1116f412e5ef41349aefdd22242664cb, type: 3}
   - enemyNumber: 4
-    enemyName: Bushcrab
+    enemyName: Vine Weaver
     soulCount: 3
     info: There's a lot of bushes for this critter to grab, who knows which one he
       might nab.
-    enemyIcon: {fileID: 21300000, guid: f9441c230bfdd3449863c46ad8a1a53f, type: 3}
+    enemyIcon: {fileID: 21300000, guid: 4a96f79a52768714ba07ef85309da5b3, type: 3}
   - enemyNumber: 5
     enemyName: Fire Monster
     soulCount: 0

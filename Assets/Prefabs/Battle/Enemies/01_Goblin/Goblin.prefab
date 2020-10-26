@@ -54,7 +54,9 @@ MonoBehaviour:
   isInactive: 0
   damageAmount: 2
   soulDropPercentage: 5
-  icon: {fileID: 21300000, guid: 6ef6e71f6d87ca34b99607a6c58e9f44, type: 3}
+  icon: {fileID: 21300000, guid: e6a600744c0044246a92b8b456bc6da3, type: 3}
+  preferedSpawnLocation: -1
+  moreDices: []
   infoText: No ability.
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}

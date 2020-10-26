@@ -9,6 +9,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     protected Image diceKeyImage;
     protected bool isDead = false;
     protected bool isAssigned = false;
+    protected bool isFrontDKAssigned = false;
 
     [SerializeField] protected string unitName = "Name";
     [SerializeField] protected int diceKeyNumber = 1;
@@ -28,30 +29,44 @@ public abstract class EnemyBattleBase : MonoBehaviour
 
     protected Animator animator;
 
-    //Enemy actions
+    //Happens after attacks before it becomes the players turn again
     public virtual IEnumerator EnemySetup()
     {
         yield return null;
     }
 
-    public virtual void Assign(bool status)
+    //Assign the monster because the DK was matched
+    public virtual void Assign(bool status, int number)
     {
         if (!status)
         {
             isAssigned = false;
+            isFrontDKAssigned = false;
 
-            diceKeyGO.SetAssignedStatus(false, diceKeyNumber);
+            diceKeyGO.SetAssignedStatus(false, number);
         }
         else
         {
-            isAssigned = true;
+            //If the monster does not have any more dices
+            if(!diceKeyGO.TestMoreDices())
+            {
+                isAssigned = true;
 
-            diceKeyGO.SetAssignedStatus(true, diceKeyNumber);
+                diceKeyGO.SetAssignedStatus(true, number);
+            }
+            else
+            {
+                isFrontDKAssigned = true;
+
+                diceKeyGO.SetAssignedStatus(true, number);
+            }
         }
     }
 
+    //Enemy attack phase
     public abstract IEnumerator EnemyAction();
 
+    //Player enemy death animation
     public virtual void TriggerDying()
     {
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
@@ -63,16 +78,19 @@ public abstract class EnemyBattleBase : MonoBehaviour
         }
     }
 
+    //Actually die
     public virtual IEnumerator Die()
     {
         yield return null;
     }
 
+    //If the enemy collides with the player
     public virtual void CollideWithPlayer()
     {
 
     }
 
+    //See if the enemy will drop a soul
     public void RollSoulDrop()
     {
         int num = Random.Range(1, 101);
@@ -82,6 +100,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
         }
     }
 
+    //Setup if it's a boss with extra dices
     public void ExtraDiceSetup()
     {
         List<int> diceNumbers = new List<int>();
@@ -115,6 +134,21 @@ public abstract class EnemyBattleBase : MonoBehaviour
         diceKeyGO.SetupMoreDices(diceStatuses, diceNumbers);
     }
 
+    //Will activate the next DK in line if it's a boss monster
+    public IEnumerator ActivateNextDK()
+    {
+        diceKeyGO.ActivateNextDK();
+
+        isFrontDKAssigned = false;
+
+        yield return StartCoroutine(NextDKWasActivated());
+    }
+
+    public virtual IEnumerator NextDKWasActivated()
+    {
+        yield return null;
+    }
+
     //Getters & Setters
 
     public int GetPreferedSpawnLocation()
@@ -140,6 +174,10 @@ public abstract class EnemyBattleBase : MonoBehaviour
         return isAssigned;
     }
 
+    public bool GetFrontDKAssignedStatus()
+    {
+        return isFrontDKAssigned;
+    }
 
     public bool GetDeathStatus()
     {
