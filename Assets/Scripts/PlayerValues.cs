@@ -13,6 +13,7 @@ public class PlayerValues : ScriptableObject
     public int currency;
     public int xp;
     public int level;
+    public int nrOfBattles;
 
     public virtual void Use()
     {

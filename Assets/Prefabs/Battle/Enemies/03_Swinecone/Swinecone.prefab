@@ -178,6 +178,8 @@ MonoBehaviour:
   gravity: 10
   arcAmount: 10
   heightOfShot: 1
+  enableAnimation: 0
+  destroyAfterHit: 0
   Projectile: {fileID: 8572336695890697927}
 --- !u!1 &8572336697252336090
 GameObject:

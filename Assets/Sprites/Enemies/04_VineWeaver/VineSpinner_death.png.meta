@@ -53,6 +53,60 @@ TextureImporter:
   - first:
       213: 3500681076537609193
     second: VineSpinner_death_16
+  - first:
+      213: -7009333072333626279
+    second: VineSpinner_death_0
+  - first:
+      213: -457803630780784642
+    second: VineSpinner_death_1
+  - first:
+      213: 1513049730451106423
+    second: VineSpinner_death_2
+  - first:
+      213: -2699014044674505855
+    second: VineSpinner_death_3
+  - first:
+      213: 2043842137479155923
+    second: VineSpinner_death_4
+  - first:
+      213: -6620056686038629070
+    second: VineSpinner_death_5
+  - first:
+      213: 3700433251277220907
+    second: VineSpinner_death_6
+  - first:
+      213: -3240630969780881930
+    second: VineSpinner_death_7
+  - first:
+      213: -7993761757098100819
+    second: VineSpinner_death_8
+  - first:
+      213: 7382564701262015669
+    second: VineSpinner_death_9
+  - first:
+      213: 4205016070290012900
+    second: VineSpinner_death_10
+  - first:
+      213: 3476791668510174580
+    second: VineSpinner_death_11
+  - first:
+      213: -4637093086044023516
+    second: VineSpinner_death_12
+  - first:
+      213: 5514381048824703235
+    second: VineSpinner_death_13
+  - first:
+      213: -835444284171507603
+    second: VineSpinner_death_14
+  - first:
+      213: -1230658156544764899
+    second: VineSpinner_death_15
+  - first:
+      213: 1089430194557984730
+    second: VineSpinner_death_16
+  - first:
+      213: -4335750776040898637
+    second: VineSpinner_death_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -164,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d37d05365fc796840800000000000000
-      internalID: 5217839036660504381
+      spriteID: 954282f25b8d9be90800000000000000
+      internalID: -7009333072333626279
       vertices: []
       indices: 
       edges: []
@@ -185,8 +239,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12c91af74f0bc0830800000000000000
-      internalID: 4038797530004298785
+      spriteID: eff5d6af50e85a9f0800000000000000
+      internalID: -457803630780784642
       vertices: []
       indices: 
       edges: []
@@ -206,8 +260,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1fe472313388f2c0800000000000000
-      internalID: -4397620788804128993
+      spriteID: 77ae90f96be6ff410800000000000000
+      internalID: 1513049730451106423
       vertices: []
       indices: 
       edges: []
@@ -227,8 +281,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbe5e9c75100c0f40800000000000000
-      internalID: 5695927721001901755
+      spriteID: 183c26fb60d2b8ad0800000000000000
+      internalID: -2699014044674505855
       vertices: []
       indices: 
       edges: []
@@ -248,8 +302,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a64139949da23b80800000000000000
-      internalID: -8416473899865127256
+      spriteID: 3d09b65689f2d5c10800000000000000
+      internalID: 2043842137479155923
       vertices: []
       indices: 
       edges: []
@@ -269,8 +323,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c20a5a3990133b20800000000000000
-      internalID: 3112850017738162888
+      spriteID: 235c7b3c485d024a0800000000000000
+      internalID: -6620056686038629070
       vertices: []
       indices: 
       edges: []
@@ -290,8 +344,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc12ef5c196390ac0800000000000000
-      internalID: -3888516803537788468
+      spriteID: b2c2c61bf649a5330800000000000000
+      internalID: 3700433251277220907
       vertices: []
       indices: 
       edges: []
@@ -311,8 +365,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07105592cc6245510800000000000000
-      internalID: 1536896031148802416
+      spriteID: 6f5b4167d47f603d0800000000000000
+      internalID: -3240630969780881930
       vertices: []
       indices: 
       edges: []
@@ -332,8 +386,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8303e9d63287eaf0800000000000000
-      internalID: -367181672512027761
+      spriteID: da7b011e804701190800000000000000
+      internalID: -7993761757098100819
       vertices: []
       indices: 
       edges: []
@@ -353,8 +407,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9a2cfda54e976bc0800000000000000
-      internalID: -3789886539300066657
+      spriteID: 5bc6f063b73247660800000000000000
+      internalID: 7382564701262015669
       vertices: []
       indices: 
       edges: []
@@ -374,8 +428,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ae7f0a53398f1980800000000000000
-      internalID: -8565977112588091738
+      spriteID: 4eaf17836d73b5a30800000000000000
+      internalID: 4205016070290012900
       vertices: []
       indices: 
       edges: []
@@ -395,8 +449,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0603dba688fc0ec0800000000000000
-      internalID: -3599228744883829236
+      spriteID: 47d26970a9b004030800000000000000
+      internalID: 3476791668510174580
       vertices: []
       indices: 
       edges: []
@@ -416,8 +470,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3b18927448ed7080800000000000000
-      internalID: -9187932284087952577
+      spriteID: 4251de7186cb5afb0800000000000000
+      internalID: -4637093086044023516
       vertices: []
       indices: 
       edges: []
@@ -437,8 +491,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc34932f024888e50800000000000000
-      internalID: 6811839713435534287
+      spriteID: 309a753f854078c40800000000000000
+      internalID: 5514381048824703235
       vertices: []
       indices: 
       edges: []
@@ -458,8 +512,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4223700cd1644c2c0800000000000000
-      internalID: -4412324641326550492
+      spriteID: d68a35499d7e764f0800000000000000
+      internalID: -835444284171507603
       vertices: []
       indices: 
       edges: []
@@ -479,8 +533,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e9243bf1abfcfdb0800000000000000
-      internalID: -4756650433287280159
+      spriteID: d14563b4de2dbeee0800000000000000
+      internalID: -1230658156544764899
       vertices: []
       indices: 
       edges: []
@@ -500,8 +554,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ebc4f644eae49030800000000000000
-      internalID: 3500681076537609193
+      spriteID: adf963a6dfe6e1f00800000000000000
+      internalID: 1089430194557984730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VineSpinner_death_17
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 0
+        width: 128
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf357714a154d3c0800000000000000
+      internalID: -4335750776040898637
       vertices: []
       indices: 
       edges: []

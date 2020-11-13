@@ -6,6 +6,7 @@ public class SpiderlingBattle : EnemyBattleBase
 {
     [SerializeField] StraightProjectileSimulation slimeToThrow;
     [SerializeField] Transform throwingHand;
+    [SerializeField] GameObject spiderlingParentPrefab;
     private BattleSystem battleSystem;
     private int spiderlingNumber = 0;
     private bool doneWalking = false;
@@ -16,6 +17,7 @@ public class SpiderlingBattle : EnemyBattleBase
     private bool attackFinished = false;
     private SpiderlingBattle spiderBrotherOne = null;
     private SpiderlingBattle spiderBrotherTwo = null;
+    private bool isIdling = false;
 
     void Awake()
     {
@@ -24,10 +26,27 @@ public class SpiderlingBattle : EnemyBattleBase
             animator = GetComponent<Animator>();
         spiderlingNumber = FindObjectOfType<VineWeaverBattle>().GetSpiderlingCount();
 
+        if(spiderlingNumber == 1)
+        {
+            GameObject spiderlingParent = Instantiate(spiderlingParentPrefab, transform.parent);
+            gameObject.transform.parent = spiderlingParent.transform;
+
+        }
+
         if (spiderlingNumber != 1)
         {
             gameObject.transform.parent.GetChild(0).GetComponent<SpiderlingBattle>().RegisterBrother(gameObject.GetComponent<SpiderlingBattle>());
         }
+    }
+
+    void Update()
+    {
+        //kunde inte få synchen att funka
+        //den spammade nå error
+        /*if (animator.enabled == true && isIdling)
+        {
+            animator.Play(0, 0, GetComponentInParent<SpiderlingMasterAnimator>().myTime);
+        }*/
     }
 
     public override IEnumerator EnemyAction()
@@ -41,6 +60,7 @@ public class SpiderlingBattle : EnemyBattleBase
             yield return StartCoroutine(spiderBrotherOne.EnemyAction());
         }
         attackFinished = false;
+        isIdling = false;
         animator.SetTrigger("isAttacking");
 
         while (!attackFinished)
@@ -48,6 +68,7 @@ public class SpiderlingBattle : EnemyBattleBase
             yield return null;
         }
 
+        isIdling = true;
         yield return null;
     }
 
@@ -79,6 +100,7 @@ public class SpiderlingBattle : EnemyBattleBase
         if (spiderlingNumber == 1)
         {
             animator.SetTrigger("finishedWalking");
+            isIdling = true;
         }
         else if (spiderlingNumber == 2)
         {
@@ -87,6 +109,8 @@ public class SpiderlingBattle : EnemyBattleBase
             yield return StartCoroutine(GetComponent<ThrowSimulation>().StartThrowCoro());
             transform.position = firstJumpingTarget;
             animator.SetTrigger("hasLanded");
+            Debug.Log("HEJ");
+            isIdling = true;
         }
         else if (spiderlingNumber == 3)
         {
@@ -95,6 +119,7 @@ public class SpiderlingBattle : EnemyBattleBase
             yield return StartCoroutine(GetComponent<ThrowSimulation>().StartThrowCoro());
             transform.position = secondJumpingTarget;
             animator.SetTrigger("hasLanded");
+            isIdling = true;
         }
 
         if(FindObjectOfType<VineWeaverBattle>() != null)
@@ -121,16 +146,42 @@ public class SpiderlingBattle : EnemyBattleBase
 
     public override void TriggerDying()
     {
+        if (spiderlingNumber == 1)
+        {
+            if (spiderBrotherTwo != null)
+            {
+                spiderBrotherTwo.TriggerDying();
+            }
+            else if (spiderBrotherOne != null)
+            {
+                spiderBrotherOne.TriggerDying();
+            }
+            else
+            {
+                isIdling = false;
+                animator.SetBool("isDead", true);
+                isDead = true;
+            }
+        }
+        else if (spiderlingNumber == 2)
+        {
+            isIdling = false;
+            animator.SetBool("isDead", true);
+            isDead = true;
+        }
+        else if (spiderlingNumber == 3)
+        {
+            isIdling = false;
+            animator.SetBool("isDead", true);
+            isDead = true;
+        }
+    }
+
+    private void MainDying()
+    {
+        isIdling = false;
         animator.SetBool("isDead", true);
         isDead = true;
-        if (spiderBrotherTwo != null)
-        {
-            spiderBrotherTwo.TriggerDying();
-        }
-        if (spiderBrotherOne != null)
-        {
-            spiderBrotherOne.TriggerDying();
-        }
     }
 
     public override IEnumerator Die()
@@ -145,7 +196,21 @@ public class SpiderlingBattle : EnemyBattleBase
         yield return null;
         
         if (isDead)
-        {            
+        {
+            if (spiderlingNumber == 1)
+            {
+                Destroy(gameObject.transform.parent.gameObject);
+            }
+            else if(spiderlingNumber == 2)
+            {
+                gameObject.transform.parent.GetChild(0).GetComponent<SpiderlingBattle>().SignalBrotherDeath(spiderlingNumber);
+            }
+            else if (spiderlingNumber == 3)
+            {
+
+                gameObject.transform.parent.GetChild(0).GetComponent<SpiderlingBattle>().SignalBrotherDeath(spiderlingNumber);
+            }
+
             Destroy(gameObject);
         }
     }
@@ -165,6 +230,18 @@ public class SpiderlingBattle : EnemyBattleBase
         {
             diceKeyImage.sprite = battleSystem.diceSprites[diceKeyNumber - 1];
             diceKeyGO.SetDKNumber(diceKeyNumber);
+        }
+    }
+
+    public void SignalBrotherDeath(int brotherNumber)
+    {
+        if (brotherNumber == 3)
+        {
+            spiderBrotherOne.TriggerDying();
+        }
+        else if (brotherNumber == 2)
+        {
+            MainDying();
         }
     }
 }

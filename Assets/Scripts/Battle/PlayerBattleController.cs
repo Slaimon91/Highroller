@@ -148,6 +148,7 @@ public class PlayerBattleController : MonoBehaviour
     {
         EnemyBattleBase collidingEnemy = null;
             
+        //was an enemy
         if ((collidingEnemy = other.gameObject.GetComponent<EnemyBattleBase>()) != null)
         {
             if(successBlock)
@@ -166,6 +167,7 @@ public class PlayerBattleController : MonoBehaviour
             }
             
         }
+        //was a projectile
         else if ((collidingEnemy = other.gameObject.GetComponentInParent<EnemyBattleBase>()) != null)
         {
             if (successBlock)
@@ -181,7 +183,7 @@ public class PlayerBattleController : MonoBehaviour
                 TakeDamage(collidingEnemy.GetDamageAmount());
             }
             
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         else
         {

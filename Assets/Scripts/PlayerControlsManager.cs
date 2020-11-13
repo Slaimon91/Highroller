@@ -47,6 +47,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.HPHAX.performed += ctx => HPHAX();
         controls.Overworld.GAIAHAX.performed += ctx => GAIAHAX();
         controls.Overworld.MONEYHAX.performed += ctx => MONEYHAX();
+        controls.Overworld.BERRYHAX.performed += ctx => BERRYHAX();
         controls.Battle.KILLALL.performed += ctx => KILLALL();
 
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
@@ -102,6 +103,19 @@ public class PlayerControlsManager : MonoBehaviour
     private void MONEYHAX()
     {
         playerValues.currency += 100;
+    }
+    private void BERRYHAX()
+    {
+        playerValues.nrOfBattles++;
+        if (FindObjectOfType<BerryTile>() != null)
+        {
+            List<BerryTile> berryTiles = new List<BerryTile>();
+            berryTiles.AddRange(FindObjectsOfType<BerryTile>());
+            foreach (BerryTile tile in berryTiles)
+            {
+                tile.ReloadBerries();
+            }
+        }
     }
     private void KILLALL()
     {
@@ -354,6 +368,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Disable();
         controls.Battle.Disable();
         controls.GenericUI.Enable();
+        //playerController.SetGameState(GameState.PAUSED);
     }
 
     public void ToggleOffGenericUI()
@@ -374,6 +389,7 @@ public class PlayerControlsManager : MonoBehaviour
         savedControlStates[1] = false;
         savedControlStates[2] = false;
         controls.GenericUI.Disable();
+        //playerController.SetGameState(GameState.PLAYING);
     }
 
     public PlayerControls GetControls()

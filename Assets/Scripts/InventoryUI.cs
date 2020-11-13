@@ -233,6 +233,25 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public List<SeedBase> GetSeeds()
+    {
+        List<SeedBase> seedList = new List<SeedBase>();
+
+        foreach(InventorySlot i  in seedSlots)
+        {
+            Item seedItem = i.GetItem();
+            if(seedItem != null)
+            {
+                //Should also check if it's a seed not a berry
+
+
+                seedList.Add(seedItem.prefab.GetComponent<SeedBase>());
+            }
+        }
+
+        return seedList;
+    }
+
     /*public void EquipSeed(SeedBase seedToEquip)
     {
         InventorySeed[] seeds = FindObjectsOfType<InventorySeed>();

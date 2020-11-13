@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7672868216130301127}
   - component: {fileID: 8653571481590533143}
   - component: {fileID: 3954603286891809269}
+  - component: {fileID: 3289472463299854373}
   m_Layer: 0
   m_Name: spiderling_attack 2
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.21875, y: 0.21875}
+  m_Size: {x: 0.8125, y: 0.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -134,4 +135,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  enableAnimation: 1
+  destroyAfterHit: 1
   Projectile: {fileID: 4024223379670197185}
+--- !u!95 &3289472463299854373
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815889633697681963}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f202530ccbc09ac42b826db0101ca2c5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

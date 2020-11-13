@@ -7,6 +7,9 @@ public class ThrowSimulation : MonoBehaviour
     [SerializeField] float gravity = 9.8f;
     [SerializeField] float arcAmount = 50f;
     [SerializeField] float heightOfShot = 1f;
+    [SerializeField] bool enableAnimation = false;
+    [SerializeField] bool destroyAfterHit = true;
+    private Animator animator;
 
     [SerializeField] Transform Projectile;
     private Transform myTransform;
@@ -78,6 +81,11 @@ public class ThrowSimulation : MonoBehaviour
             yield return null;
         }
 
+        if (enableAnimation)
+            TriggerHitTarget();
+        else if (destroyAfterHit)
+            DestroySelf();
+
         yield return null;
         
     }
@@ -85,5 +93,16 @@ public class ThrowSimulation : MonoBehaviour
     public void SetTarget(Vector3 newTarget)
     {
         Target = newTarget;
+    }
+    public void TriggerHitTarget()
+    {
+        if (GetComponent<Animator>() != null)
+            animator = GetComponent<Animator>();
+        animator.SetTrigger("hitTarget");
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

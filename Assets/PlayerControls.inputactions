@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "BERRYHAX",
+                    "type": "Button",
+                    "id": "411853fc-43cf-4887-a7d1-bbda6803d75c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -392,6 +400,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MONEYHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2542c2fb-f924-485c-9f41-8fc979ed49f8",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BERRYHAX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -773,11 +773,16 @@ public class BattleSystem : MonoBehaviour
             }
             xpToAdd += enemiesGO[index].GetComponent<EnemyBattleBase>().GetXPAmount();
             enemiesGO[index].GetComponent<EnemyBattleBase>().TriggerDying();
-            Destroy(enemiesInfo[index].gameObject);
-            Destroy(diceKeys[index].gameObject);
+            GameObject emGO = enemiesInfo[index].gameObject;
+            GameObject dkGO = diceKeys[index].gameObject;
             enemiesGO.Remove(enemiesGO[index]);
             enemiesInfo.Remove(enemiesInfo[index]);
             diceKeys.Remove(diceKeys[index]);
+            diceKeyImages.Remove(diceKeyImages[index]);
+            diceKeyNumbers.Remove(diceKeyNumbers[index]);
+            Destroy(emGO);
+            Destroy(dkGO);
+            
         }
         
         while(enemiesToDie >= 1)

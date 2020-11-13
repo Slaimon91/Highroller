@@ -97,7 +97,11 @@ MonoBehaviour:
     isPlatinum: 0
     isInactive: 0
   infoText: 
-  spiderlingPrefab: {fileID: 8572336695890697944, guid: ba26fc4967e9a8b4191b877b99fc263a,
+  spiderlingParentPrefab: {fileID: 8942314284196583243, guid: 35f677365fa55424e9915bc8b4e18d4d,
+    type: 3}
+  spiderlingPrefab: {fileID: 8572336695890697944, guid: fac021fae8dacfb4f84d843c36d3573c,
+    type: 3}
+  spiderlingChildPrefab: {fileID: 8572336695890697944, guid: fac021fae8dacfb4f84d843c36d3573c,
     type: 3}
 --- !u!95 &8589462616363545291
 Animator:

@@ -97,6 +97,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""BERRYHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""411853fc-43cf-4887-a7d1-bbda6803d75c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -405,6 +413,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MONEYHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2542c2fb-f924-485c-9f41-8fc979ed49f8"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BERRYHAX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -990,6 +1009,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_HPHAX = m_Overworld.FindAction("HPHAX", throwIfNotFound: true);
         m_Overworld_GAIAHAX = m_Overworld.FindAction("GAIAHAX", throwIfNotFound: true);
         m_Overworld_MONEYHAX = m_Overworld.FindAction("MONEYHAX", throwIfNotFound: true);
+        m_Overworld_BERRYHAX = m_Overworld.FindAction("BERRYHAX", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
@@ -1069,6 +1089,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_HPHAX;
     private readonly InputAction m_Overworld_GAIAHAX;
     private readonly InputAction m_Overworld_MONEYHAX;
+    private readonly InputAction m_Overworld_BERRYHAX;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -1083,6 +1104,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @HPHAX => m_Wrapper.m_Overworld_HPHAX;
         public InputAction @GAIAHAX => m_Wrapper.m_Overworld_GAIAHAX;
         public InputAction @MONEYHAX => m_Wrapper.m_Overworld_MONEYHAX;
+        public InputAction @BERRYHAX => m_Wrapper.m_Overworld_BERRYHAX;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1122,6 +1144,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MONEYHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
                 @MONEYHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
                 @MONEYHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnMONEYHAX;
+                @BERRYHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
+                @BERRYHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
+                @BERRYHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1156,6 +1181,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @MONEYHAX.started += instance.OnMONEYHAX;
                 @MONEYHAX.performed += instance.OnMONEYHAX;
                 @MONEYHAX.canceled += instance.OnMONEYHAX;
+                @BERRYHAX.started += instance.OnBERRYHAX;
+                @BERRYHAX.performed += instance.OnBERRYHAX;
+                @BERRYHAX.canceled += instance.OnBERRYHAX;
             }
         }
     }
@@ -1377,6 +1405,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnHPHAX(InputAction.CallbackContext context);
         void OnGAIAHAX(InputAction.CallbackContext context);
         void OnMONEYHAX(InputAction.CallbackContext context);
+        void OnBERRYHAX(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {

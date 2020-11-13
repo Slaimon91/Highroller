@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -5723572043603096301
     second: spidergoop_splat_2
+  - first:
+      213: -4564743717897644964
+    second: spidergoop_splat_0
+  - first:
+      213: 912825064319303193
+    second: spidergoop_splat_1
+  - first:
+      213: 3606312999981955399
+    second: spidergoop_splat_2
+  - first:
+      213: 5374396892081306376
+    second: spidergoop_splat_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,8 +134,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77d7407f1d87336d0800000000000000
-      internalID: -3011930882592965257
+      spriteID: c54d30c06c5c6a0c0800000000000000
+      internalID: -4564743717897644964
       vertices: []
       indices: 
       edges: []
@@ -143,8 +155,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b69bfd406dbb2ad0800000000000000
-      internalID: -2725876928119859535
+      spriteID: 91e33d44f810bac00800000000000000
+      internalID: 912825064319303193
       vertices: []
       indices: 
       edges: []
@@ -164,8 +176,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31d4ea61d89c190b0800000000000000
-      internalID: -5723572043603096301
+      spriteID: 7493cc001923c0230800000000000000
+      internalID: 3606312999981955399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spidergoop_splat_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b3872af71b59a40800000000000000
+      internalID: 5374396892081306376
       vertices: []
       indices: 
       edges: []

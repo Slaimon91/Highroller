@@ -93,6 +93,8 @@ MonoBehaviour:
   slimeToThrow: {fileID: 3954603286891809269, guid: 2913450e051031240b1ce61629111303,
     type: 3}
   throwingHand: {fileID: 1492344989572751880}
+  spiderlingParentPrefab: {fileID: 8942314284196583243, guid: 35f677365fa55424e9915bc8b4e18d4d,
+    type: 3}
 --- !u!95 &8589462616363545291
 Animator:
   serializedVersion: 3
@@ -148,6 +150,8 @@ MonoBehaviour:
   gravity: 10
   arcAmount: 10
   heightOfShot: 1
+  enableAnimation: 0
+  destroyAfterHit: 0
   Projectile: {fileID: 8572336695890697927}
 --- !u!1 &8572336697252336090
 GameObject:

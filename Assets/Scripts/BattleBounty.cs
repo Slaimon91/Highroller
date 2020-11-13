@@ -195,8 +195,7 @@ public class BattleBounty : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
-            FindObjectOfType<LevelLoader>().LoadOverworldScene();
+            LoadOverworld();
         }
     }
 
@@ -218,8 +217,7 @@ public class BattleBounty : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
-                FindObjectOfType<LevelLoader>().LoadOverworldScene();
+                LoadOverworld();
             }
         }
         else
@@ -246,8 +244,7 @@ public class BattleBounty : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
-                FindObjectOfType<LevelLoader>().LoadOverworldScene();
+                LoadOverworld();
             }
         }
         else
@@ -262,8 +259,7 @@ public class BattleBounty : MonoBehaviour
 
         if (!gotSouls.Any())
         {
-            FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
-            FindObjectOfType<LevelLoader>().LoadOverworldScene();
+            LoadOverworld();
         }
         else
         {
@@ -321,5 +317,12 @@ public class BattleBounty : MonoBehaviour
     {
         yield return new WaitForSeconds(1.75f);
         GaiaPressContinue();
+    }
+
+    private void LoadOverworld()
+    {
+        playerValues.nrOfBattles++;
+        FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
+        FindObjectOfType<LevelLoader>().LoadOverworldScene();
     }
 }

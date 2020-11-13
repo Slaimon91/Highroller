@@ -1,61 +1,64 @@
 fileFormatVersion: 2
-guid: 5f889e7f09136314089d906522a64689
+guid: 8f43cb70c7ec06740ae2dbdb0ae17af1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5717801353359256726
-    second: VineSpinner_summon_altcolor_yellow_0
+      213: -3605714139161772966
+    second: VineSpinner_summon_Dmg_0
   - first:
-      213: -8715365886883904342
-    second: VineSpinner_summon_altcolor_yellow_1
+      213: 6406301187744277262
+    second: VineSpinner_summon_Dmg_1
   - first:
-      213: 7238874132716554699
-    second: VineSpinner_summon_altcolor_yellow_2
+      213: -5680170162853210806
+    second: VineSpinner_summon_Dmg_2
   - first:
-      213: 9014075399009168628
-    second: VineSpinner_summon_altcolor_yellow_3
+      213: 497183790559791175
+    second: VineSpinner_summon_Dmg_3
   - first:
-      213: 6322822129012802885
-    second: VineSpinner_summon_altcolor_yellow_4
+      213: 5573544445527825370
+    second: VineSpinner_summon_Dmg_4
   - first:
-      213: 1290461770668616012
-    second: VineSpinner_summon_altcolor_yellow_5
+      213: -8976518333093674687
+    second: VineSpinner_summon_Dmg_5
   - first:
-      213: 621837170388598439
-    second: VineSpinner_summon_altcolor_yellow_6
+      213: -4631399636717423939
+    second: VineSpinner_summon_Dmg_6
   - first:
-      213: -3323187568930433654
-    second: VineSpinner_summon_altcolor_yellow_7
+      213: 5220721703185989907
+    second: VineSpinner_summon_Dmg_7
   - first:
-      213: 8840450209919112573
-    second: VineSpinner_summon_altcolor_yellow_8
+      213: -6879064473440039032
+    second: VineSpinner_summon_Dmg_8
   - first:
-      213: 4662744398572595148
-    second: VineSpinner_summon_altcolor_yellow_9
+      213: -7287763618657859208
+    second: VineSpinner_summon_Dmg_9
   - first:
-      213: -2331142083205476206
-    second: VineSpinner_summon_altcolor_yellow_10
+      213: -7770359245908849160
+    second: VineSpinner_summon_Dmg_10
   - first:
-      213: -6039227662523232882
-    second: VineSpinner_summon_altcolor_yellow_11
+      213: -4914228365614744512
+    second: VineSpinner_summon_Dmg_11
   - first:
-      213: 3115202708717997229
-    second: VineSpinner_summon_altcolor_yellow_12
+      213: -1149650006561363632
+    second: VineSpinner_summon_Dmg_12
   - first:
-      213: -5782699891458419276
-    second: VineSpinner_summon_altcolor_yellow_13
+      213: 6664185755774144094
+    second: VineSpinner_summon_Dmg_13
   - first:
-      213: 3539652052327075750
-    second: VineSpinner_summon_altcolor_yellow_14
+      213: 7946302801891665335
+    second: VineSpinner_summon_Dmg_14
   - first:
-      213: 2955132846173642781
-    second: VineSpinner_summon_altcolor_yellow_15
+      213: 3423723941773567218
+    second: VineSpinner_summon_Dmg_15
   - first:
-      213: -2867642315407946843
-    second: VineSpinner_summon_altcolor_yellow_16
+      213: 4214471217592750136
+    second: VineSpinner_summon_Dmg_16
   - first:
-      213: 1902339047648383383
-    second: VineSpinner_summon_altcolor_yellow_17
+      213: -1176886117701730683
+    second: VineSpinner_summon_Dmg_17
+  - first:
+      213: 3441917445846645414
+    second: VineSpinner_summon_Dmg_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -153,7 +156,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_0
+      name: VineSpinner_summon_Dmg_0
       rect:
         serializedVersion: 2
         x: 0
@@ -167,14 +170,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ce9336906b95f40800000000000000
-      internalID: 5717801353359256726
+      spriteID: a5cb8a5281ee5fdc0800000000000000
+      internalID: -3605714139161772966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_1
+      name: VineSpinner_summon_Dmg_1
       rect:
         serializedVersion: 2
         x: 128
@@ -188,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa44ab0e6eccc0780800000000000000
-      internalID: -8715365886883904342
+      spriteID: e0329abfcf0c7e850800000000000000
+      internalID: 6406301187744277262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_2
+      name: VineSpinner_summon_Dmg_2
       rect:
         serializedVersion: 2
         x: 256
@@ -209,14 +212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc98556aba5a57460800000000000000
-      internalID: 7238874132716554699
+      spriteID: a459c5be45bfb21b0800000000000000
+      internalID: -5680170162853210806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_3
+      name: VineSpinner_summon_Dmg_3
       rect:
         serializedVersion: 2
         x: 384
@@ -230,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc678811dd681d70800000000000000
-      internalID: 9014075399009168628
+      spriteID: 7480668f50a56e600800000000000000
+      internalID: 497183790559791175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_4
+      name: VineSpinner_summon_Dmg_4
       rect:
         serializedVersion: 2
         x: 512
@@ -251,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54589c10a3d2fb750800000000000000
-      internalID: 6322822129012802885
+      spriteID: adb998fa425395d40800000000000000
+      internalID: 5573544445527825370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_5
+      name: VineSpinner_summon_Dmg_5
       rect:
         serializedVersion: 2
         x: 640
@@ -272,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c49aceca424a8e110800000000000000
-      internalID: 1290461770668616012
+      spriteID: 1418b2cb2200d6380800000000000000
+      internalID: -8976518333093674687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_6
+      name: VineSpinner_summon_Dmg_6
       rect:
         serializedVersion: 2
         x: 768
@@ -293,14 +296,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ae7521ac9531a800800000000000000
-      internalID: 621837170388598439
+      spriteID: db2b5909196f9bfb0800000000000000
+      internalID: -4631399636717423939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_7
+      name: VineSpinner_summon_Dmg_7
       rect:
         serializedVersion: 2
         x: 896
@@ -314,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8558e7538aa1e1d0800000000000000
-      internalID: -3323187568930433654
+      spriteID: 311c29d7abab37840800000000000000
+      internalID: 5220721703185989907
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_8
+      name: VineSpinner_summon_Dmg_8
       rect:
         serializedVersion: 2
         x: 1024
@@ -335,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7591c090a69faa70800000000000000
-      internalID: 8840450209919112573
+      spriteID: 88fc899ee47a880a0800000000000000
+      internalID: -6879064473440039032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_9
+      name: VineSpinner_summon_Dmg_9
       rect:
         serializedVersion: 2
         x: 1152
@@ -356,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc7ac53835565b040800000000000000
-      internalID: 4662744398572595148
+      spriteID: 87902eed999acda90800000000000000
+      internalID: -7287763618657859208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_10
+      name: VineSpinner_summon_Dmg_10
       rect:
         serializedVersion: 2
         x: 1280
@@ -377,14 +380,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 290d29150ae16afd0800000000000000
-      internalID: -2331142083205476206
+      spriteID: 8fd4e6a5f632a2490800000000000000
+      internalID: -7770359245908849160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_11
+      name: VineSpinner_summon_Dmg_11
       rect:
         serializedVersion: 2
         x: 1408
@@ -398,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8d0799207a503ca0800000000000000
-      internalID: -6039227662523232882
+      spriteID: 04c726296572dcbb0800000000000000
+      internalID: -4914228365614744512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_12
+      name: VineSpinner_summon_Dmg_12
       rect:
         serializedVersion: 2
         x: 1536
@@ -419,14 +422,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dac8878cb5c6b3b20800000000000000
-      internalID: 3115202708717997229
+      spriteID: 05962eef86f9b00f0800000000000000
+      internalID: -1149650006561363632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_13
+      name: VineSpinner_summon_Dmg_13
       rect:
         serializedVersion: 2
         x: 1664
@@ -440,14 +443,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b55ee63619bfbfa0800000000000000
-      internalID: -5782699891458419276
+      spriteID: e5ec222f2a1fb7c50800000000000000
+      internalID: 6664185755774144094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_14
+      name: VineSpinner_summon_Dmg_14
       rect:
         serializedVersion: 2
         x: 1792
@@ -461,14 +464,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6af0077a9ce5f1130800000000000000
-      internalID: 3539652052327075750
+      spriteID: 7b5a1780c40f64e60800000000000000
+      internalID: 7946302801891665335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_15
+      name: VineSpinner_summon_Dmg_15
       rect:
         serializedVersion: 2
         x: 1920
@@ -482,14 +485,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d10e448aaadb20920800000000000000
-      internalID: 2955132846173642781
+      spriteID: 2f4e96e09c2838f20800000000000000
+      internalID: 3423723941773567218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_16
+      name: VineSpinner_summon_Dmg_16
       rect:
         serializedVersion: 2
         x: 2048
@@ -503,14 +506,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ab0b3fe1861438d0800000000000000
-      internalID: -2867642315407946843
+      spriteID: 83059b04e3fcc7a30800000000000000
+      internalID: 4214471217592750136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VineSpinner_summon_altcolor_yellow_17
+      name: VineSpinner_summon_Dmg_17
       rect:
         serializedVersion: 2
         x: 2176
@@ -524,8 +527,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 791df69e847766a10800000000000000
-      internalID: 1902339047648383383
+      spriteID: 58ebc45bf4cdaafe0800000000000000
+      internalID: -1176886117701730683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VineSpinner_summon_Dmg_18
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 128
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aab8e15ea524cf20800000000000000
+      internalID: 3441917445846645414
       vertices: []
       indices: 
       edges: []

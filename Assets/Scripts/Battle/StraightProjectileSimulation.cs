@@ -6,9 +6,11 @@ public class StraightProjectileSimulation : MonoBehaviour
 {
     private Vector3 Target;
     [SerializeField] float speed = 5;
-
+    [SerializeField] bool enableAnimation = false;
+    [SerializeField] bool destroyAfterHit = true;
     [SerializeField] Transform Projectile;
     private Transform myTransform;
+    private Animator animator;
 
     void Awake()
     {
@@ -35,6 +37,10 @@ public class StraightProjectileSimulation : MonoBehaviour
             if (Mathf.Approximately(transform.position.x, endPosition.x) && Mathf.Approximately(transform.position.y, endPosition.y))
             {
                 hitTarget = true;
+                if (enableAnimation)
+                    TriggerHitTarget();
+                else if(destroyAfterHit)
+                    DestroySelf();
             }
             yield return null;
         }
@@ -43,5 +49,17 @@ public class StraightProjectileSimulation : MonoBehaviour
     public void SetTarget(Vector3 newTarget)
     {
         Target = newTarget;
+    }
+
+    public void TriggerHitTarget()
+    {
+        if (GetComponent<Animator>() != null)
+            animator = GetComponent<Animator>();
+        animator.SetTrigger("hitTarget");
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

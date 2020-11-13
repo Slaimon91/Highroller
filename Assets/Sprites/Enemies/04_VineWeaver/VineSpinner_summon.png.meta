@@ -56,6 +56,9 @@ TextureImporter:
   - first:
       213: 4444971015389268547
     second: VineSpinner_summon_17
+  - first:
+      213: -4859775634557111390
+    second: VineSpinner_summon_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -526,6 +529,27 @@ TextureImporter:
       bones: []
       spriteID: 34a4f298695bfad30800000000000000
       internalID: 4444971015389268547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VineSpinner_summon_18
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 128
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3ff1efecb9e8cb0800000000000000
+      internalID: -4859775634557111390
       vertices: []
       indices: 
       edges: []
