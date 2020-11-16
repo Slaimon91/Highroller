@@ -9,9 +9,11 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     private bool buttonSelected = false;
     [SerializeField] GameObject selected;
+    [SerializeField] GameObject selectedBerry;
     [SerializeField] GameObject inactive;
     private bool isInactive = false;
     private bool created = false;
+    private bool isBerry = false;
 
     [SerializeField] Image infoImage;
     [SerializeField] Image infoClockImage;
@@ -24,9 +26,11 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     //[SerializeField] GameObject popupPrefab;
 
     private string seedName = "";
+    private string berryName = "";
     private string seedText = "";
     private string timeText = "";
     private Sprite seedSprite;
+    private Sprite berrySprite;
     private Sprite clockSprite;
 
     InventoryUI inventoryUI;
@@ -50,8 +54,10 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
             SeedBase seed = GetComponentInChildren<SeedBase>();
 
             seedName = seed.GetSeedName();
+            berryName = seed.GetBerryName();
             seedText = seed.GetInfo();
             seedSprite = seed.GetSeedSprite();
+            berrySprite = seed.GetBerrySprite();
             timeText = seed.GetGrowthTimeString();
             clockSprite = clock;
 
@@ -62,11 +68,22 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnSelect(BaseEventData eventData)
     {
         buttonSelected = true;
-        selected.SetActive(true);
+        if(isBerry)
+        {
+            selectedBerry.SetActive(true);
+            infoName.text = berryName;
+            infoImage.sprite = berrySprite;
+            infoImage.SetNativeSize();
+        }
+        else
+        {
+            selected.SetActive(true);
+            infoName.text = seedName;
+            infoImage.sprite = seedSprite;
+            infoImage.SetNativeSize();
+        }
 
-        infoName.text = seedName;
         infoText.text = seedText;
-        infoImage.sprite = seedSprite;
         infoTimeText.text = timeText;
         infoClockImage.sprite = clockSprite;
     }
@@ -74,13 +91,48 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnDeselect(BaseEventData eventData)
     {
         buttonSelected = false;
-        selected.SetActive(false);
+        if (isBerry)
+        {
+            selectedBerry.SetActive(false);
+        }
+        else
+        {
+            selected.SetActive(false);
+        }
     }
 
     public void ForceDeselect()
     {
         buttonSelected = false;
+
+        selectedBerry.SetActive(false);
         selected.SetActive(false);
+    }
+
+    public void ConsumeBerry()
+    {
+        GetComponentInChildren<SeedBase>().ConsumeBerry();
+        infoName.text = seedName;
+        infoImage.sprite = seedSprite;
+        infoImage.SetNativeSize();
+    }
+
+    public void ToggleInactivateSlot(bool status)
+    {
+        if(status)
+        {
+            inactive.SetActive(true);
+        }
+        else
+        {
+            inactive.SetActive(false);
+        }
+        
+    }
+
+    public void SetBerryStatus(bool status)
+    {
+        isBerry = status;
     }
 
     /*public void Equip()

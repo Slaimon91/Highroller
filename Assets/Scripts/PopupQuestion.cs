@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 
 public class PopupQuestion : MonoBehaviour
 {
     [SerializeField] GameObject firstSlot;
+    [SerializeField] Button yesButton;
+    [SerializeField] GameObject yesOverlay;
+    [SerializeField] TextMeshProUGUI questionText;
     EventSystem eventSystem;
     private GameObject savedSelectedGameObject;
 
     public delegate void OnYesAnswer();
     public OnYesAnswer onYesAnswerCallback;
 
+    public delegate void OnNoAnswer();
+    public OnNoAnswer onNoAnswerCallback;
+
     void Awake()
     {
         eventSystem = FindObjectOfType<EventSystem>();
+    }
+
+    public void SetQuestionText(string questionTxt)
+    {
+        questionText.text = questionTxt;
     }
     void OnEnable()
     {
@@ -34,6 +47,10 @@ public class PopupQuestion : MonoBehaviour
     {
         FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
         eventSystem.SetSelectedGameObject(savedSelectedGameObject);
+        if (onNoAnswerCallback != null)
+        {
+            onNoAnswerCallback.Invoke();
+        }
         Destroy(gameObject);
     }
 
@@ -46,5 +63,11 @@ public class PopupQuestion : MonoBehaviour
             onYesAnswerCallback.Invoke();
         }
         Destroy(gameObject);
+    }
+
+    public void DisableYesButton()
+    {
+        yesOverlay.SetActive(true);
+        yesButton.enabled = false;
     }
 }

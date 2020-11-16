@@ -46,9 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seedName: Life Seed
   berryName: Life Berry
-  info: Restores max health.
+  info: Restores full health.
+  seedImage: {fileID: 4802056351761347218}
   seedSprite: {fileID: 21300000, guid: c61b53b9c7a32ef4fb6d954f1edf281b, type: 3}
-  berrySprite: {fileID: 21300000, guid: 8248242e6d731d848a690a63fe5e6e35, type: 3}
+  berrySprite: {fileID: 21300000, guid: d25d888006c19494ca9b85d36704b1f2, type: 3}
+  berryTileFinishedSprite: {fileID: 21300000, guid: 847229814cf49464d89770a7e54dc78c,
+    type: 3}
   shortGrowth: 0
   mediumGrowth: 0
   longGrowth: 1
@@ -114,6 +117,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -27,18 +27,24 @@ public class BerryTile : MonoBehaviour, IInteractable
     {
         if(berryIsPlanted)
         {
-            if(berryStage == 4)
+            if(berryStage == 5)
             {
                 HarvestBerry();
             }
-            BerryDialogue();
+            else
+            {
+                BerryDialogue();
+            }
         }
         else
         {
             BerryChoice berryChoice;
             if ((berryChoice = FindObjectOfType<BerryChoice>()) != null)
             {
-                berryChoice.TriggerBerryChoice(gameObject.GetComponent<BerryTile>());
+                if(!berryChoice.TriggerBerryChoice(gameObject.GetComponent<BerryTile>()))
+                {
+                    BerryDialogue();
+                }
             }
         }
     }
@@ -47,23 +53,37 @@ public class BerryTile : MonoBehaviour, IInteractable
     {
         berryIsPlanted = false;
         berryPlantedAtBattleNR = 0;
+        plantSprite.sprite = plantStageZero;
+        plantedBerry.SetBerryStatus(true);
+        plantedBerry.SetInactiveStatus(false);
+        plantedBerry = null;
     }
 
     private void BerryDialogue()
     {
-        if(berryStage == 1)
+        if (berryStage == 0)
         {
+            Debug.Log("Berry stage 0");
+        }
 
+        if (berryStage == 1)
+        {
+            Debug.Log("Berry stage 1");
         }
 
         else if (berryStage == 2)
         {
-
+            Debug.Log("Berry stage 2");
         }
 
         else if (berryStage == 3)
         {
+            Debug.Log("Berry stage 3");
+        }
 
+        else if (berryStage == 4)
+        {
+            Debug.Log("Berry stage 4");
         }
     }
 
@@ -73,9 +93,11 @@ public class BerryTile : MonoBehaviour, IInteractable
         berryIsPlanted = true;
         berryGrowthPoints = 0;
         berryStage = 1;
-        berryGrowthSpeed = berry.GetGrowthMultiplier();
         plantSprite.sprite = plantStageOne;
-        plantStageFive = berry.GetBerrySprite();
+        plantedBerry = berry;
+        berryGrowthSpeed = berry.GetGrowthMultiplier();
+        plantStageFive = berry.GetBerryTileFinishedSprite();
+        berry.SetInactiveStatus(true);
     }
 
     private void AdvanceBerryStage()
@@ -83,20 +105,24 @@ public class BerryTile : MonoBehaviour, IInteractable
         if (berryGrowthPoints == 1) //Stage 2 = 3, 4, 5
         {
             plantSprite.sprite = plantStageTwo;
+            berryStage = 2;
         }
         if (berryGrowthPoints > 2 + berryGrowthSpeed && berryGrowthPoints < (2 + berryGrowthSpeed) * 2) //Stage 3 = 3, 4, 5
         {
             plantSprite.sprite = plantStageThree;
+            berryStage = 3;
         }
 
         else if (berryGrowthPoints > (2 + berryGrowthSpeed) * 2 && berryGrowthPoints < (2 + berryGrowthSpeed) * 3) //Stage 4 = 6, 8, 10
         {
             plantSprite.sprite = plantStageFour;
+            berryStage = 4;
         }
 
-        else if (berryGrowthPoints > (2 + berryGrowthSpeed) * 3) //Stage 5 = 9, 12, 15
+        else if (berryGrowthPoints > (2 + berryGrowthSpeed) * 3 && berryStage <= 4) //Stage 5 = 9, 12, 15
         {
-            plantSprite.sprite = null;//plantStageFour;
+            plantSprite.sprite = plantStageFive;
+            berryStage = 5;
         }
     }
 

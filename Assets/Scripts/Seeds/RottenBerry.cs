@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartyBerry : SeedBase
+public class RottenBerry : SeedBase
 {
     public override void ConsumeBerry()
     {
@@ -13,7 +13,7 @@ public class HeartyBerry : SeedBase
             PlayerController player;
             if ((player = FindObjectOfType<PlayerController>()) != null)
             {
-                player.LanuchHPRewardbox(30);
+                player.LanuchHPRewardbox(-10);
             }
         }
     }

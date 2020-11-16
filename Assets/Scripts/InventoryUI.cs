@@ -233,19 +233,20 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public List<SeedBase> GetSeeds()
+    public List<SeedBase> GetActiveSeeds()
     {
         List<SeedBase> seedList = new List<SeedBase>();
 
         foreach(InventorySlot i  in seedSlots)
         {
-            Item seedItem = i.GetItem();
-            if(seedItem != null)
+            SeedBase seed = i.GetChildHolder().GetComponentInChildren<SeedBase>();
+            if(seed != null)
             {
-                //Should also check if it's a seed not a berry
-
-
-                seedList.Add(seedItem.prefab.GetComponent<SeedBase>());
+                Debug.Log(seed.GetInactiveStatus() + " " + seed.GetBerryStatus());
+                if(!seed.GetInactiveStatus() && !seed.GetComponent<SeedBase>().GetBerryStatus())
+                {
+                    seedList.Add(seed);
+                }
             }
         }
 

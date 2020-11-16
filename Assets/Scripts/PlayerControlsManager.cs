@@ -368,7 +368,6 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Disable();
         controls.Battle.Disable();
         controls.GenericUI.Enable();
-        //playerController.SetGameState(GameState.PAUSED);
     }
 
     public void ToggleOffGenericUI()
@@ -389,7 +388,6 @@ public class PlayerControlsManager : MonoBehaviour
         savedControlStates[1] = false;
         savedControlStates[2] = false;
         controls.GenericUI.Disable();
-        //playerController.SetGameState(GameState.PLAYING);
     }
 
     public PlayerControls GetControls()

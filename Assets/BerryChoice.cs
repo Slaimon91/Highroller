@@ -22,13 +22,20 @@ public class BerryChoice : MonoBehaviour
         eventSystem = FindObjectOfType<EventSystem>();
         playerControlsManager = FindObjectOfType<PlayerControlsManager>();
     }
-    public void TriggerBerryChoice(BerryTile berryTile)
+    public bool TriggerBerryChoice(BerryTile berryTile)
     {
         tileBeingPlanted = berryTile;
         InventoryUI inventoryUI;
+        seedsToPlant.Clear();
+        berryInfo.Clear();
         if ((inventoryUI = FindObjectOfType<InventoryUI>()) != null)
         {
-            seedsToPlant = inventoryUI.GetSeeds();
+            seedsToPlant = inventoryUI.GetActiveSeeds();
+        }
+
+        if(seedsToPlant.Count == 0)
+        {
+            return false;
         }
 
         firstSeed = true;
@@ -54,6 +61,13 @@ public class BerryChoice : MonoBehaviour
             berryInfo.Add(berry);
         }
 
+        StartCoroutine(ShortWait(firstSlot));
+
+        return true;
+    }
+     IEnumerator ShortWait(GameObject firstSlot)
+    {
+        yield return new WaitForEndOfFrame();
         playerControlsManager.ToggleOnGenericUI();
         eventSystem.SetSelectedGameObject(firstSlot);
     }
@@ -62,7 +76,14 @@ public class BerryChoice : MonoBehaviour
     {
         int index = berryInfo.IndexOf(bi);
         tileBeingPlanted.PlantBerry(seedsToPlant[index]);
+        eventSystem.SetSelectedGameObject(null);
         playerControlsManager.ToggleOffGenericUI();
-        //berryPanel.SetActive(false);
+        berryPanel.SetActive(false);
+        foreach (BerryInfo berry in berryInfo)
+        {
+            Destroy(berry.gameObject);
+        }
+        seedsToPlant.Clear();
+        berryInfo.Clear();
     }
 }

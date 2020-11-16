@@ -4,5 +4,17 @@ using UnityEngine;
 
 public class HealthyBerry : SeedBase
 {
+    public override void ConsumeBerry()
+    {
+        if(isBerry)
+        {
+            base.ConsumeBerry();
 
+            PlayerController player;
+            if ((player = FindObjectOfType<PlayerController>()) != null)
+            {
+                player.LanuchHPRewardbox(10);
+            }
+        }
+    }
 }

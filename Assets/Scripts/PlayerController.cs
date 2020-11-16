@@ -519,8 +519,27 @@ public class PlayerController : MonoBehaviour
 
     public void LanuchGaiaRewardbox(int amount)
     {
-        string gaiaIntro = "You absorbed";
-        string gaiaText = amount + " Gaia";
+        string gaiaIntro = "";
+        string gaiaText = "";
+
+        if (amount < 0)
+        {
+            gaiaIntro = "You released";
+        }
+        else
+        {
+            gaiaIntro = "You absorbed";
+        }
+
+        if (amount == 666)
+        {
+            gaiaText = "full Gaia";
+        }
+        else
+        {
+            gaiaText = Mathf.Abs(amount) + " Gaia";
+        }
+
         GameObject popup = Instantiate(rewardbox, rewardboxHolder.transform);
         popup.GetComponent<Rewardbox>().AssignInfo(gaiaIntro, gaiaText, gaiaSprite);
         popup.GetComponent<Rewardbox>().SetRewardTextColor(new Color(132f / 255f, 183f / 255f, 36f / 255f));
@@ -530,8 +549,27 @@ public class PlayerController : MonoBehaviour
 
     public void LanuchHPRewardbox(int amount)
     {
-        string HPIntro = "You recovered";
-        string HPText = amount + " HP";
+        string HPIntro = "";
+        string HPText = "";
+
+        if(amount < 0)
+        {
+            HPIntro = "You took";
+        }
+        else
+        {
+            HPIntro = "You recovered";
+        }
+
+        if (amount == 666)
+        {
+            HPText = "full HP";
+        }
+        else
+        {
+            HPText = Mathf.Abs(amount) + " HP";
+        }
+        
         GameObject popup = Instantiate(rewardbox, rewardboxHolder.transform);
         popup.GetComponent<Rewardbox>().AssignInfo(HPIntro, HPText, HPSprite);
         popup.GetComponent<Rewardbox>().SetRewardTextColor(new Color(231f / 255f, 75f / 255f, 8f / 255f));
@@ -574,20 +612,45 @@ public class PlayerController : MonoBehaviour
         float rewardScrollSpeed = 15f;
         float targetScore = playerValues.gaia + pendingGaiaReward;
         float tempScore = (int)playerValues.gaia;
-
-        while (tempScore < targetScore)
+        if(targetScore > playerValues.maxGaia)
         {
-            float numToInc = (rewardScrollSpeed * Time.deltaTime);
-            tempScore += numToInc; // or whatever to get the speed you like
-
-            if (tempScore > targetScore)
-            {
-                tempScore = targetScore;
-            }
-            
-            playerValues.gaia = (int)tempScore;
-            yield return null;
+            targetScore = playerValues.maxGaia;
         }
+
+        if(targetScore > playerValues.gaia)
+        {
+            while (tempScore < targetScore)
+            {
+                float numToInc = (rewardScrollSpeed * Time.deltaTime);
+                tempScore += numToInc; // or whatever to get the speed you like
+
+                if (tempScore > targetScore)
+                {
+                    tempScore = targetScore;
+                }
+
+                playerValues.gaia = (int)tempScore;
+                yield return null;
+            }
+        }
+
+        else
+        {
+            while (tempScore > targetScore)
+            {
+                float numToInc = (rewardScrollSpeed * Time.deltaTime);
+                tempScore -= numToInc; // or whatever to get the speed you like
+
+                if (tempScore < targetScore)
+                {
+                    tempScore = targetScore;
+                }
+
+                playerValues.gaia = (int)tempScore;
+                yield return null;
+            }
+        }
+
 
         pendingGaiaReward = 0;
         yield return null;
@@ -598,20 +661,45 @@ public class PlayerController : MonoBehaviour
         float rewardScrollSpeed = 15f;
         float targetScore = playerValues.healthPoints + pendingHPReward;
         float tempScore = (int)playerValues.healthPoints;
-
-        while (tempScore < targetScore)
+        if (targetScore > playerValues.maxHealthPoints)
         {
-            float numToInc = (rewardScrollSpeed * Time.deltaTime);
-            tempScore += numToInc; // or whatever to get the speed you like
-
-            if (tempScore > targetScore)
-            {
-                tempScore = targetScore;
-            }
-
-            playerValues.healthPoints = (int)tempScore;
-            yield return null;
+            targetScore = playerValues.maxHealthPoints;
         }
+
+        if(targetScore > playerValues.healthPoints)
+        {
+            while (tempScore < targetScore)
+            {
+                float numToInc = (rewardScrollSpeed * Time.deltaTime);
+                tempScore += numToInc; // or whatever to get the speed you like
+
+                if (tempScore > targetScore)
+                {
+                    tempScore = targetScore;
+                }
+
+                playerValues.healthPoints = (int)tempScore;
+                yield return null;
+            }
+        }
+
+        else
+        {
+            while (tempScore > targetScore)
+            {
+                float numToInc = (rewardScrollSpeed * Time.deltaTime);
+                tempScore -= numToInc; // or whatever to get the speed you like
+
+                if (tempScore < targetScore)
+                {
+                    tempScore = targetScore;
+                }
+
+                playerValues.healthPoints = (int)tempScore;
+                yield return null;
+            }
+        }
+
 
         pendingHPReward = 0;
         yield return null;
@@ -625,12 +713,12 @@ public class PlayerController : MonoBehaviour
         //    Destroy(darkOverlayObject);
         //}
 
-        if (pendingGaiaReward > 0)
+        if (pendingGaiaReward != 0)
         {
             StartCoroutine(IncrementGaia());
         }
 
-        if (pendingHPReward > 0)
+        if (pendingHPReward != 0)
         {
             StartCoroutine(IncrementHP());
         }

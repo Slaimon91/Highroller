@@ -20,6 +20,27 @@ TextureImporter:
   - first:
       213: 840133573711213372
     second: newgrass_5
+  - first:
+      213: -3209943716546635132
+    second: newgrass_0
+  - first:
+      213: 7753332087890491565
+    second: newgrass_1
+  - first:
+      213: -351953950942974824
+    second: newgrass_2
+  - first:
+      213: -8070631998134892036
+    second: newgrass_3
+  - first:
+      213: -8191215161864112475
+    second: newgrass_4
+  - first:
+      213: -9099157647337918885
+    second: newgrass_5
+  - first:
+      213: 7028772132312035683
+    second: newgrass_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6bdd49068c0249d0800000000000000
-      internalID: -2791655049195037843
+      spriteID: 48a9d32623df373d0800000000000000
+      internalID: -3209943716546635132
       vertices: []
       indices: 
       edges: []
@@ -140,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 725752b1b98eda240800000000000000
-      internalID: 4804752130347201831
+      spriteID: da8b95c747e599b60800000000000000
+      internalID: 7753332087890491565
       vertices: []
       indices: 
       edges: []
@@ -161,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1841e1df92fc2cab0800000000000000
-      internalID: -4989197657925872511
+      spriteID: 89cafb01fbb9d1bf0800000000000000
+      internalID: -351953950942974824
       vertices: []
       indices: 
       edges: []
@@ -182,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48ae2ebed14d9cf70800000000000000
-      internalID: 9208124138112346756
+      spriteID: cf9c44e25fa5fff80800000000000000
+      internalID: -8070631998134892036
       vertices: []
       indices: 
       edges: []
@@ -203,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 114d464ecbe5cd7b0800000000000000
-      internalID: -5198175704513719279
+      spriteID: 5a6bb4e8535f25e80800000000000000
+      internalID: -8191215161864112475
       vertices: []
       indices: 
       edges: []
@@ -224,8 +245,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c33bfe8b801c8ab00800000000000000
-      internalID: 840133573711213372
+      spriteID: b5ee423445c49b180800000000000000
+      internalID: -9099157647337918885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newgrass_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 361bf99a3073b8160800000000000000
+      internalID: 7028772132312035683
       vertices: []
       indices: 
       edges: []

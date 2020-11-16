@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SeedBase : MonoBehaviour
+public abstract class SeedBase : MonoBehaviour
 {
     [SerializeField] protected string seedName;
     [SerializeField] protected string berryName;
@@ -11,12 +12,14 @@ public class SeedBase : MonoBehaviour
     [TextArea(3, 20)]
     protected string info;
 
-    protected GameObject seedImage;
+    [SerializeField] Image seedImage;
 
     [SerializeField] Sprite seedSprite;
     [SerializeField] Sprite berrySprite;
+    [SerializeField] Sprite berryTileFinishedSprite;
 
     protected bool inactive = false;
+    protected bool isBerry = false;
 
     [SerializeField] protected bool shortGrowth = false;
     [SerializeField] protected bool mediumGrowth = false;
@@ -45,7 +48,7 @@ public class SeedBase : MonoBehaviour
         return info;
     }
 
-    public GameObject GetSeedImage()
+    public Image GetSeedImage()
     {
         return seedImage;
     }
@@ -58,6 +61,11 @@ public class SeedBase : MonoBehaviour
     public Sprite GetSeedSprite()
     {
         return seedSprite;
+    }
+
+    public Sprite GetBerryTileFinishedSprite()
+    {
+        return berryTileFinishedSprite;
     }
 
     public string GetGrowthTimeString()
@@ -105,8 +113,48 @@ public class SeedBase : MonoBehaviour
         return inactive;
     }
 
+    public bool GetBerryStatus()
+    {
+        return isBerry;
+    }
+
     public int GetInventorySlotNr()
     {
         return inventorySlotNr;
+    }
+
+    public void SetBerryStatus(bool status)
+    {
+        isBerry = status;
+        GetComponentsInParent<InventorySeed>(true)[0].SetBerryStatus(status);
+
+        if (isBerry)
+        {
+            seedImage.sprite = berrySprite;
+            seedImage.SetNativeSize();
+        }
+        else
+        {
+            seedImage.sprite = seedSprite;
+            seedImage.SetNativeSize();
+        }
+    }
+
+    public void SetInactiveStatus(bool status)
+    {
+        inactive = status;
+
+        GetComponentsInParent<InventorySeed>(true)[0].ToggleInactivateSlot(status);
+    }
+
+    public virtual void ConsumeBerry()
+    {
+        SetBerryStatus(false);
+        //GetComponentsInParent<InventorySeed>(true)[0].ForceDeselect();
+        PlayerControlsManager playerControlsManager;
+        if ((playerControlsManager = FindObjectOfType<PlayerControlsManager>()) != null)
+        {
+            playerControlsManager.TriggerCloseInventory();
+        }
     }
 }

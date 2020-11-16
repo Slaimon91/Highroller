@@ -41,7 +41,7 @@ public class EncounterManager : MonoBehaviour
 
         pickedNumber -= matchedTable.HPChance;
 
-        if (pickedNumber < matchedTable.gaiaChance)
+        if (pickedNumber < matchedTable.gaiaChance && playerValues.gaia != playerValues.maxGaia)
         {
             pickedOption = 1;
             pickedNumber = 999;

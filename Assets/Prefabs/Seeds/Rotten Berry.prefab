@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5655952655308497399}
   - component: {fileID: 5655952655308497352}
   m_Layer: 0
-  m_Name: Luck Berry
+  m_Name: Rotten Berry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,15 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd1e5d72b9c006448de43d243139a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedName: Luck Seed
-  berryName: Luck Berry
-  info: Increases the chance to find gaia when tileflipping.
+  seedName: Rotten Seed
+  berryName: Rotten Berry
+  info: Inflicts 10 damage.
+  seedImage: {fileID: 3315758389437043792}
   seedSprite: {fileID: 21300000, guid: a556245ccff4e8d4899981ccadfe6014, type: 3}
-  berrySprite: {fileID: 21300000, guid: 8248242e6d731d848a690a63fe5e6e35, type: 3}
-  shortGrowth: 0
-  mediumGrowth: 1
+  berrySprite: {fileID: 21300000, guid: d25d888006c19494ca9b85d36704b1f2, type: 3}
+  berryTileFinishedSprite: {fileID: 21300000, guid: 847229814cf49464d89770a7e54dc78c,
+    type: 3}
+  shortGrowth: 1
+  mediumGrowth: 0
   longGrowth: 0
-  inventorySlotNr: 5
+  inventorySlotNr: 3
 --- !u!1 &5908040195419420456
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,6 +117,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

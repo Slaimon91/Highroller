@@ -32,6 +32,5 @@ public class BerryInfo : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void BerryClicked()
     {
         berryChoice.ChooseBerry(gameObject.GetComponent<BerryInfo>());
-        Debug.Log("jejk");
     }
 }
