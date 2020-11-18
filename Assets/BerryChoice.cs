@@ -70,6 +70,7 @@ public class BerryChoice : MonoBehaviour
         yield return new WaitForEndOfFrame();
         playerControlsManager.ToggleOnGenericUI();
         eventSystem.SetSelectedGameObject(firstSlot);
+        playerControlsManager.onCancelGenericUICallback += CancelBerry;
     }
 
     public void ChooseBerry(BerryInfo bi)
@@ -85,5 +86,20 @@ public class BerryChoice : MonoBehaviour
         }
         seedsToPlant.Clear();
         berryInfo.Clear();
+        playerControlsManager.onCancelGenericUICallback -= CancelBerry;
+    }
+
+    public void CancelBerry()
+    {
+        eventSystem.SetSelectedGameObject(null);
+        playerControlsManager.ToggleOffGenericUI();
+        berryPanel.SetActive(false);
+        foreach (BerryInfo berry in berryInfo)
+        {
+            Destroy(berry.gameObject);
+        }
+        seedsToPlant.Clear();
+        berryInfo.Clear();
+        playerControlsManager.onCancelGenericUICallback -= CancelBerry;
     }
 }

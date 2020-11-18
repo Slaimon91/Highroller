@@ -65,11 +65,11 @@ public class EncounterManager : MonoBehaviour
 
         if(pickedOption == 1)
         {
-            FindObjectOfType<PlayerController>().LanuchGaiaRewardbox(matchedTable.gaiaRewardAmount);
+            FindObjectOfType<LaunchRewards>().LanuchGaiaRewardbox(matchedTable.gaiaRewardAmount);
         }
         else if (pickedOption == 2)
         {
-            FindObjectOfType<PlayerController>().LanuchHPRewardbox(matchedTable.HPRewardAmount);
+            FindObjectOfType<LaunchRewards>().LanuchHPRewardbox(matchedTable.HPRewardAmount);
         }
         else if (pickedOption == 3)
         {

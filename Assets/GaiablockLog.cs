@@ -27,7 +27,7 @@ public class GaiablockLog : MonoBehaviour, IInteractable
         Debug.Log("You released the gaia");
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
-        FindObjectOfType<PlayerController>().LanuchGaiaRewardbox(-gaiaAmount);
+        FindObjectOfType<LaunchRewards>().LanuchGaiaRewardbox(-gaiaAmount);
         Destroy(gameObject);
     }
 

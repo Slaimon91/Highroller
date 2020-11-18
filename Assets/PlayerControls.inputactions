@@ -92,13 +92,21 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "5f2de234-69f6-4c89-bedc-58f0bd738bd7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "b693a68f-0d58-4e9f-ac36-65c0be4ba3d5",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -413,6 +421,17 @@
                     "action": "BERRYHAX",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "893e1d1d-9fe4-48aa-a5ca-15ae242c8968",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -432,6 +451,14 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "8deae492-926d-4798-a76c-b374a116c94a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "a5d4d231-3841-433c-880b-ff41ddd3b607",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -479,6 +506,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7dceb620-e652-4709-9dda-f970c876f2f4",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Options",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -773,7 +811,7 @@
                 {
                     "name": "",
                     "id": "2d3f4946-7f90-4ba0-b607-505bc9c25a8a",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

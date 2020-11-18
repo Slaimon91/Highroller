@@ -7,6 +7,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     public Item item;
     [SerializeField] GameObject rewardbox;
     [SerializeField] GameObject rewardboxHolder;
+    [SerializeField] bool persistentObject = false;
     public void Interact()
     {
         PickUp();
@@ -18,9 +19,9 @@ public class ItemPickup : MonoBehaviour, IInteractable
         string itemText = item.name;
         GameObject popup = Instantiate(rewardbox, rewardboxHolder.transform);
         popup.GetComponent<Rewardbox>().AssignInfo(itemIntro, itemText, gameObject.GetComponent<SpriteRenderer>().sprite);
-        popup.GetComponent<Rewardbox>().SetRewardTextColor(new Color(255f / 255f, 164f / 255f, 59f / 255f));
+        popup.GetComponent<Rewardbox>().SetRewardTextColor(new Color(63f / 255f, 202f / 255f, 184f / 255f));
         bool wasPickedUp = Inventory.instance.Add(item);
-        if(wasPickedUp)
+        if(wasPickedUp && !persistentObject)
         {
             Destroy(gameObject);
         }

@@ -18,6 +18,7 @@ public class BerryTile : MonoBehaviour, IInteractable
     private int berryPlantedAtBattleNR = 0;
     private int berryGrowthSpeed = 0; //1, 2, 3
     private int berryGrowthPoints = 0; //3, 6, 9        4, 8, 12         5, 10, 15
+    private GenericTextManager genericTextManager;
 
     void Awake()
     {
@@ -61,29 +62,34 @@ public class BerryTile : MonoBehaviour, IInteractable
 
     private void BerryDialogue()
     {
+        if(genericTextManager == null)
+        {
+            genericTextManager = FindObjectOfType<GenericTextManager>();
+        }
+        
         if (berryStage == 0)
         {
-            Debug.Log("Berry stage 0");
+            genericTextManager.DisplayText("A seed could be planted here.");
         }
 
         if (berryStage == 1)
         {
-            Debug.Log("Berry stage 1");
+            genericTextManager.DisplayText("A <color=#BCB845>" + plantedBerry.GetSeedName() + "</color>" + " was planted recently.");
         }
 
         else if (berryStage == 2)
         {
-            Debug.Log("Berry stage 2");
+            genericTextManager.DisplayText("The <color=#BCB845>" + plantedBerry.GetSeedName() + "</color>" + " is just starting to grow.");
         }
 
         else if (berryStage == 3)
         {
-            Debug.Log("Berry stage 3");
+            genericTextManager.DisplayText("The <color=#BCB845>" + plantedBerry.GetSeedName() + "</color>" + " is growing rapidly.");
         }
 
         else if (berryStage == 4)
         {
-            Debug.Log("Berry stage 4");
+            genericTextManager.DisplayText("The <color=#BCB845>" + plantedBerry.GetBerryName() + "</color>" + " looks almost ready for harvest.");
         }
     }
 

@@ -10,10 +10,10 @@ public class HeartyBerry : SeedBase
         {
             base.ConsumeBerry();
 
-            PlayerController player;
-            if ((player = FindObjectOfType<PlayerController>()) != null)
+            LaunchRewards rewards;
+            if ((rewards = FindObjectOfType<LaunchRewards>()) != null)
             {
-                player.LanuchHPRewardbox(30);
+                rewards.LanuchHPRewardbox(30);
             }
         }
     }

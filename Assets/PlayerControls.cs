@@ -105,13 +105,21 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f2de234-69f6-4c89-bedc-58f0bd738bd7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""b693a68f-0d58-4e9f-ac36-65c0be4ba3d5"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -426,6 +434,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""BERRYHAX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""893e1d1d-9fe4-48aa-a5ca-15ae242c8968"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -445,6 +464,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""8deae492-926d-4798-a76c-b374a116c94a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5d4d231-3841-433c-880b-ff41ddd3b607"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -492,6 +519,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7dceb620-e652-4709-9dda-f970c876f2f4"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Options"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -786,7 +824,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2d3f4946-7f90-4ba0-b607-505bc9c25a8a"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -1010,10 +1048,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_GAIAHAX = m_Overworld.FindAction("GAIAHAX", throwIfNotFound: true);
         m_Overworld_MONEYHAX = m_Overworld.FindAction("MONEYHAX", throwIfNotFound: true);
         m_Overworld_BERRYHAX = m_Overworld.FindAction("BERRYHAX", throwIfNotFound: true);
+        m_Overworld_Options = m_Overworld.FindAction("Options", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
         m_GenericUI_Cancel = m_GenericUI.FindAction("Cancel", throwIfNotFound: true);
+        m_GenericUI_Options = m_GenericUI.FindAction("Options", throwIfNotFound: true);
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         m_Battle_Pass = m_Battle.FindAction("Pass", throwIfNotFound: true);
@@ -1090,6 +1130,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_GAIAHAX;
     private readonly InputAction m_Overworld_MONEYHAX;
     private readonly InputAction m_Overworld_BERRYHAX;
+    private readonly InputAction m_Overworld_Options;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -1105,6 +1146,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @GAIAHAX => m_Wrapper.m_Overworld_GAIAHAX;
         public InputAction @MONEYHAX => m_Wrapper.m_Overworld_MONEYHAX;
         public InputAction @BERRYHAX => m_Wrapper.m_Overworld_BERRYHAX;
+        public InputAction @Options => m_Wrapper.m_Overworld_Options;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1147,6 +1189,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @BERRYHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
                 @BERRYHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
                 @BERRYHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnBERRYHAX;
+                @Options.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
+                @Options.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
+                @Options.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1184,6 +1229,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @BERRYHAX.started += instance.OnBERRYHAX;
                 @BERRYHAX.performed += instance.OnBERRYHAX;
                 @BERRYHAX.canceled += instance.OnBERRYHAX;
+                @Options.started += instance.OnOptions;
+                @Options.performed += instance.OnOptions;
+                @Options.canceled += instance.OnOptions;
             }
         }
     }
@@ -1194,12 +1242,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IGenericUIActions m_GenericUIActionsCallbackInterface;
     private readonly InputAction m_GenericUI_Submit;
     private readonly InputAction m_GenericUI_Cancel;
+    private readonly InputAction m_GenericUI_Options;
     public struct GenericUIActions
     {
         private @PlayerControls m_Wrapper;
         public GenericUIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Submit => m_Wrapper.m_GenericUI_Submit;
         public InputAction @Cancel => m_Wrapper.m_GenericUI_Cancel;
+        public InputAction @Options => m_Wrapper.m_GenericUI_Options;
         public InputActionMap Get() { return m_Wrapper.m_GenericUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1215,6 +1265,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Cancel.started -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnCancel;
+                @Options.started -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnOptions;
+                @Options.performed -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnOptions;
+                @Options.canceled -= m_Wrapper.m_GenericUIActionsCallbackInterface.OnOptions;
             }
             m_Wrapper.m_GenericUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1225,6 +1278,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @Options.started += instance.OnOptions;
+                @Options.performed += instance.OnOptions;
+                @Options.canceled += instance.OnOptions;
             }
         }
     }
@@ -1406,11 +1462,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnGAIAHAX(InputAction.CallbackContext context);
         void OnMONEYHAX(InputAction.CallbackContext context);
         void OnBERRYHAX(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
     public interface IBattleActions
     {

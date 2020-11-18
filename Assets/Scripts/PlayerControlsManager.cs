@@ -8,16 +8,20 @@ public class PlayerControlsManager : MonoBehaviour
 {
     private PlayerControls controls;
     [SerializeField] PlayerValues playerValues;
-    
+    public delegate void OnCancelGenericUI();
+    public OnCancelGenericUI onCancelGenericUICallback;
+
     //OW
     private InventoryUI inventoryUI;
     private PlayerController playerController;
+    private bool optionsOpen;
 
     //Battle
     private HoldAssignButton holdAssignButton;
     private BattleSystem battleSystem;
     private PlayerBattleController playerBattleController;
     private EventSystem eventSystem;
+    private PauseOptions pauseOptions;
 
     private Vector2 movement;
     private bool[] savedControlStates  = { false, false, false};
@@ -43,6 +47,10 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneToBattleHax();
         controls.Overworld.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Overworld.Move.canceled += ctx => movement = Vector2.zero;
+        controls.Overworld.Options.performed += ctx => TriggerOptions();
+
+        controls.GenericUI.Options.performed += ctx => TriggerOptions();
+        controls.GenericUI.Cancel.performed += ctx => TriggerCancelGenericUI();
 
         controls.Overworld.HPHAX.performed += ctx => HPHAX();
         controls.Overworld.GAIAHAX.performed += ctx => GAIAHAX();
@@ -208,6 +216,60 @@ public class PlayerControlsManager : MonoBehaviour
         }
 
         playerController.PressedTileFlip();
+    }
+
+    public void TriggerOptions()
+    {
+        if (controls.Overworld.enabled)
+        {
+            if (playerController == null)
+            {
+                if ((playerController = FindObjectOfType<PlayerController>()) == null)
+                {
+                    return;
+                }
+            }
+            if (!playerController.interacting)
+            {
+                if (pauseOptions == null)
+                {
+                    if ((pauseOptions = FindObjectOfType<PauseOptions>()) == null)
+                    {
+                        return;
+                    }
+                }
+                optionsOpen = true;
+                pauseOptions.OpenOptions();
+                ToggleOnGenericUI();
+            }
+        }
+        else if(optionsOpen)
+        {
+            if (pauseOptions == null)
+            {
+                if ((pauseOptions = FindObjectOfType<PauseOptions>()) == null)
+                {
+                    return;
+                }
+            }
+
+            pauseOptions.ClickContinue();
+            CloseOptions();
+        }
+    }
+
+    public void CloseOptions()
+    {
+        optionsOpen = false;
+        ToggleOffGenericUI();
+    }
+
+    public void TriggerCancelGenericUI()
+    {
+        if (onCancelGenericUICallback != null)
+        {
+            onCancelGenericUICallback.Invoke();
+        }
     }
 
     public void ChangeSceneToBattleHax()

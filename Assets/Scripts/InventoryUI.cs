@@ -242,7 +242,6 @@ public class InventoryUI : MonoBehaviour
             SeedBase seed = i.GetChildHolder().GetComponentInChildren<SeedBase>();
             if(seed != null)
             {
-                Debug.Log(seed.GetInactiveStatus() + " " + seed.GetBerryStatus());
                 if(!seed.GetInactiveStatus() && !seed.GetComponent<SeedBase>().GetBerryStatus())
                 {
                     seedList.Add(seed);
