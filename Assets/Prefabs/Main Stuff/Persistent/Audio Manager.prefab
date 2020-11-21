@@ -74,14 +74,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PassCompleted
     clip: {fileID: 8300000, guid: de4a37ee8af08e0479fe151ae753bac5, type: 3}
-    volume: 0.75
+    volume: 0.1
     pitch: 1
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
   - name: PlayerTurnStart
     clip: {fileID: 8300000, guid: 59fd3b5560154bb47817eaee72b171d9, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     playOnAwake: 0
     loop: 0

@@ -145,6 +145,7 @@ MonoBehaviour:
   moveSpeed: 4.5
   movePoint: {fileID: 7626871176384696239}
   inFrontOfPlayerTrigger: {fileID: 818772868}
+  interacting: 0
   groundTilemap: {fileID: 0}
   colliderTilemap: {fileID: 0}
   currentTile: {fileID: 0}
@@ -176,13 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59500430daed8c4458c3a946c711ae48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerValues: {fileID: 0}
-  rewardbox: {fileID: 0}
-  battleRewardbox: {fileID: 0}
+  playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
+  rewardbox: {fileID: 4556709100985078608, guid: c296aabd8b0076144b4a1ef870426872,
+    type: 3}
   rewardboxHolder: {fileID: 0}
-  gaiaSprite: {fileID: 0}
-  HPSprite: {fileID: 0}
-  XPSprite: {fileID: 0}
+  HPSprite: {fileID: 21300000, guid: 7f16ac838bf6a2e4586ce59ad43211cd, type: 3}
+  gaiaSprite: {fileID: 21300000, guid: b677a464b37329c498a9471307d95d1c, type: 3}
+  GASprite: {fileID: 21300000, guid: 0ae2c2c675b51114daa7a88400c13815, type: 3}
 --- !u!95 &570017286
 Animator:
   serializedVersion: 3

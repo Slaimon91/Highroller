@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GaiablockLog : MonoBehaviour, IInteractable
+public class Gaiablock : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject popUpBox;
     [SerializeField] GameObject overworldCanvas;
     [SerializeField] int gaiaAmount = 0;
     [SerializeField] PlayerValues playerValues;
+    [SerializeField] Gaiablockade gaiaBlockade;
     private GameObject popup;
 
     public void Interact()
@@ -24,16 +25,15 @@ public class GaiablockLog : MonoBehaviour, IInteractable
     }
     public void YesGaiaBlock()
     {
-        Debug.Log("You released the gaia");
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
         FindObjectOfType<LaunchRewards>().LanuchGaiaRewardbox(-gaiaAmount);
+        gaiaBlockade.PaidGaiaBlock();
         Destroy(gameObject);
     }
 
     public void NoGaiaBlock()
     {
-        Debug.Log("You said no to the gaia");
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
     }

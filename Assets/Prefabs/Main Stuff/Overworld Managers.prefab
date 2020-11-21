@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6889216838732210994}
   - component: {fileID: 6400807080124892465}
   m_Layer: 0
-  m_Name: SignManager
+  m_Name: GenericTextManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd06dc07ddb8c784b8234faa13868af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 0}
-  signBox: {fileID: 0}
+  genericText: {fileID: 0}
+  textBox: {fileID: 0}
 --- !u!1 &3843439475480737313
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,3 +171,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 91371669b82e46a4fbe01209fd37e9f7, type: 2}
   - {fileID: 11400000, guid: 12efbbd03de67854bbc7985d53d0180d, type: 2}
   battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}
+  playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
