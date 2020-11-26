@@ -469,7 +469,6 @@ public class PlayerController : MonoBehaviour
             //Check if we're pressing all the way to the left or to the right
             if (Mathf.Abs(move.x) == 1f)
             {
-
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x, 0f, 0f), .2f, whatStopsMovement))
                 {
                     movePoint.position += new Vector3(move.x, 0f, 0f);

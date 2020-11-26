@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class is to test if we're colliding with game objects, not tilemap
 public class InFrontOfPlayerTrigger : MonoBehaviour
 {
     [SerializeField] GameObject collidingGameObject = null;

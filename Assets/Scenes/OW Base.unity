@@ -1301,6 +1301,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6214030934812990115, guid: 936d36492656a2d4fa268a7390541c61,
+        type: 3}
+      propertyPath: m_Name
+      value: Gaia Text
+      objectReference: {fileID: 0}
     - target: {fileID: 6214030935335259051, guid: 936d36492656a2d4fa268a7390541c61,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1363,6 +1368,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 936d36492656a2d4fa268a7390541c61, type: 3}
+--- !u!1 &1045828889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6214030934797679868, guid: 936d36492656a2d4fa268a7390541c61,
+    type: 3}
+  m_PrefabInstance: {fileID: 1045828888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045828890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6214030934812990112, guid: 936d36492656a2d4fa268a7390541c61,
+    type: 3}
+  m_PrefabInstance: {fileID: 1045828888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1045828891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4678755926873684270, guid: 936d36492656a2d4fa268a7390541c61,
+    type: 3}
+  m_PrefabInstance: {fileID: 1045828888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1142261059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7626871176634801698, guid: e971173ea0de6d64fa784749778e7e92,
@@ -2297,7 +2332,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rewardboxHolder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045828889}
     - target: {fileID: 7626871176634801696, guid: e971173ea0de6d64fa784749778e7e92,
         type: 3}
       propertyPath: m_Name
@@ -2372,12 +2407,12 @@ PrefabInstance:
         type: 3}
       propertyPath: healthText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045828891}
     - target: {fileID: 7626871176634801699, guid: e971173ea0de6d64fa784749778e7e92,
         type: 3}
       propertyPath: gaiaText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1045828890}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e971173ea0de6d64fa784749778e7e92, type: 3}
 --- !u!1001 &8746849506088005922
