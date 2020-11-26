@@ -55,6 +55,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.HPHAX.performed += ctx => HPHAX();
         controls.Overworld.GAIAHAX.performed += ctx => GAIAHAX();
         controls.Overworld.MONEYHAX.performed += ctx => MONEYHAX();
+        controls.Overworld.WATERHAX.performed += ctx => WATERHAX();
         controls.Overworld.BERRYHAX.performed += ctx => BERRYHAX();
         controls.Battle.KILLALL.performed += ctx => KILLALL();
 
@@ -84,6 +85,7 @@ public class PlayerControlsManager : MonoBehaviour
     {
         if (playerController != null)
         {
+
             if (movement != playerController.move)
             {
                 playerController.move = movement;
@@ -111,6 +113,19 @@ public class PlayerControlsManager : MonoBehaviour
     private void MONEYHAX()
     {
         playerValues.currency += 100;
+    }
+
+    private void WATERHAX()
+    {
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+
+        playerController.ToggleWaterTransformation();
     }
     private void BERRYHAX()
     {

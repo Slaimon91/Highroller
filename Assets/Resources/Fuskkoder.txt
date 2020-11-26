@@ -1,0 +1,15 @@
+Fuskkoder:
+
+I OW:
+
+F1	= Change Scene Hax
+1	= Gain 100 HP
+2	= Gain 100 Gaia
+3	= Gain 100 Golden Acorns
+4	= Toggle Water Transformation
+B	= Grow Berries 1 stage
+
+I Battle:
+
+F1	= Change Scene Hax
+1	= Kill all enemies

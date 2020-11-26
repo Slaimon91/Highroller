@@ -100,6 +100,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "WATERHAX",
+                    "type": "Button",
+                    "id": "b71a9375-e588-4e84-b67a-8faf3447d2a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -430,6 +438,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08708d82-1362-4f33-be7e-42eccbde3016",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "WATERHAX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -113,6 +113,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""WATERHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""b71a9375-e588-4e84-b67a-8faf3447d2a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -443,6 +451,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08708d82-1362-4f33-be7e-42eccbde3016"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""WATERHAX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1049,6 +1068,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_MONEYHAX = m_Overworld.FindAction("MONEYHAX", throwIfNotFound: true);
         m_Overworld_BERRYHAX = m_Overworld.FindAction("BERRYHAX", throwIfNotFound: true);
         m_Overworld_Options = m_Overworld.FindAction("Options", throwIfNotFound: true);
+        m_Overworld_WATERHAX = m_Overworld.FindAction("WATERHAX", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
@@ -1131,6 +1151,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_MONEYHAX;
     private readonly InputAction m_Overworld_BERRYHAX;
     private readonly InputAction m_Overworld_Options;
+    private readonly InputAction m_Overworld_WATERHAX;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -1147,6 +1168,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @MONEYHAX => m_Wrapper.m_Overworld_MONEYHAX;
         public InputAction @BERRYHAX => m_Wrapper.m_Overworld_BERRYHAX;
         public InputAction @Options => m_Wrapper.m_Overworld_Options;
+        public InputAction @WATERHAX => m_Wrapper.m_Overworld_WATERHAX;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1192,6 +1214,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Options.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
                 @Options.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
                 @Options.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnOptions;
+                @WATERHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
+                @WATERHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
+                @WATERHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1232,6 +1257,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Options.started += instance.OnOptions;
                 @Options.performed += instance.OnOptions;
                 @Options.canceled += instance.OnOptions;
+                @WATERHAX.started += instance.OnWATERHAX;
+                @WATERHAX.performed += instance.OnWATERHAX;
+                @WATERHAX.canceled += instance.OnWATERHAX;
             }
         }
     }
@@ -1463,6 +1491,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMONEYHAX(InputAction.CallbackContext context);
         void OnBERRYHAX(InputAction.CallbackContext context);
         void OnOptions(InputAction.CallbackContext context);
+        void OnWATERHAX(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {
