@@ -25,9 +25,11 @@ public class PlayerController : MonoBehaviour
     bool tileFlipAxisPressed = false;
     float playerTileOffset = 0.19f;
     Vector3 playerOffsetVector;
+    bool waterForm = false;
 
 
     [SerializeField] LayerMask whatStopsMovement;
+    [SerializeField] LayerMask water;
 
     //State
     public GameState state;
@@ -453,7 +455,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMove()
     {
-
+        float newOffset = 0.3f;
         //Actually move the player closer to the movepoint every frame 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         if (move.x != 0 || move.y != 0)
@@ -465,16 +467,22 @@ public class PlayerController : MonoBehaviour
         //Only check movement input if we are at the movepoint position
         if ((Vector3.Distance(transform.position, movePoint.position) <= .05f))
         {
-
+            
             //Check if we're pressing all the way to the left or to the right
-            if (Mathf.Abs(move.x) == 1f)
+            if (move.x == 1f)    //east
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x, 0f, 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3(move.x, 0f, 0f);
-                    animator.SetFloat("moveX", currentDirection.x);
-                    animator.SetFloat("moveY", 0);
-
+                    if((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, water) || waterForm))
+                    {
+                        movePoint.position += new Vector3(move.x, 0f, 0f);
+                        animator.SetFloat("moveX", currentDirection.x);
+                        animator.SetFloat("moveY", 0);
+                    }
+                    else
+                    {
+                        NotWalking();
+                    }
                 }
                 else
                 {
@@ -482,15 +490,66 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (Mathf.Abs(move.y) == 1f)
+            //Check if we're pressing all the way to the left or to the right
+            else if (move.x == -1f)   //west
+            {
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement))
+                {
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, water) || waterForm))
+                    {
+                        movePoint.position += new Vector3(move.x, 0f, 0f);
+                        animator.SetFloat("moveX", currentDirection.x);
+                        animator.SetFloat("moveY", 0);
+                    }
+                    else
+                    {
+                        NotWalking();
+                    }
+                }
+                else
+                {
+                    NotWalking();
+                }
+            }
+
+            else if (move.y == 1f)   //north
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y, 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3(0f, move.y, 0f);
-                    animator.SetFloat("moveY", currentDirection.y);
-                    animator.SetFloat("moveX", 0);
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, water) || waterForm))
+                    {
+                        movePoint.position += new Vector3(0f, move.y, 0f);
+                        animator.SetFloat("moveY", currentDirection.y);
+                        animator.SetFloat("moveX", 0);
+                    }
+                    else
+                    {
+                        NotWalking();
+                    }
+                }
+                else
+                {
+                    NotWalking();
 
+                }
+            }
+
+            else if (move.y == -1f)   //south
+            {
+
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovement))
+                {
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, water) || waterForm))
+                    {
+                        movePoint.position += new Vector3(0f, move.y, 0f);
+                        animator.SetFloat("moveY", currentDirection.y);
+                        animator.SetFloat("moveX", 0);
+                    }
+                    else
+                    {
+                        NotWalking();
+                    }
                 }
                 else
                 {
@@ -507,6 +566,20 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Walking", true);
+        }
+    }
+
+    public void ToggleWaterTransformation()
+    {
+        if(waterForm)
+        {
+            waterForm = false;
+            GetComponentInChildren<SpriteRenderer>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+        }
+        else
+        {
+            waterForm = true;
+            GetComponentInChildren<SpriteRenderer>().color = new Color(0f / 255f, 210f / 255f, 255f / 255f);
         }
     }
 }
