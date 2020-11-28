@@ -2227,10 +2227,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -16, y: 12}
+      - - {x: -16, y: 13}
         - {x: -16, y: 16}
         - {x: 16, y: 16}
-        - {x: 16, y: 12}
+        - {x: 16, y: 13}
       tessellationDetail: 0
       bones: []
       spriteID: 7427c42a9a2471ac0800000000000000
