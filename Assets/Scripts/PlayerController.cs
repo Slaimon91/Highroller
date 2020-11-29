@@ -26,9 +26,11 @@ public class PlayerController : MonoBehaviour
     float playerTileOffset = 0.19f;
     Vector3 playerOffsetVector;
     bool waterForm = false;
+    int elevation = 0;
 
 
     [SerializeField] LayerMask whatStopsMovement;
+    [SerializeField] LayerMask whatStopsMovementHigh;
     [SerializeField] LayerMask water;
 
     //State
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject darkOverlayPrefab;
     private GameObject darkOverlayObject;
 
-    enum Direction { North, East, South, West, None};
+    public enum Direction { North, East, South, West, None};
 
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI gaiaText;
@@ -295,7 +297,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    Direction GetDirection()
+    public Direction GetDirection()
     {
         if(currentDirection.x > 0) 
         {
@@ -471,7 +473,7 @@ public class PlayerController : MonoBehaviour
             //Check if we're pressing all the way to the left or to the right
             if (move.x == 1f)    //east
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
                 {
                     if((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, water) || waterForm))
                     {
@@ -493,7 +495,7 @@ public class PlayerController : MonoBehaviour
             //Check if we're pressing all the way to the left or to the right
             else if (move.x == -1f)   //west
             {
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, water) || waterForm))
                     {
@@ -515,7 +517,7 @@ public class PlayerController : MonoBehaviour
             else if (move.y == 1f)   //north
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, water) || waterForm))
                     {
@@ -538,7 +540,7 @@ public class PlayerController : MonoBehaviour
             else if (move.y == -1f)   //south
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovement))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, water) || waterForm))
                     {
@@ -574,12 +576,37 @@ public class PlayerController : MonoBehaviour
         if(waterForm)
         {
             waterForm = false;
-            GetComponentInChildren<SpriteRenderer>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+            SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+            sprite.color = new Color(255f / 255f, 255f / 255f, 255f / 255f);
+            sprite.sortingLayerName = "Player";
+            sprite.sortingOrder = 0;
         }
         else
         {
             waterForm = true;
-            GetComponentInChildren<SpriteRenderer>().color = new Color(0f / 255f, 210f / 255f, 255f / 255f);
+            SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+            sprite.color = new Color(0f / 255f, 210f / 255f, 255f / 255f);
+            sprite.sortingLayerName = "Ground";
+            sprite.sortingOrder = 1;
+        }
+    }
+
+    public void ElevationChangePlayer(int fromLevel, int toLevel)
+    {
+        if(elevation == fromLevel)
+        {
+            elevation = toLevel;
+        }
+
+        if(elevation == 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().sortingLayerName = "Player";
+            movePoint.gameObject.layer = 0;
+        }
+        else if (elevation == 1)
+        {
+            GetComponentInChildren<SpriteRenderer>().sortingLayerName = "All tiles Overlay";
+            movePoint.gameObject.layer = 9;
         }
     }
 }
