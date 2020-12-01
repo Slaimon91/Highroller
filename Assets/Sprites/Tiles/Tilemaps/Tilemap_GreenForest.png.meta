@@ -1,0 +1,2993 @@
+fileFormatVersion: 2
+guid: c1e8b395c62d1c84587528c971c50ded
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5112198260503104909
+    second: Tilemap_GreenForest_0
+  - first:
+      213: -4865492520336680095
+    second: Tilemap_GreenForest_1
+  - first:
+      213: 6605382254333370273
+    second: Tilemap_GreenForest_2
+  - first:
+      213: 8115422338301151288
+    second: Tilemap_GreenForest_3
+  - first:
+      213: 5226442765179871544
+    second: Tilemap_GreenForest_4
+  - first:
+      213: -263685889576483663
+    second: Tilemap_GreenForest_5
+  - first:
+      213: 645990585243356120
+    second: Tilemap_GreenForest_6
+  - first:
+      213: -3070959061027705213
+    second: Tilemap_GreenForest_7
+  - first:
+      213: -3155805795194560644
+    second: Tilemap_GreenForest_8
+  - first:
+      213: 2687908080910015253
+    second: Tilemap_GreenForest_9
+  - first:
+      213: 5599457993943698282
+    second: Tilemap_GreenForest_10
+  - first:
+      213: 673865318607830662
+    second: Tilemap_GreenForest_11
+  - first:
+      213: 587371864903366729
+    second: Tilemap_GreenForest_12
+  - first:
+      213: -2063986362377976648
+    second: Tilemap_GreenForest_13
+  - first:
+      213: -4973476069894360483
+    second: Tilemap_GreenForest_14
+  - first:
+      213: 1069630720830042213
+    second: Tilemap_GreenForest_15
+  - first:
+      213: 4879959753012966050
+    second: Tilemap_GreenForest_16
+  - first:
+      213: 1588208002949357331
+    second: Tilemap_GreenForest_17
+  - first:
+      213: 6396131877068300308
+    second: Tilemap_GreenForest_18
+  - first:
+      213: -6807640327694992413
+    second: Tilemap_GreenForest_19
+  - first:
+      213: -1161280768560313074
+    second: Tilemap_GreenForest_20
+  - first:
+      213: -8782853324192927177
+    second: Tilemap_GreenForest_21
+  - first:
+      213: 3899356713413517277
+    second: Tilemap_GreenForest_22
+  - first:
+      213: 3329826575429279846
+    second: Tilemap_GreenForest_23
+  - first:
+      213: 6653174352409893527
+    second: Tilemap_GreenForest_24
+  - first:
+      213: 7031300304622153457
+    second: Tilemap_GreenForest_25
+  - first:
+      213: 6388203520156160795
+    second: Tilemap_GreenForest_26
+  - first:
+      213: 2243122433108490147
+    second: Tilemap_GreenForest_27
+  - first:
+      213: -8966869409906440069
+    second: Tilemap_GreenForest_28
+  - first:
+      213: -1599300965163808098
+    second: Tilemap_GreenForest_29
+  - first:
+      213: 2877448066486059092
+    second: Tilemap_GreenForest_30
+  - first:
+      213: 729745029122916094
+    second: Tilemap_GreenForest_31
+  - first:
+      213: 975964573096020228
+    second: Tilemap_GreenForest_32
+  - first:
+      213: 8848497650149918994
+    second: Tilemap_GreenForest_33
+  - first:
+      213: 3551339644474542703
+    second: Tilemap_GreenForest_34
+  - first:
+      213: 4089974678725182613
+    second: Tilemap_GreenForest_35
+  - first:
+      213: -3225481580282501350
+    second: Tilemap_GreenForest_36
+  - first:
+      213: 1592306588397113396
+    second: Tilemap_GreenForest_37
+  - first:
+      213: -1478210468348880472
+    second: Tilemap_GreenForest_38
+  - first:
+      213: 2307618725277740471
+    second: Tilemap_GreenForest_39
+  - first:
+      213: 4156277656893887103
+    second: Tilemap_GreenForest_40
+  - first:
+      213: 5760437741015212248
+    second: Tilemap_GreenForest_41
+  - first:
+      213: -6081892600709447660
+    second: Tilemap_GreenForest_42
+  - first:
+      213: -6873198699087573990
+    second: Tilemap_GreenForest_43
+  - first:
+      213: -5533533242737967095
+    second: Tilemap_GreenForest_44
+  - first:
+      213: -3228802714790402756
+    second: Tilemap_GreenForest_45
+  - first:
+      213: 7340347782896988476
+    second: Tilemap_GreenForest_46
+  - first:
+      213: 1248577992547710236
+    second: Tilemap_GreenForest_47
+  - first:
+      213: 7815336927988953292
+    second: Tilemap_GreenForest_48
+  - first:
+      213: 4538994115948292931
+    second: Tilemap_GreenForest_49
+  - first:
+      213: -5780669341623706520
+    second: Tilemap_GreenForest_50
+  - first:
+      213: -341407284515095593
+    second: Tilemap_GreenForest_51
+  - first:
+      213: 7717770811343252591
+    second: Tilemap_GreenForest_52
+  - first:
+      213: -9216616426516087008
+    second: Tilemap_GreenForest_53
+  - first:
+      213: -7697942003067836567
+    second: Tilemap_GreenForest_54
+  - first:
+      213: 2604614869750813669
+    second: Tilemap_GreenForest_55
+  - first:
+      213: -6680295289962643664
+    second: Tilemap_GreenForest_56
+  - first:
+      213: -2284234492638135849
+    second: Tilemap_GreenForest_57
+  - first:
+      213: 5656644358833457838
+    second: Tilemap_GreenForest_58
+  - first:
+      213: -4847383126463431536
+    second: Tilemap_GreenForest_59
+  - first:
+      213: -7116448239982845215
+    second: Tilemap_GreenForest_60
+  - first:
+      213: 4481467371864544650
+    second: Tilemap_GreenForest_61
+  - first:
+      213: -4679425415189161434
+    second: Tilemap_GreenForest_62
+  - first:
+      213: 5866566225411134882
+    second: Tilemap_GreenForest_63
+  - first:
+      213: -2616240468936607528
+    second: Tilemap_GreenForest_64
+  - first:
+      213: 8718341143952297440
+    second: Tilemap_GreenForest_65
+  - first:
+      213: 2272240217485809472
+    second: Tilemap_GreenForest_66
+  - first:
+      213: -2085472870065429253
+    second: Tilemap_GreenForest_67
+  - first:
+      213: -7629477189834256313
+    second: Tilemap_GreenForest_68
+  - first:
+      213: 1048526193347239866
+    second: Tilemap_GreenForest_69
+  - first:
+      213: 3008748795551179617
+    second: Tilemap_GreenForest_70
+  - first:
+      213: -4349932317099786861
+    second: Tilemap_GreenForest_71
+  - first:
+      213: -318596385881343843
+    second: Tilemap_GreenForest_72
+  - first:
+      213: -5545636304833777199
+    second: Tilemap_GreenForest_73
+  - first:
+      213: -4100870173359445988
+    second: Tilemap_GreenForest_74
+  - first:
+      213: -4139908569959286686
+    second: Tilemap_GreenForest_75
+  - first:
+      213: -4083555697360395114
+    second: Tilemap_GreenForest_76
+  - first:
+      213: -2111564692779222776
+    second: Tilemap_GreenForest_77
+  - first:
+      213: 6716595360531594614
+    second: Tilemap_GreenForest_78
+  - first:
+      213: -2374885072649762357
+    second: Tilemap_GreenForest_79
+  - first:
+      213: -1071905774689415222
+    second: Tilemap_GreenForest_80
+  - first:
+      213: -1585196330802134838
+    second: Tilemap_GreenForest_81
+  - first:
+      213: 4591973547694245914
+    second: Tilemap_GreenForest_82
+  - first:
+      213: -4909660551408091346
+    second: Tilemap_GreenForest_83
+  - first:
+      213: -3776377778861069579
+    second: Tilemap_GreenForest_84
+  - first:
+      213: 2239005261058508093
+    second: Tilemap_GreenForest_85
+  - first:
+      213: -997443637772448804
+    second: Tilemap_GreenForest_86
+  - first:
+      213: 4731989484692574723
+    second: Tilemap_GreenForest_87
+  - first:
+      213: 2677615699195488922
+    second: Tilemap_GreenForest_88
+  - first:
+      213: -8932110179172055819
+    second: Tilemap_GreenForest_89
+  - first:
+      213: -5914389605812029102
+    second: Tilemap_GreenForest_90
+  - first:
+      213: 8882343492091931036
+    second: Tilemap_GreenForest_91
+  - first:
+      213: 7176541104846785291
+    second: Tilemap_GreenForest_92
+  - first:
+      213: -4028718311827967878
+    second: Tilemap_GreenForest_93
+  - first:
+      213: -2694584578433744738
+    second: Tilemap_GreenForest_94
+  - first:
+      213: 1469606701484082216
+    second: Tilemap_GreenForest_95
+  - first:
+      213: 2242901242081035520
+    second: Tilemap_GreenForest_96
+  - first:
+      213: 4422657245641386582
+    second: Tilemap_GreenForest_97
+  - first:
+      213: 5474135152066154780
+    second: Tilemap_GreenForest_98
+  - first:
+      213: -6992254409412738473
+    second: Tilemap_GreenForest_99
+  - first:
+      213: 6711190210857949383
+    second: Tilemap_GreenForest_100
+  - first:
+      213: -7829621981073671818
+    second: Tilemap_GreenForest_101
+  - first:
+      213: 538614063869679273
+    second: Tilemap_GreenForest_102
+  - first:
+      213: 4765588150730795443
+    second: Tilemap_GreenForest_103
+  - first:
+      213: 4149042265926479829
+    second: Tilemap_GreenForest_104
+  - first:
+      213: 8878156339890142071
+    second: Tilemap_GreenForest_105
+  - first:
+      213: 3501449906503343691
+    second: Tilemap_GreenForest_106
+  - first:
+      213: -197365268425777124
+    second: Tilemap_GreenForest_0
+  - first:
+      213: -948861948146765491
+    second: Tilemap_GreenForest_1
+  - first:
+      213: 2228156678614927629
+    second: Tilemap_GreenForest_2
+  - first:
+      213: 491411922924841528
+    second: Tilemap_GreenForest_3
+  - first:
+      213: -4480547071909082144
+    second: Tilemap_GreenForest_4
+  - first:
+      213: 235974384118323291
+    second: Tilemap_GreenForest_5
+  - first:
+      213: 6210178830330262182
+    second: Tilemap_GreenForest_6
+  - first:
+      213: 661181082920442906
+    second: Tilemap_GreenForest_7
+  - first:
+      213: 6439113342946239775
+    second: Tilemap_GreenForest_8
+  - first:
+      213: 411246795696411891
+    second: Tilemap_GreenForest_9
+  - first:
+      213: -6024415031717193379
+    second: Tilemap_GreenForest_10
+  - first:
+      213: 8723202173681652191
+    second: Tilemap_GreenForest_11
+  - first:
+      213: -5000939700021725267
+    second: Tilemap_GreenForest_12
+  - first:
+      213: -1315360992761586175
+    second: Tilemap_GreenForest_13
+  - first:
+      213: -6060537902374789462
+    second: Tilemap_GreenForest_14
+  - first:
+      213: 8261251499242480679
+    second: Tilemap_GreenForest_15
+  - first:
+      213: -4033040381879765655
+    second: Tilemap_GreenForest_16
+  - first:
+      213: -2437523953754955050
+    second: Tilemap_GreenForest_17
+  - first:
+      213: -5783217761871184313
+    second: Tilemap_GreenForest_18
+  - first:
+      213: -6198404819472719926
+    second: Tilemap_GreenForest_19
+  - first:
+      213: -784713409559999381
+    second: Tilemap_GreenForest_20
+  - first:
+      213: 868269806251305656
+    second: Tilemap_GreenForest_21
+  - first:
+      213: -7309500556913577035
+    second: Tilemap_GreenForest_22
+  - first:
+      213: -2066060375096376826
+    second: Tilemap_GreenForest_23
+  - first:
+      213: -7927711210885244085
+    second: Tilemap_GreenForest_24
+  - first:
+      213: -5213946545286418285
+    second: Tilemap_GreenForest_25
+  - first:
+      213: 8672113028532605657
+    second: Tilemap_GreenForest_26
+  - first:
+      213: -9040941153679903545
+    second: Tilemap_GreenForest_27
+  - first:
+      213: 477699547942780053
+    second: Tilemap_GreenForest_28
+  - first:
+      213: -7524063597053426053
+    second: Tilemap_GreenForest_29
+  - first:
+      213: -5711738539594598494
+    second: Tilemap_GreenForest_30
+  - first:
+      213: 999454360630317761
+    second: Tilemap_GreenForest_31
+  - first:
+      213: 3215898950886028581
+    second: Tilemap_GreenForest_32
+  - first:
+      213: -7002923136713662016
+    second: Tilemap_GreenForest_33
+  - first:
+      213: -8737228310972333352
+    second: Tilemap_GreenForest_34
+  - first:
+      213: 9094578982202159334
+    second: Tilemap_GreenForest_35
+  - first:
+      213: -218467246197342899
+    second: Tilemap_GreenForest_36
+  - first:
+      213: -5308695453498984271
+    second: Tilemap_GreenForest_37
+  - first:
+      213: -5794538484074797408
+    second: Tilemap_GreenForest_38
+  - first:
+      213: -2675494337813396189
+    second: Tilemap_GreenForest_39
+  - first:
+      213: 7658843145773462383
+    second: Tilemap_GreenForest_40
+  - first:
+      213: -2294854274709545476
+    second: Tilemap_GreenForest_41
+  - first:
+      213: 8410035452891582437
+    second: Tilemap_GreenForest_42
+  - first:
+      213: -8263034730431611152
+    second: Tilemap_GreenForest_43
+  - first:
+      213: 3302816963507002304
+    second: Tilemap_GreenForest_44
+  - first:
+      213: -6298155120687438796
+    second: Tilemap_GreenForest_45
+  - first:
+      213: -7972811815671270542
+    second: Tilemap_GreenForest_46
+  - first:
+      213: -86418365795991930
+    second: Tilemap_GreenForest_47
+  - first:
+      213: 8509323919171880568
+    second: Tilemap_GreenForest_48
+  - first:
+      213: 1336106610268593174
+    second: Tilemap_GreenForest_49
+  - first:
+      213: 3485415619855460403
+    second: Tilemap_GreenForest_50
+  - first:
+      213: 2918332578828680661
+    second: Tilemap_GreenForest_51
+  - first:
+      213: -1292569321278870424
+    second: Tilemap_GreenForest_52
+  - first:
+      213: 3576729494248771962
+    second: Tilemap_GreenForest_53
+  - first:
+      213: -4045533503382073884
+    second: Tilemap_GreenForest_54
+  - first:
+      213: 823011781819160611
+    second: Tilemap_GreenForest_55
+  - first:
+      213: -5482507935383459444
+    second: Tilemap_GreenForest_56
+  - first:
+      213: -7329433835031896399
+    second: Tilemap_GreenForest_57
+  - first:
+      213: -3529720312028933635
+    second: Tilemap_GreenForest_58
+  - first:
+      213: 5663674992811517978
+    second: Tilemap_GreenForest_59
+  - first:
+      213: -1858882110833834994
+    second: Tilemap_GreenForest_60
+  - first:
+      213: 3294175755744058534
+    second: Tilemap_GreenForest_61
+  - first:
+      213: 4915661796540656408
+    second: Tilemap_GreenForest_62
+  - first:
+      213: 509555551005417975
+    second: Tilemap_GreenForest_63
+  - first:
+      213: -1675670786220149020
+    second: Tilemap_GreenForest_64
+  - first:
+      213: -3104955054794741875
+    second: Tilemap_GreenForest_65
+  - first:
+      213: 2450273086199360746
+    second: Tilemap_GreenForest_66
+  - first:
+      213: -6393496696926313494
+    second: Tilemap_GreenForest_67
+  - first:
+      213: 810008615413884535
+    second: Tilemap_GreenForest_68
+  - first:
+      213: 648541691631688401
+    second: Tilemap_GreenForest_69
+  - first:
+      213: 3105761847890952106
+    second: Tilemap_GreenForest_70
+  - first:
+      213: 8394022977289818330
+    second: Tilemap_GreenForest_71
+  - first:
+      213: 8682199766531191144
+    second: Tilemap_GreenForest_72
+  - first:
+      213: -440531594033441741
+    second: Tilemap_GreenForest_73
+  - first:
+      213: 3208450826937873813
+    second: Tilemap_GreenForest_74
+  - first:
+      213: -2666896915849540093
+    second: Tilemap_GreenForest_75
+  - first:
+      213: 2186588139208167436
+    second: Tilemap_GreenForest_76
+  - first:
+      213: 6041098657893133218
+    second: Tilemap_GreenForest_77
+  - first:
+      213: 5986984735506201815
+    second: Tilemap_GreenForest_78
+  - first:
+      213: 1304985352959853566
+    second: Tilemap_GreenForest_79
+  - first:
+      213: -8222459180635270953
+    second: Tilemap_GreenForest_80
+  - first:
+      213: 3932985627804442271
+    second: Tilemap_GreenForest_81
+  - first:
+      213: -5701493666358848681
+    second: Tilemap_GreenForest_82
+  - first:
+      213: 5816926723868910706
+    second: Tilemap_GreenForest_83
+  - first:
+      213: -5036562699597279098
+    second: Tilemap_GreenForest_84
+  - first:
+      213: -130120020003401444
+    second: Tilemap_GreenForest_85
+  - first:
+      213: 3850065618813886739
+    second: Tilemap_GreenForest_86
+  - first:
+      213: 7464766901688679352
+    second: Tilemap_GreenForest_87
+  - first:
+      213: 4397215540884943141
+    second: Tilemap_GreenForest_88
+  - first:
+      213: 4387553652127565964
+    second: Tilemap_GreenForest_89
+  - first:
+      213: -8551452041305872545
+    second: Tilemap_GreenForest_90
+  - first:
+      213: 3090612292306718849
+    second: Tilemap_GreenForest_91
+  - first:
+      213: -211343443855623225
+    second: Tilemap_GreenForest_92
+  - first:
+      213: -3413821135483107907
+    second: Tilemap_GreenForest_93
+  - first:
+      213: 1105034906131958853
+    second: Tilemap_GreenForest_94
+  - first:
+      213: -6653533324216206067
+    second: Tilemap_GreenForest_95
+  - first:
+      213: 6975129443165185022
+    second: Tilemap_GreenForest_96
+  - first:
+      213: -2875206542505753750
+    second: Tilemap_GreenForest_97
+  - first:
+      213: 1634886125210062874
+    second: Tilemap_GreenForest_98
+  - first:
+      213: -4412806732776023388
+    second: Tilemap_GreenForest_99
+  - first:
+      213: 6697553998575685266
+    second: Tilemap_GreenForest_100
+  - first:
+      213: -5713055641285507262
+    second: Tilemap_GreenForest_101
+  - first:
+      213: 3684359629787245200
+    second: Tilemap_GreenForest_102
+  - first:
+      213: -607430014540073069
+    second: Tilemap_GreenForest_103
+  - first:
+      213: -738542569327212954
+    second: Tilemap_GreenForest_104
+  - first:
+      213: -7373812133794695660
+    second: Tilemap_GreenForest_105
+  - first:
+      213: 2022715549294818960
+    second: Tilemap_GreenForest_106
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c106b748551d24df0800000000000000
+      internalID: -197365268425777124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41b3dfd517f4d2f0800000000000000
+      internalID: -948861948146765491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09c1c4a1b00cee10800000000000000
+      internalID: 2228156678614927629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83aa3505a88d1d600800000000000000
+      internalID: 491411922924841528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb41735d26e1d1c0800000000000000
+      internalID: -4480547071909082144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b58d67db379564300800000000000000
+      internalID: 235974384118323291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a27c754ebcfe2650800000000000000
+      internalID: 6210178830330262182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c5eab11bcfc2900800000000000000
+      internalID: 661181082920442906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15e9c238735c5950800000000000000
+      internalID: 6439113342946239775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4908428ca05b500800000000000000
+      internalID: 411246795696411891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5919f6827af46ca0800000000000000
+      internalID: -6024415031717193379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1d532d82a0f0970800000000000000
+      internalID: 8723202173681652191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da77e05c6d7199ab0800000000000000
+      internalID: -5000939700021725267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e5a0b6526eebde0800000000000000
+      internalID: -1315360992761586175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaed82d43e4a4eba0800000000000000
+      internalID: -6060537902374789462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724e284f77cd5a270800000000000000
+      internalID: 8261251499242480679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96530410423c708c0800000000000000
+      internalID: -4033040381879765655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d22eece0ec2c2ed0800000000000000
+      internalID: -2437523953754955050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e30fc1612edbfa0800000000000000
+      internalID: -5783217761871184313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf524148a7daf9a0800000000000000
+      internalID: -6198404819472719926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cc0b4cf432c15f0800000000000000
+      internalID: -784713409559999381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba6ecad9c6bc0c00800000000000000
+      internalID: 868269806251305656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b375ab88ff6f8a90800000000000000
+      internalID: -7309500556913577035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_23
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602ced90901e353e0800000000000000
+      internalID: -2066060375096376826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b9d4118ac1bf190800000000000000
+      internalID: -7927711210885244085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390f352ed3754a7b0800000000000000
+      internalID: -5213946545286418285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d219b54ad8895870800000000000000
+      internalID: 8672113028532605657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4f2b3fbef188280800000000000000
+      internalID: -9040941153679903545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c7e78353121a600800000000000000
+      internalID: 477699547942780053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76ce2ec508259790800000000000000
+      internalID: -7524063597053426053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_30
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a73e817f04dbb0b0800000000000000
+      internalID: -5711738539594598494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_31
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c2d5961276cedd00800000000000000
+      internalID: 999454360630317761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525fc19ae0b21ac20800000000000000
+      internalID: 3215898950886028581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_33
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c161de928e90de90800000000000000
+      internalID: -7002923136713662016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_34
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2020b94212fb680800000000000000
+      internalID: -8737228310972333352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0b4ef266f663e70800000000000000
+      internalID: 9094578982202159334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_36
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d79537239d7fcf0800000000000000
+      internalID: -218467246197342899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b836799c99b356b0800000000000000
+      internalID: -5308695453498984271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_38
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6246313f9a59fa0800000000000000
+      internalID: -5794538484074797408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325401c331cbedad0800000000000000
+      internalID: -2675494337813396189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f633346434da94a60800000000000000
+      internalID: 7658843145773462383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd96a0223a0720e0800000000000000
+      internalID: -2294854274709545476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef4b06afa276b470800000000000000
+      internalID: 8410035452891582437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_43
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe78ed21bdc35d80800000000000000
+      internalID: -8263034730431611152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_44
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb18fb7786f5dd20800000000000000
+      internalID: 3302816963507002304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4342e1b69457898a0800000000000000
+      internalID: -6298155120687438796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_46
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27370e935e1ea5190800000000000000
+      internalID: -7972811815671270542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_47
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ef8a444fafccef0800000000000000
+      internalID: -86418365795991930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87689f82501371670800000000000000
+      internalID: 8509323919171880568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_49
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c5c1f02edca8210800000000000000
+      internalID: 1336106610268593174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_50
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338251c2a0fae5030800000000000000
+      internalID: 3485415619855460403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_51
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd7889b400008820800000000000000
+      internalID: 2918332578828680661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_52
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86cea95fc0fdf0ee0800000000000000
+      internalID: -1292569321278870424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a715c52568813a130800000000000000
+      internalID: 3576729494248771962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_54
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed48fb76b06bd7c0800000000000000
+      internalID: -4045533503382073884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_55
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328da45eadceb6b00800000000000000
+      internalID: 823011781819160611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89653194183ae3b0800000000000000
+      internalID: -5482507935383459444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_57
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bed13292ce984a90800000000000000
+      internalID: -7329433835031896399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_58
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1d805d31ae30fc0800000000000000
+      internalID: -3529720312028933635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_59
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a182bc5066a699e40800000000000000
+      internalID: 5663674992811517978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_60
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04cb68a19ce336e0800000000000000
+      internalID: -1858882110833834994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac14d4856347bd20800000000000000
+      internalID: 3294175755744058534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_62
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ba3c21c50f73440800000000000000
+      internalID: 4915661796540656408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_63
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1a10be21e421700800000000000000
+      internalID: 509555551005417975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_64
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e639da4c42deb8e0800000000000000
+      internalID: -1675670786220149020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_65
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d87e76314dbf8e4d0800000000000000
+      internalID: -3104955054794741875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_66
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aecec99c36e110220800000000000000
+      internalID: 2450273086199360746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_67
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3e21bd0acb547a0800000000000000
+      internalID: -6393496696926313494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_68
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77620ca4b8abd3b00800000000000000
+      internalID: 810008615413884535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dadcbf7b35100900800000000000000
+      internalID: 648541691631688401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_70
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf308412f1e91b20800000000000000
+      internalID: 3105761847890952106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_71
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad093d5ac6f8d7470800000000000000
+      internalID: 8394022977289818330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_72
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8613219ffae5d7870800000000000000
+      internalID: 8682199766531191144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_73
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334dc4969dae2e9f0800000000000000
+      internalID: -440531594033441741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_74
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595b0fa2705b68c20800000000000000
+      internalID: 3208450826937873813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_75
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e043682674dfad0800000000000000
+      internalID: -2666896915849540093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_76
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00d59bd352585e10800000000000000
+      internalID: 2186588139208167436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab2fc4e83b46d350800000000000000
+      internalID: 6041098657893133218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_78
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc788385ea061350800000000000000
+      internalID: 5986984735506201815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_79
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef38240b34d3c1210800000000000000
+      internalID: 1304985352959853566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_80
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0d51e80f4f3ed80800000000000000
+      internalID: -8222459180635270953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_81
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e10043795c49630800000000000000
+      internalID: 3932985627804442271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_82
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7539a8fd7b930e0b0800000000000000
+      internalID: -5701493666358848681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_83
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274eea43900e9b050800000000000000
+      internalID: 5816926723868910706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_84
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6809589d8e88a1ab0800000000000000
+      internalID: -5036562699597279098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_85
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11d78df788b13ef0800000000000000
+      internalID: -130120020003401444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_86
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 311a853284e2e6530800000000000000
+      internalID: 3850065618813886739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_87
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb3f3272fd289760800000000000000
+      internalID: 7464766901688679352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_88
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 521364bac3c060d30800000000000000
+      internalID: 4397215540884943141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_89
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c880804ecc8b3ec30800000000000000
+      internalID: 4387553652127565964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_90
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f57ac2c0da3235980800000000000000
+      internalID: -8551452041305872545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_91
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180d56d418f04ea20800000000000000
+      internalID: 3090612292306718849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_92
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbb06fe148211df0800000000000000
+      internalID: -211343443855623225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_93
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db50fc4b3cbaf90d0800000000000000
+      internalID: -3413821135483107907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_94
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c0764746fd55f00800000000000000
+      internalID: 1105034906131958853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_95
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d7edc81b6e9a3a0800000000000000
+      internalID: -6653533324216206067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_96
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef3aa32d543acc060800000000000000
+      internalID: 6975129443165185022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_97
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a63c01212e63918d0800000000000000
+      internalID: -2875206542505753750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_98
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a105c55d44840b610800000000000000
+      internalID: 1634886125210062874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_99
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aade6618af82c2c0800000000000000
+      internalID: -4412806732776023388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_100
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ec91560ed72fc50800000000000000
+      internalID: 6697553998575685266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_101
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 247c22fc92627b0b0800000000000000
+      internalID: -5713055641285507262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_102
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09a224e0099712330800000000000000
+      internalID: 3684359629787245200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_103
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397bd6dbe99f197f0800000000000000
+      internalID: -607430014540073069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_104
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6664fb7327b20c5f0800000000000000
+      internalID: -738542569327212954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_105
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 416b3b4bee4faa990800000000000000
+      internalID: -7373812133794695660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_GreenForest_106
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09670654311221c10800000000000000
+      internalID: 2022715549294818960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
