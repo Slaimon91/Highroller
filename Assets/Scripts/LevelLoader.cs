@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    //int currentSceneIndex;
     void Awake()
     {
         int GameStatusCount = FindObjectsOfType<LevelLoader>().Length;
@@ -19,27 +18,49 @@ public class LevelLoader : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        //currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void LoadOverworldScene()
+    public void LoadOverworldScene(string key)
     {
         FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
-        SceneManager.LoadScene("OverworldScene");
+        SceneManager.LoadScene(key);
+        StartCoroutine(LoadOWSceneDelay());
+    }
+
+    public void LoadOverworldSceneFromMenu(string key)
+    {
+        FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
+        SceneManager.LoadScene(key);
+        StartCoroutine(LoadOWSceneDelayFromMenu());
     }
     public void LoadBattleScene()
     {
         FindObjectOfType<PlayerControlsManager>().ChangeToBattle();
+        GameEvents.OnSaveBetweenScenes();
         SceneManager.LoadScene("BattleScene");
+    }
+
+    public void LoadSaveScene()
+    {
+        FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
+        SceneManager.LoadScene("Savefile Menu");
+    }
+
+    public IEnumerator LoadOWSceneDelayFromMenu()
+    {
+        while(FindObjectOfType<PlayerController>() == null)
+        {
+            yield return null;
+        }
+        GameEvents.LoadInitiated("");
+    }
+
+    public IEnumerator LoadOWSceneDelay()
+    {
+        while (FindObjectOfType<PlayerController>() == null)
+        {
+            yield return null;
+        }
+        GameEvents.OnLoadBetweenScenes();
     }
 
     /*

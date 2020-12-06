@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 2e344e9957bb1bd4b8591acc1563e0ac
   - enabled: 1
+    path: Assets/Scenes/Savefile Menu.unity
+    guid: 49ef0a0d94f132946a4d63d733bbe6f7
+  - enabled: 1
+    path: Assets/Scenes/OW_FOD.unity
+    guid: 5b959ef1b68ca2345bbfade05a01e471
+  - enabled: 1
     path: Assets/Scenes/OverworldScene SimonTest.unity
     guid: ee251847f5c54c044a05fed6a086291b
   - enabled: 1

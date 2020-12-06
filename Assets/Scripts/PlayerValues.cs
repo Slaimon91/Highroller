@@ -9,16 +9,10 @@ public class PlayerValues : ScriptableObject
     public int maxHealthPoints;
     public int gaia;
     public int maxGaia;
-    public int seedStage;
     public int currency;
     public int xp;
     public int level;
     public int nrOfBattles;
-
-    public virtual void Use()
-    {
-        //Use item
-
-        Debug.Log("Using" + name);
-    }
+    public string currentOWScene;
+    public int currentSavefile;
 }

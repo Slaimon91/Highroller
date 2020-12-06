@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public enum GameState { PLAYING, PAUSED };
 
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject availableTilePrefab;
     private GameObject selectedTile;
     private List<GameObject> availableTiles;
-    [SerializeField] PlayerValues playerValues;
+    public PlayerValues playerValues;
     [SerializeField] GameObject infoboxPrefab;
     private TileflipInfobox infoBoxObject;
     
@@ -62,6 +63,9 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         state = GameState.PLAYING;
+        playerValues.currentOWScene = SceneManager.GetActiveScene().name;
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
     }
 
     void Start()
@@ -571,6 +575,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Vector2 GetCurrentDirection()
+    {
+        return currentDirection;
+    }
+
     public void ToggleWaterTransformation()
     {
         if(waterForm)
@@ -608,5 +617,67 @@ public class PlayerController : MonoBehaviour
             GetComponentInChildren<SpriteRenderer>().sortingLayerName = "All tiles Overlay";
             movePoint.gameObject.layer = 9;
         }
+    }
+
+    private void Save(string temp = "")
+    {
+        SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
+        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), "", "/" + playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
+    }
+
+    public void Load(string temp = "")
+    {
+        PlayerData data = SaveSystem.Load<PlayerData>("", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
+
+        if(data != default)
+        {
+            playerValues.healthPoints = data.healthPoints;
+            playerValues.maxHealthPoints = data.maxHealthPoints;
+            playerValues.gaia = data.gaia;
+            playerValues.maxGaia = data.maxGaia;
+            playerValues.currency = data.currency;
+            playerValues.xp = data.xp;
+            playerValues.level = data.level;
+            playerValues.nrOfBattles = data.nrOfBattles;
+
+            transform.position = data.position;
+            currentDirection = data.direction;
+            movePoint.transform.position = transform.position;
+        }
+        else
+        {
+            playerValues.healthPoints = 20;
+            playerValues.maxHealthPoints = 20;
+            playerValues.gaia = 0;
+            playerValues.maxGaia = 50;
+            playerValues.currency = 0;
+            playerValues.xp = 0;
+            playerValues.level = 1;
+            playerValues.nrOfBattles = 0;
+        }
+    }
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
+}
+
+[System.Serializable]
+public class SavefileDisplayData
+{
+    public int hp;
+    public int gaia;
+    public int ga;
+    public string location;
+    public string playtime;
+
+    public SavefileDisplayData(PlayerValues playerValues)
+    {
+        hp = playerValues.healthPoints;
+        gaia = playerValues.gaia;
+        ga = playerValues.currency;
+        location = playerValues.currentOWScene;
+        playtime = "99H 99M";
     }
 }

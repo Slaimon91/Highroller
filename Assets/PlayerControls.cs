@@ -121,6 +121,38 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SAVEHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d0de407-83f6-4097-8c35-127253ba34ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LOADHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b093b5e-d4e9-4ce1-8bdd-1c42da888241"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SAVEMENUHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""578b2dc8-c214-4b61-a403-4de5d41db59b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RESETSAVEFILEHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""12a8c643-8004-41c9-8851-f93d3845abd0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -462,6 +494,50 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""WATERHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5fd759f2-2600-4554-b8db-c01f8bdae264"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SAVEHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ee87993-88f7-4b03-9571-1b9b027ef2ca"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LOADHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9921bad9-d048-41a6-9653-03a627ca49c4"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SAVEMENUHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e34b9f8d-192f-4ad1-8480-d8d4b06f39b3"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RESETSAVEFILEHAX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1069,6 +1145,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_BERRYHAX = m_Overworld.FindAction("BERRYHAX", throwIfNotFound: true);
         m_Overworld_Options = m_Overworld.FindAction("Options", throwIfNotFound: true);
         m_Overworld_WATERHAX = m_Overworld.FindAction("WATERHAX", throwIfNotFound: true);
+        m_Overworld_SAVEHAX = m_Overworld.FindAction("SAVEHAX", throwIfNotFound: true);
+        m_Overworld_LOADHAX = m_Overworld.FindAction("LOADHAX", throwIfNotFound: true);
+        m_Overworld_SAVEMENUHAX = m_Overworld.FindAction("SAVEMENUHAX", throwIfNotFound: true);
+        m_Overworld_RESETSAVEFILEHAX = m_Overworld.FindAction("RESETSAVEFILEHAX", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
@@ -1152,6 +1232,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_BERRYHAX;
     private readonly InputAction m_Overworld_Options;
     private readonly InputAction m_Overworld_WATERHAX;
+    private readonly InputAction m_Overworld_SAVEHAX;
+    private readonly InputAction m_Overworld_LOADHAX;
+    private readonly InputAction m_Overworld_SAVEMENUHAX;
+    private readonly InputAction m_Overworld_RESETSAVEFILEHAX;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -1169,6 +1253,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @BERRYHAX => m_Wrapper.m_Overworld_BERRYHAX;
         public InputAction @Options => m_Wrapper.m_Overworld_Options;
         public InputAction @WATERHAX => m_Wrapper.m_Overworld_WATERHAX;
+        public InputAction @SAVEHAX => m_Wrapper.m_Overworld_SAVEHAX;
+        public InputAction @LOADHAX => m_Wrapper.m_Overworld_LOADHAX;
+        public InputAction @SAVEMENUHAX => m_Wrapper.m_Overworld_SAVEMENUHAX;
+        public InputAction @RESETSAVEFILEHAX => m_Wrapper.m_Overworld_RESETSAVEFILEHAX;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1217,6 +1305,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @WATERHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
                 @WATERHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
                 @WATERHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnWATERHAX;
+                @SAVEHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEHAX;
+                @SAVEHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEHAX;
+                @SAVEHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEHAX;
+                @LOADHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnLOADHAX;
+                @LOADHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnLOADHAX;
+                @LOADHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnLOADHAX;
+                @SAVEMENUHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEMENUHAX;
+                @SAVEMENUHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEMENUHAX;
+                @SAVEMENUHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSAVEMENUHAX;
+                @RESETSAVEFILEHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
+                @RESETSAVEFILEHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
+                @RESETSAVEFILEHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1260,6 +1360,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @WATERHAX.started += instance.OnWATERHAX;
                 @WATERHAX.performed += instance.OnWATERHAX;
                 @WATERHAX.canceled += instance.OnWATERHAX;
+                @SAVEHAX.started += instance.OnSAVEHAX;
+                @SAVEHAX.performed += instance.OnSAVEHAX;
+                @SAVEHAX.canceled += instance.OnSAVEHAX;
+                @LOADHAX.started += instance.OnLOADHAX;
+                @LOADHAX.performed += instance.OnLOADHAX;
+                @LOADHAX.canceled += instance.OnLOADHAX;
+                @SAVEMENUHAX.started += instance.OnSAVEMENUHAX;
+                @SAVEMENUHAX.performed += instance.OnSAVEMENUHAX;
+                @SAVEMENUHAX.canceled += instance.OnSAVEMENUHAX;
+                @RESETSAVEFILEHAX.started += instance.OnRESETSAVEFILEHAX;
+                @RESETSAVEFILEHAX.performed += instance.OnRESETSAVEFILEHAX;
+                @RESETSAVEFILEHAX.canceled += instance.OnRESETSAVEFILEHAX;
             }
         }
     }
@@ -1492,6 +1604,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnBERRYHAX(InputAction.CallbackContext context);
         void OnOptions(InputAction.CallbackContext context);
         void OnWATERHAX(InputAction.CallbackContext context);
+        void OnSAVEHAX(InputAction.CallbackContext context);
+        void OnLOADHAX(InputAction.CallbackContext context);
+        void OnSAVEMENUHAX(InputAction.CallbackContext context);
+        void OnRESETSAVEFILEHAX(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {
