@@ -2666,7 +2666,7 @@ GameObject:
   - component: {fileID: 6214030934812990113}
   - component: {fileID: 6214030934812990112}
   m_Layer: 5
-  m_Name: HP Text
+  m_Name: Gaia Text
   m_TagString: HealthText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

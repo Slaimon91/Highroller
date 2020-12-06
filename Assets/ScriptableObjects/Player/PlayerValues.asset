@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: PlayerValues
   m_EditorClassIdentifier: 
   name: PlayerValues
-  healthPoints: 85
+  healthPoints: 10
   maxHealthPoints: 85
-  gaia: 325
+  gaia: 50
   maxGaia: 325
-  seedStage: 1
   currency: 100
-  xp: 56
+  xp: 58
   level: 2
-  nrOfBattles: 314
+  nrOfBattles: 316
+  currentOWScene: OW_FOD
+  currentSavefile: 1

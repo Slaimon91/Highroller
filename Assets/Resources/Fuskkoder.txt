@@ -7,6 +7,10 @@ F1	= Change Scene Hax
 2	= Gain 100 Gaia
 3	= Gain 100 Golden Acorns
 4	= Toggle Water Transformation
+5	= Save
+6	= Load
+7	= Save menu
+8	= Reset save and scene
 B	= Grow Berries 1 stage
 
 I Battle:

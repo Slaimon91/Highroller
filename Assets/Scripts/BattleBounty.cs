@@ -323,6 +323,6 @@ public class BattleBounty : MonoBehaviour
     {
         playerValues.nrOfBattles++;
         FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
-        FindObjectOfType<LevelLoader>().LoadOverworldScene();
+        FindObjectOfType<LevelLoader>().LoadOverworldScene(playerValues.currentOWScene);
     }
 }

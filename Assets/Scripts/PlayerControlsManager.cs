@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControlsManager : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.MONEYHAX.performed += ctx => MONEYHAX();
         controls.Overworld.WATERHAX.performed += ctx => WATERHAX();
         controls.Overworld.BERRYHAX.performed += ctx => BERRYHAX();
+        controls.Overworld.SAVEHAX.performed += ctx => SAVEHAX();
+        controls.Overworld.LOADHAX.performed += ctx => LOADHAX();
+        controls.Overworld.SAVEMENUHAX.performed += ctx => SAVEMENUHAX();
+        controls.Overworld.RESETSAVEFILEHAX.performed += ctx => RESETSAVEFILEHAX();
         controls.Battle.KILLALL.performed += ctx => KILLALL();
 
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
@@ -139,6 +144,28 @@ public class PlayerControlsManager : MonoBehaviour
                 tile.ReloadBerries();
             }
         }
+    }
+
+    private void SAVEHAX()
+    {
+        GameEvents.OnSaveInitiated();
+    }
+
+    private void LOADHAX()
+    {
+        GameEvents.OnLoadInitiated();
+    }
+
+    private void SAVEMENUHAX()
+    {
+        FindObjectOfType<LevelLoader>().LoadSaveScene();
+    }
+
+    private void RESETSAVEFILEHAX()
+    {
+        string currScene = SceneManager.GetActiveScene().name;
+        SaveSystem.ResetSavefile(playerValues.currentSavefile);
+        FindObjectOfType<LevelLoader>().LoadOverworldScene(currScene);
     }
     private void KILLALL()
     {
@@ -295,7 +322,7 @@ public class PlayerControlsManager : MonoBehaviour
     public void ChangeSceneToOverworldHax()
     {
         ChangeToOverworld();
-        FindObjectOfType<LevelLoader>().LoadOverworldScene();
+        FindObjectOfType<LevelLoader>().LoadOverworldScene(playerValues.currentOWScene);
     }
 
     public void TriggerHoldButtonStarted()

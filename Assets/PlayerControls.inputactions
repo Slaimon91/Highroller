@@ -108,6 +108,38 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SAVEHAX",
+                    "type": "Button",
+                    "id": "9d0de407-83f6-4097-8c35-127253ba34ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LOADHAX",
+                    "type": "Button",
+                    "id": "7b093b5e-d4e9-4ce1-8bdd-1c42da888241",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SAVEMENUHAX",
+                    "type": "Button",
+                    "id": "578b2dc8-c214-4b61-a403-4de5d41db59b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RESETSAVEFILEHAX",
+                    "type": "Button",
+                    "id": "12a8c643-8004-41c9-8851-f93d3845abd0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -449,6 +481,50 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "WATERHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fd759f2-2600-4554-b8db-c01f8bdae264",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SAVEHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ee87993-88f7-4b03-9571-1b9b027ef2ca",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LOADHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9921bad9-d048-41a6-9653-03a627ca49c4",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SAVEMENUHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e34b9f8d-192f-4ad1-8480-d8d4b06f39b3",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "RESETSAVEFILEHAX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

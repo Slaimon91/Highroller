@@ -29,7 +29,7 @@ public class EquippedInventorySeed : MonoBehaviour
         infoName.text = seedToEquip.GetBerryName();
 
         growthMultiplier = seedToEquip.GetGrowthMultiplier();
-        playerValues.seedStage = 0;
+        //playerValues.seedStage = 0;
         hasEquippedSeed = true;
         OnEnable();
     }
@@ -40,7 +40,7 @@ public class EquippedInventorySeed : MonoBehaviour
         {
             return;
         }
-        seedStage = playerValues.seedStage;
+        //seedStage = playerValues.seedStage;
 
         if(seedStage < 1*growthMultiplier)
         {
