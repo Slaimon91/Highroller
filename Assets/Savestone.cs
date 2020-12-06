@@ -40,12 +40,12 @@ public class Savestone : MonoBehaviour, IInteractable
         yield return null;
     }
 
-    private void Save(string temp = "")
+    private void Save(string temp)
     {
         SaveSystem.Save<SavestoneData>(new SavestoneData(gameObject.GetComponent<Savestone>()), "", "/" + FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
     }
 
-    public void Load(string temp = "")
+    public void Load(string temp)
     {
         SavestoneData data = SaveSystem.Load<SavestoneData>("", "/" + FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
 

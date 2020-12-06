@@ -19,14 +19,21 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void LoadOverworldScene(string key)
+    public void LoadOverworldScene(string key) //From battle to OW
     {
         FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         SceneManager.LoadScene(key);
         StartCoroutine(LoadOWSceneDelay());
     }
 
-    public void LoadOverworldSceneFromMenu(string key)
+    public void LoadOverworldSceneTransition(string key, Vector3 newPosition, Vector2 newRotation) //From OW to OW
+    {
+        FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
+        GameEvents.OnSaveBetweenScenes();
+        StartCoroutine(SaveOWSceneDelay(key, newPosition, newRotation));
+    }
+
+    public void LoadOverworldSceneFromMenu(string key) //From menu to OW
     {
         FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         SceneManager.LoadScene(key);
@@ -51,7 +58,7 @@ public class LevelLoader : MonoBehaviour
         {
             yield return null;
         }
-        GameEvents.LoadInitiated("");
+        GameEvents.OnLoadInitiated();
     }
 
     public IEnumerator LoadOWSceneDelay()
@@ -61,6 +68,18 @@ public class LevelLoader : MonoBehaviour
             yield return null;
         }
         GameEvents.OnLoadBetweenScenes();
+    }
+    public IEnumerator SaveOWSceneDelay(string key, Vector3 newPositon, Vector2 newRotation)
+    {
+        if(FindObjectOfType<SceneFade>() != null)
+        {
+            yield return FindObjectOfType<SceneFade>().FadeOut();
+            SceneManager.LoadScene(key);
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
+            yield return StartCoroutine(LoadOWSceneDelay());
+            FindObjectOfType<PlayerController>().LoadPlayerAtCoords(newPositon, newRotation);
+        }
     }
 
     /*

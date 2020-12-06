@@ -83,6 +83,7 @@ public static class SaveSystem
         Directory.CreateDirectory(path + "OW_WE");
         Directory.CreateDirectory(path + "OW_RC");
         Directory.CreateDirectory(path + "OW_PW");
+        Directory.CreateDirectory(path + "OW_PP");
 
         Directory.CreateDirectory(path + "temp");
         path += "temp/";
@@ -91,6 +92,7 @@ public static class SaveSystem
         Directory.CreateDirectory(path + "OW_WE");
         Directory.CreateDirectory(path + "OW_RC");
         Directory.CreateDirectory(path + "OW_PW");
+        Directory.CreateDirectory(path + "OW_PP");
     }
 
     /*

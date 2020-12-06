@@ -50,6 +50,9 @@ public class SavefileDisplay : MonoBehaviour
                 case "OW_WE":
                     location = "Waters Edge";
                     break;
+                case "OW_PP":
+                    location = "Pumpkin Patch";
+                    break;
             }
 
             locationText.text = location;

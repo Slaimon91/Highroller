@@ -5,13 +5,16 @@ using UnityEngine;
 public class BridgeStart : MonoBehaviour
 {
     [SerializeField] PlayerController.Direction enterDirection;
+    [SerializeField] int bridgeElevation;
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.GetComponent<PlayerController>() != null)
         {
             if(other.GetComponent<PlayerController>().GetDirection() != enterDirection)
             {
-                other.GetComponent<PlayerController>().ElevationChangePlayer(1, 0);
+                other.GetComponent<PlayerController>().SetOnBridge(false);
+                if(bridgeElevation > 0)
+                    other.GetComponent<PlayerController>().ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
             }
         } 
     }
@@ -19,7 +22,9 @@ public class BridgeStart : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            other.GetComponent<PlayerController>().ElevationChangePlayer(0, 1);
+            other.GetComponent<PlayerController>().SetOnBridge(true);
+            if(bridgeElevation > 0)
+                other.GetComponent<PlayerController>().ElevationChangePlayer(bridgeElevation - 1, bridgeElevation);
         }
     }
 }

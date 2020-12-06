@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     Vector3 playerOffsetVector;
     bool waterForm = false;
     int elevation = 0;
+    private bool onBridge = false;
 
 
     [SerializeField] LayerMask whatStopsMovement;
@@ -479,7 +480,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
                 {
-                    if((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, water) || waterForm))
+                    if((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, water) || waterForm || onBridge))
                     {
                         movePoint.position += new Vector3(move.x, 0f, 0f);
                         animator.SetFloat("moveX", currentDirection.x);
@@ -501,7 +502,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
                 {
-                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, water) || waterForm))
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, water) || waterForm || onBridge))
                     {
                         movePoint.position += new Vector3(move.x, 0f, 0f);
                         animator.SetFloat("moveX", currentDirection.x);
@@ -521,9 +522,9 @@ public class PlayerController : MonoBehaviour
             else if (move.y == 1f)   //north
             {
 
-                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
                 {
-                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, water) || waterForm))
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, water) || waterForm || onBridge))
                     {
                         movePoint.position += new Vector3(0f, move.y, 0f);
                         animator.SetFloat("moveY", currentDirection.y);
@@ -546,7 +547,7 @@ public class PlayerController : MonoBehaviour
 
                 if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
                 {
-                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, water) || waterForm))
+                    if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, water) || waterForm || onBridge))
                     {
                         movePoint.position += new Vector3(0f, move.y, 0f);
                         animator.SetFloat("moveY", currentDirection.y);
@@ -609,23 +610,32 @@ public class PlayerController : MonoBehaviour
 
         if(elevation == 0)
         {
-            GetComponentInChildren<SpriteRenderer>().sortingLayerName = "Player";
+            SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+            sprite.sortingLayerName = "Player";
+            sprite.sortingOrder = 0;
             movePoint.gameObject.layer = 0;
         }
         else if (elevation == 1)
         {
-            GetComponentInChildren<SpriteRenderer>().sortingLayerName = "All tiles Overlay";
+            SpriteRenderer sprite = GetComponentInChildren<SpriteRenderer>();
+            sprite.sortingLayerName = "All tiles Overlay";
+            sprite.sortingOrder = 1;
             movePoint.gameObject.layer = 9;
         }
     }
 
-    private void Save(string temp = "")
+    public void SetOnBridge(bool status)
+    {
+        onBridge = status;
+    }
+
+    private void Save(string temp)
     {
         SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
         SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), "", "/" + playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
     }
 
-    public void Load(string temp = "")
+    public void Load(string temp)
     {
         PlayerData data = SaveSystem.Load<PlayerData>("", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
 
@@ -640,9 +650,12 @@ public class PlayerController : MonoBehaviour
             playerValues.level = data.level;
             playerValues.nrOfBattles = data.nrOfBattles;
 
-            transform.position = data.position;
-            currentDirection = data.direction;
-            movePoint.transform.position = transform.position;
+            if(temp == "")
+            {
+                transform.position = data.position;
+                currentDirection = data.direction;
+                movePoint.transform.position = transform.position;
+            }
         }
         else
         {
@@ -660,6 +673,13 @@ public class PlayerController : MonoBehaviour
     {
         GameEvents.SaveInitiated -= Save;
         GameEvents.LoadInitiated -= Load;
+    }
+
+    public void LoadPlayerAtCoords(Vector3 newPosition, Vector2 newDirection)
+    {
+        transform.position = newPosition;
+        currentDirection = newDirection;
+        movePoint.transform.position = transform.position;
     }
 }
 

@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/OW_PP.unity
+    guid: 7a052c9ea318b8847a6b28363658faea
   m_configObjects: {}
