@@ -54,16 +54,6 @@ public class PlayerBattleController : MonoBehaviour
     {
         healthText.text = playerValues.healthPoints.ToString() + "/" + playerValues.maxHealthPoints.ToString();
 
-        if(playerValues.healthPoints <= 0)
-        {
-            if(isDead)
-            {
-                return;
-            }
-
-            Dead();
-        }
-
         if(battleSystem.state == BattleState.PLAYERTURN)
         {
             CheckHealthAnimation();
@@ -141,7 +131,17 @@ public class PlayerBattleController : MonoBehaviour
 
     private void Dead()
     {
-        isDead = true;
+        SaveSystem.ResetTemp(playerValues.currentSavefile);
+        SavefileDisplayData data = SaveSystem.Load<SavefileDisplayData>("", "/" + playerValues.currentSavefile + "/" + "SavefileDisplay");
+        if (data == default)
+        {
+            SaveSystem.ResetSavefile(playerValues.currentSavefile);
+            FindObjectOfType<LevelLoader>().LoadOverworldSceneFromMenu("OW_FOD");
+        }
+        else
+        {
+            FindObjectOfType<LevelLoader>().LoadOverworldSceneFromMenu(data.location);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -289,7 +289,12 @@ public class PlayerBattleController : MonoBehaviour
 
     private void CheckHealthAnimation()
     {
-        if((float)playerValues.healthPoints / (float)playerValues.maxHealthPoints <= 0.1)
+        if(playerValues.healthPoints <= 0)
+        {
+            animator.SetBool("isDead", true);
+        }
+
+        else if((float)playerValues.healthPoints / (float)playerValues.maxHealthPoints <= 0.1)
         {
             nearDeath = true;
             animator.SetFloat("IdleState", 2);

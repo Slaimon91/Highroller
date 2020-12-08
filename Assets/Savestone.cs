@@ -5,9 +5,9 @@ using UnityEngine;
 public class Savestone : MonoBehaviour, IInteractable
 {
     private Animator animator;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isActivated = false;
-    private bool isBusy = false;
+    private bool activateAnimDone = false;
 
     void Awake()
     {
@@ -17,37 +17,38 @@ public class Savestone : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        if(!isBusy)
+        if (isActivated && activateAnimDone)
         {
-            isBusy = true;
-
-            if (isActivated)
-            {
-                animator.SetTrigger("isSaving");
-            }
-            else
-            {
-                isActivated = true;
-                animator.SetTrigger("isActivated");
-            }
-
-            isBusy = false;
+            animator.SetBool("isSaving", true);
+            FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
+            GameEvents.OnSaveInitiated();
+        }
+        else
+        {
+            isActivated = true;
+            animator.SetTrigger("isActivated");
         }
     }
 
-    private IEnumerator SavingGame()
+    public void FinishedSaveAnim()
     {
-        yield return null;
+        FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
+        animator.SetBool("isSaving", false);
+    }
+
+    public void FinishedActivateAnim()
+    {
+        activateAnimDone = true;
     }
 
     private void Save(string temp)
     {
-        SaveSystem.Save<SavestoneData>(new SavestoneData(gameObject.GetComponent<Savestone>()), "", "/" + FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
+        SaveSystem.Save<SavestoneData>(new SavestoneData(gameObject.GetComponent<Savestone>()), "", FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
     }
 
     public void Load(string temp)
     {
-        SavestoneData data = SaveSystem.Load<SavestoneData>("", "/" + FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
+        SavestoneData data = SaveSystem.Load<SavestoneData>("", FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
 
         if(data != default)
         {

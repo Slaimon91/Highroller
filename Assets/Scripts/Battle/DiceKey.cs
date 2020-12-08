@@ -124,7 +124,6 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void SetGold(bool status, int number)
     {
-        Debug.Log("Set gold");
         if(status)
         {
             isPlatinum = !status;
@@ -138,7 +137,6 @@ public class DiceKey : MonoBehaviour, ISelectHandler, IDeselectHandler
         if (status && diceNumber >= 4)
         {
             animator.enabled = true;
-            Debug.Log("Enable anim");
         }
         else
         {

@@ -148,7 +148,7 @@ public class PlayerControlsManager : MonoBehaviour
 
     private void SAVEHAX()
     {
-        GameEvents.OnSaveInitiated();
+        GameEvents.OnSaveInitiated(); 
     }
 
     private void LOADHAX()

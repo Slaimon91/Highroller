@@ -12,6 +12,7 @@ public static class SaveSystem
         BinaryFormatter formatter = GetBinaryFormatter();
         using(FileStream fileStream = new FileStream(path + dir + key + ".txt", FileMode.Create))
         {
+            Debug.Log(path + dir + key + " save exists!");
             formatter.Serialize(fileStream, objectToSave);
         }
     }
@@ -21,6 +22,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/saves/";
         if (File.Exists(path + dir + key + ".txt"))
         {
+            Debug.Log(path + dir + key + " load exists!");
             BinaryFormatter formatter = GetBinaryFormatter();
             T returnValue = default(T);
             using (FileStream fileStream = new FileStream(path + dir + key + ".txt", FileMode.Open))
@@ -74,19 +76,33 @@ public static class SaveSystem
     {
         string path = Application.persistentDataPath + "/saves/" + savefileNr;
         DirectoryInfo directory = new DirectoryInfo(path);
+        Debug.Log(path + " reset file exists!");
         if (Directory.Exists(path))
             directory.Delete(true);
         Directory.CreateDirectory(path);
         path += "/";
-        Directory.CreateDirectory(path + "OW_FOD");
-        Directory.CreateDirectory(path + "OW_SG");
-        Directory.CreateDirectory(path + "OW_WE");
-        Directory.CreateDirectory(path + "OW_RC");
-        Directory.CreateDirectory(path + "OW_PW");
-        Directory.CreateDirectory(path + "OW_PP");
+        BuildDirectories(path);
 
         Directory.CreateDirectory(path + "temp");
         path += "temp/";
+        BuildDirectories(path);
+    }
+
+    public static void ResetTemp(int savefileNr)
+    {
+        string path = Application.persistentDataPath + "/saves/" + savefileNr + "/temp";
+        DirectoryInfo directory = new DirectoryInfo(path);
+        Debug.Log(path + " reset temp!");
+        if (Directory.Exists(path))
+            directory.Delete(true);
+        Directory.CreateDirectory(path);
+        path += "/";
+        BuildDirectories(path);
+
+    }
+
+    private static void BuildDirectories(string path)
+    {
         Directory.CreateDirectory(path + "OW_FOD");
         Directory.CreateDirectory(path + "OW_SG");
         Directory.CreateDirectory(path + "OW_WE");
@@ -94,7 +110,6 @@ public static class SaveSystem
         Directory.CreateDirectory(path + "OW_PW");
         Directory.CreateDirectory(path + "OW_PP");
     }
-
     /*
     public static void SavePlayer(PlayerController playerController)
     {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Goblin Glasses
+  m_Controller: {fileID: 9100000, guid: fbdcab7ecc248cc468f2fba9217ae982, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9a0978dbdae717440a631bfe2d3512d9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3082703ff67392345956200fb8438ada, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 90e1162aeda5bfe47869c78dd1aabdbb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 328c538ff28fc1c4f985b550c23b4dc6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e7274d06cd51e3c40a42074bbc5e250d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1a5623819d348f344a1ef2611e1c18f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 01765b5d1184ce041b3a50f0cb5ef952, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 477855b5a51d4a54981de5d204e1b7bf, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d588f0f22a18a9243a00a15f1f626078, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f6d8e748b8abbd348abe024579750474, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b6fb2966aa90adc45ae20ec5e0512585, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 55fedc0706fa4e74db81af82d7a261a0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09fb364f4d79f1346b5cb83ea543606b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ad21d411bee05c343bc1444af4c9ebf5, type: 2}

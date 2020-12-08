@@ -68,3 +68,22 @@ public class SavefileDisplay : MonoBehaviour
         return sceneName;
     }
 }
+
+[System.Serializable]
+public class SavefileDisplayData
+{
+    public int hp;
+    public int gaia;
+    public int ga;
+    public string location;
+    public string playtime;
+
+    public SavefileDisplayData(PlayerValues playerValues)
+    {
+        hp = playerValues.healthPoints;
+        gaia = playerValues.gaia;
+        ga = playerValues.currency;
+        location = playerValues.currentOWScene;
+        playtime = "99H 99M";
+    }
+}

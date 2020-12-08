@@ -9,23 +9,27 @@ public class GameEvents : MonoBehaviour
     public static System.Action<string> LoadInitiated;
     public static System.Action LoadBetweenScenes;
 
-    public static void OnSaveInitiated()
+    public static bool OnSaveInitiated()
     {
         SaveInitiated?.Invoke("");
+        return true;
     }
 
-    public static void OnSaveBetweenScenes()
+    public static bool OnSaveBetweenScenes()
     {
         SaveInitiated?.Invoke("temp/");
+        return true;
     }
 
-    public static void OnLoadInitiated()
+    public static bool OnLoadInitiated()
     {
         LoadInitiated?.Invoke("");
+        return true;
     }
 
-    public static void OnLoadBetweenScenes()
+    public static bool OnLoadBetweenScenes()
     {
         LoadInitiated?.Invoke("temp/");
+        return true;
     }
 }

@@ -631,31 +631,31 @@ public class PlayerController : MonoBehaviour
 
     private void Save(string temp)
     {
-        SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
-        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), "", "/" + playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
+        SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
+        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), "", playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
     }
 
     public void Load(string temp)
     {
-        PlayerData data = SaveSystem.Load<PlayerData>("", "/" + playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
-
+        PlayerData data = SaveSystem.Load<PlayerData>("", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
+        
         if(data != default)
         {
-            playerValues.healthPoints = data.healthPoints;
-            playerValues.maxHealthPoints = data.maxHealthPoints;
-            playerValues.gaia = data.gaia;
-            playerValues.maxGaia = data.maxGaia;
-            playerValues.currency = data.currency;
-            playerValues.xp = data.xp;
-            playerValues.level = data.level;
-            playerValues.nrOfBattles = data.nrOfBattles;
-
             if(temp == "")
             {
-                transform.position = data.position;
-                currentDirection = data.direction;
-                movePoint.transform.position = transform.position;
+                playerValues.healthPoints = data.healthPoints;
+                playerValues.maxHealthPoints = data.maxHealthPoints;
+                playerValues.gaia = data.gaia;
+                playerValues.maxGaia = data.maxGaia;
+                playerValues.currency = data.currency;
+                playerValues.xp = data.xp;
+                playerValues.level = data.level;
+                playerValues.nrOfBattles = data.nrOfBattles;
             }
+
+            transform.position = data.position;
+            currentDirection = data.direction;
+            movePoint.transform.position = transform.position;
         }
         else
         {
@@ -680,24 +680,5 @@ public class PlayerController : MonoBehaviour
         transform.position = newPosition;
         currentDirection = newDirection;
         movePoint.transform.position = transform.position;
-    }
-}
-
-[System.Serializable]
-public class SavefileDisplayData
-{
-    public int hp;
-    public int gaia;
-    public int ga;
-    public string location;
-    public string playtime;
-
-    public SavefileDisplayData(PlayerValues playerValues)
-    {
-        hp = playerValues.healthPoints;
-        gaia = playerValues.gaia;
-        ga = playerValues.currency;
-        location = playerValues.currentOWScene;
-        playtime = "99H 99M";
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5391734532585957267}
   - component: {fileID: 1052720663}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: Goblin Glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,18 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aef5953c812f7478c954f28e090f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Goblin
+  unitName: Goblin (with glasses)
   diceKeyNumber: 3
   xpAmount: 1
-  isGold: 0
+  isGold: 1
   isPlatinum: 0
   isInactive: 0
   damageAmount: 2
   soulDropPercentage: 5
-  icon: {fileID: 21300000, guid: e6a600744c0044246a92b8b456bc6da3, type: 3}
+  icon: {fileID: 21300000, guid: 994fa832b5b5d9e45996aac1a7def751, type: 3}
   preferedSpawnLocation: -1
   moreDices: []
-  infoText: Loafs around.
+  infoText: Loafs around (but in HD).
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
@@ -71,7 +71,7 @@ Animator:
   m_GameObject: {fileID: 127482270645473796}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fbdcab7ecc248cc468f2fba9217ae982, type: 2}
+  m_Controller: {fileID: 22100000, guid: 09ed70630f3d97e4585db1d744e39622, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -150,8 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: 950600117
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2720988199577455813, guid: 6ffd6ecc67e5e61469cc6370bc170b16,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ed151087fd83f54da6e32481708a19a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

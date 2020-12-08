@@ -1,79 +1,55 @@
 fileFormatVersion: 2
-guid: b8d8d793309ecf64eb94af78e5dd4443
+guid: c7f97ae9d04b1af49b411ec0635be2fc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3556441231758002069
-    second: Enemy_goblin_matched_1_0
+      213: -1679327042677420245
+    second: Glasses_goblin_matched_Loop_0
   - first:
-      213: -6608686966022301466
-    second: Enemy_goblin_matched_1_1
+      213: 9028207883727632531
+    second: Glasses_goblin_matched_Loop_1
   - first:
-      213: 8564176291887054676
-    second: Enemy_goblin_matched_1_2
+      213: 4279352542254738633
+    second: Glasses_goblin_matched_Loop_2
   - first:
-      213: -6022246023893120349
-    second: Enemy_goblin_matched_1_3
+      213: 2025484183031822406
+    second: Glasses_goblin_matched_Loop_3
   - first:
-      213: 9212912657411407882
-    second: Enemy_goblin_matched_1_4
+      213: -2602427212861195225
+    second: Glasses_goblin_matched_Loop_4
   - first:
-      213: 630751197211145606
-    second: Enemy_goblin_matched_1_5
+      213: -3363783841509298688
+    second: Glasses_goblin_matched_Loop_5
   - first:
-      213: -4230494472602484580
-    second: Enemy_goblin_matched_1_6
+      213: -2170903339023065288
+    second: Glasses_goblin_matched_Loop_6
   - first:
-      213: -6523850654626843635
-    second: Enemy_goblin_matched_1_7
+      213: -623715262176942467
+    second: Glasses_goblin_matched_Loop_7
   - first:
-      213: -6139819547764390636
-    second: Enemy_goblin_matched_1_8
+      213: -8368120901007136493
+    second: Glasses_goblin_matched_Loop_8
   - first:
-      213: 1675354979515438278
-    second: Enemy_goblin_matched_1_9
+      213: -6362850147634716393
+    second: Glasses_goblin_matched_Loop_9
   - first:
-      213: -6293839315015708210
-    second: Enemy_goblin_matched_1_10
+      213: 798584565358385539
+    second: Glasses_goblin_matched_Loop_10
   - first:
-      213: -6278072347438248537
-    second: Enemy_goblin_matched_1_11
+      213: -6964513642784826025
+    second: Glasses_goblin_matched_Loop_11
   - first:
-      213: -8235364766445439774
-    second: Enemy_goblin_matched_1_12
+      213: -716082609792128266
+    second: Glasses_goblin_matched_Loop_12
   - first:
-      213: 2888653427993811866
-    second: Enemy_goblin_matched_1_13
+      213: 3360901211773370236
+    second: Glasses_goblin_matched_Loop_13
   - first:
-      213: 5097677933670784138
-    second: Enemy_goblin_matched_1_14
+      213: -3908478390220560030
+    second: Glasses_goblin_matched_Loop_14
   - first:
-      213: 6466326336485310490
-    second: Enemy_goblin_matched_1_15
-  - first:
-      213: -6716888314028463973
-    second: Enemy_goblin_matched_1_16
-  - first:
-      213: -7851203470604778286
-    second: Enemy_goblin_matched_1_17
-  - first:
-      213: -9100264997815464497
-    second: Enemy_goblin_matched_1_18
-  - first:
-      213: -6984552385458137933
-    second: Enemy_goblin_matched_1_19
-  - first:
-      213: -1004640609805635675
-    second: Enemy_goblin_matched_1_20
-  - first:
-      213: -889537726785458244
-    second: Enemy_goblin_matched_1_21
-  - first:
-      213: 413606366712406628
-    second: Enemy_goblin_matched_1_22
-  - first:
-      213: -8244886613517236453
-    second: Enemy_goblin_matched_1_23
+      213: 30140043087851369
+    second: Glasses_goblin_matched_Loop_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -155,11 +131,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_0
+      name: Glasses_goblin_matched_Loop_0
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5970d7b15740b5130800000000000000
-      internalID: 3556441231758002069
+      spriteID: b2f418fb3f4d1b8e0800000000000000
+      internalID: -1679327042677420245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_1
+      name: Glasses_goblin_matched_Loop_1
       rect:
         serializedVersion: 2
         x: 32
@@ -194,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e89c7ef73a3944a0800000000000000
-      internalID: -6608686966022301466
+      spriteID: 39877fb9c33aa4d70800000000000000
+      internalID: 9028207883727632531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_2
+      name: Glasses_goblin_matched_Loop_2
       rect:
         serializedVersion: 2
         x: 64
@@ -215,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45fffb766f01ad670800000000000000
-      internalID: 8564176291887054676
+      spriteID: 9cc22c5d670536b30800000000000000
+      internalID: 4279352542254738633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_3
+      name: Glasses_goblin_matched_Loop_3
       rect:
         serializedVersion: 2
         x: 96
@@ -236,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3aa87d3062fac6ca0800000000000000
-      internalID: -6022246023893120349
+      spriteID: 648b8cb0227fb1c10800000000000000
+      internalID: 2025484183031822406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_4
+      name: Glasses_goblin_matched_Loop_4
       rect:
         serializedVersion: 2
         x: 128
@@ -257,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0005b3ff37dadf70800000000000000
-      internalID: 9212912657411407882
+      spriteID: 72c3997fc3252ebd0800000000000000
+      internalID: -2602427212861195225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_5
+      name: Glasses_goblin_matched_Loop_5
       rect:
         serializedVersion: 2
         x: 160
@@ -278,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6853c6b3fd0e0c800800000000000000
-      internalID: 630751197211145606
+      spriteID: 00ea3a11b607151d0800000000000000
+      internalID: -3363783841509298688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_6
+      name: Glasses_goblin_matched_Loop_6
       rect:
         serializedVersion: 2
         x: 192
@@ -299,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c908648f0b34a45c0800000000000000
-      internalID: -4230494472602484580
+      spriteID: 83f12d34ae66fd1e0800000000000000
+      internalID: -2170903339023065288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_7
+      name: Glasses_goblin_matched_Loop_7
       rect:
         serializedVersion: 2
         x: 224
@@ -320,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d04744bf460a675a0800000000000000
-      internalID: -6523850654626843635
+      spriteID: d7624fc064e1857f0800000000000000
+      internalID: -623715262176942467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_8
+      name: Glasses_goblin_matched_Loop_8
       rect:
         serializedVersion: 2
         x: 256
@@ -341,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4150186c6aafacaa0800000000000000
-      internalID: -6139819547764390636
+      spriteID: 319a2f170667edb80800000000000000
+      internalID: -8368120901007136493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_9
+      name: Glasses_goblin_matched_Loop_9
       rect:
         serializedVersion: 2
         x: 288
@@ -362,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c413ba3a7e004710800000000000000
-      internalID: 1675354979515438278
+      spriteID: 711e037a08d92b7a0800000000000000
+      internalID: -6362850147634716393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_10
+      name: Glasses_goblin_matched_Loop_10
       rect:
         serializedVersion: 2
         x: 320
@@ -383,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec1d91b3d7ac7a8a0800000000000000
-      internalID: -6293839315015708210
+      spriteID: 389db4d5e64251b00800000000000000
+      internalID: 798584565358385539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_11
+      name: Glasses_goblin_matched_Loop_11
       rect:
         serializedVersion: 2
         x: 352
@@ -404,14 +392,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad8db0767ecfd8a0800000000000000
-      internalID: -6278072347438248537
+      spriteID: 75dd270ddb3195f90800000000000000
+      internalID: -6964513642784826025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_12
+      name: Glasses_goblin_matched_Loop_12
       rect:
         serializedVersion: 2
         x: 384
@@ -425,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e47044b06b16bd80800000000000000
-      internalID: -8235364766445439774
+      spriteID: 6fa618d09a6ff06f0800000000000000
+      internalID: -716082609792128266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_13
+      name: Glasses_goblin_matched_Loop_13
       rect:
         serializedVersion: 2
         x: 416
@@ -446,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9b19ceecfe861820800000000000000
-      internalID: 2888653427993811866
+      spriteID: c7f7ee468d154ae20800000000000000
+      internalID: 3360901211773370236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_14
+      name: Glasses_goblin_matched_Loop_14
       rect:
         serializedVersion: 2
         x: 448
@@ -467,14 +455,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8c5bcf62179eb640800000000000000
-      internalID: 5097677933670784138
+      spriteID: 269ec92bc9b42c9c0800000000000000
+      internalID: -3908478390220560030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_goblin_matched_1_15
+      name: Glasses_goblin_matched_Loop_15
       rect:
         serializedVersion: 2
         x: 480
@@ -488,176 +476,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a10c5fffa810db950800000000000000
-      internalID: 6466326336485310490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_16
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b986c5e7aa1d8c2a0800000000000000
-      internalID: -6716888314028463973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_17
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d4c94b7a0cea0390800000000000000
-      internalID: -7851203470604778286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_18
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fcdc943233d55b180800000000000000
-      internalID: -9100264997815464497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_19
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b419a57c92e11f90800000000000000
-      internalID: -6984552385458137933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_20
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5af6a9d20bcce02f0800000000000000
-      internalID: -1004640609805635675
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_21
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbfe4a4862ab7a3f0800000000000000
-      internalID: -889537726785458244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_22
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 462abb49ccc6db500800000000000000
-      internalID: 413606366712406628
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_goblin_matched_1_23
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b178eebee47449d80800000000000000
-      internalID: -8244886613517236453
+      spriteID: 96f24c1a5341b6000800000000000000
+      internalID: 30140043087851369
       vertices: []
       indices: 
       edges: []

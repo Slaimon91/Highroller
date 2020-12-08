@@ -15,21 +15,43 @@ MonoBehaviour:
   name: GreenforestGrass
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
   displayName: Forest Grass
-  gaiaChance: 50
-  HPChance: 50
-  monsterChance: 0
+  gaiaChance: 40
+  HPChance: 20
+  monsterChance: 40
   gaiaRewardAmount: 10
   HPRewardAmount: 5
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
     weight: 60
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
-    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
     weight: 30
   - list:
-    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
-    - {fileID: 127482270645473796, guid: 5033aa9a9b5a4114e985ccf57dd77796, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    weight: 10
+  - list:
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+    - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
+    weight: 10
+  - list:
+    - {fileID: 8572336695890697944, guid: db9b69938176faa40959fc46e383d4cf, type: 3}
+    weight: 10
+  - list:
+    - {fileID: 8572336695890697944, guid: db9b69938176faa40959fc46e383d4cf, type: 3}
+    - {fileID: 8572336695890697944, guid: db9b69938176faa40959fc46e383d4cf, type: 3}
+    weight: 10
+  - list:
+    - {fileID: 8572336695890697944, guid: db9b69938176faa40959fc46e383d4cf, type: 3}
+    - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
+    weight: 10
+  - list:
+    - {fileID: 8572336695890697944, guid: db9b69938176faa40959fc46e383d4cf, type: 3}
+    - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
     weight: 10
