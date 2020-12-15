@@ -121,19 +121,19 @@ public class BerryTile : MonoBehaviour, IInteractable
             plantSprite.sprite = plantStageTwo;
             berryStage = 2;
         }
-        if (berryGrowthPoints > 2 + berryGrowthSpeed && berryGrowthPoints < (2 + berryGrowthSpeed) * 2) //Stage 3 = 3, 4, 5
+        if (berryGrowthPoints > 1 + berryGrowthSpeed && berryGrowthPoints < (2 + berryGrowthSpeed) * 2) //Stage 3 = 2, 3, 4
         {
             plantSprite.sprite = plantStageThree;
             berryStage = 3;
         }
 
-        else if (berryGrowthPoints > (2 + berryGrowthSpeed) * 2 && berryGrowthPoints < (2 + berryGrowthSpeed) * 3) //Stage 4 = 6, 8, 10
+        else if (berryGrowthPoints > (1 + berryGrowthSpeed) * 2 && berryGrowthPoints < (2 + berryGrowthSpeed) * 3) //Stage 4 = 4, 6, 8
         {
             plantSprite.sprite = plantStageFour;
             berryStage = 4;
         }
 
-        else if (berryGrowthPoints > (2 + berryGrowthSpeed) * 3 && berryStage <= 4) //Stage 5 = 9, 12, 15
+        else if (berryGrowthPoints > (1 + berryGrowthSpeed) * 3 && berryStage <= 4) //Stage 5 = 6, 9, 12
         {
             plantSprite.sprite = plantStageFive;
             berryStage = 5;
