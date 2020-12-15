@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4120686168435871751}
   - component: {fileID: 4120686168435871744}
   - component: {fileID: 4120686168435871745}
+  - component: {fileID: -7966005253504912855}
   m_Layer: 8
   m_Name: Resources in Object
   m_TagString: InteractableObject
@@ -127,3 +128,16 @@ MonoBehaviour:
   amount: 1
   persistentObject: 1
   nrOfPickups: 10
+  id: 
+--- !u!114 &-7966005253504912855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120686168435871747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d443795ba7d9c4a4f884907830f54145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -140,6 +140,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SPEEDHAX",
+                    "type": "Button",
+                    "id": "6e32fec6-e5aa-4205-9b4a-1284b53a62c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -525,6 +533,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "RESETSAVEFILEHAX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc5ffe97-181a-4b10-8f6c-929e25bbddd2",
+                    "path": "<Keyboard>/9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SPEEDHAX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

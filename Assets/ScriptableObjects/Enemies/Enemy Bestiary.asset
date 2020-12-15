@@ -36,13 +36,3 @@ MonoBehaviour:
     info: There's a lot of bushes for this critter to grab, who knows which one he
       might nab.
     enemyIcon: {fileID: 21300000, guid: 4a96f79a52768714ba07ef85309da5b3, type: 3}
-  - enemyNumber: 5
-    enemyName: Fire Monster
-    soulCount: 0
-    info: A fire monster.
-    enemyIcon: {fileID: 21300000, guid: 611fae60ceccc7847983c189762d9342, type: 3}
-  - enemyNumber: 6
-    enemyName: Ice Monster
-    soulCount: 2
-    info: An ice monster.
-    enemyIcon: {fileID: 21300000, guid: 76f516b0564685a468fcc0f147214e8f, type: 3}

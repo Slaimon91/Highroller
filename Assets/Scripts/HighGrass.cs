@@ -10,7 +10,7 @@ public class HighGrass : MonoBehaviour, TTileable
 
     void Start()
     {
-        groundType = GroundType.GreenforestGrass;
+        groundType = GroundType.FOD_Grass;
         animator = gameObject.GetComponent<Animator>();
     }
 

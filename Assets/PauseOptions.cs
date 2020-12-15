@@ -27,7 +27,7 @@ public class PauseOptions : MonoBehaviour
 
     public void ClickQuit()
     {
-
+        Application.Quit();
     }
 
     public void OpenOptions()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2021755926732172117}
   - component: {fileID: 2021755926732172116}
   - component: {fileID: 2021755926732172107}
+  - component: {fileID: 1056743408125266847}
   m_Layer: 8
   m_Name: Savestone
   m_TagString: InteractableObject
@@ -116,6 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91750f9612cf0d045bc693470b4fc385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActivated: 0
+  id: 
+  activateAnimDone: 0
 --- !u!61 &2021755926732172107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,3 +146,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1056743408125266847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021755926732172118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d443795ba7d9c4a4f884907830f54145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

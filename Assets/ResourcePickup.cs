@@ -8,8 +8,15 @@ public class ResourcePickup : MonoBehaviour, IInteractable
     [SerializeField] bool gaia = false;
     [SerializeField] bool goldenAcorns = false;
     [SerializeField] int amount = 0;
-    [SerializeField] bool persistentObject = false;
-    [SerializeField] int nrOfPickups = 1;
+    public bool persistentObject = false;
+    public int nrOfPickups = 1;
+    [HideInInspector] public string id;
+    void Awake()
+    {
+        id = GetComponent<UniqueID>().id;
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
+    }
     public void Interact()
     {
         if(nrOfPickups > 0)
@@ -31,8 +38,49 @@ public class ResourcePickup : MonoBehaviour, IInteractable
 
             if (!persistentObject && nrOfPickups == 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
+    private void Save(string temp)
+    {
+        SaveData.current.resourcePickups.Add(new ResourcePickupData(gameObject.GetComponent<ResourcePickup>()));
+    }
+
+    public void Load(string temp)
+    {
+        ResourcePickupData data = SaveData.current.resourcePickups.Find(x => x.id == id);
+
+        if (data != default)
+        {
+            nrOfPickups = data.nrOfPickups;
+            persistentObject = data.persistentObject;
+
+            if (!persistentObject && nrOfPickups == 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
 }
+[System.Serializable]
+public class ResourcePickupData
+{
+    public string id;
+    public int nrOfPickups;
+    public bool persistentObject;
+
+    public ResourcePickupData(ResourcePickup resourcePickup)
+    {
+        id = resourcePickup.id;
+        nrOfPickups = resourcePickup.nrOfPickups;
+        persistentObject = resourcePickup.persistentObject;
+    }
+}
+

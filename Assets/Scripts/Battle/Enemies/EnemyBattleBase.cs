@@ -51,13 +51,11 @@ public abstract class EnemyBattleBase : MonoBehaviour
             if(!diceKeyGO.TestMoreDices())
             {
                 isAssigned = true;
-
                 diceKeyGO.SetAssignedStatus(true, number);
             }
             else
             {
                 isFrontDKAssigned = true;
-
                 diceKeyGO.SetAssignedStatus(true, number);
             }
         }

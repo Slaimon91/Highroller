@@ -15,9 +15,9 @@ public class GaiablockFODBridge : Gaiablockade
     [SerializeField] Vector3Int rightCell;
     public override void PaidGaiaBlock()
     {
-        colliderMap.SetTile(leftCell, leftBackBridgeTile);
+        /*colliderMap.SetTile(leftCell, leftBackBridgeTile);
         colliderMap.SetTile(rightCell, rightBackBridgeTile);
         colliderInFrontMap.SetTile(leftCell, leftFrontBridgeTile);
-        colliderInFrontMap.SetTile(rightCell, rightFrontBridgeTile);
+        colliderInFrontMap.SetTile(rightCell, rightFrontBridgeTile);*/
     }
 }

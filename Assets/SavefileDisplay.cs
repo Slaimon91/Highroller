@@ -21,7 +21,7 @@ public class SavefileDisplay : MonoBehaviour
 
     public void Reload()
     {
-        SavefileDisplayData data = SaveSystem.Load<SavefileDisplayData>("", "/" + savefileNr + "/" + "SavefileDisplay");
+        SavefileDisplayData data = SaveSystem.Load<SavefileDisplayData>(savefileNr + "/" + "SavefileDisplay");
 
         if (data != default)
         {
@@ -60,6 +60,7 @@ public class SavefileDisplay : MonoBehaviour
         else
         {
             newGameHolder.SetActive(true);
+            sceneName = null;
         }
     }
 

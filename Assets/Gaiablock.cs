@@ -10,6 +10,15 @@ public class Gaiablock : MonoBehaviour, IInteractable
     [SerializeField] PlayerValues playerValues;
     [SerializeField] Gaiablockade gaiaBlockade;
     private GameObject popup;
+    [HideInInspector] public bool isCleared = false;
+    [HideInInspector] public string id;
+
+    void Awake()
+    {
+        id = GetComponent<UniqueID>().id;
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
+    }
 
     public void Interact()
     {
@@ -29,7 +38,8 @@ public class Gaiablock : MonoBehaviour, IInteractable
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
         FindObjectOfType<LaunchRewards>().LanuchGaiaRewardbox(-gaiaAmount);
         gaiaBlockade.PaidGaiaBlock();
-        Destroy(gameObject);
+        isCleared = true;
+        gameObject.SetActive(false);
     }
 
     public void NoGaiaBlock()
@@ -37,4 +47,44 @@ public class Gaiablock : MonoBehaviour, IInteractable
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
     }
+    private void Save(string temp)
+    {
+        SaveData.current.gaiablocks.Add(new GaiablockData(gameObject.GetComponent<Gaiablock>()));
+    }
+
+    public void Load(string temp)
+    {
+        GaiablockData data = SaveData.current.gaiablocks.Find(x => x.id == id);
+
+        if (data != default)
+        {
+            id = data.id;
+            isCleared = data.isCleared;
+
+            if (isCleared)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
 }
+
+[System.Serializable]
+public class GaiablockData
+{
+    public string id;
+    public bool isCleared;
+
+    public GaiablockData(Gaiablock gaiablock)
+    {
+        id = gaiablock.id;
+        isCleared = gaiablock.isCleared;
+    }
+}
+

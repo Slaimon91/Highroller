@@ -56,10 +56,12 @@ public class SavefileMenu : MonoBehaviour
         if ((savefileDisplays[2].GetSceneName() == null))
         {
             SaveSystem.ResetSavefile(3);
+            Debug.Log("NOT found");
             levelLoader.LoadOverworldSceneFromMenu("OW_FOD");
         }
         else
         {
+            Debug.Log("FOUND!" + savefileDisplays[2].GetSceneName());
             levelLoader.LoadOverworldSceneFromMenu(savefileDisplays[2].GetSceneName());
         }
     }

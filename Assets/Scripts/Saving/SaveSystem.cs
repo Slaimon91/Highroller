@@ -2,30 +2,57 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System.Collections;
 
 public static class SaveSystem
 {
-    public static void Save<T>(T objectToSave, string dir, string key)
+    private static List<string> sceneNames = new List<string>()
+    {
+        "OW_FOD",
+        "OW_SG",
+        "OW_WE",
+        "OW_RC",
+        "OW_PP",
+        "OW_PW"
+    };
+    public static void Save<T>(T objectToSave, string key)
     {
         string path = Application.persistentDataPath + "/saves/";
         Directory.CreateDirectory(path);
         BinaryFormatter formatter = GetBinaryFormatter();
-        using(FileStream fileStream = new FileStream(path + dir + key + ".txt", FileMode.Create))
+        using(FileStream fileStream = new FileStream(path + key + ".txt", FileMode.Create))
         {
-            Debug.Log(path + dir + key + " save exists!");
             formatter.Serialize(fileStream, objectToSave);
         }
     }
 
-    public static T Load<T>(string dir, string key)
+    public static void OverrideWithTemp(string key)
+    {
+        string path = Application.persistentDataPath + "/saves/" + key + "/";
+
+        foreach (string dir in sceneNames)
+        {
+            if(File.Exists(path + "temp/" + dir + "/SaveData.txt"))
+            {
+                if(File.Exists(path + dir + "/SaveData.txt"))
+                {
+                    File.Delete(path + dir + "/SaveData.txt");
+                }
+
+                File.Copy(path + "temp/" + dir + "/SaveData.txt", path + dir + "/SaveData.txt");
+            }
+        }
+    }
+
+    public static T Load<T>(string key)
     {
         string path = Application.persistentDataPath + "/saves/";
-        if (File.Exists(path + dir + key + ".txt"))
+        if (File.Exists(path + key + ".txt"))
         {
-            Debug.Log(path + dir + key + " load exists!");
             BinaryFormatter formatter = GetBinaryFormatter();
             T returnValue = default(T);
-            using (FileStream fileStream = new FileStream(path + dir + key + ".txt", FileMode.Open))
+            using (FileStream fileStream = new FileStream(path + key + ".txt", FileMode.Open))
             {
                 returnValue = (T)formatter.Deserialize(fileStream);
             }
@@ -38,15 +65,15 @@ public static class SaveSystem
         }
     }
 
-    public static bool SaveExists(string dir, string key)
+    public static bool SaveExists(string key)
     {
-        string path = Application.persistentDataPath + "/saves/" + dir + key + ".txt";
+        string path = Application.persistentDataPath + "/saves/" + key + ".txt";
         return File.Exists(path);
     }
 
-    public static void DeleteSavefile(string dir, string key)
+    public static void DeleteSavefile(string key)
     {
-        string path = Application.persistentDataPath + "/saves/" + dir + key;
+        string path = Application.persistentDataPath + "/saves/" + key;
         DirectoryInfo directory = new DirectoryInfo(path);
         if(Directory.Exists(path))
             directory.Delete(true);
@@ -103,12 +130,10 @@ public static class SaveSystem
 
     private static void BuildDirectories(string path)
     {
-        Directory.CreateDirectory(path + "OW_FOD");
-        Directory.CreateDirectory(path + "OW_SG");
-        Directory.CreateDirectory(path + "OW_WE");
-        Directory.CreateDirectory(path + "OW_RC");
-        Directory.CreateDirectory(path + "OW_PW");
-        Directory.CreateDirectory(path + "OW_PP");
+        foreach(string dir in sceneNames)
+        {
+            Directory.CreateDirectory(path + dir);
+        }
     }
     /*
     public static void SavePlayer(PlayerController playerController)

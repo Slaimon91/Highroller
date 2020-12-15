@@ -19,6 +19,7 @@ public class BerryTile : MonoBehaviour, IInteractable
     private int berryGrowthSpeed = 0; //1, 2, 3
     private int berryGrowthPoints = 0; //3, 6, 9        4, 8, 12         5, 10, 15
     private GenericTextManager genericTextManager;
+    [SerializeField] GameObject rewardbox;
 
     void Awake()
     {
@@ -57,6 +58,13 @@ public class BerryTile : MonoBehaviour, IInteractable
         plantSprite.sprite = plantStageZero;
         plantedBerry.SetBerryStatus(true);
         plantedBerry.SetInactiveStatus(false);
+
+        string itemIntro = "You picked up a";
+        string itemText = plantedBerry.GetBerryName();
+        GameObject popup = Instantiate(rewardbox, FindObjectOfType<RewardboxParent>().transform);
+        popup.GetComponent<Rewardbox>().AssignInfo(itemIntro, itemText, plantedBerry.GetBerrySprite());
+        popup.GetComponent<Rewardbox>().SetRewardTextColor(new Color(63f / 255f, 202f / 255f, 184f / 255f));
+
         plantedBerry = null;
     }
 

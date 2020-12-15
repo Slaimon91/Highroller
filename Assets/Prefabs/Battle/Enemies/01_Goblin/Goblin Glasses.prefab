@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 127482270645473819}
   - component: {fileID: -5391734532585957267}
   - component: {fileID: 1052720663}
+  - component: {fileID: 6712947984834392706}
   m_Layer: 0
   m_Name: Goblin Glasses
   m_TagString: Untagged
@@ -31,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 127482272032152837}
   - {fileID: 7171482549111680724}
+  - {fileID: 440712446418640911}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,6 +63,10 @@ MonoBehaviour:
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
+  owReward: {fileID: 6896293339592880122, guid: 51ee64be62d98de4986576bd286d744d,
+    type: 3}
+  glassesTaken: {fileID: 3608450489167365291, guid: ff71d3468d82fcf4ca09e5cd792b7cc6,
+    type: 3}
 --- !u!95 &1052720663
 Animator:
   serializedVersion: 3
@@ -80,6 +86,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6712947984834392706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127482270645473796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83384a9bf65066438dd2e4550e13631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassesToThrow: {fileID: 8940644904525952771, guid: e8bf8bb678fbbd24787a67eb5c786d3b,
+    type: 3}
+  glassesPosition: {fileID: 440712446418640911}
+  target: {x: 2.701, y: -1.123, z: 0}
 --- !u!1 &127482272032152838
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +183,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &523463110093177544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 440712446418640911}
+  m_Layer: 0
+  m_Name: Glasses Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &440712446418640911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523463110093177544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03, y: 0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 127482270645473819}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7883337684873352535
 GameObject:
   m_ObjectHideFlags: 0

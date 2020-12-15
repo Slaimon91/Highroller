@@ -132,7 +132,7 @@ public class PlayerBattleController : MonoBehaviour
     private void Dead()
     {
         SaveSystem.ResetTemp(playerValues.currentSavefile);
-        SavefileDisplayData data = SaveSystem.Load<SavefileDisplayData>("", "/" + playerValues.currentSavefile + "/" + "SavefileDisplay");
+        SavefileDisplayData data = SaveSystem.Load<SavefileDisplayData>("/" + playerValues.currentSavefile + "/" + "SavefileDisplay");
         if (data == default)
         {
             SaveSystem.ResetSavefile(playerValues.currentSavefile);

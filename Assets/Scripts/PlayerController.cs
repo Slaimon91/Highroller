@@ -10,7 +10,7 @@ public enum GameState { PLAYING, PAUSED };
 public class PlayerController : MonoBehaviour
 {
     //Config
-    [SerializeField] float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     [SerializeField] Transform movePoint;
     [SerializeField] Transform inFrontOfPlayerTrigger;
     Vector2 currentDirection;
@@ -59,12 +59,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI gaiaText;
     private GameObject overWorldCanvas;
     private EncounterManager encounterManager;
+    public delegate void OnFinishedInteracting();
+    public OnFinishedInteracting onFinishedInteractingCallback;
+    private Rigidbody2D rb;
 
     public Vector2 move;
     void Awake()
     {
         state = GameState.PLAYING;
         playerValues.currentOWScene = SceneManager.GetActiveScene().name;
+        rb = GetComponent<Rigidbody2D>();
         GameEvents.SaveInitiated += Save;
         GameEvents.LoadInitiated += Load;
     }
@@ -108,6 +112,10 @@ public class PlayerController : MonoBehaviour
             TileFlippingUpdate();
         }
     }
+    private void FixedUpdate()
+    {
+
+    }
 
     public void Interact()
     {
@@ -127,7 +135,12 @@ public class PlayerController : MonoBehaviour
             GameObject colliding = testTrigger.GetCollidingGameObject();
             if (testTrigger.GetCollidingInteractableStatus())
             {
-                colliding.GetComponent<IInteractable>().Interact();
+                IInteractable[] interactable = colliding.GetComponents<IInteractable>();
+
+                foreach(IInteractable obj in interactable)
+                {
+                    obj.Interact();
+                }
             }
         }
     }
@@ -280,6 +293,13 @@ public class PlayerController : MonoBehaviour
     public void SetInteracting(bool newState)
     {
         interacting = newState;
+        if(!newState)   //Interaction has finished
+        {
+            if (onFinishedInteractingCallback != null)
+            {
+                onFinishedInteractingCallback?.Invoke();
+            }
+        }
     }
 
     void SetInteractCoordinates(Direction dir)
@@ -464,7 +484,12 @@ public class PlayerController : MonoBehaviour
     {
         float newOffset = 0.3f;
         //Actually move the player closer to the movepoint every frame 
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+
+        //Vector3 smoothedDelta = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+        // Then apply it to the rigidbody:
+        //rb.MovePosition(smoothedDelta);
+
         if (move.x != 0 || move.y != 0)
         {
             currentDirection.x = move.x;
@@ -631,13 +656,14 @@ public class PlayerController : MonoBehaviour
 
     private void Save(string temp)
     {
-        SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
-        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), "", playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
+        SaveData.current.playerOW = new PlayerData(gameObject.GetComponent<PlayerController>());
+        //SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
+        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
     }
 
     public void Load(string temp)
     {
-        PlayerData data = SaveSystem.Load<PlayerData>("", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
+        PlayerData data = SaveData.current.playerOW;//SaveSystem.Load<PlayerData>("", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene +  "/PlayerData");
         
         if(data != default)
         {
@@ -680,5 +706,40 @@ public class PlayerController : MonoBehaviour
         transform.position = newPosition;
         currentDirection = newDirection;
         movePoint.transform.position = transform.position;
+    }
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public int healthPoints;
+    public int maxHealthPoints;
+    public int gaia;
+    public int maxGaia;
+    public int currency;
+    public int xp;
+    public int level;
+    public int nrOfBattles;
+    public string currentOWScene;
+    public int currentSavefile;
+
+    public Vector3 position;
+    public Vector2 direction;
+
+    public PlayerData(PlayerController playerController)
+    {
+        healthPoints = playerController.playerValues.healthPoints;
+        maxHealthPoints = playerController.playerValues.maxHealthPoints;
+        gaia = playerController.playerValues.gaia;
+        maxGaia = playerController.playerValues.maxGaia;
+        currency = playerController.playerValues.currency;
+        xp = playerController.playerValues.xp;
+        level = playerController.playerValues.level;
+        nrOfBattles = playerController.playerValues.nrOfBattles;
+        currentOWScene = playerController.playerValues.currentOWScene;
+        currentSavefile = playerController.playerValues.currentSavefile;
+
+        position = playerController.transform.position;
+        direction = playerController.GetCurrentDirection();
     }
 }

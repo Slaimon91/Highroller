@@ -16,6 +16,7 @@ public class PlayerControlsManager : MonoBehaviour
     private InventoryUI inventoryUI;
     private PlayerController playerController;
     private bool optionsOpen;
+    private bool fastBoi = false;
 
     //Battle
     private HoldAssignButton holdAssignButton;
@@ -62,6 +63,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.LOADHAX.performed += ctx => LOADHAX();
         controls.Overworld.SAVEMENUHAX.performed += ctx => SAVEMENUHAX();
         controls.Overworld.RESETSAVEFILEHAX.performed += ctx => RESETSAVEFILEHAX();
+        controls.Overworld.SPEEDHAX.performed += ctx => SPEEDHAX();
         controls.Battle.KILLALL.performed += ctx => KILLALL();
 
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
@@ -166,6 +168,29 @@ public class PlayerControlsManager : MonoBehaviour
         string currScene = SceneManager.GetActiveScene().name;
         SaveSystem.ResetSavefile(playerValues.currentSavefile);
         FindObjectOfType<LevelLoader>().LoadOverworldScene(currScene);
+    }
+
+    private void SPEEDHAX()
+    {
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+
+        if(!fastBoi)
+        {
+            playerController.moveSpeed *= 3;
+            fastBoi = true;
+        }
+        else
+        {
+            playerController.moveSpeed /= 3;
+            fastBoi = false;
+        }
+
     }
     private void KILLALL()
     {

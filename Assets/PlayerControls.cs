@@ -153,6 +153,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SPEEDHAX"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e32fec6-e5aa-4205-9b4a-1284b53a62c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -538,6 +546,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""RESETSAVEFILEHAX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc5ffe97-181a-4b10-8f6c-929e25bbddd2"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SPEEDHAX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1149,6 +1168,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Overworld_LOADHAX = m_Overworld.FindAction("LOADHAX", throwIfNotFound: true);
         m_Overworld_SAVEMENUHAX = m_Overworld.FindAction("SAVEMENUHAX", throwIfNotFound: true);
         m_Overworld_RESETSAVEFILEHAX = m_Overworld.FindAction("RESETSAVEFILEHAX", throwIfNotFound: true);
+        m_Overworld_SPEEDHAX = m_Overworld.FindAction("SPEEDHAX", throwIfNotFound: true);
         // GenericUI
         m_GenericUI = asset.FindActionMap("GenericUI", throwIfNotFound: true);
         m_GenericUI_Submit = m_GenericUI.FindAction("Submit", throwIfNotFound: true);
@@ -1236,6 +1256,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Overworld_LOADHAX;
     private readonly InputAction m_Overworld_SAVEMENUHAX;
     private readonly InputAction m_Overworld_RESETSAVEFILEHAX;
+    private readonly InputAction m_Overworld_SPEEDHAX;
     public struct OverworldActions
     {
         private @PlayerControls m_Wrapper;
@@ -1257,6 +1278,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @LOADHAX => m_Wrapper.m_Overworld_LOADHAX;
         public InputAction @SAVEMENUHAX => m_Wrapper.m_Overworld_SAVEMENUHAX;
         public InputAction @RESETSAVEFILEHAX => m_Wrapper.m_Overworld_RESETSAVEFILEHAX;
+        public InputAction @SPEEDHAX => m_Wrapper.m_Overworld_SPEEDHAX;
         public InputActionMap Get() { return m_Wrapper.m_Overworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1317,6 +1339,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @RESETSAVEFILEHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
                 @RESETSAVEFILEHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
                 @RESETSAVEFILEHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnRESETSAVEFILEHAX;
+                @SPEEDHAX.started -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSPEEDHAX;
+                @SPEEDHAX.performed -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSPEEDHAX;
+                @SPEEDHAX.canceled -= m_Wrapper.m_OverworldActionsCallbackInterface.OnSPEEDHAX;
             }
             m_Wrapper.m_OverworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -1372,6 +1397,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @RESETSAVEFILEHAX.started += instance.OnRESETSAVEFILEHAX;
                 @RESETSAVEFILEHAX.performed += instance.OnRESETSAVEFILEHAX;
                 @RESETSAVEFILEHAX.canceled += instance.OnRESETSAVEFILEHAX;
+                @SPEEDHAX.started += instance.OnSPEEDHAX;
+                @SPEEDHAX.performed += instance.OnSPEEDHAX;
+                @SPEEDHAX.canceled += instance.OnSPEEDHAX;
             }
         }
     }
@@ -1608,6 +1636,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLOADHAX(InputAction.CallbackContext context);
         void OnSAVEMENUHAX(InputAction.CallbackContext context);
         void OnRESETSAVEFILEHAX(InputAction.CallbackContext context);
+        void OnSPEEDHAX(InputAction.CallbackContext context);
     }
     public interface IGenericUIActions
     {

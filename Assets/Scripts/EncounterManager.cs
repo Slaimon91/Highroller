@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum GroundType { FOD_Grass, FOD_Water, FOD_Glasses }
+
 public class EncounterManager : MonoBehaviour
 {
     public List<TileflipTable> tables = new List<TileflipTable>();
@@ -157,50 +160,23 @@ public class EncounterManager : MonoBehaviour
         selectedTile = tile;
         switch(groundTile)
         {
-            case GroundType.GreenforestGrass:
-                return GreenforestGrass(isTest);
-            case GroundType.GreenforestSwamp:
-                return GreenforestSwamp(isTest);
-            case GroundType.GreenforestWater:
-                return GreenforestWater(isTest);
+            case GroundType.FOD_Grass:
+                return SearchTile(isTest, "FOD_Grass");
+            case GroundType.FOD_Water:
+                return SearchTile(isTest, "FOD_Water");
+            case GroundType.FOD_Glasses:
+                return SearchTile(isTest, "FOD_Glasses");
             default:
                 selectedTile = null;
                 return null;
         }
     }
 
-    public TileflipTable GreenforestGrass(bool isTest)
+    public TileflipTable SearchTile(bool isTest, string tileName)
     {
         
-        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestGrass"));
+        TileflipTable tableToSend = tables.Find(x => x.name == tileName);
         if(isTest)
-        {
-            return tableToSend;
-        }
-        else
-        {
-            StartCoroutine(ActivateTile(tableToSend));
-            return null;
-        }
-    }
-
-    public TileflipTable GreenforestSwamp(bool isTest)
-    {
-        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestSwamp"));
-        if (isTest)
-        {
-            return tableToSend;
-        }
-        else
-        {
-            StartCoroutine(ActivateTile(tableToSend));
-            return null;
-        }
-    }
-    public TileflipTable GreenforestWater(bool isTest)
-    {
-        TileflipTable tableToSend = tables.Find(x => x.name == ("GreenforestWater"));
-        if (isTest)
         {
             return tableToSend;
         }

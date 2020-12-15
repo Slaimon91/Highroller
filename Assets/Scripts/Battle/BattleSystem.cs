@@ -104,8 +104,10 @@ public class BattleSystem : MonoBehaviour
     public void SetDiceKey(int index)
     {
         EnemyBattleBase enemy = enemiesGO[index].GetComponent<EnemyBattleBase>();
-        
-        if(enemy.GetInactiveStatus())
+        diceKeyNumbers[index] = enemy.GetDiceKeyNumber();
+
+
+        if (enemy.GetInactiveStatus())
         {
             diceKeys[index].SetInactive(true, enemy.GetDiceKeyNumber());
             diceKeyImages[index].sprite = diceSpritesInactive[diceKeyNumbers[index] - 1];
@@ -272,84 +274,41 @@ public class BattleSystem : MonoBehaviour
 
     public void SpawnMonstersStartup()
     {
-        int k;
-        int nrOfEnemies = battleStartupInfo.enemies.Count;
+        //Setup
+        int k = 0;
 
         //Instantiate enemies and dicekeys
         for (int i = 0; i < battleStartupInfo.enemies.Count; i++)
         {
-            if (battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation() != -1 &&
-                        battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation() >= i &&
-                            enemySpotOccupied[battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation()] != true)
+            if (battleStartupInfo.enemies[i] == null)
             {
-                k = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetPreferedSpawnLocation();
-            }
-            else
-            {
-                if(enemySpotOccupied[i] != null)
-                {
-                    k = i;
-                    if (k >= battleStartupInfo.enemies.Count - 1)
-                    {
-                        k = 0;
-                    }
-                    else
-                    {
-                        k++;
-                    }
-                    if (enemySpotOccupied[k] != null)
-                    {
-                        if (k >= battleStartupInfo.enemies.Count - 1)
-                        {
-                            k = 0;
-                        }
-                        else
-                        {
-                            k++;
-                        }
-                        if (enemySpotOccupied[k] != null)
-                        {
-                            if (k >= battleStartupInfo.enemies.Count - 1)
-                            {
-                                k = 0;
-                            }
-                            else
-                            {
-                                k++;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    k = i;
-                }
-                
+                k++;
+                continue;
             }
 
             int offset = 31;
             int offsetInfo = 22;
             diceKeys.Add(Instantiate(diceKeyPrefab, diceKeyPanel.transform));
-            RectTransform rt = diceKeys[i].GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector3(0 - offset * k, 0, 0);
-            diceKeyImages.Add(diceKeys[i].GetComponent<Image>());
-            diceKeys[i].GetComponent<Button>().onClick.AddListener(OnKeyPressed);
+            RectTransform rt = diceKeys[i - k].GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(0 - offset * i, 0, 0);
+            diceKeyImages.Add(diceKeys[i - k].GetComponent<Image>());
+            diceKeys[i - k].GetComponent<Button>().onClick.AddListener(OnKeyPressed);
 
             enemiesInfo.Add(Instantiate(enemiesInfoPrefab, enemiesInfoPanel.transform));
-            RectTransform rtInfo = enemiesInfo[i].GetComponent<RectTransform>();
-            rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * k, 0, 0);
-            Image enemiesInfoImage = enemiesInfo[i].GetEnemyPortrait();
+            RectTransform rtInfo = enemiesInfo[i - k].GetComponent<RectTransform>();
+            rtInfo.anchoredPosition = new Vector3(0 - offsetInfo * i, 0, 0);
+            Image enemiesInfoImage = enemiesInfo[i - k].GetEnemyPortrait();
             enemiesInfoImage.sprite = battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetIcon();
-            enemiesInfo[i].SetUnitName(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName());
-            enemiesInfo[i].SetUnitText(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText());
+            enemiesInfo[i - k].SetUnitName(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetUnitName());
+            enemiesInfo[i - k].SetUnitText(battleStartupInfo.enemies[i].GetComponent<EnemyBattleBase>().GetInfoText());
 
             enemyPrefabs.Add(battleStartupInfo.enemies[i]);
-            var enemyGO = Instantiate(enemyPrefabs[i], enemySpawnPoints[k]);
-            enemyGO.GetComponentInChildren<SpriteRenderer>().sortingOrder = nrOfEnemies - k;
+            var enemyGO = Instantiate(enemyPrefabs[i - k], enemySpawnPoints[i]);
+            enemyGO.GetComponentInChildren<SpriteRenderer>().sortingOrder = battleStartupInfo.enemies.Count - k;
             enemiesGO.Add(enemyGO);
             diceKeyNumbers.Add(enemyGO.GetComponent<EnemyBattleBase>().GetDiceKeyNumber());
-            SetDiceKey(i);
-            enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i]);
+            SetDiceKey(i - k);
+            enemyGO.GetComponent<EnemyBattleBase>().SetDiceKeyGO(diceKeys[i - k]);
             enemySpotOccupied[k] = enemyGO;
         }
     }

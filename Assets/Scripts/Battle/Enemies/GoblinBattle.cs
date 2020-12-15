@@ -8,6 +8,8 @@ public class GoblinBattle : EnemyBattleBase
 {
     [SerializeField] ThrowSimulation rockToThrow;
     [SerializeField] Transform throwingHand;
+    [SerializeField] GiveOWReward owReward;
+    [SerializeField] GlassesTaken glassesTaken;
     private bool attackFinished = false;
     private bool distractedFinished = false;
 
@@ -97,6 +99,11 @@ public class GoblinBattle : EnemyBattleBase
         RollSoulDrop();
         yield return null;
         FindObjectOfType<BattleSystem>().SignalEnemyDeath();
+        if(owReward != null)
+        {
+            Instantiate(owReward);
+            Instantiate(glassesTaken);
+        }
         if (isDead)
         {
             Destroy(gameObject);

@@ -63,7 +63,6 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text = sentence;
             finishedTyping = true;
         }
-        
     }
 
     IEnumerator TypeSentence (string sentence)

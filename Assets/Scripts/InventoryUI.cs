@@ -252,21 +252,24 @@ public class InventoryUI : MonoBehaviour
         return seedList;
     }
 
-    /*public void EquipSeed(SeedBase seedToEquip)
+    /*public bool CheckForItem(Item searchItem)
     {
-        InventorySeed[] seeds = FindObjectsOfType<InventorySeed>();
-        foreach (InventorySeed seed in seeds)
+        foreach (InventorySlot i in seedSlots)
         {
-            seed.Unequip();
+            SeedBase seed = i.GetChildHolder().GetComponentInChildren<SeedBase>();
+            if (seed != null)
+            {
+                if (!seed.GetInactiveStatus() && !seed.GetComponent<SeedBase>().GetBerryStatus())
+                {
+                    seedList.Add(seed);
+                }
+            }
         }
-
-        Item newItem = ScriptableObject.CreateInstance("Item") as Item;
-        newItem.name = seedToEquip.name;
-        newItem.prefab = seedToEquip.gameObject;
-
-        equippedSeed = newItem;
-        //equippedSeedSlot.AddItem(newItem);
-        InitiateEquippedSeed(seedToEquip);
+        InventoryTrinket[] trinkets = FindObjectsOfType<InventoryTrinket>();
+        foreach (InventoryTrinket trinket in trinkets)
+        {
+            trinket.Created();
+        }
     }*/
 
     public void UnequipAbility(int abilityToUnequip)

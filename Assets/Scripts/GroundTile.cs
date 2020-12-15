@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public enum GroundType { GreenforestGrass, GreenforestWater, GreenforestSwamp}
-
 [CreateAssetMenu(fileName = "New Ground Tile", menuName = "Highroller/GroundTile")]
 public class GroundTile : Tile
 {

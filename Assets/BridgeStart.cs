@@ -6,15 +6,38 @@ public class BridgeStart : MonoBehaviour
 {
     [SerializeField] PlayerController.Direction enterDirection;
     [SerializeField] int bridgeElevation;
-    private void OnTriggerExit2D(Collider2D other)
+    private PlayerController playerController;
+    private bool isColliding = false;
+    /*private void Update()
     {
-        if(other.GetComponent<PlayerController>() != null)
+        if(isColliding)
         {
-            if(other.GetComponent<PlayerController>().GetDirection() != enterDirection)
+            Debug.Log("___");
+            Collider2D k = Physics2D.OverlapCircle(gameObject.transform.position + new Vector3(0.5f, 0.5f, 0), 0.2f);
+            if (k.gameObject.tag != "Player")
             {
-                other.GetComponent<PlayerController>().SetOnBridge(false);
+                Debug.Log("detecting");
+                if (playerController.GetDirection() != enterDirection)
+                {
+                    playerController.SetOnBridge(false);
+                    
+                    Debug.Log("Disabled");
+                    if (bridgeElevation > 0)
+                        playerController.ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
+                }
+                isColliding = false;
+            }
+        }
+    }*/
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if((playerController = other.GetComponent<PlayerController>()) != null)
+        {
+            if (playerController.GetDirection() != enterDirection)
+            {
+                playerController.SetOnBridge(false);
                 if(bridgeElevation > 0)
-                    other.GetComponent<PlayerController>().ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
+                    playerController.ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
             }
         } 
     }
@@ -22,9 +45,11 @@ public class BridgeStart : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            other.GetComponent<PlayerController>().SetOnBridge(true);
-            if(bridgeElevation > 0)
-                other.GetComponent<PlayerController>().ElevationChangePlayer(bridgeElevation - 1, bridgeElevation);
+            playerController = other.GetComponent<PlayerController>();
+            playerController.SetOnBridge(true);
+            isColliding = true;
+            if (bridgeElevation > 0)
+                playerController.ElevationChangePlayer(bridgeElevation - 1, bridgeElevation);
         }
     }
 }
