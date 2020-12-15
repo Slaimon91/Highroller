@@ -86,6 +86,7 @@ public class TricksterBattle : EnemyBattleBase
     {
         if (Random.Range(0f, 1f) >= 0.5f)
         {
+            damageAmount = 2;
             attackFinished = false;
             hitTarget = false;
             willPunch = true;
@@ -100,6 +101,7 @@ public class TricksterBattle : EnemyBattleBase
         }
         else
         {
+            damageAmount = 3;
             attackFinished = false;
             hitTarget = false;
             runningStart = true;

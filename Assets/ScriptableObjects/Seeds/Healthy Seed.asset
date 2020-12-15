@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: decf11b14a6bc4f45bbcd9e6fa70d4d4, type: 3}
-  m_Name: Healthy Berry
+  m_Name: Healthy Seed
   m_EditorClassIdentifier: 
-  name: Healthy Berry
+  name: Healthy Seed
   prefab: {fileID: 5655952655308497353, guid: caeb54675262b0b41af62e9f7cb83e04, type: 3}

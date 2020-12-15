@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Swinecone
   diceKeyNumber: 1
-  xpAmount: 1
+  xpAmount: 3
   isGold: 0
   isPlatinum: 0
   isInactive: 0
