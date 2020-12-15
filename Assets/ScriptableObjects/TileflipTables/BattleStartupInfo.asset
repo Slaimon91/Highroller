@@ -16,5 +16,4 @@ MonoBehaviour:
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
   enemies:
   - {fileID: 6346554446795038860, guid: 1b07ddf896230554196d438fc2db36af, type: 3}
-  - {fileID: 127482270645473796, guid: 3a7f964d553fd2c4189473ec238a9fe6, type: 3}
   nrOfDices: 3
