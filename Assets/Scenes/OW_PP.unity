@@ -6586,6 +6586,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 609500732}
     m_Modifications:
+    - target: {fileID: 2072336488, guid: 875e699946485c543a33ca34a62b134b, type: 3}
+      propertyPath: transitionToCoords.x
+      value: 23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072336488, guid: 875e699946485c543a33ca34a62b134b, type: 3}
+      propertyPath: transitionToCoords.y
+      value: 23.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072336488, guid: 875e699946485c543a33ca34a62b134b, type: 3}
+      propertyPath: transitionToRotation.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072336488, guid: 875e699946485c543a33ca34a62b134b, type: 3}
+      propertyPath: transitionTo
+      value: OW_FOD
+      objectReference: {fileID: 0}
     - target: {fileID: 5071604511328530390, guid: 875e699946485c543a33ca34a62b134b,
         type: 3}
       propertyPath: transitionToRotation.x

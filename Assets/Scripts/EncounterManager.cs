@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum GroundType { FOD_Grass, FOD_Water, FOD_Glasses }
+public enum GroundType { FOD_Grass, FOD_Water, FOD_Glasses, FOD_Start }
 
 public class EncounterManager : MonoBehaviour
 {

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaTransition : MonoBehaviour
+public class OWSceneTransition : MonoBehaviour
 {
+    [SerializeField] string transitionTo;
     [SerializeField] Vector3 transitionToCoords;
     [SerializeField] Vector2 transitionToRotation;
 
@@ -11,7 +12,7 @@ public class AreaTransition : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            StartCoroutine(other.GetComponent<PlayerController>().TeleportPlayer(transitionToCoords, transitionToRotation));
+            FindObjectOfType<LevelLoader>().LoadOverworldSceneTransition(transitionTo, transitionToCoords, transitionToRotation);
         }
     }
 }

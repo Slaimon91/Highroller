@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public PlayerValues playerValues;
     [SerializeField] GameObject infoboxPrefab;
     private TileflipInfobox infoBoxObject;
+    private PlayerControlsManager playerControlsManager;
     
     
     [SerializeField] GameObject darkOverlayPrefab;
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         
         movePoint.parent = null;
         animator = GetComponent<Animator>();
+        playerControlsManager = FindObjectOfType<PlayerControlsManager>();
         availableTiles = new List<GameObject>();
         testTrigger = GetComponentInChildren<InFrontOfPlayerTrigger>();
         inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y - 1 - playerTileOffset);
@@ -460,6 +462,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public IEnumerator TeleportPlayer(Vector3 newCoords, Vector2 newDirection)
+    {
+        NotWalking();
+        move.x = 0;
+        move.y = 0;
+        transform.position = newCoords;
+        currentDirection = newDirection;
+        movePoint.transform.position = newCoords;
+        inFrontOfPlayerTrigger.transform.position = newCoords;
+        playerControlsManager.ToggleOnGenericUI();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        playerControlsManager.ToggleOffGenericUI();
     }
 
     private void PlayerTurnInPlace()

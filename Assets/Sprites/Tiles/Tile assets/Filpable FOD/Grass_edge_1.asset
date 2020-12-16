@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a48b728284ced44d9c3f3856cc4c946, type: 3}
-  m_Name: Grass_empty
+  m_Name: Grass_edge_1
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34,7 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  tileSprite: {fileID: 8096303109031439429, guid: bdb5c0ae47f872a4ab15147dac0664b4,
+  tileSprite: {fileID: 3532288893215143129, guid: bdb5c0ae47f872a4ab15147dac0664b4,
     type: 3}
-  groundType: 0
+  groundType: 3
   layer: 0
