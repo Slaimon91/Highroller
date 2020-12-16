@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40961267422c23d4fa8f08a952fa59f0, type: 3}
   m_Name: FOD_Start
   m_EditorClassIdentifier: 
-  name: FOD_Grass
+  name: FOD_Start
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
-  displayName: Forest Grass
-  gaiaChance: 45
+  displayName: Goblin Glade
+  gaiaChance: 40
   HPChance: 20
-  monsterChance: 35
+  monsterChance: 40
   gaiaRewardAmount: 10
   HPRewardAmount: 5
   encounters:

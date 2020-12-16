@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Adding a tiletype = add to enum, add to testgroundtype(), add to enountermanager GO in hierarchy
+
 [System.Serializable]
 public enum GroundType { FOD_Grass, FOD_Water, FOD_Glasses, FOD_Start }
 
@@ -158,6 +160,7 @@ public class EncounterManager : MonoBehaviour
     public TileflipTable TestGroundType(GroundType groundTile, GameObject tile, bool isTest)
     {
         selectedTile = tile;
+
         switch(groundTile)
         {
             case GroundType.FOD_Grass:
@@ -166,6 +169,8 @@ public class EncounterManager : MonoBehaviour
                 return SearchTile(isTest, "FOD_Water");
             case GroundType.FOD_Glasses:
                 return SearchTile(isTest, "FOD_Glasses");
+            case GroundType.FOD_Start:
+                return SearchTile(isTest, "FOD_Start");
             default:
                 selectedTile = null;
                 return null;
