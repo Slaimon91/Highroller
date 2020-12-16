@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: FOD_Glasses
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
-  displayName: Forest Grass
+  displayName: Grassy Field
   gaiaChance: 0
   HPChance: 0
   monsterChance: 100

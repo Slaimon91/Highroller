@@ -282,7 +282,7 @@ public class PlayerControlsManager : MonoBehaviour
             }
         }
 
-        playerController.PressedTileFlip();
+        playerController.ToggleTileFlip();
     }
 
     public void TriggerOptions()
