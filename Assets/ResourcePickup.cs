@@ -13,9 +13,12 @@ public class ResourcePickup : MonoBehaviour, IInteractable
     [HideInInspector] public string id;
     void Awake()
     {
-        id = GetComponent<UniqueID>().id;
         GameEvents.SaveInitiated += Save;
         GameEvents.LoadInitiated += Load;
+    }
+    void Start()
+    {
+        id = GetComponent<UniqueID>().id;
     }
     public void Interact()
     {

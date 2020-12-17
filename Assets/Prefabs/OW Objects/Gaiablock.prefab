@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693eee6d1a3cfd048b483003ff913e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpBox: {fileID: 1450327041576082136, guid: 362813d2c4cc1d84194d4d2b33c8f1ad,
+  popUpBox: {fileID: 1450327041576082136, guid: e545a8534ba85264394630448b7b7e49,
     type: 3}
   overworldCanvas: {fileID: 0}
   gaiaAmount: 50

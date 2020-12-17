@@ -38,13 +38,21 @@ public class MoleGlasses : MonoBehaviour, IInteractable
             glassesTilemap.SetTile(tilePos, glassesGrassTile);
         }
 
-        /*if(hasSpawnedBling)
+        if(hasSpawnedBling && goblinDefeated && !hasGlasses) //check against inventory
         {
             hasGlasses = true;
-            glassShine.SetActive(false);
-            glassesTilemap.SetTile(tilePos, normalGrassTile);
             animator.SetBool("hasGlasses", true);
-        }*/
+            GetComponent<DialogueTrigger>().onFinishedDialogueCallback += MoveMole;
+        }
+    }
+
+    private void MoveMole()
+    {
+        transform.position = transform.position + new Vector3(-1f, 0, 0);
+        GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
+        GetComponent<BoxCollider2D>().offset = new Vector2(0.83f, 0.5f);
+        GetComponent<DialogueTrigger>().onFinishedDialogueCallback -= MoveMole;
+        gameObject.GetComponent<DialogueTrigger>().AdvanceDialogue();
     }
 
     private void Save(string temp)
@@ -62,7 +70,7 @@ public class MoleGlasses : MonoBehaviour, IInteractable
             hasGlasses = data.hasGlasses;
         }
 
-        if (!hasSpawnedBling)
+        if (!hasSpawnedBling || goblinDefeated)
         {
             glassShine.SetActive(false);
         }
@@ -75,7 +83,10 @@ public class MoleGlasses : MonoBehaviour, IInteractable
 
         if (hasGlasses)
         {
-
+            animator.SetBool("hasGlasses", true);
+            transform.position = transform.position + new Vector3(-1, 0, 0);
+            GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector2(0.83f, 0.5f);
         }
     }
 
@@ -84,6 +95,7 @@ public class MoleGlasses : MonoBehaviour, IInteractable
         glassShine.SetActive(false);
         glassesTilemap.SetTile(tilePos, normalGrassTile);
         goblinDefeated = true;
+        gameObject.GetComponent<DialogueTrigger>().AdvanceDialogue();
     }
 
     public void OnDestroy()

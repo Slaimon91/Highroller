@@ -15,9 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform inFrontOfPlayerTrigger;
     Vector2 currentDirection;
     GameObject currentInterObj = null;
-    [HideInInspector]
-    public bool interacting = false;
-    bool tileFlipping = false;
+    [HideInInspector] public bool interacting = false;
+    [HideInInspector] public bool tileFlipping = false;
     bool hasFinishedWalking = false;
     [SerializeField] Tilemap groundTilemap;
     [SerializeField] Tilemap colliderTilemap;
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask whatStopsMovement;
     [SerializeField] LayerMask whatStopsMovementHigh;
     [SerializeField] LayerMask water;
+    [SerializeField] LayerMask notFlippable;
 
     //State
     public GameState state;
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI gaiaText;
+    [SerializeField] TextMeshProUGUI goldenAcornText;
     private GameObject overWorldCanvas;
     private EncounterManager encounterManager;
     public delegate void OnFinishedInteracting();
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         healthText.text = playerValues.healthPoints.ToString() + "/" + playerValues.maxHealthPoints.ToString();
         gaiaText.text = playerValues.gaia.ToString() + "/" + playerValues.maxGaia.ToString();
+        goldenAcornText.text = playerValues.currency.ToString();
         //Normal state
         if (!interacting && !tileFlipping)
         {
@@ -177,6 +179,10 @@ public class PlayerController : MonoBehaviour
                 GameObject colliding = testTrigger.GetCollidingGameObject();
                 if (testTrigger.GetCollidingTileableStatus())
                 {
+                    if(colliding.GetComponent<IInteractable>() != null)
+                    {
+                        colliding.GetComponent<IInteractable>().Interact();
+                    }
                     GroundType tmpType = colliding.GetComponent<TTileable>().GetTileType();
                     //darkOverlayObject = Instantiate(darkOverlayPrefab, transform);
                     encounterManager.TestGroundType(tmpType, selectedTile, false);
@@ -194,7 +200,7 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (!IsCollidingInFront())
+            if (!IsCollidingInFront(testTrigger.transform.position))
             {
                 foreach (GameObject tile in availableTiles)
                 {
@@ -283,17 +289,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private bool IsCollidingInFront()
+    private bool IsCollidingInFront(Vector3 collidingCheckPos)
     {
-        if (elevation == 0 && Physics2D.OverlapCircle(testTrigger.transform.position, .2f, whatStopsMovement))
-        {
-            return true;
-        }
-        else if(elevation == 1 && Physics2D.OverlapCircle(testTrigger.transform.position, .2f, whatStopsMovementHigh))
-        {
-            return true;
-        }
-        else if(Physics2D.OverlapCircle(testTrigger.transform.position, .2f, water) && waterForm)
+        if (elevation == 0 && Physics2D.OverlapCircle(collidingCheckPos, .2f, whatStopsMovement) || 
+            (elevation == 1 && Physics2D.OverlapCircle(collidingCheckPos, .2f, whatStopsMovementHigh)) ||
+            (Physics2D.OverlapCircle(collidingCheckPos, .2f, water) && !waterForm) ||
+            (Physics2D.OverlapCircle(collidingCheckPos, .2f, notFlippable)))
         {
             return true;
         }
@@ -379,60 +380,28 @@ public class PlayerController : MonoBehaviour
         Vector3 tempNorth = new Vector3(transform.position.x, transform.position.y + 1 - playerTileOffset, transform.position.z);
         Vector3 tempSouth = new Vector3(transform.position.x, transform.position.y - 1 - playerTileOffset, transform.position.z);
 
-        //East
-        if (!Physics2D.OverlapCircle(tempEast, .2f, whatStopsMovement))
-        {
-            GameObject availableTile = (Instantiate(availableTilePrefab, tempEast, Quaternion.identity));
-            availableTile.transform.parent = transform;
-            availableTiles.Add(availableTile);
-            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
-            {
-                selectedTile = availableTile;
-                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
-            }
-        }
-
-        //West
-        if (!Physics2D.OverlapCircle(tempWest, .2f, whatStopsMovement))
-        {
-            GameObject availableTile = (Instantiate(availableTilePrefab, tempWest, Quaternion.identity));
-            availableTile.transform.parent = transform;
-            availableTiles.Add(availableTile);
-            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
-            {
-                selectedTile = availableTile;
-                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
-            }
-        }
-
-        //North
-        if (!Physics2D.OverlapCircle(tempNorth, .2f, whatStopsMovement))
-        {
-            GameObject availableTile = (Instantiate(availableTilePrefab, tempNorth, Quaternion.identity));
-            availableTile.transform.parent = transform;
-            availableTiles.Add(availableTile);
-            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
-            {
-                selectedTile = availableTile;
-                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
-            }
-        }
-
-        //South
-        if (!Physics2D.OverlapCircle(tempSouth, .2f, whatStopsMovement))
-        {
-            GameObject availableTile = (Instantiate(availableTilePrefab, tempSouth, Quaternion.identity));
-            availableTile.transform.parent = transform;
-            availableTiles.Add(availableTile);
-            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
-            {
-                selectedTile = availableTile;
-                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
-            }
-        }
+        SpawnTile(tempEast);
+        SpawnTile(tempWest);
+        SpawnTile(tempNorth);
+        SpawnTile(tempSouth);
 
         infoBoxObject = Instantiate(infoboxPrefab, overWorldCanvas.transform).GetComponent<TileflipInfobox>();
         UpdateInfobox();
+    }
+
+    private void SpawnTile(Vector3 direction)
+    {
+        if (!IsCollidingInFront(direction))
+        {
+            GameObject availableTile = (Instantiate(availableTilePrefab, direction, Quaternion.identity));
+            availableTile.transform.parent = transform;
+            availableTiles.Add(availableTile);
+            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
+            {
+                selectedTile = availableTile;
+                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
+            }
+        }
     }
  
     private void UpdateInfobox()
@@ -475,35 +444,18 @@ public class PlayerController : MonoBehaviour
                 if (testTrigger.GetCollidingTileableStatus())
                 {
                     GroundType tmpType = colliding.GetComponent<TTileable>().GetTileType();
-                    TileflipTable currentTileTable = encounterManager.TestGroundType(currentTile.groundType, selectedTile, true);
+                    TileflipTable currentTileTable = encounterManager.TestGroundType(tmpType, selectedTile, true);
 
                     if (currentTileTable != null)
                     {
                         string per = "%";
-                        if ((playerValues.healthPoints >= playerValues.maxHealthPoints) && (playerValues.healthPoints >= playerValues.maxHealthPoints))
-                        {
-                            int monster = currentTileTable.monsterChance + currentTileTable.HPChance + currentTileTable.gaiaChance;
-                            infoBoxObject.AssignInfo(currentTileTable.displayName, "0" + per, "0" + per, monster.ToString() + per);
-                        }
-                        else if (playerValues.healthPoints >= playerValues.maxHealthPoints)
-                        {
-                            int monster = currentTileTable.monsterChance + currentTileTable.HPChance;
-                            infoBoxObject.AssignInfo(currentTileTable.displayName, "0" + per, currentTileTable.gaiaChance.ToString() + per, monster.ToString() + per);
-                        }
-                        else if (playerValues.gaia >= playerValues.maxGaia)
-                        {
-                            int monster = currentTileTable.monsterChance + currentTileTable.gaiaChance;
-                            infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, "0" + per, monster.ToString() + per);
-                        }
-                        else
-                        {
-                            infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per);
-                        }
+
+                        infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per);
                     }
                 }
             }
         }
-        else
+        else if (infoBoxObject != null)
         {
             infoBoxObject.gameObject.SetActive(false);
         }

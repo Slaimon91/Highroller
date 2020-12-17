@@ -5,7 +5,7 @@ using UnityEngine;
 //Adding a tiletype = add to enum, add to testgroundtype(), add to enountermanager GO in hierarchy
 
 [System.Serializable]
-public enum GroundType { FOD_Grass, FOD_Water, FOD_Glasses, FOD_Start }
+public enum GroundType { FOD_Grass, FOD_Glasses, FOD_Start, BONUS_1, BONUS_2, BONUS_3, BONUS_4, BONUS_5, FOD_Water }
 
 public class EncounterManager : MonoBehaviour
 {
@@ -14,7 +14,14 @@ public class EncounterManager : MonoBehaviour
     private bool waitForAnim = false;
     private GameObject selectedTile;
     [SerializeField] PlayerValues playerValues;
+    public delegate void WaitForFlipDone();
+    public WaitForFlipDone onWaitForFlipDoneCallback;
+    private PlayerControlsManager playerControlsManager;
 
+    private void Awake()
+    {
+        playerControlsManager = FindObjectOfType<PlayerControlsManager>();
+    }
     IEnumerator ActivateTile(TileflipTable matchedTable)
     {
         if(matchedTable == null)
@@ -46,7 +53,7 @@ public class EncounterManager : MonoBehaviour
 
         pickedNumber -= matchedTable.HPChance;
 
-        if (pickedNumber < matchedTable.gaiaChance && playerValues.gaia != playerValues.maxGaia)
+        if ((pickedNumber < matchedTable.gaiaChance && playerValues.gaia != playerValues.maxGaia) || matchedTable.gaiaChance == 100)
         {
             pickedOption = 1;
             pickedNumber = 999;
@@ -66,6 +73,12 @@ public class EncounterManager : MonoBehaviour
 
         yield return StartCoroutine(WaitForFlipAnimation());
 
+        if (onWaitForFlipDoneCallback != null)
+        {
+            onWaitForFlipDoneCallback?.Invoke();
+        }
+
+        playerControlsManager.ToggleOffGenericUI();
         tfv.onFlipAnimationDoneCallback -= WaitForAnimDone;
 
         if(pickedOption == 1)
@@ -141,12 +154,16 @@ public class EncounterManager : MonoBehaviour
 
     public IEnumerator LaunchCustomBattle(GameObject monsterIConVisualGO, List<GameObject> enemies, Sprite background)
     {
-        selectedTile = monsterIConVisualGO;
-        TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
-        tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
-        tfv.TriggerMonsterAnimation();
-        waitForAnim = true;
-        yield return StartCoroutine(WaitForFlipAnimation());
+        if(monsterIConVisualGO != null)
+        {
+            selectedTile = monsterIConVisualGO;
+            TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
+            tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
+            tfv.TriggerMonsterAnimation();
+            waitForAnim = true;
+            yield return StartCoroutine(WaitForFlipAnimation());
+        }
+        
         battleStartupInfo.enemies.Clear();
         for (int k = 0; k < enemies.Count; k++)
         {
@@ -165,12 +182,22 @@ public class EncounterManager : MonoBehaviour
         {
             case GroundType.FOD_Grass:
                 return SearchTile(isTest, "FOD_Grass");
-            case GroundType.FOD_Water:
-                return SearchTile(isTest, "FOD_Water");
             case GroundType.FOD_Glasses:
                 return SearchTile(isTest, "FOD_Glasses");
             case GroundType.FOD_Start:
                 return SearchTile(isTest, "FOD_Start");
+            case GroundType.BONUS_1:
+                return SearchTile(isTest, "BONUS_1");
+            case GroundType.BONUS_2:
+                return SearchTile(isTest, "BONUS_2");
+            case GroundType.BONUS_3:
+                return SearchTile(isTest, "BONUS_3");
+            case GroundType.BONUS_4:
+                return SearchTile(isTest, "BONUS_4");
+            case GroundType.BONUS_5:
+                return SearchTile(isTest, "BONUS_5");
+            case GroundType.FOD_Water:
+                return SearchTile(isTest, "FOD_Water");
             default:
                 selectedTile = null;
                 return null;

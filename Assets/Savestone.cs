@@ -13,10 +13,14 @@ public class Savestone : MonoBehaviour, IInteractable
 
     void Awake()
     {
-        id = GetComponent<UniqueID>().id;
         animator = GetComponent<Animator>();
         GameEvents.SaveInitiated += Save;
         GameEvents.LoadInitiated += Load;
+    }
+
+    void Start()
+    {
+        id = GetComponent<UniqueID>().id;
     }
     public void Interact()
     {
@@ -48,18 +52,17 @@ public class Savestone : MonoBehaviour, IInteractable
     {
         //SaveSystem.Save<SavestoneData>(new SavestoneData(gameObject.GetComponent<Savestone>()), "", FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
         SaveData.current.saveStones.Add(new SavestoneData(gameObject.GetComponent<Savestone>()));
-        Debug.Log("Saved stone with id:" + id + " and status: " + isActivated);
+
     }
 
     public void Load(string temp)
     {
         //SavestoneData data = SaveSystem.Load<SavestoneData>("", FindObjectOfType<PlayerController>().playerValues.currentSavefile + "/" + temp + FindObjectOfType<PlayerController>().playerValues.currentOWScene + "/SaveStones");
         SavestoneData data = SaveData.current.saveStones.Find(x => x.id == id);
-        Debug.Log("Searching stone has id:" + id);
+
 
         if (data != default)
         {
-            Debug.Log("Loading stone, " + isActivated + " = " + data.isActivated);
             isActivated = data.isActivated;
             activateAnimDone = data.activateAnimDone;
             transform.position = data.position;

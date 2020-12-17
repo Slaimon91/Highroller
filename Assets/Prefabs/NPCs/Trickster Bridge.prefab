@@ -178,11 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5675cec0f0553f244ab89a1662a49bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Trickster Goblin
-    sentences:
-    - Hello child...
-    - Here... Take my seed...
+  dialogues: []
+  dialogueNr: 0
+  id: 
 --- !u!50 &7791820453668444831
 Rigidbody2D:
   serializedVersion: 4

@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 4170067666681504295
     second: Construction_Goblin_idle_1
+  - first:
+      213: -8652453643700364699
+    second: Construction_Goblin_idle_0
+  - first:
+      213: -6853458515220577495
+    second: Construction_Goblin_idle_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +117,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 32
-        height: 32
+        height: 35
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82795a0a450313280800000000000000
-      internalID: -9065411434889504984
+      spriteID: 56a94b3f04f4ce780800000000000000
+      internalID: -8652453643700364699
       vertices: []
       indices: 
       edges: []
@@ -132,7 +138,7 @@ TextureImporter:
         x: 32
         y: 0
         width: 32
-        height: 32
+        height: 35
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +146,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 722a4e9e27e0fd930800000000000000
-      internalID: 4170067666681504295
+      spriteID: 923c665aacf93e0a0800000000000000
+      internalID: -6853458515220577495
       vertices: []
       indices: 
       edges: []

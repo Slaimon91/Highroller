@@ -8,20 +8,68 @@ public class VineWeaverGO : MonoBehaviour, IInteractable
     [SerializeField] GameObject monsterIconVisualGO;
     [SerializeField] Sprite background;
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
+    [HideInInspector] public bool triggered = false;
+    [HideInInspector] public string id;
     void Awake()
     {
         animator = GetComponent<Animator>();
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
+    }
+    void Start()
+    {
+        id = GetComponent<UniqueID>().id;
     }
 
     public void Interact()
     {
-        StartCoroutine(StartBattle());
+        if (!triggered)
+        {
+            triggered = true;
+            GetComponent<DialogueTrigger>().onFinishedDialogueCallback += StartBattle;
+        }
     }
 
-    private IEnumerator StartBattle()
+    private void StartBattle()
     {
-        yield return StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(monsterIconVisualGO, enemies, background));
+        StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(null, enemies, background));
+    }
+    private void Save(string temp)
+    {
+        SaveData.current.vineWeavers.Add(new VineWeaverGOData(gameObject.GetComponent<VineWeaverGO>()));
+    }
 
-        Destroy(gameObject);
+    public void Load(string temp)
+    {
+        VineWeaverGOData data = SaveData.current.vineWeavers.Find(x => x.id == id);
+
+        if (data != default)
+        {
+            triggered = data.triggered;
+
+            if (triggered)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
+}
+
+[System.Serializable]
+public class VineWeaverGOData
+{
+    public string id;
+    public bool triggered;
+
+    public VineWeaverGOData(VineWeaverGO vineWeaverGO)
+    {
+        id = vineWeaverGO.id;
+        triggered = vineWeaverGO.triggered;
     }
 }

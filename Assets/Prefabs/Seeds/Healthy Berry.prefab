@@ -136,8 +136,8 @@ MonoBehaviour:
   info: Restores 10 health.
   seedImage: {fileID: 7851132476361831286}
   seedSprite: {fileID: 21300000, guid: 346104d3c1eba2540bbc5074bf137a55, type: 3}
-  berrySprite: {fileID: 21300000, guid: d25d888006c19494ca9b85d36704b1f2, type: 3}
-  berryTileFinishedSprite: {fileID: 21300000, guid: 847229814cf49464d89770a7e54dc78c,
+  berrySprite: {fileID: 21300000, guid: 814a0d4a3570a284d888e89dba00cae5, type: 3}
+  berryTileFinishedSprite: {fileID: 21300000, guid: 05631f4e00855a0439d467f9b61c7284,
     type: 3}
   shortGrowth: 1
   mediumGrowth: 0

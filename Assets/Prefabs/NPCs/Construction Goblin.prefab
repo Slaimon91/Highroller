@@ -143,8 +143,9 @@ GameObject:
   - component: {fileID: 1004059473214004372}
   - component: {fileID: 1830375523}
   - component: {fileID: 1830375524}
+  - component: {fileID: -8886260952076694131}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Construction Goblin
   m_TagString: InteractableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,10 +198,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5675cec0f0553f244ab89a1662a49bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    name: Construction Goblin
+  dialogues:
+  - name: Construction Goblin
     sentences:
-    - Sorry, this area is off limits for carrot bois!
+    - This part of the game is under construction, step aside.
+  dialogueNr: 0
+  id: 
 --- !u!58 &1830375523
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -227,6 +230,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2820917fd35cc0c42a1525b4e336f2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8886260952076694131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7923440964744890639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d443795ba7d9c4a4f884907830f54145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7923440964781021315

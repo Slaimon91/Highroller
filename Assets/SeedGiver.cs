@@ -27,11 +27,7 @@ public class SeedGiver : MonoBehaviour, IInteractable
         {
             FindObjectOfType<PlayerController>().onFinishedInteractingCallback += GiveSeed;
             hasGivenSeed = true;
-        }
-
-        else //prepare for separate dialogue after seed is given
-        {
-
+            gameObject.GetComponent<DialogueTrigger>().AdvanceDialogue();
         }
     }
     private void Save(string temp)

@@ -15,11 +15,13 @@ public class Gaiablock : MonoBehaviour, IInteractable
 
     void Awake()
     {
-        id = GetComponent<UniqueID>().id;
         GameEvents.SaveInitiated += Save;
         GameEvents.LoadInitiated += Load;
     }
-
+    void Start()
+    {
+        id = GetComponent<UniqueID>().id;
+    }
     public void Interact()
     {
         string questionText = "Release <color=#84B724>" + gaiaAmount + "</color>";

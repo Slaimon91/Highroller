@@ -33,6 +33,7 @@ public class SaveDataManager : MonoBehaviour
             SaveData.current.playerOW = data.playerOW;
             SaveData.current.seedGiver = data.seedGiver;
             SaveData.current.moleGlasses = data.moleGlasses;
+            SaveData.current.tricksterBridge = data.tricksterBridge;
 
             foreach (SavestoneData savestone in data.saveStones)
             {
@@ -48,6 +49,26 @@ public class SaveDataManager : MonoBehaviour
             {
                 SaveData.current.gaiablocks.Add(gblock);
             }
+
+            foreach (TileTreasureData tileTreasure in data.tileTreasures)
+            {
+                SaveData.current.tileTreasures.Add(tileTreasure);
+            }
+
+            foreach (TileTreasureData tileTreasure in data.tileTreasures)
+            {
+                SaveData.current.tileTreasures.Add(tileTreasure);
+            }
+
+            foreach (DialogueTriggerData dialogueTrigger in data.dialogueTriggers)
+            {
+                SaveData.current.dialogueTriggers.Add(dialogueTrigger);
+            }
+
+            foreach (VineWeaverGOData vineWeaver in data.vineWeavers)
+            {
+                SaveData.current.vineWeavers.Add(vineWeaver);
+            }
         }
 
         else
@@ -61,12 +82,19 @@ public class SaveDataManager : MonoBehaviour
         SaveData.current.playerOW = null;
         SaveData.current.seedGiver = null;
         SaveData.current.moleGlasses = null;
+        SaveData.current.tricksterBridge = null;
 
         SaveData.current.saveStones.Clear();
 
         SaveData.current.resourcePickups.Clear();
 
         SaveData.current.gaiablocks.Clear();
+
+        SaveData.current.tileTreasures.Clear();
+
+        SaveData.current.dialogueTriggers.Clear();
+
+        SaveData.current.vineWeavers.Clear();
     }
 
     public void OnDestroy()
@@ -96,10 +124,17 @@ public class SaveData
     public PlayerData playerOW;
     public SeedGiverData seedGiver;
     public MoleGlassesData moleGlasses;
+    public TricksterBridgeData tricksterBridge;
 
     public List<SavestoneData> saveStones = new List<SavestoneData>();
 
     public List<ResourcePickupData> resourcePickups = new List<ResourcePickupData>();
 
     public List<GaiablockData> gaiablocks = new List<GaiablockData>();
+
+    public List<TileTreasureData> tileTreasures = new List<TileTreasureData>();
+
+    public List<DialogueTriggerData> dialogueTriggers = new List<DialogueTriggerData>();
+
+    public List<VineWeaverGOData> vineWeavers = new List<VineWeaverGOData>();
 }

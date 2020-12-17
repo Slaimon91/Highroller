@@ -29,7 +29,7 @@ public class TileflipVisual : MonoBehaviour
     {
         if (onFlipAnimationDoneCallback != null)
         {
-            onFlipAnimationDoneCallback.Invoke();
+            onFlipAnimationDoneCallback?.Invoke();
         }
     }
 }
