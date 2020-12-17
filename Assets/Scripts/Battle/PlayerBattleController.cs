@@ -101,7 +101,7 @@ public class PlayerBattleController : MonoBehaviour
             }
             else
             {
-                audioManager.Play("FailBlock");
+                //audioManager.Play("FailBlock");
                 Debug.Log("You failed the block!");
             }
         }
@@ -123,7 +123,7 @@ public class PlayerBattleController : MonoBehaviour
             }
             else
             {
-                audioManager.Play("FailDodge");
+                //audioManager.Play("FailDodge");
                 Debug.Log("You failed the dodge!");
             }
         }
@@ -263,11 +263,10 @@ public class PlayerBattleController : MonoBehaviour
             damageTaken += damageToTake;
             StartCoroutine(DamageText(damageToTake));
 
-            audioManager.Play("TakeDamage");
-
             if (!successBlock)
             {
                 animator.SetTrigger("Damage");
+                audioManager.Play("TakeDamage");
             }
             ResetAction();
             CheckHealthAnimation();
