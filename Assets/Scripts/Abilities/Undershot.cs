@@ -5,8 +5,13 @@ using UnityEngine;
 public class Undershot : AbilityBase
 {
     private bool activeTurn = false;
-    void Start()
+
+    IEnumerator Start()
     {
+        while (FindObjectOfType<PlayerBattleController>() == null)
+        {
+            yield return null;
+        }
         FindObjectOfType<PlayerBattleController>().SetUndershot(true);
     }
     public void SetActiveTurn()

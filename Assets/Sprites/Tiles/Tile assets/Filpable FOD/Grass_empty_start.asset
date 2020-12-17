@@ -36,5 +36,5 @@ MonoBehaviour:
   m_ColliderType: 1
   tileSprite: {fileID: 8096303109031439429, guid: bdb5c0ae47f872a4ab15147dac0664b4,
     type: 3}
-  groundType: 3
+  groundType: 2
   layer: 0

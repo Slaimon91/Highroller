@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7959423396412892270}
   - component: {fileID: 7959423396412892264}
   - component: {fileID: 5630546460379368581}
+  - component: {fileID: 211390005582000252}
   m_Layer: 8
   m_Name: Vine Weaver GO
   m_TagString: InteractableObject
@@ -163,13 +164,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - name: 
+  - name: Sprout
     sentences:
     - 'Huh?!
 
       Did that bush just move?!'
   dialogueNr: 0
   id: 
+--- !u!114 &211390005582000252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959423396412892266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d443795ba7d9c4a4f884907830f54145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7959423397542955220
 GameObject:
   m_ObjectHideFlags: 0

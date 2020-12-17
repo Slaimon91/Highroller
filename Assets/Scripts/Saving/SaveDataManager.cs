@@ -34,6 +34,7 @@ public class SaveDataManager : MonoBehaviour
             SaveData.current.seedGiver = data.seedGiver;
             SaveData.current.moleGlasses = data.moleGlasses;
             SaveData.current.tricksterBridge = data.tricksterBridge;
+            SaveData.current.inventory = data.inventory;
 
             foreach (SavestoneData savestone in data.saveStones)
             {
@@ -69,6 +70,16 @@ public class SaveDataManager : MonoBehaviour
             {
                 SaveData.current.vineWeavers.Add(vineWeaver);
             }
+
+            foreach (ItemPickupsData itemPickup in data.itemPickups)
+            {
+                SaveData.current.itemPickups.Add(itemPickup);
+            }
+
+            foreach (BerryTileData berry in data.berryTiles)
+            {
+                SaveData.current.berryTiles.Add(berry);
+            }
         }
 
         else
@@ -83,6 +94,7 @@ public class SaveDataManager : MonoBehaviour
         SaveData.current.seedGiver = null;
         SaveData.current.moleGlasses = null;
         SaveData.current.tricksterBridge = null;
+        SaveData.current.inventory = null;
 
         SaveData.current.saveStones.Clear();
 
@@ -95,6 +107,10 @@ public class SaveDataManager : MonoBehaviour
         SaveData.current.dialogueTriggers.Clear();
 
         SaveData.current.vineWeavers.Clear();
+
+        SaveData.current.itemPickups.Clear();
+
+        SaveData.current.berryTiles.Clear();
     }
 
     public void OnDestroy()
@@ -125,6 +141,7 @@ public class SaveData
     public SeedGiverData seedGiver;
     public MoleGlassesData moleGlasses;
     public TricksterBridgeData tricksterBridge;
+    public InventoryData inventory;
 
     public List<SavestoneData> saveStones = new List<SavestoneData>();
 
@@ -137,4 +154,8 @@ public class SaveData
     public List<DialogueTriggerData> dialogueTriggers = new List<DialogueTriggerData>();
 
     public List<VineWeaverGOData> vineWeavers = new List<VineWeaverGOData>();
+
+    public List<ItemPickupsData> itemPickups = new List<ItemPickupsData>();
+
+    public List<BerryTileData> berryTiles = new List<BerryTileData>();
 }

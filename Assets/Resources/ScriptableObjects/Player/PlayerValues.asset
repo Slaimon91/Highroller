@@ -18,8 +18,8 @@ MonoBehaviour:
   gaia: 50
   maxGaia: 50
   currency: 0
-  xp: 1
+  xp: 0
   level: 1
-  nrOfBattles: 1
+  nrOfBattles: 0
   currentOWScene: OW_FOD
   currentSavefile: 3

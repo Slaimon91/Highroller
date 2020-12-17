@@ -109,7 +109,6 @@ public class SpiderlingBattle : EnemyBattleBase
             yield return StartCoroutine(GetComponent<ThrowSimulation>().StartThrowCoro());
             transform.position = firstJumpingTarget;
             animator.SetTrigger("hasLanded");
-            Debug.Log("HEJ");
             isIdling = true;
         }
         else if (spiderlingNumber == 3)

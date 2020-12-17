@@ -50,13 +50,13 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     private void Save(string temp)
     {
         SaveData.current.dialogueTriggers.Add(new DialogueTriggerData(gameObject.GetComponent<DialogueTrigger>()));
-        Debug.Log("Saved stone with id:" + id + " and status: " + dialogueNr);
+
     }
 
     public void Load(string temp)
     {
         DialogueTriggerData data = SaveData.current.dialogueTriggers.Find(x => x.id == id);
-        Debug.Log("Searching stone has id:" + id);
+
 
         if (data != default)
         {

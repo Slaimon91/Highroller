@@ -42,9 +42,8 @@ public class InventoryUI : MonoBehaviour
     void Start()
     {
         inventory = Inventory.instance;
-        inventory.onItemChangedCallback += UpdateUI;
 
-        foreach(InventorySlot slot in abilityItemsParent.GetComponentsInChildren<InventorySlot>())
+        foreach (InventorySlot slot in abilityItemsParent.GetComponentsInChildren<InventorySlot>())
         {
             abilitySlots.Add(slot);
         }
@@ -56,6 +55,9 @@ public class InventoryUI : MonoBehaviour
         {
             trinketSlots.Add(slot);
         }
+
+        inventory.onItemChangedCallback += UpdateUI;
+        inventory.onInventoryLoadedCallback += LoadUI;
 
         currentActiveTab = inventoryTabs[0];
         currentActiveTab.gameObject.SetActive(true);
@@ -127,6 +129,31 @@ public class InventoryUI : MonoBehaviour
         if (item.prefab.GetComponent<TrinketBase>() != null)
         {
             trinketSlots[trinketSlots.Count - 1].AddItem(item);
+        }
+    }
+
+    void LoadUI(List<Item> trinkets, List<Item> abilities, List<Item> seeds, bool clearInventory)
+    {
+        if(!clearInventory)
+        {
+            foreach (Item item in trinkets)
+            {
+                trinketSlots[trinketSlots.Count - 1].AddItem(item);
+            }
+            foreach (Item item in abilities)
+            {
+                int slotNr = item.prefab.GetComponent<AbilityBase>().GetInventorySlotNr();
+                abilitySlots[slotNr].AddItem(item);
+            }
+            foreach (Item item in seeds)
+            {
+                int slotNr = item.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
+                seedSlots[slotNr].AddItem(item);
+            }
+        }
+        else
+        {
+            //trinketSlots.Clear();
         }
     }
 
@@ -250,6 +277,23 @@ public class InventoryUI : MonoBehaviour
         }
 
         return seedList;
+    }
+
+    public SeedBase GetSeed(SeedBase seed)
+    {
+        foreach (InventorySlot i in seedSlots)
+        {
+            SeedBase seed2 = i.GetChildHolder().GetComponentInChildren<SeedBase>();
+            if (seed != null)
+            {
+                if(seed == seed2)
+                {
+                    return seed2;
+                }
+            }
+        }
+
+        return null;
     }
 
     /*public bool CheckForItem(Item searchItem)

@@ -13,17 +13,27 @@ public class BerryTile : MonoBehaviour, IInteractable
     [SerializeField] Sprite plantStageFour;
     private Sprite plantStageFive;
     private SeedBase plantedBerry;
-    private bool berryIsPlanted = false;
-    private int berryStage = 0; //0, 1, 2, 3, 4
-    private int berryPlantedAtBattleNR = 0;
-    private int berryGrowthSpeed = 0; //1, 2, 3
-    private int berryGrowthPoints = 0; //3, 6, 9        4, 8, 12         5, 10, 15
+    [HideInInspector] public bool berryIsPlanted = false;
+
+    [HideInInspector] public int berryStage = 0; //0, 1, 2, 3, 4
+    [HideInInspector] public int berryPlantedAtBattleNR = 0;
+    [HideInInspector] public int berryGrowthSpeed = 0; //1, 2, 3
+    [HideInInspector] public int berryGrowthPoints = 0; //3, 6, 9        4, 8, 12         5, 10, 15
+
     private GenericTextManager genericTextManager;
     [SerializeField] GameObject rewardbox;
+    [HideInInspector] public string id;
+    [HideInInspector] public string plantedBerryName;
 
     void Awake()
     {
         plantSprite = GetComponent<SpriteRenderer>();
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
+    }
+    void Start()
+    {
+        id = GetComponent<UniqueID>().id;
     }
     public void Interact()
     {
@@ -56,6 +66,7 @@ public class BerryTile : MonoBehaviour, IInteractable
         berryIsPlanted = false;
         berryPlantedAtBattleNR = 0;
         plantSprite.sprite = plantStageZero;
+        plantedBerryName = "";
         plantedBerry.SetBerryStatus(true);
         plantedBerry.SetInactiveStatus(false);
 
@@ -109,6 +120,7 @@ public class BerryTile : MonoBehaviour, IInteractable
         berryStage = 1;
         plantSprite.sprite = plantStageOne;
         plantedBerry = berry;
+        plantedBerryName = berry.GetSeedName();
         berryGrowthSpeed = berry.GetGrowthMultiplier();
         plantStageFive = berry.GetBerryTileFinishedSprite();
         berry.SetInactiveStatus(true);
@@ -156,5 +168,64 @@ public class BerryTile : MonoBehaviour, IInteractable
             berryGrowthPoints = playerValues.nrOfBattles - berryPlantedAtBattleNR;
             AdvanceBerryStage();
         }
+    }
+    private void Save(string temp)
+    {
+        SaveData.current.berryTiles.Add(new BerryTileData(gameObject.GetComponent<BerryTile>()));
+        //Debug.Log("ID save: " + id + "berry planted :" + berryIsPlanted);
+    }
+
+    public void Load(string temp)
+    {
+        BerryTileData data = SaveData.current.berryTiles.Find(x => x.id == id);
+        //Debug.Log("My id: " + id + " is planted: " + data.berryIsPlanted);
+
+        if (data != default && data.berryIsPlanted)
+        {
+            id = data.id;
+            berryIsPlanted = data.berryIsPlanted;
+
+            berryStage = data.berryStage;
+            berryPlantedAtBattleNR = data.berryPlantedAtBattleNR;
+            berryGrowthSpeed = data.berryGrowthSpeed;
+            berryGrowthPoints = data.berryGrowthPoints;
+
+            Item itemSeed = Resources.Load("ScriptableObjects/Seeds/" + data.plantedBerryName) as Item;
+            //plantedBerry = FindObjectOfType<InventoryUI>().GetSeed(itemSeed.prefab.GetComponent<SeedBase>());
+            //Debug.Log(plantedBerry);
+            plantedBerry = itemSeed.prefab.GetComponent<SeedBase>();
+            plantStageFive = plantedBerry.GetBerryTileFinishedSprite();
+            ReloadBerries();
+        }
+    }
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
+}
+
+[System.Serializable]
+public class BerryTileData
+{
+    public string id;
+    public bool berryIsPlanted;
+    public string plantedBerryName;
+
+    public int berryStage;
+    public int berryPlantedAtBattleNR;
+    public int berryGrowthSpeed;
+    public int berryGrowthPoints;
+
+    public BerryTileData(BerryTile berryTile)
+    {
+        id = berryTile.id;
+        berryIsPlanted = berryTile.berryIsPlanted;
+        plantedBerryName = berryTile.plantedBerryName;
+
+        berryStage = berryTile.berryStage;
+        berryPlantedAtBattleNR = berryTile.berryPlantedAtBattleNR;
+        berryGrowthSpeed = berryTile.berryGrowthSpeed;
+        berryGrowthPoints = berryTile.berryGrowthPoints;
     }
 }

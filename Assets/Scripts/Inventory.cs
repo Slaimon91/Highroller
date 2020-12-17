@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
             // Destroy(gameObject);
             return;
         }
+        GameEvents.SaveInitiated += Save;
+        GameEvents.LoadInitiated += Load;
 
         DontDestroyOnLoad(gameObject);
 
@@ -33,6 +35,9 @@ public class Inventory : MonoBehaviour
 
     public delegate void OnItemChanged(Item item);
     public OnItemChanged onItemChangedCallback;
+
+    public delegate void OnInventoryLoaded(List<Item> trinkets, List<Item> abilities, List<Item> seeds, bool clearInventory);
+    public OnInventoryLoaded onInventoryLoadedCallback;
 
     public List<Item> trinkets = new List<Item>();
     public List<Item> abilities = new List<Item>();
@@ -80,4 +85,72 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Save(string temp)
+    {
+        SaveData.current.inventory = new InventoryData(gameObject.GetComponent<Inventory>());
+    }
+
+    public void Load(string temp)
+    {
+        /*InventoryData data = SaveData.current.inventory;
+
+        if (data != default)
+        {
+            if(temp == "")
+            {
+                trinkets.Clear();
+                abilities.Clear();
+                seeds.Clear();
+
+                foreach (string item in data.trinkets)
+                {
+                    trinkets.Add(Resources.Load("ScriptableObjects/Trinkets/" + item) as Item);
+
+                }
+                foreach (string item in data.abilities)
+                {
+                    abilities.Add(Resources.Load("ScriptableObjects/Abilities/" + item) as Item);
+                }
+                foreach (string item in data.seeds)
+                {
+                    seeds.Add(Resources.Load("ScriptableObjects/Seeds/" + item) as Item);
+                }
+
+                onInventoryLoadedCallback?.Invoke(trinkets, abilities, seeds, false);
+            }
+        }
+        else
+        {
+            onInventoryLoadedCallback?.Invoke(trinkets, abilities, seeds, true);
+        }*/
+    }
+    public void OnDestroy()
+    {
+        GameEvents.SaveInitiated -= Save;
+        GameEvents.LoadInitiated -= Load;
+    }
+}
+
+[System.Serializable]
+public class InventoryData
+{
+    public List<string> trinkets = new List<string>();
+    public List<string> abilities = new List<string>();
+    public List<string> seeds = new List<string>();
+
+    public InventoryData(Inventory inventory)
+    {
+        foreach (Item item in inventory.trinkets)
+        {
+            trinkets.Add(item.name);
+        }
+        foreach (Item item in inventory.abilities)
+        {
+            abilities.Add(item.name);
+        }
+        foreach (Item item in inventory.seeds)
+        {
+            seeds.Add(item.name);
+        }
+    }
 }

@@ -25,6 +25,7 @@ public class TricksterBridge : MonoBehaviour, IInteractable
         if(!startedTalking)
         {
             startedTalking = true;
+
             GetComponent<DialogueTrigger>().onFinishedDialogueCallback += AskQuestion;
         }
     }
@@ -77,10 +78,17 @@ public class TricksterBridge : MonoBehaviour, IInteractable
         popup.onYesAnswerCallback -= YesPay;
         popup.onMiddleAnswerCallback -= NoFight;
         popup.onNoAnswerCallback -= NoCancel;
-        startedTalking = false;
+
         GetComponent<DialogueTrigger>().GoToDialogue(1);
         GetComponent<DialogueTrigger>().Interact();
+        GetComponent<DialogueTrigger>().onFinishedDialogueCallback += ResetNoCancel;
+    }
+
+    private void ResetNoCancel()
+    {
+        startedTalking = false;
         GetComponent<DialogueTrigger>().GoToDialogue(0);
+        GetComponent<DialogueTrigger>().onFinishedDialogueCallback -= ResetNoCancel;
     }
     private void Save(string temp)
     {
