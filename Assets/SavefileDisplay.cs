@@ -79,12 +79,12 @@ public class SavefileDisplayData
     public string location;
     public string playtime;
 
-    public SavefileDisplayData(PlayerValues playerValues)
+    public SavefileDisplayData(PlayerValues playerValues, TimeManager timeManager)
     {
         hp = playerValues.healthPoints;
         gaia = playerValues.gaia;
         ga = playerValues.currency;
         location = playerValues.currentOWScene;
-        playtime = "99H 99M";
+        playtime = timeManager.GetTimeHoursSeconds();
     }
 }

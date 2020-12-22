@@ -20,6 +20,8 @@ MonoBehaviour:
   monsterChance: 40
   gaiaRewardAmount: 10
   HPRewardAmount: 5
+  monsterIcons:
+  - {fileID: 21300000, guid: e6a600744c0044246a92b8b456bc6da3, type: 3}
   encounters:
   - list:
     - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}

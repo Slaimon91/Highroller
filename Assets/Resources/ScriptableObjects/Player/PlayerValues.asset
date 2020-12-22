@@ -15,11 +15,11 @@ MonoBehaviour:
   name: PlayerValues
   healthPoints: 20
   maxHealthPoints: 20
-  gaia: 50
+  gaia: 0
   maxGaia: 50
   currency: 0
   xp: 0
   level: 1
   nrOfBattles: 0
   currentOWScene: OW_FOD
-  currentSavefile: 3
+  currentSavefile: 2

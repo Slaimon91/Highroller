@@ -39,6 +39,7 @@ public class PlayerControlsManager : MonoBehaviour
         {
             gameObject.transform.parent = null;
             DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
         }
 
         controls = new PlayerControls();
@@ -46,6 +47,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Inventory.performed += ctx => TriggerOpenInventory();
         controls.Overworld.Interact.performed += ctx => TriggerInteract();
         controls.Overworld.Tileflip.performed += ctx => TriggerPressedTileFlip();
+        controls.Overworld.Cancel.performed += ctx => TriggerOWCancel();
         controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneToBattleHax();
         controls.Overworld.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.Overworld.Move.canceled += ctx => movement = Vector2.zero;
@@ -136,7 +138,15 @@ public class PlayerControlsManager : MonoBehaviour
     }
     private void BERRYHAX()
     {
-        playerValues.nrOfBattles++;
+        TimeManager timeManager;
+
+        if ((timeManager = FindObjectOfType<TimeManager>()) == null)
+        {
+            return;
+        }
+
+        timeManager.AddOneMinute();
+        /*playerValues.nrOfBattles++;
         if (FindObjectOfType<BerryTile>() != null)
         {
             List<BerryTile> berryTiles = new List<BerryTile>();
@@ -145,7 +155,7 @@ public class PlayerControlsManager : MonoBehaviour
             {
                 tile.ReloadBerries();
             }
-        }
+        }*/
     }
 
     private void SAVEHAX()
@@ -283,6 +293,19 @@ public class PlayerControlsManager : MonoBehaviour
         }
 
         playerController.ToggleTileFlip();
+    }
+
+    public void TriggerOWCancel()
+    {
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+
+        playerController.CancelTileFlip();
     }
 
     public void TriggerOptions()

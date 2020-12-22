@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum GameState { PLAYING, PAUSED };
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,15 +19,16 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool interacting = false;
     [HideInInspector] public bool tileFlipping = false;
     bool hasFinishedWalking = false;
-    [SerializeField] Tilemap groundTilemap;
-    [SerializeField] Tilemap colliderTilemap;
-    [SerializeField] GroundTile currentTile;
+    private float myTime;
+
     Direction dir;
+    public enum Direction { North, East, South, West, None };
+
     bool tileFlipAxisPressed = false;
-    float playerTileOffset = 0.19f;
+    [HideInInspector] public float playerTileOffset = 0.19f;
     Vector3 playerOffsetVector;
-    bool waterForm = false;
-    int elevation = 0;
+    [HideInInspector] public bool waterForm = new bool();
+    [HideInInspector] public int elevation = 0;
     private bool onBridge = false;
 
 
@@ -41,26 +43,15 @@ public class PlayerController : MonoBehaviour
     //Cached component references
     Animator animator;
     InFrontOfPlayerTrigger testTrigger;
-    [SerializeField] GameObject selectedTilePrefab;
-    [SerializeField] GameObject availableTilePrefab;
-    private GameObject selectedTile;
-    private List<GameObject> availableTiles;
     public PlayerValues playerValues;
-    [SerializeField] GameObject infoboxPrefab;
-    private TileflipInfobox infoBoxObject;
     private PlayerControlsManager playerControlsManager;
-    
-    
-    [SerializeField] GameObject darkOverlayPrefab;
-    private GameObject darkOverlayObject;
-
-    public enum Direction { North, East, South, West, None};
+    private TileflipManager tileflipManager;
 
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI gaiaText;
     [SerializeField] TextMeshProUGUI goldenAcornText;
     private GameObject overWorldCanvas;
-    private EncounterManager encounterManager;
+
     public delegate void OnFinishedInteracting();
     public OnFinishedInteracting onFinishedInteractingCallback;
     private Rigidbody2D rb;
@@ -81,7 +72,8 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
         animator = GetComponent<Animator>();
         playerControlsManager = FindObjectOfType<PlayerControlsManager>();
-        availableTiles = new List<GameObject>();
+        tileflipManager = FindObjectOfType<TileflipManager>();
+
         testTrigger = GetComponentInChildren<InFrontOfPlayerTrigger>();
         inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y - 1 - playerTileOffset);
         dir = GetDirection();
@@ -90,7 +82,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         overWorldCanvas = FindObjectOfType<OverworldCanvas>().gameObject;
-        encounterManager = FindObjectOfType<EncounterManager>();
+
         playerOffsetVector = new Vector3(0.0f, 0.19f, 0.0f);
     }
 
@@ -113,8 +105,13 @@ public class PlayerController : MonoBehaviour
         //If tileflipping
         if (!interacting && tileFlipping)
         {
-            TileFlippingUpdate();
+            PlayerTurnInPlace();
+
+            dir = GetDirection();
+            SetInteractCoordinates(dir);
         }
+        myTime = Time.timeSinceLevelLoad;
+        playerValues.playedTime += myTime;
     }
     private void FixedUpdate()
     {
@@ -130,7 +127,7 @@ public class PlayerController : MonoBehaviour
         //Flipping a tile
         if (!interacting && tileFlipping)
         {
-            FlipTile();
+            tileflipManager.FlipTile();
         }
 
         //Pressed interact
@@ -163,82 +160,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FlipTile() //When you press A after opening the flip grid
-    {
-        if (selectedTile)
-        {
-            playerControlsManager.ToggleOnGenericUI();
-            currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x - 0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z)) as GroundTile;
-            if (currentTile)
-            {
-                //darkOverlayObject = Instantiate(darkOverlayPrefab, transform);
-                encounterManager.TestGroundType(currentTile.groundType, selectedTile, false);
-            }
-            else
-            {
-                GameObject colliding = testTrigger.GetCollidingGameObject();
-                if (testTrigger.GetCollidingTileableStatus())
-                {
-                    if(colliding.GetComponent<IInteractable>() != null)
-                    {
-                        colliding.GetComponent<IInteractable>().Interact();
-                    }
-                    GroundType tmpType = colliding.GetComponent<TTileable>().GetTileType();
-                    //darkOverlayObject = Instantiate(darkOverlayPrefab, transform);
-                    encounterManager.TestGroundType(tmpType, selectedTile, false);
-                }
-            }
-        }
-    }
-
-    private void TileFlippingUpdate() //Runs every frame while the grid is open
-    {
-        if (!(Vector3.Distance(transform.position, movePoint.position) == 0))
-        {
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-
-            if (!IsCollidingInFront(testTrigger.transform.position))
-            {
-                foreach (GameObject tile in availableTiles)
-                {
-                    if(tile.transform.position == inFrontOfPlayerTrigger.position)
-                    {
-                        if(selectedTile != tile)
-                        {
-                            selectedTile = tile;
-                            tile.GetComponent<Animator>().SetFloat("Available", 1f);
-                        }
-                    }
-                    else
-                    {
-                        tile.GetComponent<Animator>().SetFloat("Available", -1f);
-                    }
-                }
-            }
-            else
-            {
-                selectedTile = null;
-                foreach (GameObject tile in availableTiles)
-                {
-                    var TileAnimator = tile.GetComponent<Animator>();
-                    TileAnimator.SetFloat("Available", -1f);
-                }
-            }
-
-            UpdateInfobox();
-            PlayerTurnInPlace();
-
-            dir = GetDirection();
-            SetInteractCoordinates(dir);
-        }
-    }
-
     public void ToggleTileFlip() //When you toggle the flip grid
     {
-        
+
         if (state != GameState.PLAYING)
         {
             return;
@@ -261,45 +185,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CancelTileFlip()
+    {
+        if (state != GameState.PLAYING)
+        {
+            return;
+        }
+        //Pressed tileflip
+        if (!interacting)
+        {
+            if (tileFlipping && hasFinishedWalking)
+            {
+                CancelTileflip();
+            }
+        }
+    }
+
     public void CancelTileflip()
     {
         tileFlipping = false;
-        Destroy(selectedTile);
-        foreach (GameObject tile in availableTiles)
-        {
-            Destroy(tile);
-        }
-        availableTiles.Clear();
-        if(infoBoxObject != null)
-        {
-            Destroy(infoBoxObject.gameObject);
-        }
-    }
-
-    public void RemoveFlipSquares()
-    {
-        foreach (GameObject tile in availableTiles)
-        {
-            if (tile != selectedTile)
-                tile.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        }
-        if (infoBoxObject != null)
-        {
-            Destroy(infoBoxObject.gameObject);
-        }
-    }
-
-    private bool IsCollidingInFront(Vector3 collidingCheckPos)
-    {
-        if (elevation == 0 && Physics2D.OverlapCircle(collidingCheckPos, .2f, whatStopsMovement) || 
-            (elevation == 1 && Physics2D.OverlapCircle(collidingCheckPos, .2f, whatStopsMovementHigh)) ||
-            (Physics2D.OverlapCircle(collidingCheckPos, .2f, water) && !waterForm) ||
-            (Physics2D.OverlapCircle(collidingCheckPos, .2f, notFlippable)))
-        {
-            return true;
-        }
-
-        return false;
+        tileflipManager.CancelTileflip();
     }
 
     public void SetInteracting(bool newState)
@@ -358,7 +263,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForFinishWalking()
+    public IEnumerator WaitForFinishWalking()
     {
         hasFinishedWalking = false;
         while (!(Vector3.Distance(transform.position, movePoint.position) == 0))
@@ -369,96 +274,8 @@ public class PlayerController : MonoBehaviour
         dir = GetDirection();
         SetInteractCoordinates(dir);
         NotWalking();
-        SpawnAvailableTiles();
+        tileflipManager.SpawnAvailableTiles();
         hasFinishedWalking = true;        
-    }
-
-    private void SpawnAvailableTiles()
-    {
-        Vector3 tempEast =  new Vector3(transform.position.x + 1, transform.position.y - playerTileOffset, transform.position.z);
-        Vector3 tempWest = new Vector3(transform.position.x - 1, transform.position.y - playerTileOffset, transform.position.z);
-        Vector3 tempNorth = new Vector3(transform.position.x, transform.position.y + 1 - playerTileOffset, transform.position.z);
-        Vector3 tempSouth = new Vector3(transform.position.x, transform.position.y - 1 - playerTileOffset, transform.position.z);
-
-        SpawnTile(tempEast);
-        SpawnTile(tempWest);
-        SpawnTile(tempNorth);
-        SpawnTile(tempSouth);
-
-        infoBoxObject = Instantiate(infoboxPrefab, overWorldCanvas.transform).GetComponent<TileflipInfobox>();
-        UpdateInfobox();
-    }
-
-    private void SpawnTile(Vector3 direction)
-    {
-        if (!IsCollidingInFront(direction))
-        {
-            GameObject availableTile = (Instantiate(availableTilePrefab, direction, Quaternion.identity));
-            availableTile.transform.parent = transform;
-            availableTiles.Add(availableTile);
-            if (availableTile.transform.position == inFrontOfPlayerTrigger.position)
-            {
-                selectedTile = availableTile;
-                availableTile.GetComponent<Animator>().SetFloat("Available", 1f);
-            }
-        }
-    }
- 
-    private void UpdateInfobox()
-    {
-        if(selectedTile != null && infoBoxObject != null)
-        {
-            infoBoxObject.gameObject.SetActive(true);
-            currentTile = groundTilemap.GetTile(new Vector3Int((int)(selectedTile.transform.position.x - 0.5f), (int)(selectedTile.transform.position.y - 0.5f), (int)selectedTile.transform.position.z)) as GroundTile;
-            if (currentTile)
-            {
-                TileflipTable currentTileTable = encounterManager.TestGroundType(currentTile.groundType, selectedTile, true);
-
-                if (currentTileTable != null)
-                {
-                    string per = "%";
-                    if ((playerValues.healthPoints >= playerValues.maxHealthPoints) && (playerValues.gaia >= playerValues.maxGaia))
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.HPChance + currentTileTable.gaiaChance;
-                        infoBoxObject.AssignInfo(currentTileTable.displayName, "0" + per, "0" + per, monster.ToString() + per);
-                    }
-                    else if (playerValues.healthPoints >= playerValues.maxHealthPoints)
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.HPChance;
-                        infoBoxObject.AssignInfo(currentTileTable.displayName, "0" + per, currentTileTable.gaiaChance.ToString() + per, monster.ToString() + per);
-                    }
-                    else if (playerValues.gaia >= playerValues.maxGaia)
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.gaiaChance;
-                        infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, "0" + per, monster.ToString() + per);
-                    }
-                    else
-                    {
-                        infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per);
-                    }
-                }
-            }
-            else
-            {
-                GameObject colliding = testTrigger.GetCollidingGameObject();
-                if (testTrigger.GetCollidingTileableStatus())
-                {
-                    GroundType tmpType = colliding.GetComponent<TTileable>().GetTileType();
-                    TileflipTable currentTileTable = encounterManager.TestGroundType(tmpType, selectedTile, true);
-
-                    if (currentTileTable != null)
-                    {
-                        string per = "%";
-
-                        infoBoxObject.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per);
-                    }
-                }
-            }
-        }
-        else if (infoBoxObject != null)
-        {
-            infoBoxObject.gameObject.SetActive(false);
-        }
     }
 
     public IEnumerator TeleportPlayer(Vector3 newCoords, Vector2 newDirection)
@@ -668,11 +485,18 @@ public class PlayerController : MonoBehaviour
         onBridge = status;
     }
 
+    public void LoadPlayerAtCoords(Vector3 newPosition, Vector2 newDirection)
+    {
+        transform.position = newPosition;
+        currentDirection = newDirection;
+        movePoint.transform.position = transform.position;
+    }
+
     private void Save(string temp)
     {
         SaveData.current.playerOW = new PlayerData(gameObject.GetComponent<PlayerController>());
         //SaveSystem.Save<PlayerData>(new PlayerData(gameObject.GetComponent<PlayerController>()),"", playerValues.currentSavefile + "/" + temp + playerValues.currentOWScene + "/PlayerData");
-        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues), playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
+        SaveSystem.Save<SavefileDisplayData>(new SavefileDisplayData(playerValues, FindObjectOfType<TimeManager>()), playerValues.currentSavefile + "/" + temp + "SavefileDisplay");
     }
 
     public void Load(string temp)
@@ -691,6 +515,7 @@ public class PlayerController : MonoBehaviour
                 playerValues.xp = data.xp;
                 playerValues.level = data.level;
                 playerValues.nrOfBattles = data.nrOfBattles;
+                playerValues.playedTime = data.playedTime;
             }
 
             transform.position = data.position;
@@ -706,6 +531,7 @@ public class PlayerController : MonoBehaviour
             playerValues.currency = 0;
             playerValues.xp = 0;
             playerValues.level = 1;
+            playerValues.playedTime = 0;
             playerValues.nrOfBattles = 0;
         }
     }
@@ -713,13 +539,6 @@ public class PlayerController : MonoBehaviour
     {
         GameEvents.SaveInitiated -= Save;
         GameEvents.LoadInitiated -= Load;
-    }
-
-    public void LoadPlayerAtCoords(Vector3 newPosition, Vector2 newDirection)
-    {
-        transform.position = newPosition;
-        currentDirection = newDirection;
-        movePoint.transform.position = transform.position;
     }
 }
 
@@ -734,6 +553,7 @@ public class PlayerData
     public int xp;
     public int level;
     public int nrOfBattles;
+    public float playedTime;
     public string currentOWScene;
     public int currentSavefile;
 
@@ -750,6 +570,7 @@ public class PlayerData
         xp = playerController.playerValues.xp;
         level = playerController.playerValues.level;
         nrOfBattles = playerController.playerValues.nrOfBattles;
+        playedTime = playerController.playerValues.playedTime;
         currentOWScene = playerController.playerValues.currentOWScene;
         currentSavefile = playerController.playerValues.currentSavefile;
 

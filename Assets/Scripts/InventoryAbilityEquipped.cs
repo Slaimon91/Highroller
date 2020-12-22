@@ -26,7 +26,7 @@ public class InventoryAbilityEquipped : MonoBehaviour, ISelectHandler, IDeselect
 
     void Awake()
     {
-        abilitySprite = emptyBox;
+
         inventoryUI = FindObjectOfType<InventoryUI>();
     }
 
@@ -63,6 +63,8 @@ public class InventoryAbilityEquipped : MonoBehaviour, ISelectHandler, IDeselect
 
     public void OnSelect(BaseEventData eventData)
     {
+        if(!created)
+            abilitySprite = emptyBox;
         buttonSelected = true;
         selected.SetActive(true);
 
@@ -85,6 +87,7 @@ public class InventoryAbilityEquipped : MonoBehaviour, ISelectHandler, IDeselect
 
     public void UnEquip()
     {
+        Debug.Log("unequip");
         if(created)
         {
             inventoryUI.UnequipAbility(ability.GetInventorySlotNr());

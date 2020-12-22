@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AbilityBase : MonoBehaviour
 {
     [SerializeField] protected string abilityName;
+    [SerializeField] Sprite inventorySprite;
 
     [SerializeField]
     [TextArea(3, 20)]
@@ -74,6 +75,7 @@ public class AbilityBase : MonoBehaviour
 
     public Sprite GetInventoryImageSprite()
     {
+        return inventorySprite;
         Image[] images = inventoryImageHolder.GetComponentsInChildren<Image>();
 
         foreach (Image image in images)

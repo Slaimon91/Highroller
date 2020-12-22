@@ -60,7 +60,7 @@ public class PlayerBattleController : MonoBehaviour
             if (!sleepTimer)
             {
                 sleepTimer = true;
-                StartCoroutine(SleepyPlayer());
+               // StartCoroutine(SleepyPlayer());
             }
         }
     }
@@ -86,16 +86,19 @@ public class PlayerBattleController : MonoBehaviour
 
     public void BlockPushed()
     {
+        if (isDead)
+            return;
         WakeUpSleep();
         if (battleSystem.state == BattleState.ENEMYTURN && !hasDefended)
         {
             hasDefended = true;
             hasBlocked = true;
+            animator.SetTrigger("Block");
 
             if (isInsideBlock)
             {
                 audioManager.Play("SuccessBlock");
-                animator.SetTrigger("Block");
+
                 Debug.Log("You blocked!");
                 successBlock = true;
             }
@@ -109,17 +112,20 @@ public class PlayerBattleController : MonoBehaviour
 
     public void DodgePushed()
     {
+        if (isDead)
+            return;
         WakeUpSleep();
         if (battleSystem.state == BattleState.ENEMYTURN && !hasDefended)
         {
             hasDefended = true;
             hasDodged = true;
+            animator.SetTrigger("Dodge");
             if (isInsideDodge)
             {
                 Debug.Log("You dodged!");
                 successDodge = true;
                 audioManager.Play("SuccessDodge");
-                animator.SetTrigger("Dodge");
+
             }
             else
             {
@@ -203,12 +209,12 @@ public class PlayerBattleController : MonoBehaviour
         }
 
         TakeDamage(enemy.GetDamageAmount() - reduction);
-        ResetAction();
+        //ResetAction();
     }
 
     private void SuccessDodge()
     {
-        ResetAction();
+        //ResetAction();
     }
 
     public void EnteredBlockZone(GameObject other)
@@ -235,6 +241,8 @@ public class PlayerBattleController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
         int reduction = 0;
         int damageToTake = 0;
 
@@ -268,13 +276,15 @@ public class PlayerBattleController : MonoBehaviour
                 animator.SetTrigger("Damage");
                 audioManager.Play("TakeDamage");
             }
-            ResetAction();
+            //ResetAction();
             CheckHealthAnimation();
         }
     }
 
     public void HealDamage(int damage)
     {
+        if (isDead)
+            return;
         playerValues.healthPoints += damage;
         StartCoroutine(HealText(damage));
         audioManager.Play("HealHP");
@@ -291,6 +301,7 @@ public class PlayerBattleController : MonoBehaviour
         if(playerValues.healthPoints <= 0)
         {
             animator.SetBool("isDead", true);
+            isDead = true;
         }
 
         else if((float)playerValues.healthPoints / (float)playerValues.maxHealthPoints <= 0.1)

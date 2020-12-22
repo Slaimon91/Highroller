@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,13 +15,15 @@ public class Inventory : MonoBehaviour
             instance = this;
         else
         {
-            // Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
         GameEvents.SaveInitiated += Save;
         GameEvents.LoadInitiated += Load;
 
-        DontDestroyOnLoad(gameObject);
+        gameObject.transform.parent = null;
+        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
 
         /* if (instance != null)
          {
@@ -36,16 +39,23 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged(Item item);
     public OnItemChanged onItemChangedCallback;
 
-    public delegate void OnInventoryLoaded(List<Item> trinkets, List<Item> abilities, List<Item> seeds, bool clearInventory);
+    public delegate void OnInventoryLoaded(List<Item> trinkets, List<Item> abilities, List<KeyValuePair<Item, bool>> seeds, List<KeyValuePair<Item, bool>> seedsActiveStatus, List<KeyValuePair<Item, int>> equippedAbilities);
     public OnInventoryLoaded onInventoryLoadedCallback;
 
     public List<Item> trinkets = new List<Item>();
     public List<Item> abilities = new List<Item>();
-    public List<Item> seeds = new List<Item>();
+    public List<KeyValuePair<Item, bool>> seeds = new List<KeyValuePair<Item, bool>>();
+    public List<KeyValuePair<Item, bool>> seedsActiveStatus = new List<KeyValuePair<Item, bool>>();
+    //public List<Item> equippedAbilities = new List<Item>();
+    public List<KeyValuePair<Item, int>> equippedAbilities = new List<KeyValuePair<Item, int>>();
 
+    private InventoryUI inventoryUI;
+    private void Start()
+    {
+        inventoryUI = FindObjectOfType<InventoryUI>();
+    }
     public bool Add (Item item)
     {
-        Debug.Log(item.prefab);
         //if it is an ability
         if(item.prefab.GetComponent<AbilityBase>() != null)
         {
@@ -54,7 +64,7 @@ public class Inventory : MonoBehaviour
         //if it is a seed
         else if (item.prefab.GetComponent<SeedBase>() != null)
         {
-            seeds.Add(item);
+            seeds.Add(new KeyValuePair<Item, bool>(item, false));
         }
         //if it is an item
         else if (item.prefab.GetComponent<TrinketBase>() != null)
@@ -87,12 +97,12 @@ public class Inventory : MonoBehaviour
 
     private void Save(string temp)
     {
-        SaveData.current.inventory = new InventoryData(gameObject.GetComponent<Inventory>());
+        SaveData.current.inventory = new InventoryData(gameObject.GetComponent<Inventory>(), inventoryUI);
     }
 
     public void Load(string temp)
     {
-        /*InventoryData data = SaveData.current.inventory;
+        InventoryData data = SaveData.current.inventory;
 
         if (data != default)
         {
@@ -111,18 +121,22 @@ public class Inventory : MonoBehaviour
                 {
                     abilities.Add(Resources.Load("ScriptableObjects/Abilities/" + item) as Item);
                 }
-                foreach (string item in data.seeds)
+                foreach (KeyValuePair<string, bool> item in data.seeds)
                 {
-                    seeds.Add(Resources.Load("ScriptableObjects/Seeds/" + item) as Item);
+                    seeds.Add(new KeyValuePair<Item, bool>(Resources.Load("ScriptableObjects/Seeds/" + item.Key) as Item, item.Value));
+                }
+                foreach (KeyValuePair<string, bool> item in data.seedsActiveStatus)
+                {
+                    seedsActiveStatus.Add(new KeyValuePair<Item, bool>(Resources.Load("ScriptableObjects/Seeds/" + item.Key) as Item, item.Value));
+                }
+                foreach (KeyValuePair<string, int> item in data.equippedAbilities)
+                {
+                    equippedAbilities.Add(new KeyValuePair<Item, int>(Resources.Load("ScriptableObjects/Abilities/" + item.Key) as Item, item.Value));
                 }
 
-                onInventoryLoadedCallback?.Invoke(trinkets, abilities, seeds, false);
+                onInventoryLoadedCallback?.Invoke(trinkets, abilities, seeds, seedsActiveStatus, equippedAbilities);
             }
         }
-        else
-        {
-            onInventoryLoadedCallback?.Invoke(trinkets, abilities, seeds, true);
-        }*/
     }
     public void OnDestroy()
     {
@@ -136,9 +150,11 @@ public class InventoryData
 {
     public List<string> trinkets = new List<string>();
     public List<string> abilities = new List<string>();
-    public List<string> seeds = new List<string>();
+    public List<KeyValuePair<string, bool>> seeds = new List<KeyValuePair<string, bool>>();
+    public List<KeyValuePair<string, bool>> seedsActiveStatus = new List<KeyValuePair<string, bool>>();
+    public List<KeyValuePair<string, int>> equippedAbilities = new List<KeyValuePair<string, int>>();
 
-    public InventoryData(Inventory inventory)
+    public InventoryData(Inventory inventory, InventoryUI inventoryUI)
     {
         foreach (Item item in inventory.trinkets)
         {
@@ -148,9 +164,20 @@ public class InventoryData
         {
             abilities.Add(item.name);
         }
-        foreach (Item item in inventory.seeds)
+        foreach (KeyValuePair<Item, bool> item in inventory.seeds)
         {
-            seeds.Add(item.name);
+            seeds.Add(new KeyValuePair<string, bool>(item.Key.name, inventoryUI.GetSeed(item.Key.prefab.GetComponent<SeedBase>()).GetBerryStatus()));
+            seedsActiveStatus.Add(new KeyValuePair<string, bool>(item.Key.name, inventoryUI.GetInventorySeed(item.Key.prefab.GetComponent<SeedBase>()).GetStatus()));
+        }
+        foreach (InventorySlot slot in inventoryUI.equippedAbilitySlots)
+        {
+            if (slot.item != null)
+            {
+                if (slot.item.prefab.GetComponent<AbilityBase>() != null)
+                {
+                    equippedAbilities.Add(new KeyValuePair<string, int>(slot.item.prefab.GetComponent<AbilityBase>().GetAbilityName(), inventoryUI.equippedAbilitySlots.IndexOf(slot)));
+                }
+            }
         }
     }
 }

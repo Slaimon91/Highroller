@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveDataManager : MonoBehaviour
 {
     [SerializeField] PlayerValues playerValues;
+    [SerializeField] GameObject saveIconGO;
     private void Awake()
     {
         GameEvents.SaveInitiatedData += Save;
@@ -15,6 +16,8 @@ public class SaveDataManager : MonoBehaviour
     {
         if(temp == "")
         {
+            GameObject popup = Instantiate(saveIconGO, FindObjectOfType<OverworldCanvas>().transform);
+            popup.GetComponent<FadeBox>().AssignInfo("", 0.8f);
             SaveSystem.Save<SaveData>(SaveData.current, playerValues.currentSavefile + "/" + "temp/" + playerValues.currentOWScene + "/SaveData");
             SaveSystem.OverrideWithTemp(playerValues.currentSavefile.ToString());
         }
@@ -35,6 +38,7 @@ public class SaveDataManager : MonoBehaviour
             SaveData.current.moleGlasses = data.moleGlasses;
             SaveData.current.tricksterBridge = data.tricksterBridge;
             SaveData.current.inventory = data.inventory;
+            SaveData.current.timeManager = data.timeManager;
 
             foreach (SavestoneData savestone in data.saveStones)
             {
@@ -95,6 +99,7 @@ public class SaveDataManager : MonoBehaviour
         SaveData.current.moleGlasses = null;
         SaveData.current.tricksterBridge = null;
         SaveData.current.inventory = null;
+        SaveData.current.timeManager = null;
 
         SaveData.current.saveStones.Clear();
 
@@ -142,6 +147,7 @@ public class SaveData
     public MoleGlassesData moleGlasses;
     public TricksterBridgeData tricksterBridge;
     public InventoryData inventory;
+    public TimeManagerData timeManager;
 
     public List<SavestoneData> saveStones = new List<SavestoneData>();
 

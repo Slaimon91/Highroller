@@ -44,16 +44,23 @@ public class EncounterManager : MonoBehaviour
         TileflipVisual tfv = selectedTile.GetComponent<TileflipVisual>();
         tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
 
-        if (pickedNumber < matchedTable.HPChance && playerValues.healthPoints != playerValues.maxHealthPoints)
+        if (pickedNumber < matchedTable.HPChance)
         {
-            pickedOption = 2;
-            pickedNumber = 999;
-            tfv.TriggerHPAnimation();
+            if(playerValues.healthPoints < playerValues.maxHealthPoints) //HP was max, choose monster
+            {
+                pickedNumber = matchedTable.gaiaChance + matchedTable.HPChance;
+            }
+            else
+            {
+                pickedOption = 2;
+                pickedNumber = 999;
+                tfv.TriggerHPAnimation();
+            }
         }
 
         pickedNumber -= matchedTable.HPChance;
 
-        if ((pickedNumber < matchedTable.gaiaChance && playerValues.gaia != playerValues.maxGaia) || matchedTable.gaiaChance == 100)
+        if ((pickedNumber < matchedTable.gaiaChance && playerValues.gaia < playerValues.maxGaia) || matchedTable.gaiaChance == 100)
         {
             pickedOption = 1;
             pickedNumber = 999;
@@ -69,7 +76,7 @@ public class EncounterManager : MonoBehaviour
         }
 
         waitForAnim = true;
-        FindObjectOfType<PlayerController>().RemoveFlipSquares();
+        FindObjectOfType<TileflipManager>().RemoveFlipSquares();
 
         yield return StartCoroutine(WaitForFlipAnimation());
 
@@ -217,5 +224,17 @@ public class EncounterManager : MonoBehaviour
             StartCoroutine(ActivateTile(tableToSend));
             return null;
         }
+    }
+
+    public List<Sprite> GetMonsterIcons(TileflipTable tableToCheck)
+    {
+        List<Sprite> sprites = new List<Sprite>();
+
+        foreach(Sprite monsterIcon in tableToCheck.monsterIcons)
+        {
+            sprites.Add(monsterIcon);
+        }
+
+        return sprites;
     }
 }

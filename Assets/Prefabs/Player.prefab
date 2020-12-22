@@ -146,9 +146,9 @@ MonoBehaviour:
   inFrontOfPlayerTrigger: {fileID: 818772868}
   interacting: 0
   tileFlipping: 0
-  groundTilemap: {fileID: 0}
-  colliderTilemap: {fileID: 0}
-  currentTile: {fileID: 0}
+  playerTileOffset: 0.19
+  waterForm: 0
+  elevation: 0
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 256
@@ -162,15 +162,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   state: 0
-  selectedTilePrefab: {fileID: 16662239167239479, guid: 51ec5f33bfb9831478c784edf7e262d3,
-    type: 3}
-  availableTilePrefab: {fileID: 299745898312277631, guid: 11826d8d558c29945bf04ef1c0de496a,
-    type: 3}
   playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
-  infoboxPrefab: {fileID: 2461838488547001373, guid: 0c826af8fdd563f428d1332b31fb8524,
-    type: 3}
-  darkOverlayPrefab: {fileID: 7906481635684788243, guid: 8ecb7197aa8c0a840876313808ac98cf,
-    type: 3}
   healthText: {fileID: 0}
   gaiaText: {fileID: 0}
   goldenAcornText: {fileID: 0}

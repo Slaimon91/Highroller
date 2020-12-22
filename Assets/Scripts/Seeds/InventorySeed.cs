@@ -111,10 +111,13 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void ConsumeBerry()
     {
-        GetComponentInChildren<SeedBase>().ConsumeBerry();
-        infoName.text = seedName;
-        infoImage.sprite = seedSprite;
-        infoImage.SetNativeSize();
+        if(isBerry)
+        {
+            GetComponentInChildren<SeedBase>().ConsumeBerry();
+            infoName.text = seedName;
+            infoImage.sprite = seedSprite;
+            infoImage.SetNativeSize();
+        }
     }
 
     public void ToggleInactivateSlot(bool status)
@@ -122,10 +125,12 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
         if(status)
         {
             inactive.SetActive(true);
+            isInactive = true;
         }
         else
         {
             inactive.SetActive(false);
+            isInactive = false;
         }
         
     }
@@ -135,25 +140,13 @@ public class InventorySeed : MonoBehaviour, ISelectHandler, IDeselectHandler
         isBerry = status;
     }
 
-    /*public void Equip()
+    public bool GetBerryStatus()
     {
-        if(created && !isInactive)
-        {
-            GameObject popup = Instantiate(popupPrefab, gameObject.transform.parent.transform.parent.transform.parent);
-            popup.GetComponent<PopupQuestion>().onYesAnswerCallback += YesEquip;
-        }
+        return isBerry;
     }
 
-    public void YesEquip()
+    public bool GetStatus()
     {
-        inventoryUI.EquipSeed(GetComponentInChildren<SeedBase>());
-        isInactive = true;
-        inactive.SetActive(true);
+        return isInactive;
     }
-
-    public void Unequip()
-    {
-        isInactive = false;
-        inactive.SetActive(false);
-    }*/
 }

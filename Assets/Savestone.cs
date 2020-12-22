@@ -5,11 +5,13 @@ using UnityEngine;
 public class Savestone : MonoBehaviour, IInteractable
 {
     private Animator animator;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isActivated = false;
     [HideInInspector] public string id;
-    //[HideInInspector]
+    [HideInInspector]
     public bool activateAnimDone = false;
+    [SerializeField] GameObject firstSaveTextGO;
+    [SerializeField] GameObject saveIconGO;
 
     void Awake()
     {
@@ -28,12 +30,12 @@ public class Savestone : MonoBehaviour, IInteractable
         {
             animator.SetBool("isSaving", true);
             FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
-            GameEvents.OnSaveInitiated();
         }
         else
         {
             isActivated = true;
             animator.SetTrigger("isActivated");
+            FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
         }
     }
 
@@ -42,10 +44,20 @@ public class Savestone : MonoBehaviour, IInteractable
         FindObjectOfType<PlayerControlsManager>().ToggleOffGenericUI();
         animator.SetBool("isSaving", false);
     }
+    public void SummonFirstSaveText()
+    {
+        GameObject popup = Instantiate(firstSaveTextGO, FindObjectOfType<OverworldCanvas>().transform);
+        popup.GetComponent<FadeBox>().AssignInfo("Your progress has been saved.", 0.8f);
+    }
+    public void SummonSaveIcon()
+    {
+        GameEvents.OnSaveInitiated();
+    }
 
     public void FinishedActivateAnim()
     {
         activateAnimDone = true;
+        SummonFirstSaveText();
     }
 
     private void Save(string temp)

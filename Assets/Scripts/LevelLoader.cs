@@ -16,6 +16,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -28,8 +29,8 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadOverworldSceneTransition(string key, Vector3 newPosition, Vector2 newRotation) //From OW to OW
     {
-        FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         GameEvents.OnSaveBetweenScenes();
+        FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
         StartCoroutine(SaveOWSceneDelay(key, newPosition, newRotation));
     }
 
@@ -49,6 +50,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadSaveScene()
     {
         FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
+        DontDestroyOnLoadManager.DestroyAll();
         SceneManager.LoadScene("Savefile Menu");
     }
 
@@ -79,6 +81,7 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForEndOfFrame();
             yield return StartCoroutine(LoadOWSceneDelay());
             FindObjectOfType<PlayerController>().LoadPlayerAtCoords(newPositon, newRotation);
+            GameEvents.OnSaveInitiated();
         }
     }
 

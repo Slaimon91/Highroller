@@ -15,7 +15,7 @@ public class InventoryUI : MonoBehaviour
     private List<InventorySlot> seedSlots = new List<InventorySlot>();
     private Item equippedSeed;
     private List<InventorySlot> abilitySlots = new List<InventorySlot>();
-    [SerializeField] List<InventorySlot> equippedAbilitySlots = new List<InventorySlot>();
+    public List<InventorySlot> equippedAbilitySlots = new List<InventorySlot>();
     private List<InventorySlot> trinketSlots = new List<InventorySlot>();
 
     [SerializeField] List<InventoryTab> inventoryTabs = new List<InventoryTab>();
@@ -25,6 +25,9 @@ public class InventoryUI : MonoBehaviour
     EventSystem eventSystem;
     PlayerController playerController;
     [SerializeField] PlayerValues playerValues;
+
+    public delegate void OnInventoryFinishedLoading();
+    public OnInventoryFinishedLoading onInventoryFinishedLoadingCallback;
     void Awake()
     {
         int GameStatusCount = FindObjectsOfType<InventoryUI>().Length;
@@ -35,7 +38,8 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
         }
     }
 
@@ -76,9 +80,9 @@ public class InventoryUI : MonoBehaviour
             {
                 eventSystem = FindObjectOfType<EventSystem>();
             }
+            InitiateItems();
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
             //playerController.SetGameState(GameState.PAUSED);
-            InitiateItems();            
         }
     }
 
@@ -132,29 +136,42 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void LoadUI(List<Item> trinkets, List<Item> abilities, List<Item> seeds, bool clearInventory)
+    void LoadUI(List<Item> trinkets, List<Item> abilities, List<KeyValuePair<Item, bool>> seeds, List<KeyValuePair<Item, bool>> seedsActiveStatus, List<KeyValuePair<Item, int>> equippedAbilities)
     {
-        if(!clearInventory)
+
+        foreach (Item item in trinkets)
         {
-            foreach (Item item in trinkets)
-            {
-                trinketSlots[trinketSlots.Count - 1].AddItem(item);
-            }
-            foreach (Item item in abilities)
-            {
-                int slotNr = item.prefab.GetComponent<AbilityBase>().GetInventorySlotNr();
-                abilitySlots[slotNr].AddItem(item);
-            }
-            foreach (Item item in seeds)
-            {
-                int slotNr = item.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
-                seedSlots[slotNr].AddItem(item);
-            }
+            trinketSlots[trinketSlots.Count - 1].AddItem(item);
         }
-        else
+        foreach (Item item in abilities)
         {
-            //trinketSlots.Clear();
+            int slotNr = item.prefab.GetComponent<AbilityBase>().GetInventorySlotNr();
+            abilitySlots[slotNr].AddItem(item);
         }
+        foreach (KeyValuePair<Item, bool> item in seeds)
+        {
+            int slotNr = item.Key.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
+            seedSlots[slotNr].AddItem(item.Key);
+            //item.Key.prefab.GetComponent<SeedBase>().SetBerryStatus(item.Value);
+            seedSlots[slotNr].GetComponentInChildren<SeedBase>().SetBerryStatus(item.Value);
+        }
+
+        foreach (KeyValuePair<Item, bool> item in seedsActiveStatus)
+        {
+            int slotNr = item.Key.prefab.GetComponent<SeedBase>().GetInventorySlotNr();
+            GetInventorySeed(seedSlots[slotNr].GetComponentInChildren<SeedBase>()).ToggleInactivateSlot(item.Value);
+        }
+
+        InitiateItems();
+
+        foreach (KeyValuePair<Item, int> item in equippedAbilities)
+        {
+            EquipAbility(item.Key.prefab.GetComponent<AbilityBase>(), true, item.Value);
+        }
+
+        InitiateEquippedAbilities();
+
+        onInventoryFinishedLoadingCallback?.Invoke();
     }
 
     public void ChangeInventoryTab(int tabValue)
@@ -176,11 +193,11 @@ public class InventoryUI : MonoBehaviour
 
         currentActiveTab = inventoryTabs[index];
         currentActiveTab.gameObject.SetActive(true);
-        if(currentActiveTab.GetFirstSlot() != null)
+        InitiateItems();
+        if (currentActiveTab.GetFirstSlot() != null)
         {
             eventSystem.SetSelectedGameObject(currentActiveTab.GetFirstSlot());
         }
-        InitiateItems();
     }
 
     public void InitiateItems()
@@ -206,9 +223,16 @@ public class InventoryUI : MonoBehaviour
 
     public void InitiateEquippedAbilities()
     {
-        InventoryAbilityEquipped[] abilities = FindObjectsOfType<InventoryAbilityEquipped>();
+
+        //InventoryAbilityEquipped[] abilities;// = FindObjectsOfType<InventoryAbilityEquipped>();
+        List<InventoryAbilityEquipped> abilities = new List<InventoryAbilityEquipped>();
+        for(int i = 0; i < equippedAbilitySlots.Count; i++)
+        {
+            abilities.Add(equippedAbilitySlots[i].GetComponentInChildren<InventoryAbilityEquipped>());
+        }
         foreach (InventoryAbilityEquipped ability in abilities)
         {
+            
             ability.Created();
         }
     }
@@ -243,19 +267,51 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void EquipAbility(AbilityBase abilityToEquip)
+    public void EquipAbility(AbilityBase abilityToEquip, bool isOnLoad, int slotNr)
     {
         Item newItem = ScriptableObject.CreateInstance("Item") as Item;
         newItem.name = abilityToEquip.name;
         newItem.prefab = abilityToEquip.gameObject;
 
-        foreach(InventorySlot inventorySlot in equippedAbilitySlots)
+        if(isOnLoad)
         {
-            if(inventorySlot.GetItem() == null)
+            for (int i = 0; i < equippedAbilitySlots.Count; i++)//(InventorySlot inventorySlot in equippedAbilitySlots)
             {
-                inventorySlot.AddItem(newItem);
-                InitiateEquippedAbilities();
-                break;
+                if (equippedAbilitySlots[i].GetItem() == null && i == slotNr)
+                {
+                    equippedAbilitySlots[i].AddItem(newItem);
+                    InitiateEquippedAbilities();
+                    if (isOnLoad)
+                    {
+                        foreach (InventorySlot slot in abilitySlots)
+                        {
+                            if (slot.item != null)
+                            {
+                                if (slot.item.prefab.GetComponent<AbilityBase>() != null)
+                                {
+                                    if (abilityToEquip.GetAbilityName() == slot.item.prefab.GetComponent<AbilityBase>().GetAbilityName())
+                                    {
+                                        slot.GetComponentInChildren<InventoryAbility>().EquipFromLoad();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    break;
+                }
+            }
+        }
+        else
+        {
+            foreach (InventorySlot inventorySlot in equippedAbilitySlots)
+            {
+                if (inventorySlot.GetItem() == null)
+                {
+                    inventorySlot.AddItem(newItem);
+                    InitiateEquippedAbilities();
+                    break;
+                }
             }
         }
     }
@@ -284,9 +340,9 @@ public class InventoryUI : MonoBehaviour
         foreach (InventorySlot i in seedSlots)
         {
             SeedBase seed2 = i.GetChildHolder().GetComponentInChildren<SeedBase>();
-            if (seed != null)
+            if (seed2 != null)
             {
-                if(seed == seed2)
+                if(seed.GetSeedName() == seed2.GetSeedName())
                 {
                     return seed2;
                 }
@@ -296,25 +352,22 @@ public class InventoryUI : MonoBehaviour
         return null;
     }
 
-    /*public bool CheckForItem(Item searchItem)
+    public InventorySeed GetInventorySeed(SeedBase seed)
     {
         foreach (InventorySlot i in seedSlots)
         {
-            SeedBase seed = i.GetChildHolder().GetComponentInChildren<SeedBase>();
-            if (seed != null)
+            SeedBase seed2 = i.GetChildHolder().GetComponentInChildren<SeedBase>();
+            if (seed2 != null)
             {
-                if (!seed.GetInactiveStatus() && !seed.GetComponent<SeedBase>().GetBerryStatus())
+                if (seed.GetSeedName() == seed2.GetSeedName())
                 {
-                    seedList.Add(seed);
+                    return i.GetChildHolder().GetComponentInChildren<InventorySeed>();
                 }
             }
         }
-        InventoryTrinket[] trinkets = FindObjectsOfType<InventoryTrinket>();
-        foreach (InventoryTrinket trinket in trinkets)
-        {
-            trinket.Created();
-        }
-    }*/
+
+        return null;
+    }
 
     public void UnequipAbility(int abilityToUnequip)
     {
@@ -333,4 +386,25 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+
+    /*public bool CheckForItem(Item searchItem)
+{
+    foreach (InventorySlot i in seedSlots)
+    {
+        SeedBase seed = i.GetChildHolder().GetComponentInChildren<SeedBase>();
+        if (seed != null)
+        {
+            if (!seed.GetInactiveStatus() && !seed.GetComponent<SeedBase>().GetBerryStatus())
+            {
+                seedList.Add(seed);
+            }
+        }
+    }
+    InventoryTrinket[] trinkets = FindObjectsOfType<InventoryTrinket>();
+    foreach (InventoryTrinket trinket in trinkets)
+    {
+        trinket.Created();
+    }
+}*/
+
 }

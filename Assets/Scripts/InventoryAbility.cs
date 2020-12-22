@@ -84,9 +84,33 @@ public class InventoryAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void Equip()
     {
-        inventoryUI.EquipAbility(GetComponentInChildren<AbilityBase>());
-        isInactive = true;
-        inactive.SetActive(true);
+        if(!isInactive)
+        {
+            if((inventoryUI = FindObjectOfType<InventoryUI>()) != null)
+            {
+                if(GetComponentInChildren<AbilityBase>() != null)
+                {
+                    inventoryUI.EquipAbility(GetComponentInChildren<AbilityBase>(), false, -1);
+                    isInactive = true;
+                    inactive.SetActive(true);
+                }
+            }
+        }
+    }
+
+    public void EquipFromLoad()
+    {
+        if (!isInactive)
+        {
+            if ((inventoryUI = FindObjectOfType<InventoryUI>()) != null)
+            {
+                if (GetComponentInChildren<AbilityBase>() != null)
+                {
+                    isInactive = true;
+                    inactive.SetActive(true);
+                }
+            }
+        }
     }
 
     public void Unequip()

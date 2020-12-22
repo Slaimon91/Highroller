@@ -12,6 +12,7 @@ public class TileflipTable : ScriptableObject
     public int monsterChance;
     public int gaiaRewardAmount;
     public int HPRewardAmount;
+    public List<Sprite> monsterIcons;
     public List<Encounter> encounters;
 
     public virtual void Use()

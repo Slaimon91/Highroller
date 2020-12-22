@@ -13,6 +13,7 @@ public class PlayerValues : ScriptableObject
     public int xp;
     public int level;
     public int nrOfBattles;
+    public float playedTime;
     public string currentOWScene;
     public int currentSavefile;
 }
