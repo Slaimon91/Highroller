@@ -40,7 +40,7 @@ MonoBehaviour:
     totalExp: 1400
   - level: 8
     exp: 400
-    totalExp: 800
+    totalExp: 1800
   - level: 9
     exp: 450
     totalExp: 2250
@@ -76,4 +76,4 @@ MonoBehaviour:
     totalExp: 9500
   - level: 20
     exp: 1000
-    totalExp: 1050
+    totalExp: 10500

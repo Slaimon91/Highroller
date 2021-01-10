@@ -10,7 +10,7 @@ public class SceneFade : MonoBehaviour
     private void Start()
     {
         foreground = GetComponent<Image>();
-        StartCoroutine(FadeIn());
+        //StartCoroutine(FadeIn());
     }
 
     public IEnumerator FadeIn()

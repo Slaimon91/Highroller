@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Dungbee
   diceKeyNumber: 8
-  xpAmount: 2
+  xpAmount: 4
   isGold: 1
   isPlatinum: 0
   isInactive: 1

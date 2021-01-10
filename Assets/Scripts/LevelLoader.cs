@@ -73,16 +73,28 @@ public class LevelLoader : MonoBehaviour
     }
     public IEnumerator SaveOWSceneDelay(string key, Vector3 newPositon, Vector2 newRotation)
     {
-        if(FindObjectOfType<SceneFade>() != null)
+        //if(FindObjectOfType<SceneFade>() != null)
+        // {
+        //yield return FindObjectOfType<SceneFade>().FadeOut();
+        //SceneManager.LoadScene(key);
+        var parameters = new LoadSceneParameters(LoadSceneMode.Additive);
+        string currScene = SceneManager.GetActiveScene().name;
+        Debug.Log(currScene);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(key, parameters);
+        //SceneManager.LoadScene(key, parameters);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return StartCoroutine(LoadOWSceneDelay());
+        FindObjectOfType<PlayerController>().LoadPlayerAtCoords(newPositon, newRotation);
+        GameEvents.OnSaveInitiated();
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
         {
-            yield return FindObjectOfType<SceneFade>().FadeOut();
-            SceneManager.LoadScene(key);
-            yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
-            yield return StartCoroutine(LoadOWSceneDelay());
-            FindObjectOfType<PlayerController>().LoadPlayerAtCoords(newPositon, newRotation);
-            GameEvents.OnSaveInitiated();
+            yield return null;
         }
+        SceneManager.UnloadSceneAsync(currScene);
+        //}
     }
 
     /*

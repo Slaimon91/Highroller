@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Goblin (with glasses)
   diceKeyNumber: 3
-  xpAmount: 1
+  xpAmount: 2
   isGold: 1
   isPlatinum: 0
   isInactive: 0

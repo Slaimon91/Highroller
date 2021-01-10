@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Trickster Goblin
   diceKeyNumber: 1
-  xpAmount: 10
+  xpAmount: 20
   isGold: 0
   isPlatinum: 0
   isInactive: 0
