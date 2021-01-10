@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40961267422c23d4fa8f08a952fa59f0, type: 3}
-  m_Name: BONUS_5
+  m_Name: BONUS_50
   m_EditorClassIdentifier: 
-  name: BONUS_5
+  name: BONUS_50
   battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
   displayName: Gaia Spring
   gaiaChance: 100
   HPChance: 0
   monsterChance: 0
-  gaiaRewardAmount: 200
+  gaiaRewardAmount: 50
   HPRewardAmount: 0
+  monsterIcons: []
   encounters: []

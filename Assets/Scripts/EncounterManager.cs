@@ -5,7 +5,7 @@ using UnityEngine;
 //Adding a tiletype = add to enum, add to testgroundtype(), add to enountermanager GO in hierarchy
 
 [System.Serializable]
-public enum GroundType { FOD_Grass, FOD_Glasses, FOD_Start, BONUS_1, BONUS_2, BONUS_3, BONUS_4, BONUS_5, FOD_Water }
+public enum GroundType { FOD_Grass, FOD_Glasses, FOD_Start, BONUS_20, BONUS_30, BONUS_40, BONUS_50, BONUS_100, FOD_Water }
 
 public class EncounterManager : MonoBehaviour
 {
@@ -193,16 +193,16 @@ public class EncounterManager : MonoBehaviour
                 return SearchTile(isTest, "FOD_Glasses");
             case GroundType.FOD_Start:
                 return SearchTile(isTest, "FOD_Start");
-            case GroundType.BONUS_1:
-                return SearchTile(isTest, "BONUS_1");
-            case GroundType.BONUS_2:
-                return SearchTile(isTest, "BONUS_2");
-            case GroundType.BONUS_3:
-                return SearchTile(isTest, "BONUS_3");
-            case GroundType.BONUS_4:
-                return SearchTile(isTest, "BONUS_4");
-            case GroundType.BONUS_5:
-                return SearchTile(isTest, "BONUS_5");
+            case GroundType.BONUS_20:
+                return SearchTile(isTest, "BONUS_20");
+            case GroundType.BONUS_30:
+                return SearchTile(isTest, "BONUS_30");
+            case GroundType.BONUS_40:
+                return SearchTile(isTest, "BONUS_40");
+            case GroundType.BONUS_50:
+                return SearchTile(isTest, "BONUS_50");
+            case GroundType.BONUS_100:
+                return SearchTile(isTest, "BONUS_100");
             case GroundType.FOD_Water:
                 return SearchTile(isTest, "FOD_Water");
             default:
