@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Goblin
   diceKeyNumber: 3
-  xpAmount: 1
+  xpAmount: 2
   isGold: 0
   isPlatinum: 0
   isInactive: 0
@@ -61,6 +61,8 @@ MonoBehaviour:
   rockToThrow: {fileID: 8940644904525952771, guid: 128ad2daaa006a34294b798eb96a6805,
     type: 3}
   throwingHand: {fileID: 7171482549111680724}
+  owReward: {fileID: 0}
+  glassesTaken: {fileID: 0}
 --- !u!95 &1052720663
 Animator:
   serializedVersion: 3
