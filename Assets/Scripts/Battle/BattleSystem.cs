@@ -696,7 +696,7 @@ public class BattleSystem : MonoBehaviour
         if (enemiesGO.Count == 0) //Battle is over
         {
             yield return StartCoroutine(WaitSec(2f));
-            FindObjectOfType<HoldAssignButton>().Reset();
+            //FindObjectOfType<HoldAssignButton>().Reset();
             FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
             battleBounty.GiveBounty();
         }
@@ -770,10 +770,11 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyAttacks()
     {
+        player.ResetAction();
         //Enemy Attack
-        for(int i = enemiesGO.Count - 1; i >= 0; i--)
+        for (int i = enemiesGO.Count - 1; i >= 0; i--)
         {
-            player.ResetAction();
+
             yield return StartCoroutine(enemiesGO[i].GetComponent<EnemyBattleBase>().EnemyAction());
         }
     }
