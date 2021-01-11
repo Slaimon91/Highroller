@@ -46,7 +46,8 @@ public class EncounterManager : MonoBehaviour
 
         if (pickedNumber < matchedTable.HPChance)
         {
-            if(playerValues.healthPoints < playerValues.maxHealthPoints) //HP was max, choose monster
+
+            if(playerValues.healthPoints >= playerValues.maxHealthPoints) //HP was max, choose monster
             {
                 pickedNumber = matchedTable.gaiaChance + matchedTable.HPChance;
             }

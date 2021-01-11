@@ -36,10 +36,10 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         if(GetComponentInChildren<AbilityBase>() != null)
         {
             activatable = GetComponentInChildren<AbilityBase>().GetActivatableStatus();
-            battleImageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
-            inventoryImageHolder = GetComponentInChildren<AbilityBase>().GetInventoryImageHolder();
-            battleImageHolder.GetComponent<Image>().enabled = true;
-            inventoryImageHolder.GetComponent<Image>().enabled = false;
+            //battleImageHolder = GetComponentInChildren<AbilityBase>().GetBattleImageHolder();
+            //inventoryImageHolder = GetComponentInChildren<AbilityBase>().GetInventoryImageHolder();
+            //battleImageHolder.GetComponent<Image>().enabled = true;
+            //inventoryImageHolder.GetComponent<Image>().enabled = false;
         }
         
         if(GetComponentInChildren<Animator>() != null)
@@ -71,14 +71,14 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
         if (!isMarked && activatable)
         {
             isMarked = true;
-            battleImageHolder.GetComponent<Image>().sprite = marked;
+           // battleImageHolder.GetComponent<Image>().sprite = marked;
             animator.SetBool("isMarked", true);
             //selected.SetActive(false);
         }
         else if (isMarked && activatable)
         {
             isMarked = false;
-            battleImageHolder.GetComponent<Image>().sprite = normal;
+            //battleImageHolder.GetComponent<Image>().sprite = normal;
             animator.SetBool("isMarked", false);
             //selected.SetActive(true);
         }
@@ -88,10 +88,10 @@ public class BattleAbilityHolder : MonoBehaviour, ISelectHandler, IDeselectHandl
     {
         isMarked = false;
         activatable = false;
-        battleImageHolder.GetComponent<Image>().sprite = normal;
+        //battleImageHolder.GetComponent<Image>().sprite = normal;
         inactive.SetActive(true);
         if(animator != null)
-            animator.enabled = false;
+            animator.SetBool("isMarked", false);
     }
 
     public bool GetMarkedStatus()

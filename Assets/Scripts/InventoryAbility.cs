@@ -53,8 +53,8 @@ public class InventoryAbility : MonoBehaviour, ISelectHandler, IDeselectHandler
 
             //ability.GetBattleImageHolder().GetComponent<Image>().sprite = yellowBox;
 
-            ability.GetBattleImageHolder().GetComponent<Image>().enabled = false;
-            ability.GetInventoryImageHolder().GetComponent<Image>().enabled = true;
+            //ability.GetBattleImageHolder().GetComponent<Image>().enabled = false;
+            //ability.GetInventoryImageHolder().GetComponent<Image>().enabled = true;
 
             created = true;
         }

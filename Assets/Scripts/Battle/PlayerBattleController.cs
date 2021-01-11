@@ -214,7 +214,7 @@ public class PlayerBattleController : MonoBehaviour
 
     private void SuccessDodge()
     {
-        //ResetAction();
+        StartCoroutine(ResetAction());
     }
 
     public void EnteredBlockZone(GameObject other)
@@ -276,9 +276,10 @@ public class PlayerBattleController : MonoBehaviour
                 animator.SetTrigger("Damage");
                 audioManager.Play("TakeDamage");
             }
-            //ResetAction();
+
             CheckHealthAnimation();
         }
+        StartCoroutine(ResetAction());
     }
 
     public void HealDamage(int damage)
@@ -319,8 +320,9 @@ public class PlayerBattleController : MonoBehaviour
         }
     }
 
-    public void ResetAction()
+    public IEnumerator ResetAction()
     {
+        yield return new WaitForSeconds(0.2f);
         hasDefended = false;
         hasBlocked = false;
         hasDodged = false;

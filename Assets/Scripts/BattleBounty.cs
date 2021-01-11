@@ -66,7 +66,7 @@ public class BattleBounty : MonoBehaviour
     {
         rewardOverlay.SetActive(true);
         xpHolderGO.SetActive(true);
-        StartCoroutine(DisplayValues());        
+        StartCoroutine(DisplayValues());    
     }
 
     public void InitiateXpBar()
@@ -202,7 +202,7 @@ public class BattleBounty : MonoBehaviour
     public void HealthPressContinue()
     {
         levelUp--;
-        playerValues.maxHealthPoints += 5;
+        playerValues.maxHealthPoints += 10;
         
         if (levelUp == 0)
         {
