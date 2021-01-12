@@ -178,7 +178,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""04a99bcc-ea09-41b1-81e7-0b394e5d1aff"",
-                    ""path"": ""<Keyboard>/v"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -888,6 +888,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ClearAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ccf84fa-1ce2-496c-8448-8486282836b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -1132,6 +1140,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ae839f8-881e-4101-94aa-b9ed5875aca1"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ClearAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""139db0ee-997c-4d55-950a-24872662432e"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ClearAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1190,6 +1220,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_InventoryUI_Inventory = m_InventoryUI.FindAction("Inventory", throwIfNotFound: true);
         m_InventoryUI_Move = m_InventoryUI.FindAction("Move", throwIfNotFound: true);
         m_InventoryUI_Submit = m_InventoryUI.FindAction("Submit", throwIfNotFound: true);
+        m_InventoryUI_ClearAbility = m_InventoryUI.FindAction("ClearAbility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1543,6 +1574,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_InventoryUI_Inventory;
     private readonly InputAction m_InventoryUI_Move;
     private readonly InputAction m_InventoryUI_Submit;
+    private readonly InputAction m_InventoryUI_ClearAbility;
     public struct InventoryUIActions
     {
         private @PlayerControls m_Wrapper;
@@ -1552,6 +1584,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Inventory => m_Wrapper.m_InventoryUI_Inventory;
         public InputAction @Move => m_Wrapper.m_InventoryUI_Move;
         public InputAction @Submit => m_Wrapper.m_InventoryUI_Submit;
+        public InputAction @ClearAbility => m_Wrapper.m_InventoryUI_ClearAbility;
         public InputActionMap Get() { return m_Wrapper.m_InventoryUI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1576,6 +1609,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Submit.started -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnSubmit;
+                @ClearAbility.started -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnClearAbility;
+                @ClearAbility.performed -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnClearAbility;
+                @ClearAbility.canceled -= m_Wrapper.m_InventoryUIActionsCallbackInterface.OnClearAbility;
             }
             m_Wrapper.m_InventoryUIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1595,6 +1631,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @ClearAbility.started += instance.OnClearAbility;
+                @ClearAbility.performed += instance.OnClearAbility;
+                @ClearAbility.canceled += instance.OnClearAbility;
             }
         }
     }
@@ -1661,5 +1700,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnClearAbility(InputAction.CallbackContext context);
     }
 }

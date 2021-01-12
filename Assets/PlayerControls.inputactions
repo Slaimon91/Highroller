@@ -165,7 +165,7 @@
                 {
                     "name": "",
                     "id": "04a99bcc-ea09-41b1-81e7-0b394e5d1aff",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -875,6 +875,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ClearAbility",
+                    "type": "Button",
+                    "id": "9ccf84fa-1ce2-496c-8448-8486282836b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -1117,6 +1125,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ae839f8-881e-4101-94aa-b9ed5875aca1",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ClearAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "139db0ee-997c-4d55-950a-24872662432e",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ClearAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

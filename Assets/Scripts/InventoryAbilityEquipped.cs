@@ -87,7 +87,6 @@ public class InventoryAbilityEquipped : MonoBehaviour, ISelectHandler, IDeselect
 
     public void UnEquip()
     {
-        Debug.Log("unequip");
         if(created)
         {
             inventoryUI.UnequipAbility(ability.GetInventorySlotNr());

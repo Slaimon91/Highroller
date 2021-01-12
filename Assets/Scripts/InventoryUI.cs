@@ -316,6 +316,21 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    public void ClearAbilities()
+    {
+        if(currentActiveTab == inventoryTabs[1])
+        {
+            for (int i = 0; i < equippedAbilitySlots.Count; i++)
+            {
+                if (equippedAbilitySlots[i].GetItem() != null)
+                {
+                    equippedAbilitySlots[i].GetComponentInChildren<InventoryAbilityEquipped>().UnEquip();
+                    //UnequipAbility(equippedAbilitySlots[i].GetItem().prefab.GetComponent<AbilityBase>().GetInventorySlotNr());
+                }
+            }
+        }
+    }
+
     public List<SeedBase> GetActiveSeeds()
     {
         List<SeedBase> seedList = new List<SeedBase>();
