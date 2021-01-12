@@ -16,22 +16,26 @@ MonoBehaviour:
   entries:
   - enemyNumber: 1
     enemyName: Goblin
+    hasEncountered: 0
     soulCount: 3
     info: The goblin is a dumb and green creature.
     enemyIcon: {fileID: 21300000, guid: e6a600744c0044246a92b8b456bc6da3, type: 3}
   - enemyNumber: 2
     enemyName: Dungbee
+    hasEncountered: 0
     soulCount: 1
     info: He will hide in his shell until the right time.
     enemyIcon: {fileID: 21300000, guid: 5c139cf3898870f48a3e7b52b5c88097, type: 3}
   - enemyNumber: 3
     enemyName: Swinecone
+    hasEncountered: 1
     soulCount: 8
     info: This hog woke up on the wrong side of his bacon, and his goldfish just
       died.
     enemyIcon: {fileID: 21300000, guid: 1116f412e5ef41349aefdd22242664cb, type: 3}
   - enemyNumber: 4
     enemyName: Vine Weaver
+    hasEncountered: 0
     soulCount: 3
     info: There's a lot of bushes for this critter to grab, who knows which one he
       might nab.

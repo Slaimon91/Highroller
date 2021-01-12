@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3297360948137680360}
   - component: {fileID: 1646969553604653825}
   - component: {fileID: 514739035721250812}
+  - component: {fileID: -1325013107365369807}
   m_Layer: 0
   m_Name: Mysterious Object
   m_TagString: Untagged
@@ -68,16 +69,16 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1968413009
-  m_SortingLayer: 2
+  m_SortingLayerID: -1548350429
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8872450744407309344, guid: fd2f3c60ac931f4429a2f3e812b7ed9b,
+  m_Sprite: {fileID: -7438184554236187798, guid: b4853919cf0b0694591b7cb010abd1b3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.6875, y: 1.59375}
+  m_Size: {x: 0.34375, y: 0.78125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1325013107365369807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7593851195572136406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c35b2b8ca0a364d9ec41673894f4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -71,7 +71,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.InventoryUI.Inventory.performed += ctx => TriggerCloseInventory();
         controls.InventoryUI.InventoryLeft.performed += ctx => TriggerTabLeft();
         controls.InventoryUI.InventoryRight.performed += ctx => TriggerTabRight();
-
+        controls.InventoryUI.ClearAbility.performed += ctx => TriggerClearAbility();
 
         controls.Battle.ChangeSceneHax.performed += ctx => ChangeSceneToOverworldHax();
         controls.Battle.Pass.performed += ctx => TriggerHoldButtonStarted();
@@ -267,6 +267,19 @@ public class PlayerControlsManager : MonoBehaviour
         }
 
         inventoryUI.ChangeInventoryTab(1);
+    }
+
+    public void TriggerClearAbility()
+    {
+        if (inventoryUI == null)
+        {
+            if ((inventoryUI = FindObjectOfType<InventoryUI>()) == null)
+            {
+                return;
+            }
+        }
+
+        inventoryUI.ClearAbilities();
     }
 
     public void TriggerInteract()

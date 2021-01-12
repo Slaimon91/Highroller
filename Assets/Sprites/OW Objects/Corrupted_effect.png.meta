@@ -1,0 +1,1007 @@
+fileFormatVersion: 2
+guid: b4853919cf0b0694591b7cb010abd1b3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -37471770090714442
+    second: Corrupted_effect_0
+  - first:
+      213: 3738307300645980841
+    second: Corrupted_effect_1
+  - first:
+      213: 5869898290552595742
+    second: Corrupted_effect_2
+  - first:
+      213: 2734581179266094774
+    second: Corrupted_effect_3
+  - first:
+      213: -7681314940724583048
+    second: Corrupted_effect_4
+  - first:
+      213: 6900673281315977697
+    second: Corrupted_effect_5
+  - first:
+      213: 5038536578082102056
+    second: Corrupted_effect_6
+  - first:
+      213: 6043927529217340253
+    second: Corrupted_effect_7
+  - first:
+      213: 3111445594568862585
+    second: Corrupted_effect_8
+  - first:
+      213: 201949247235432280
+    second: Corrupted_effect_9
+  - first:
+      213: 7939745917714142306
+    second: Corrupted_effect_10
+  - first:
+      213: -8364414145251656742
+    second: Corrupted_effect_11
+  - first:
+      213: -5916502196417012122
+    second: Corrupted_effect_12
+  - first:
+      213: 8577063234905523698
+    second: Corrupted_effect_13
+  - first:
+      213: 2335651176298903584
+    second: Corrupted_effect_14
+  - first:
+      213: -47517438784267616
+    second: Corrupted_effect_15
+  - first:
+      213: -6823725295639809945
+    second: Corrupted_effect_16
+  - first:
+      213: -1969460480068601876
+    second: Corrupted_effect_17
+  - first:
+      213: -1573314456338565387
+    second: Corrupted_effect_18
+  - first:
+      213: -2499678310349664999
+    second: Corrupted_effect_19
+  - first:
+      213: -3475599528127451468
+    second: Corrupted_effect_20
+  - first:
+      213: -8176020879813357399
+    second: Corrupted_effect_21
+  - first:
+      213: -6462689544408973635
+    second: Corrupted_effect_22
+  - first:
+      213: 3309924734428195871
+    second: Corrupted_effect_23
+  - first:
+      213: -3155900317451290997
+    second: Corrupted_effect_24
+  - first:
+      213: 9197262286317635576
+    second: Corrupted_effect_25
+  - first:
+      213: -4477134226254205860
+    second: Corrupted_effect_26
+  - first:
+      213: -4899904824001864957
+    second: Corrupted_effect_27
+  - first:
+      213: -7584057000359391851
+    second: Corrupted_effect_28
+  - first:
+      213: -2833820973089872066
+    second: Corrupted_effect_29
+  - first:
+      213: -7438184554236187798
+    second: Corrupted_effect_30
+  - first:
+      213: -1871735002062091061
+    second: Corrupted_effect_31
+  - first:
+      213: 6241861482425635617
+    second: Corrupted_effect_32
+  - first:
+      213: -6960205822473589187
+    second: Corrupted_effect_33
+  - first:
+      213: 6804822324228939264
+    second: Corrupted_effect_0
+  - first:
+      213: 884235152688093079
+    second: Corrupted_effect_1
+  - first:
+      213: -9004525805717329815
+    second: Corrupted_effect_2
+  - first:
+      213: 296039925300403616
+    second: Corrupted_effect_3
+  - first:
+      213: 4921634814245217233
+    second: Corrupted_effect_4
+  - first:
+      213: -7176469386857785613
+    second: Corrupted_effect_5
+  - first:
+      213: -5646823818469294806
+    second: Corrupted_effect_6
+  - first:
+      213: -1444018242332915929
+    second: Corrupted_effect_7
+  - first:
+      213: -2313439619671922421
+    second: Corrupted_effect_8
+  - first:
+      213: -3881787581227313061
+    second: Corrupted_effect_9
+  - first:
+      213: -5592868609292721733
+    second: Corrupted_effect_10
+  - first:
+      213: -1397923136020558295
+    second: Corrupted_effect_11
+  - first:
+      213: 6338138683931784018
+    second: Corrupted_effect_12
+  - first:
+      213: -206734307784882925
+    second: Corrupted_effect_13
+  - first:
+      213: 7321101780962828128
+    second: Corrupted_effect_14
+  - first:
+      213: 7104751130455692461
+    second: Corrupted_effect_15
+  - first:
+      213: -4369533121612854887
+    second: Corrupted_effect_16
+  - first:
+      213: 4218031895756949697
+    second: Corrupted_effect_17
+  - first:
+      213: 7250048098853149451
+    second: Corrupted_effect_18
+  - first:
+      213: -1526792709980706855
+    second: Corrupted_effect_19
+  - first:
+      213: -43159305449855825
+    second: Corrupted_effect_20
+  - first:
+      213: 4258779551329230497
+    second: Corrupted_effect_21
+  - first:
+      213: -7456894206240987040
+    second: Corrupted_effect_22
+  - first:
+      213: -1411893382691535493
+    second: Corrupted_effect_23
+  - first:
+      213: 6528290454476259403
+    second: Corrupted_effect_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Corrupted_effect_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e5053b9d59f6e50800000000000000
+      internalID: 6804822324228939264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79713edbf2f654c00800000000000000
+      internalID: 884235152688093079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 968616bdc7f790380800000000000000
+      internalID: -9004525805717329815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad1dda5ebebb1400800000000000000
+      internalID: 296039925300403616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d32841a9c82d4440800000000000000
+      internalID: 4921634814245217233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f650ee7d1f086c90800000000000000
+      internalID: -7176469386857785613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_6
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d3ceeb7a372a1b0800000000000000
+      internalID: -5646823818469294806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_7
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72700903f01d5fbe0800000000000000
+      internalID: -1444018242332915929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_8
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b09e32c4ce205efd0800000000000000
+      internalID: -2313439619671922421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_9
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b585c6fe2ce112ac0800000000000000
+      internalID: -3881787581227313061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1aca3d1a32262b0800000000000000
+      internalID: -5592868609292721733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_11
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92ec1367054999ce0800000000000000
+      internalID: -1397923136020558295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_12
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2537ae85d8795f750800000000000000
+      internalID: 6338138683931784018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_13
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 315889d0e38812df0800000000000000
+      internalID: -206734307784882925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_14
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fd4cae747c99560800000000000000
+      internalID: 7321101780962828128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_15
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4dd54b285299260800000000000000
+      internalID: 7104751130455692461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_16
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99946f3d6cc4c53c0800000000000000
+      internalID: -4369533121612854887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_17
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c84cdd39a5798a30800000000000000
+      internalID: 4218031895756949697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_18
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b53a065585d9460800000000000000
+      internalID: 7250048098853149451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_19
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7a1fb9e1ebfcae0800000000000000
+      internalID: -1526792709980706855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_20
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4a8e127daa66ff0800000000000000
+      internalID: -43159305449855825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_21
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae1dad10793a1b30800000000000000
+      internalID: 4258779551329230497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_22
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068665d4a3ac38890800000000000000
+      internalID: -7456894206240987040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_23
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7542ffe272f76ce0800000000000000
+      internalID: -1411893382691535493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_24
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4081a97495299a50800000000000000
+      internalID: 6528290454476259403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_25
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f74f0af15d33af70800000000000000
+      internalID: 9197262286317635576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_26
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5cef5064260ed1c0800000000000000
+      internalID: -4477134226254205860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_27
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b552cf58a000cb0800000000000000
+      internalID: -4899904824001864957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_28
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d8349175400c690800000000000000
+      internalID: -7584057000359391851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_29
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e372de5d6de3ca8d0800000000000000
+      internalID: -2833820973089872066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_30
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b64fe9e8246c890800000000000000
+      internalID: -7438184554236187798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_31
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc8c68bee24606e0800000000000000
+      internalID: -1871735002062091061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_32
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1235c2d82fb8f9650800000000000000
+      internalID: 6241861482425635617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Corrupted_effect_33
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 0
+        width: 11
+        height: 25
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e2bd36ea1686f90800000000000000
+      internalID: -6960205822473589187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

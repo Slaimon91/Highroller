@@ -47,6 +47,9 @@ MonoBehaviour:
     type: 3}
   tilemapsToCheck:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   genericText:
   - Bush.
   - Well.

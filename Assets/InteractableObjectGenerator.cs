@@ -31,7 +31,7 @@ public class InteractableObjectGenerator : MonoBehaviour
                     //Debug.Log(tile + "localplace: " + localPlace + "place: " + place);
                     TileBase tile = tileMap.GetTile(localPlace);
                     string boxToSpawn = CheckTile(tile);
-                    if (tile != null)
+                    if (boxToSpawn != null)
                     {
                         var newObject = Instantiate(interactBox, place, gameObject.transform.rotation);
                         newObject.transform.parent = gameObject.transform;
@@ -80,7 +80,7 @@ public class InteractableObjectGenerator : MonoBehaviour
         {
             return genericText[7];
         }
-        else if (tile.name == "Tilemap_FoD_42") // closed cave
+        else if (tile.name == "Tilemap_FoD_42" || tile.name == "Tilemap_FoD_152") // closed cave
         {
             return genericText[8];
         }

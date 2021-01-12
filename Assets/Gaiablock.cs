@@ -12,6 +12,8 @@ public class Gaiablock : MonoBehaviour, IInteractable
     private GameObject popup;
     [HideInInspector] public bool isCleared = false;
     [HideInInspector] public string id;
+    [TextArea(3, 20)]
+    public string genericText;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class Gaiablock : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
+        //FindObjectOfType<GenericTextManager>().DisplayText(genericText);
         string questionText = "Release <color=#84B724>" + gaiaAmount + "</color>";
         popup = Instantiate(popUpBox, overworldCanvas.transform);
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback += YesGaiaBlock;
