@@ -11,5 +11,10 @@ public class GenericTextTrigger : MonoBehaviour, IInteractable
     {
         FindObjectOfType<GenericTextManager>().DisplayText(genericText);
     }
+
+    public void SetText(string text)
+    {
+        genericText = text;
+    }
 }
 
