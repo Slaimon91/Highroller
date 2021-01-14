@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Dungbee
+  enemyNumber: 2
   diceKeyNumber: 8
   xpAmount: 4
   isGold: 1

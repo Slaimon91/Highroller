@@ -12,8 +12,7 @@ public class Gaiablock : MonoBehaviour, IInteractable
     private GameObject popup;
     [HideInInspector] public bool isCleared = false;
     [HideInInspector] public string id;
-    [TextArea(3, 20)]
-    public string genericText;
+    private bool startedTalking;
 
     void Awake()
     {
@@ -26,17 +25,28 @@ public class Gaiablock : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
-        //FindObjectOfType<GenericTextManager>().DisplayText(genericText);
+        if (!startedTalking)
+        {
+            startedTalking = true;
+
+            GetComponent<GenericTextTrigger>().onFinishedTextCallback += AskQuestion;
+        }
+    }
+
+    public void AskQuestion()
+    {
+        GetComponent<GenericTextTrigger>().onFinishedTextCallback -= AskQuestion;
         string questionText = "Release <color=#84B724>" + gaiaAmount + "</color>";
         popup = Instantiate(popUpBox, overworldCanvas.transform);
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback += YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback += NoGaiaBlock;
         popup.GetComponent<PopupQuestion>().SetQuestionText(questionText);
-        if(playerValues.gaia < gaiaAmount)
+        if (playerValues.gaia < gaiaAmount)
         {
             popup.GetComponent<PopupQuestion>().DisableYesButton();
         }
     }
+
     public void YesGaiaBlock()
     {
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
@@ -45,12 +55,14 @@ public class Gaiablock : MonoBehaviour, IInteractable
         gaiaBlockade.PaidGaiaBlock();
         isCleared = true;
         gameObject.SetActive(false);
+        startedTalking = false;
     }
 
     public void NoGaiaBlock()
     {
         popup.GetComponent<PopupQuestion>().onYesAnswerCallback -= YesGaiaBlock;
         popup.GetComponent<PopupQuestion>().onNoAnswerCallback -= NoGaiaBlock;
+        startedTalking = false;
     }
     private void Save(string temp)
     {

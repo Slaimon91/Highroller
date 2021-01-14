@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Vine Weaver
+  enemyNumber: 4
   diceKeyNumber: 10
   xpAmount: 10
   isGold: 1

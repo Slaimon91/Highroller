@@ -12,6 +12,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     protected bool isFrontDKAssigned = false;
 
     [SerializeField] protected string unitName = "Name";
+    [SerializeField] protected int enemyNumber = 1;
     [SerializeField] protected int diceKeyNumber = 1;
     [SerializeField] protected int xpAmount = 1;
     [SerializeField] protected bool isGold = false;
@@ -91,6 +92,7 @@ public abstract class EnemyBattleBase : MonoBehaviour
     //See if the enemy will drop a soul
     public void RollSoulDrop()
     {
+        FindObjectOfType<BattleBounty>().RegisterEnemy(enemyNumber);
         int num = Random.Range(1, 101);
         if(num <= soulDropPercentage)
         {

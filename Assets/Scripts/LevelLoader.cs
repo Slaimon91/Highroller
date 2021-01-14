@@ -23,6 +23,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadOverworldScene(string key) //From battle to OW
     {
         FindObjectOfType<PlayerControlsManager>().ChangeToOverworld();
+        FindObjectOfType<TimeManager>().SaveTimeTemp();
         SceneManager.LoadScene(key);
         StartCoroutine(LoadOWSceneDelay());
     }

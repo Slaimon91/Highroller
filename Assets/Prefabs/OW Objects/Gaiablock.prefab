@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5050922269439863389}
   - component: {fileID: 5050922269439863388}
   - component: {fileID: 7580054855898230651}
+  - component: {fileID: 84457734932091828}
   m_Layer: 8
   m_Name: Gaiablock
   m_TagString: InteractableObject
@@ -143,6 +144,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d443795ba7d9c4a4f884907830f54145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &84457734932091828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050922269439863386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1976db2ea767b884f9ec2a28f2af9802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genericText: 
 --- !u!1 &6677673929862777341
 GameObject:
   m_ObjectHideFlags: 0

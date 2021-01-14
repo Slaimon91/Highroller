@@ -5576,13 +5576,20 @@ MonoBehaviour:
   - {fileID: 3931356576983351017}
   - {fileID: 1423061980066160729}
   - {fileID: 1889460072992158073}
+  enemySlots:
+  - {fileID: 7836455871454163277}
+  - {fileID: 8339238498453103999}
+  - {fileID: 2521974083463433870}
+  - {fileID: 1101723038373556561}
+  - {fileID: 7371312942863618596}
   infoName: {fileID: 6972095605075765638}
   infoText: {fileID: 6602470070139715326}
   infoSouls: {fileID: 9156994600352279807}
   enemyLexikon: {fileID: 11400000, guid: 0dd85b47e2cf58146b2a22a6cf78468e, type: 2}
   soulAnimator: {fileID: 1538140318}
   idleAnimator: {fileID: 984684756460163764}
-  questionMarkSprite: {fileID: 21300000, guid: 5ec95978f71c1dc49859c74e452311b7, type: 3}
+  questionMarkSprite: {fileID: 21300000, guid: 0869093f306b17a4b83dca37fcf1af87, type: 3}
+  emptySprite: {fileID: 21300000, guid: 947e7971114b1e945bb336c4895d1dbd, type: 3}
 --- !u!1 &6243400121357154363
 GameObject:
   m_ObjectHideFlags: 0

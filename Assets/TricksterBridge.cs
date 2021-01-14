@@ -49,11 +49,17 @@ public class TricksterBridge : MonoBehaviour, IInteractable
         popup.onYesAnswerCallback -= YesPay;
         popup.onMiddleAnswerCallback -= NoFight;
         popup.onNoAnswerCallback -= NoCancel;
+        GetComponent<DialogueTrigger>().GoToDialogue(3);
+        GetComponent<DialogueTrigger>().Interact();
+        GetComponent<DialogueTrigger>().onFinishedDialogueCallback += Leave;
+    }
+
+    public void Leave()
+    {
+        GetComponent<DialogueTrigger>().onFinishedDialogueCallback -= Leave;
         FindObjectOfType<LaunchRewards>().LanuchGARewardbox(-goldenAcornAmount);
         isCleared = true;
         gameObject.SetActive(false);
-        GetComponent<DialogueTrigger>().GoToDialogue(3);
-        GetComponent<DialogueTrigger>().Interact();
     }
 
     private void StartBattle()

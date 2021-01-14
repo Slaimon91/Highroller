@@ -21,7 +21,7 @@ public class TimeManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        Debug.Log("Aweake");
         gameObject.transform.parent = null;
         //DontDestroyOnLoad(gameObject);
         DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);
@@ -53,9 +53,19 @@ public class TimeManager : MonoBehaviour
     {
         timeOffset += 60;
     }
+
+    public void SaveTimeTemp()
+    {
+        gameTimeAtAppLaunch = totalGameTime;
+        timeSinceAppLaunch = 0;
+        timeOffset = 0;
+    }
     private void Save(string temp)
     {
         SaveData.current.timeManager = new TimeManagerData(gameObject.GetComponent<TimeManager>());
+        gameTimeAtAppLaunch = totalGameTime;
+        timeSinceAppLaunch = 0;
+        timeOffset = 0;
     }
 
     public void Load(string temp)
@@ -71,6 +81,13 @@ public class TimeManager : MonoBehaviour
 
             timeSinceAppLaunch = 0;
             gameTimeAtAppLaunch = totalGameTime;
+            Debug.Log("loading time: " + totalGameTime);
+        }
+        else
+        {
+            gameTimeAtAppLaunch = totalGameTime;
+            timeSinceAppLaunch = 0;
+            timeOffset = 0;
         }
     }
 

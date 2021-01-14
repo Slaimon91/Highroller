@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     InFrontOfPlayerTrigger testTrigger;
     public PlayerValues playerValues;
+    public EnemyLexikon enemyLexikon;
     private PlayerControlsManager playerControlsManager;
     private TileflipManager tileflipManager;
 
@@ -516,6 +517,11 @@ public class PlayerController : MonoBehaviour
                 playerValues.level = data.level;
                 playerValues.nrOfBattles = data.nrOfBattles;
                 playerValues.playedTime = data.playedTime;
+                for (int i = 0; i < enemyLexikon.entries.Count; i++)
+                {
+                    enemyLexikon.entries[i].hasEncountered = data.hasEncountered[i];
+                    enemyLexikon.entries[i].soulCount = data.soulCount[i];
+                }
             }
 
             transform.position = data.position;
@@ -533,6 +539,12 @@ public class PlayerController : MonoBehaviour
             playerValues.level = 1;
             playerValues.playedTime = 0;
             playerValues.nrOfBattles = 0;
+
+            for (int i = 0; i < enemyLexikon.entries.Count; i++)
+            {
+                enemyLexikon.entries[i].hasEncountered = false;
+                enemyLexikon.entries[i].soulCount = 0;
+            }
         }
     }
     public void OnDestroy()
@@ -556,6 +568,8 @@ public class PlayerData
     public float playedTime;
     public string currentOWScene;
     public int currentSavefile;
+    public List<bool> hasEncountered = new List<bool>();
+    public List<int> soulCount = new List<int>();
 
     public Vector3 position;
     public Vector2 direction;
@@ -573,6 +587,14 @@ public class PlayerData
         playedTime = playerController.playerValues.playedTime;
         currentOWScene = playerController.playerValues.currentOWScene;
         currentSavefile = playerController.playerValues.currentSavefile;
+
+        hasEncountered.Clear();
+        soulCount.Clear();
+        for(int i = 0; i < playerController.enemyLexikon.entries.Count; i++)
+        {
+            hasEncountered.Add(playerController.enemyLexikon.entries[i].hasEncountered);
+            soulCount.Add(playerController.enemyLexikon.entries[i].soulCount);
+        }
 
         position = playerController.transform.position;
         direction = playerController.GetCurrentDirection();

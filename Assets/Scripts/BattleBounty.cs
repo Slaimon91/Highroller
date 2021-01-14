@@ -69,6 +69,14 @@ public class BattleBounty : MonoBehaviour
         StartCoroutine(DisplayValues());    
     }
 
+    public void RegisterEnemy(int enemyNr)
+    {
+        if(!enemyLexikon.entries[enemyNr - 1].hasEncountered)
+        {
+            enemyLexikon.entries[enemyNr - 1].hasEncountered = true;
+        }
+    }
+
     public void InitiateXpBar()
     {
         float xpPerBar = (float)expPerLevel.expPerLevelTable[playerValues.level].exp / 26;

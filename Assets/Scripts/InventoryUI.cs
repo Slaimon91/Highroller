@@ -10,6 +10,8 @@ public class InventoryUI : MonoBehaviour
     public Transform seedItemsParent;
     public Transform trinketItemsParent;
 
+    public bool inventoryFinishedLoading;
+
     Inventory inventory;
 
     private List<InventorySlot> seedSlots = new List<InventorySlot>();
@@ -172,6 +174,7 @@ public class InventoryUI : MonoBehaviour
         InitiateEquippedAbilities();
 
         onInventoryFinishedLoadingCallback?.Invoke();
+        inventoryFinishedLoading = true;
     }
 
     public void ChangeInventoryTab(int tabValue)

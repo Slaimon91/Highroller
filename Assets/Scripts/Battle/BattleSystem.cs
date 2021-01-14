@@ -696,7 +696,7 @@ public class BattleSystem : MonoBehaviour
         if (enemiesGO.Count == 0) //Battle is over
         {
             yield return StartCoroutine(WaitSec(2f));
-            //FindObjectOfType<HoldAssignButton>().Reset();
+            FindObjectOfType<HoldAssignButton>().Reset();
             FindObjectOfType<PlayerControlsManager>().ToggleOnGenericUI();
             battleBounty.GiveBounty();
         }

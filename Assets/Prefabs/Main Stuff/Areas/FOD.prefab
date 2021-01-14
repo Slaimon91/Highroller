@@ -2245,6 +2245,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 140061383505713071}
     m_Modifications:
+    - target: {fileID: 84457734932091828, guid: 131d8732ccee72c44b7c0841d17ce93e,
+        type: 3}
+      propertyPath: genericText
+      value: This fallen log is blocking the way.
+      objectReference: {fileID: 0}
     - target: {fileID: 446839939258281010, guid: 131d8732ccee72c44b7c0841d17ce93e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2547,6 +2552,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 140061383505713071}
     m_Modifications:
+    - target: {fileID: 84457734932091828, guid: 131d8732ccee72c44b7c0841d17ce93e,
+        type: 3}
+      propertyPath: genericText
+      value: This bridge appears to be broken.
+      objectReference: {fileID: 0}
     - target: {fileID: 446839939258281010, guid: 131d8732ccee72c44b7c0841d17ce93e,
         type: 3}
       propertyPath: m_LocalPosition.x

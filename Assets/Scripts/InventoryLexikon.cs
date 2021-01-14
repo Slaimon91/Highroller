@@ -10,6 +10,8 @@ public class InventoryLexikon : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI[] enemyNames;
 
+    [SerializeField] GameObject[] enemySlots;
+
     [SerializeField] TextMeshProUGUI infoName;
     [SerializeField] TextMeshProUGUI infoText;
     [SerializeField] TextMeshProUGUI infoSouls;
@@ -27,6 +29,7 @@ public class InventoryLexikon : MonoBehaviour
     [SerializeField] Animator soulAnimator;
     [SerializeField] Animator idleAnimator;
     [SerializeField] Sprite questionMarkSprite;
+    [SerializeField] Sprite emptySprite;
     void Awake()
     {
         inventoryUI = FindObjectOfType<InventoryUI>();
@@ -59,29 +62,29 @@ public class InventoryLexikon : MonoBehaviour
         {
             if(movement.y > 0)
             {
-
+                if (currentlySelectedPos -1 < 0)
+                {
+                    return;
+                    //currentlySelectedPos = enemyLexikon.entries.Count - 1;
+                    //soulAnimator.SetFloat("SoulNumber", enemyLexikon.entries.Count - 1);
+                    //idleAnimator.SetFloat("IdleNumber", enemyLexikon.entries.Count - 1);
+                }
                 currentlySelectedPos--;
                 soulAnimator.SetFloat("SoulNumber", currentlySelectedPos);
                 idleAnimator.SetFloat("IdleNumber", currentlySelectedPos);
-                if (currentlySelectedPos < 0)
-                {
-                    currentlySelectedPos = enemyLexikon.entries.Count - 1;
-                    soulAnimator.SetFloat("SoulNumber", enemyLexikon.entries.Count - 1);
-                    idleAnimator.SetFloat("IdleNumber", enemyLexikon.entries.Count - 1);
-                }
             }
             else
             {
-                
+                if (currentlySelectedPos +1 > enemyLexikon.entries.Count - 1)
+                {
+                    return;
+                    //currentlySelectedPos = 0;
+                    //soulAnimator.SetFloat("SoulNumber", 0);
+                    //idleAnimator.SetFloat("IdleNumber", 0);
+                }
                 currentlySelectedPos++;
                 soulAnimator.SetFloat("SoulNumber", currentlySelectedPos);
                 idleAnimator.SetFloat("IdleNumber", currentlySelectedPos);
-                if (currentlySelectedPos > enemyLexikon.entries.Count - 1)
-                {
-                    currentlySelectedPos = 0;
-                    soulAnimator.SetFloat("SoulNumber", 0);
-                    idleAnimator.SetFloat("IdleNumber", 0);
-                }
             }
             UpdateLexikonPos();
             movementOffCooldown = false;
@@ -116,7 +119,7 @@ public class InventoryLexikon : MonoBehaviour
         int relativeCounter = -2;
         for(int i = 0; i < 5; i++)
         {
-            if(relativeCounter + currentlySelectedPos == -1)
+            /*else if(relativeCounter + currentlySelectedPos == -1)
             {
                 if(enemyLexikon.entries[enemyLexikon.entries.Count - 1].hasEncountered)
                 {
@@ -175,9 +178,16 @@ public class InventoryLexikon : MonoBehaviour
                     enemyNames[i].text = enemyLexikon.entries[1].enemyNumber + ". ";
                 }
 
+            }*/
+            if(relativeCounter + currentlySelectedPos < 0 || relativeCounter + currentlySelectedPos > enemyLexikon.entries.Count - 1)
+            {
+
+                enemySlots[i].SetActive(false);
+
             }
             else
             {
+                enemySlots[i].SetActive(true);
                 if (enemyLexikon.entries[currentlySelectedPos + relativeCounter].hasEncountered)
                 {
                     enemyIcons[i].sprite = enemyLexikon.entries[currentlySelectedPos + relativeCounter].enemyIcon;

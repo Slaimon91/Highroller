@@ -163,6 +163,7 @@ MonoBehaviour:
     m_Bits: 2048
   state: 0
   playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
+  enemyLexikon: {fileID: 11400000, guid: 0dd85b47e2cf58146b2a22a6cf78468e, type: 2}
   healthText: {fileID: 0}
   gaiaText: {fileID: 0}
   goldenAcornText: {fileID: 0}

@@ -25,6 +25,7 @@ public class BerryTile : MonoBehaviour, IInteractable
     [HideInInspector] public string id;
     [HideInInspector] public string plantedBerryName;
     private TimeManager timeManager;
+    private InventoryUI inventoryUI;
 
     void Awake()
     {
@@ -39,7 +40,11 @@ public class BerryTile : MonoBehaviour, IInteractable
     }
     void Update()
     {
-        ReloadBerries();
+        if(berryStage != 5)
+        {
+            ReloadBerries();
+        }
+
     }
     public void Interact()
     {
@@ -134,6 +139,11 @@ public class BerryTile : MonoBehaviour, IInteractable
 
     private void AdvanceBerryStage()
     {
+        if (berryGrowthPoints < 60) //Stage 0
+        {
+            berryStage = 1;
+            plantSprite.sprite = plantStageOne;
+        }
         if (berryGrowthPoints > 60 && berryGrowthPoints < (300 * berryGrowthSpeed) * 0.33) //Stage 2 = 3, 4, 5
         {
             plantSprite.sprite = plantStageTwo;
@@ -151,7 +161,7 @@ public class BerryTile : MonoBehaviour, IInteractable
             berryStage = 4;
         }
 
-        else if (berryGrowthPoints > (300 * berryGrowthSpeed) && berryStage <= 4) //Stage 5 = 6, 9, 12
+        else if (berryGrowthPoints > (300 * berryGrowthSpeed)) //Stage 5 = 6, 9, 12
         {
             plantSprite.sprite = plantStageFive;
             berryStage = 5;
@@ -169,7 +179,7 @@ public class BerryTile : MonoBehaviour, IInteractable
 
     public void ReloadBerries()
     {
-        if (berryIsPlanted && berryStage != 5)
+        if (berryIsPlanted)
         {
             berryGrowthPoints = timeManager.GetTimeSeconds() - berryPlantedAtTime;
             AdvanceBerryStage();
@@ -182,13 +192,20 @@ public class BerryTile : MonoBehaviour, IInteractable
 
     public void Load(string temp)
     {
-        FindObjectOfType<InventoryUI>().onInventoryFinishedLoadingCallback += LoadTile;
+        inventoryUI = FindObjectOfType<InventoryUI>();
+        if (inventoryUI.inventoryFinishedLoading)
+        {
+            LoadTile();
+        }
+        else
+        {
+            FindObjectOfType<InventoryUI>().onInventoryFinishedLoadingCallback += LoadTile;
+        }
     }
 
     public void LoadTile()
     {
         BerryTileData data = SaveData.current.berryTiles.Find(x => x.id == id);
-
         if (data != default && data.berryIsPlanted)
         {
             id = data.id;
@@ -203,6 +220,7 @@ public class BerryTile : MonoBehaviour, IInteractable
             plantedBerry = FindObjectOfType<InventoryUI>().GetSeed(itemSeed.prefab.GetComponent<SeedBase>());
 
             plantStageFive = plantedBerry.GetBerryTileFinishedSprite();
+            plantedBerryName = plantedBerry.GetSeedName();
             ReloadBerries();
         }
         FindObjectOfType<InventoryUI>().onInventoryFinishedLoadingCallback -= LoadTile;
@@ -231,7 +249,7 @@ public class BerryTileData
         id = berryTile.id;
         berryIsPlanted = berryTile.berryIsPlanted;
         plantedBerryName = berryTile.plantedBerryName;
-
+        Debug.Log("Saving berry name:" + plantedBerryName);
         berryStage = berryTile.berryStage;
         berryPlantedAtTime = berryTile.berryPlantedAtTime;
         berryGrowthSpeed = berryTile.berryGrowthSpeed;

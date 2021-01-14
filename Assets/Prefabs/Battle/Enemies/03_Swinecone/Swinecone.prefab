@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Swinecone
+  enemyNumber: 3
   diceKeyNumber: 1
   xpAmount: 6
   isGold: 0
