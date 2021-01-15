@@ -8,9 +8,12 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     [SerializeField] GameObject collidingGameObject = null;
     bool currentlyCollidingInteractable = false;
     bool currentlyCollidingTileable = false;
+    public int collisionCount = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Colliding: " + other);
+        collisionCount++;
         if (other.CompareTag("InteractableObject"))
         {
             currentlyCollidingInteractable = true;
@@ -26,13 +29,15 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("InteractableObject"))
+        Debug.Log("Exiting: " + other);
+        collisionCount--;
+        if (other.CompareTag("InteractableObject") && collisionCount == 0)
         {
             currentlyCollidingInteractable = false;
             collidingGameObject = null;
         }
 
-        else if (other.CompareTag("InteractableTile"))
+        else if (other.CompareTag("InteractableTile") && collisionCount == 0)
         {
             currentlyCollidingTileable = false;
             collidingGameObject = null;

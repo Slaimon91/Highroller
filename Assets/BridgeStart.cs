@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BridgeStart : MonoBehaviour
 {
-    [SerializeField] PlayerController.Direction enterDirection;
+    //[SerializeField] PlayerController.Direction enterDirection;
     [SerializeField] int bridgeElevation;
     private PlayerController playerController;
-    private bool isColliding = false;
+    [SerializeField] bool isExit;
     /*private void Update()
     {
         if(isColliding)
@@ -29,9 +29,9 @@ public class BridgeStart : MonoBehaviour
             }
         }
     }*/
-    void OnTriggerExit2D(Collider2D other)
+    /*void OnTriggerExit2D(Collider2D other)
     {
-        if((playerController = other.GetComponent<PlayerController>()) != null)
+        if((playerController = other.GetComponent<PlayerController>()) != null && !isExit)
         {
             if (playerController.GetDirection() != enterDirection)
             {
@@ -39,17 +39,23 @@ public class BridgeStart : MonoBehaviour
                 if(bridgeElevation > 0)
                     playerController.ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
             }
-        } 
-    }
+        }
+    }*/
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerController>() != null)
+        if (other.GetComponent<PlayerController>() != null && !isExit)
         {
             playerController = other.GetComponent<PlayerController>();
             playerController.SetOnBridge(true);
-            isColliding = true;
             if (bridgeElevation > 0)
                 playerController.ElevationChangePlayer(bridgeElevation - 1, bridgeElevation);
+        }
+        else if (other.GetComponent<PlayerController>() != null && isExit)
+        {
+            playerController = other.GetComponent<PlayerController>();
+            playerController.SetOnBridge(false);
+            if (bridgeElevation > 0)
+                playerController.ElevationChangePlayer(bridgeElevation, bridgeElevation - 1);
         }
     }
 }

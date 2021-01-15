@@ -96,20 +96,20 @@ public class PlayerController : MonoBehaviour
         healthText.text = playerValues.healthPoints.ToString() + "/" + playerValues.maxHealthPoints.ToString();
         gaiaText.text = playerValues.gaia.ToString() + "/" + playerValues.maxGaia.ToString();
         goldenAcornText.text = playerValues.currency.ToString();
+
         //Normal state
         if (!interacting && !tileFlipping)
         {
             PlayerMove();
             dir = GetDirection();
-            SetInteractCoordinates(dir);
         }
         //If tileflipping
         if (!interacting && tileFlipping)
         {
             PlayerTurnInPlace();
-
             dir = GetDirection();
             SetInteractCoordinates(dir);
+
         }
         myTime = Time.timeSinceLevelLoad;
         playerValues.playedTime += myTime;
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
         //Only check movement input if we are at the movepoint position
         if ((Vector3.Distance(transform.position, movePoint.position) <= .05f))
         {
-            
+            SetInteractCoordinates(dir);
             //Check if we're pressing all the way to the left or to the right
             if (move.x == 1f)    //east
             {

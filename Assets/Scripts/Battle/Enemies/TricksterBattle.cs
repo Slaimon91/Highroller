@@ -121,9 +121,6 @@ public class TricksterBattle : EnemyBattleBase
     {
         while (!hitTarget)
         {
-            Debug.Log(target);
-            Debug.Log(start);
-            Debug.Log(speed);
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
             if (Mathf.Approximately(transform.position.x, target.x))
