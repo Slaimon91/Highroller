@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public float playerTileOffset = 0.19f;
     Vector3 playerOffsetVector;
     [HideInInspector] public bool waterForm = new bool();
-    [HideInInspector] public int elevation = 0;
+    public int elevation = 0;
     private bool onBridge = false;
 
-
+    [SerializeField] LayerMask underneath;
     [SerializeField] LayerMask whatStopsMovement;
     [SerializeField] LayerMask whatStopsMovementHigh;
     [SerializeField] LayerMask water;
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] TextMeshProUGUI gaiaText;
     [SerializeField] TextMeshProUGUI goldenAcornText;
     private GameObject overWorldCanvas;
+    [SerializeField] GameObject underneathMask;
 
     public delegate void OnFinishedInteracting();
     public OnFinishedInteracting onFinishedInteractingCallback;
@@ -335,7 +336,9 @@ public class PlayerController : MonoBehaviour
             //Check if we're pressing all the way to the left or to the right
             if (move.x == 1f)    //east
             {
-                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovement) 
+                    || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, whatStopsMovementHigh))
+                     || (elevation == -1 && Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x, 0f, 0f), .2f, underneath)))
                 {
                     if((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x - newOffset, 0f, 0f), .2f, water) || waterForm || onBridge))
                     {
@@ -357,7 +360,9 @@ public class PlayerController : MonoBehaviour
             //Check if we're pressing all the way to the left or to the right
             else if (move.x == -1f)   //west
             {
-                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovementHigh)))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovement) 
+                    || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, whatStopsMovementHigh))
+                    || (elevation == -1 && Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x, 0f, 0f), .2f, underneath)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(move.x + newOffset, 0f, 0f), .2f, water) || waterForm || onBridge))
                     {
@@ -378,8 +383,9 @@ public class PlayerController : MonoBehaviour
 
             else if (move.y == 1f)   //north
             {
-
-                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) 
+                    || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, whatStopsMovementHigh)) 
+                    || (elevation == -1 && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - playerTileOffset, 0f), .2f, underneath)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - newOffset - playerTileOffset, 0f), .2f, water) || waterForm || onBridge))
                     {
@@ -402,7 +408,9 @@ public class PlayerController : MonoBehaviour
             else if (move.y == -1f)   //south
             {
 
-                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovement) || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, whatStopsMovementHigh)))
+                if (elevation == 0 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset - playerTileOffset, 0f), .2f, whatStopsMovement) 
+                    || (elevation == 1 && !Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset - playerTileOffset, 0f), .2f, whatStopsMovementHigh)) 
+                    || (elevation == -1 && Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y - playerTileOffset, 0f), .1f, underneath)))
                 {
                     if ((!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, move.y + newOffset + playerTileOffset, 0f), .2f, water) || waterForm || onBridge))
                     {
@@ -458,12 +466,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ElevationChangePlayer(int fromLevel, int toLevel)
+    public void ElevationChangePlayer(int toLevel)
     {
-        if(elevation == fromLevel)
-        {
-            elevation = toLevel;
-        }
+        elevation = toLevel;
 
         if(elevation == 0)
         {
@@ -478,6 +483,20 @@ public class PlayerController : MonoBehaviour
             sprite.sortingLayerName = "All tiles Overlay";
             sprite.sortingOrder = 1;
             movePoint.gameObject.layer = 9;
+        }
+    }
+
+    public void SetUnderneath(bool status)
+    {
+        if (status)
+        {
+            underneathMask.SetActive(true);
+            animator.SetBool("isUnderneath", true);
+        }
+        else
+        {
+            underneathMask.SetActive(false);
+            animator.SetBool("isUnderneath", false);
         }
     }
 

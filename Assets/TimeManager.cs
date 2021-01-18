@@ -21,7 +21,6 @@ public class TimeManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Debug.Log("Aweake");
         gameObject.transform.parent = null;
         //DontDestroyOnLoad(gameObject);
         DontDestroyOnLoadManager.DontDestroyOnLoad(gameObject);

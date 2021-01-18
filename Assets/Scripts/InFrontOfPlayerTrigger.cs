@@ -12,7 +12,6 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Colliding: " + other);
         collisionCount++;
         if (other.CompareTag("InteractableObject"))
         {
@@ -29,7 +28,6 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Exiting: " + other);
         collisionCount--;
         if (other.CompareTag("InteractableObject") && collisionCount == 0)
         {
