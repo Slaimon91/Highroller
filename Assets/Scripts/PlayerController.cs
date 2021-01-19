@@ -469,6 +469,7 @@ public class PlayerController : MonoBehaviour
     public void ElevationChangePlayer(int toLevel)
     {
         elevation = toLevel;
+        Debug.Log(toLevel);
 
         if(elevation == 0)
         {
