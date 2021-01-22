@@ -18,8 +18,6 @@ public class ElevationChanger : MonoBehaviour
             
             playerController.ElevationChangePlayer(newElevation);
 
-            Debug.Log(transform.parent);
-
             if(isBridgeEntrance)
             {
                 playerController.SetOnBridge(true);

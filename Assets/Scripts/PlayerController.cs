@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     GameObject currentInterObj = null;
     [HideInInspector] public bool interacting = false;
     [HideInInspector] public bool tileFlipping = false;
+    bool jumping = false;
     bool hasFinishedWalking = false;
     private float myTime;
 
@@ -46,7 +47,8 @@ public class PlayerController : MonoBehaviour
     public PlayerValues playerValues;
     public EnemyLexikon enemyLexikon;
     private PlayerControlsManager playerControlsManager;
-    private TileflipManager tileflipManager;
+    //private TileflipManager tileflipManager;
+    private CorruptionSourceManager corruptionSourceManager;
 
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI gaiaText;
@@ -74,8 +76,8 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
         animator = GetComponent<Animator>();
         playerControlsManager = FindObjectOfType<PlayerControlsManager>();
-        tileflipManager = FindObjectOfType<TileflipManager>();
-
+        //tileflipManager = FindObjectOfType<TileflipManager>();
+        corruptionSourceManager = FindObjectOfType<CorruptionSourceManager>();
         testTrigger = GetComponentInChildren<InFrontOfPlayerTrigger>();
         inFrontOfPlayerTrigger.position = new Vector2(transform.position.x, transform.position.y - 1 - playerTileOffset);
         dir = GetDirection();
@@ -99,10 +101,11 @@ public class PlayerController : MonoBehaviour
         goldenAcornText.text = playerValues.currency.ToString();
 
         //Normal state
-        if (!interacting && !tileFlipping)
+        if (!interacting && !tileFlipping & !jumping)
         {
             PlayerMove();
             dir = GetDirection();
+            SetInteractCoordinates(dir);
         }
         //If tileflipping
         if (!interacting && tileFlipping)
@@ -129,7 +132,7 @@ public class PlayerController : MonoBehaviour
         //Flipping a tile
         if (!interacting && tileFlipping)
         {
-            tileflipManager.FlipTile();
+            //tileflipManager.FlipTile();
         }
 
         //Pressed interact
@@ -182,12 +185,17 @@ public class PlayerController : MonoBehaviour
             //Stop flipping
             else if (tileFlipping && hasFinishedWalking)
             {
-                CancelTileflip();
+                corruptionSourceManager.StartHolding();
             }
         }
     }
 
-    public void CancelTileFlip()
+    public void StopHoldingTileFlip()
+    {
+        corruptionSourceManager.StopHolding();
+    }
+
+    public void CancelTileFliping()
     {
         if (state != GameState.PLAYING)
         {
@@ -206,7 +214,8 @@ public class PlayerController : MonoBehaviour
     public void CancelTileflip()
     {
         tileFlipping = false;
-        tileflipManager.CancelTileflip();
+        //tileflipManager.CancelTileflip();
+        corruptionSourceManager.StopCleansing();
     }
 
     public void SetInteracting(bool newState)
@@ -270,14 +279,23 @@ public class PlayerController : MonoBehaviour
         hasFinishedWalking = false;
         while (!(Vector3.Distance(transform.position, movePoint.position) == 0))
         {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
         dir = GetDirection();
         SetInteractCoordinates(dir);
         NotWalking();
-        tileflipManager.SpawnAvailableTiles();
-        hasFinishedWalking = true;        
+        //tileflipManager.SpawnAvailableTiles();
+        hasFinishedWalking = true;
+        if (!corruptionSourceManager.CanCleanse())
+        {
+            CancelTileflip();
+        }
+        else
+        {
+            corruptionSourceManager.StartCleansing();
+        }
     }
 
     public IEnumerator TeleportPlayer(Vector3 newCoords, Vector2 newDirection)
@@ -332,7 +350,6 @@ public class PlayerController : MonoBehaviour
         //Only check movement input if we are at the movepoint position
         if ((Vector3.Distance(transform.position, movePoint.position) <= .05f))
         {
-            SetInteractCoordinates(dir);
             //Check if we're pressing all the way to the left or to the right
             if (move.x == 1f)    //east
             {
@@ -432,7 +449,23 @@ public class PlayerController : MonoBehaviour
 
             else
             {
-                NotWalking();
+                if (inFrontOfPlayerTrigger.GetComponent<InFrontOfPlayerTrigger>().GetCollidingGameObject() != null)
+                {
+                    if (inFrontOfPlayerTrigger.GetComponent<InFrontOfPlayerTrigger>().GetCollidingGameObject().GetComponent<LedgeTrigger>() != null)
+                    {
+                        inFrontOfPlayerTrigger.GetComponent<InFrontOfPlayerTrigger>().GetCollidingGameObject().GetComponent<LedgeTrigger>().Activate(GetDirection());
+                        inFrontOfPlayerTrigger.GetComponent<InFrontOfPlayerTrigger>().ResetCollider();
+                    }
+                        
+                    else
+                    {
+                        NotWalking();
+                    }
+                }
+                else
+                {
+                    NotWalking();
+                }
             }
         }
         else
@@ -444,6 +477,28 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetCurrentDirection()
     {
         return currentDirection;
+    }
+
+    public void JumpLedge(Direction direction, Vector3 coordinates)
+    {
+        //Trigger jump animation
+        //Now insta jump
+        jumping = true;
+        movePoint.position = coordinates + new Vector3(0.5f, 0.5f + playerTileOffset, 0);
+        ElevationChangePlayer(1);
+        StartCoroutine(Falling());
+    }
+
+    private IEnumerator Falling()
+    {
+        while(!(Vector3.Distance(transform.position, movePoint.position) <= .05f))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        jumping = false;
+        ElevationChangePlayer(0);
     }
 
     public void ToggleWaterTransformation()
@@ -469,7 +524,6 @@ public class PlayerController : MonoBehaviour
     public void ElevationChangePlayer(int toLevel)
     {
         elevation = toLevel;
-        Debug.Log(toLevel);
 
         if(elevation == 0)
         {

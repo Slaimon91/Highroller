@@ -27,7 +27,7 @@ public class TileflipTable : ScriptableObject
 public class Encounter
 {
     public List<GameObject> list;
-    public int weight;
+    [HideInInspector] public int weight;
     public Encounter()
     {
         list = new List<GameObject>();

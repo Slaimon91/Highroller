@@ -47,6 +47,7 @@ public class PlayerControlsManager : MonoBehaviour
         controls.Overworld.Inventory.performed += ctx => TriggerOpenInventory();
         controls.Overworld.Interact.performed += ctx => TriggerInteract();
         controls.Overworld.Tileflip.performed += ctx => TriggerPressedTileFlip();
+        controls.Overworld.Tileflip.canceled += ctx => TriggerCanceledTileFlip();
         controls.Overworld.Cancel.performed += ctx => TriggerOWCancel();
         controls.Overworld.ChangeSceneHax.performed += ctx => ChangeSceneToBattleHax();
         controls.Overworld.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
@@ -308,6 +309,19 @@ public class PlayerControlsManager : MonoBehaviour
         playerController.ToggleTileFlip();
     }
 
+    public void TriggerCanceledTileFlip()
+    {
+        if (playerController == null)
+        {
+            if ((playerController = FindObjectOfType<PlayerController>()) == null)
+            {
+                return;
+            }
+        }
+
+        playerController.StopHoldingTileFlip();
+    }
+
     public void TriggerOWCancel()
     {
         if (playerController == null)
@@ -318,7 +332,7 @@ public class PlayerControlsManager : MonoBehaviour
             }
         }
 
-        playerController.CancelTileFlip();
+        playerController.CancelTileFliping();
     }
 
     public void TriggerOptions()

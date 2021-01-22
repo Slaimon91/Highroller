@@ -29,6 +29,8 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         collisionCount--;
+        if (collisionCount < 0)
+            collisionCount = 0;
         if (other.CompareTag("InteractableObject") && collisionCount == 0)
         {
             currentlyCollidingInteractable = false;
@@ -54,5 +56,11 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
     public bool GetCollidingTileableStatus()
     {
         return currentlyCollidingTileable;
+    }
+    public void ResetCollider()
+    {
+        collisionCount = 0;
+        currentlyCollidingTileable = false;
+        collidingGameObject = null;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 878300675974279056}
   - component: {fileID: 6894257959072410126}
+  - component: {fileID: 746491368}
   m_Layer: 0
   m_Name: Tileflip Manager
   m_TagString: Untagged
@@ -38,19 +39,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8841132767927364406}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f53bee51873cf7541b53fe8162ca3f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 0}
   colliderTilemap: {fileID: 0}
-  selectedTilePrefab: {fileID: 0}
-  availableTilePrefab: {fileID: 0}
+  selectedTilePrefab: {fileID: 16662239167239479, guid: 51ec5f33bfb9831478c784edf7e262d3,
+    type: 3}
+  availableTilePrefab: {fileID: 299745898312277631, guid: 11826d8d558c29945bf04ef1c0de496a,
+    type: 3}
   movePoint: {fileID: 0}
   inFrontOfPlayerTrigger: {fileID: 0}
-  infoboxPrefab: {fileID: 0}
-  playerValues: {fileID: 0}
+  infoboxPrefab: {fileID: 2461838488547001373, guid: 0c826af8fdd563f428d1332b31fb8524,
+    type: 3}
+  infoboxPrefabMonster: {fileID: 2461838488547001373, guid: 66251930deca98b4fa2be615fd169f42,
+    type: 3}
+  unknownMonster: {fileID: 0}
+  playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 256
@@ -63,3 +70,18 @@ MonoBehaviour:
   notFlippable:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &746491368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841132767927364406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e838fb746ca5639408cca911be7eef9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threeCheckpointBoxPrefab: {fileID: 467397676903730841, guid: 47aa92a20983aca43b9aa73c70d9fb4d,
+    type: 3}
+  fiveCheckpointBoxPrefab: {fileID: 0}

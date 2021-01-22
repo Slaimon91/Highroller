@@ -574,60 +574,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: groundTilemap
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: colliderTilemap
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: movePoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: inFrontOfPlayerTrigger
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: playerValues
-      value: 
-      objectReference: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153,
-        type: 2}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: infoboxPrefab
-      value: 
-      objectReference: {fileID: 2461838488547001373, guid: 0c826af8fdd563f428d1332b31fb8524,
-        type: 3}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: availableTilePrefab
-      value: 
-      objectReference: {fileID: 299745898312277631, guid: 11826d8d558c29945bf04ef1c0de496a,
-        type: 3}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: selectedTilePrefab
-      value: 
-      objectReference: {fileID: 16662239167239479, guid: 51ec5f33bfb9831478c784edf7e262d3,
-        type: 3}
-    - target: {fileID: 6894257959072410126, guid: 0a9c6059460cdc34087cc9c74d752f99,
-        type: 3}
-      propertyPath: infoboxPrefabMonster
-      value: 
-      objectReference: {fileID: 2461838488547001373, guid: 66251930deca98b4fa2be615fd169f42,
-        type: 3}
     - target: {fileID: 8841132767927364406, guid: 0a9c6059460cdc34087cc9c74d752f99,
         type: 3}
       propertyPath: m_Name
-      value: Tileflip Manager
+      value: CorruptionSourceManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a9c6059460cdc34087cc9c74d752f99, type: 3}

@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class TileflipInfoboxMonster : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI name;
-    [SerializeField] TextMeshProUGUI HPChance;
-    [SerializeField] TextMeshProUGUI gaiaChance;
-    [SerializeField] TextMeshProUGUI monsterChance;
     [SerializeField] GameObject monsterbox1;
     [SerializeField] GameObject monsterbox2;
     [SerializeField] GameObject monsterbox3;
@@ -22,13 +18,8 @@ public class TileflipInfoboxMonster : MonoBehaviour
             FindObjectOfType<AreaTitlebox>().Remove();
         }
     }
-    public void AssignInfo(string nameText, string HPText, string gaiaText, string monsterText, List<Sprite> monsterIcons)
+    public void AssignInfo(List<Sprite> monsterIcons)
     {
-        name.text = nameText;
-        HPChance.text = HPText;
-        gaiaChance.text = gaiaText;
-        monsterChance.text = monsterText;
-
         Image[] images = null;
         
         switch (monsterIcons.Count)

@@ -217,25 +217,7 @@ public class TileflipManager : MonoBehaviour
                         infoBoxObject.gameObject.SetActive(false);
                     if(infoBoxObjectMonster != null)
                         infoBoxObjectMonster.gameObject.SetActive(true);
-                    if ((playerValues.healthPoints >= playerValues.maxHealthPoints) && (playerValues.gaia >= playerValues.maxGaia))
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.HPChance + currentTileTable.gaiaChance;
-                        infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, "MAX", "MAX", monster.ToString() + per, currentTileTable.monsterIcons);
-                    }
-                    else if (playerValues.healthPoints >= playerValues.maxHealthPoints)
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.HPChance;
-                        infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, "MAX", currentTileTable.gaiaChance.ToString() + per, monster.ToString() + per, currentTileTable.monsterIcons);
-                    }
-                    else if (playerValues.gaia >= playerValues.maxGaia)
-                    {
-                        int monster = currentTileTable.monsterChance + currentTileTable.gaiaChance;
-                        infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, "MAX", monster.ToString() + per, currentTileTable.monsterIcons);
-                    }
-                    else
-                    {
-                        infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per, currentTileTable.monsterIcons);
-                    }
+                    infoBoxObjectMonster.AssignInfo(currentTileTable.monsterIcons);
                 }
             }
             else
@@ -263,25 +245,7 @@ public class TileflipManager : MonoBehaviour
                                 infoBoxObject.gameObject.SetActive(false);
                             if (infoBoxObjectMonster != null)
                                 infoBoxObjectMonster.gameObject.SetActive(true);
-                            if ((playerValues.healthPoints >= playerValues.maxHealthPoints) && (playerValues.gaia >= playerValues.maxGaia))
-                            {
-                                int monster = currentTileTable.monsterChance + currentTileTable.HPChance + currentTileTable.gaiaChance;
-                                infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, "MAX", "MAX", monster.ToString() + per, currentTileTable.monsterIcons);
-                            }
-                            else if (playerValues.healthPoints >= playerValues.maxHealthPoints)
-                            {
-                                int monster = currentTileTable.monsterChance + currentTileTable.HPChance;
-                                infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, "MAX", currentTileTable.gaiaChance.ToString() + per, monster.ToString() + per, currentTileTable.monsterIcons);
-                            }
-                            else if (playerValues.gaia >= playerValues.maxGaia)
-                            {
-                                int monster = currentTileTable.monsterChance + currentTileTable.gaiaChance;
-                                infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, "MAX", monster.ToString() + per, currentTileTable.monsterIcons);
-                            }
-                            else
-                            {
-                                infoBoxObjectMonster.AssignInfo(currentTileTable.displayName, currentTileTable.HPChance.ToString() + per, currentTileTable.gaiaChance.ToString() + per, currentTileTable.monsterChance.ToString() + per, currentTileTable.monsterIcons);
-                            }
+                            infoBoxObjectMonster.AssignInfo(currentTileTable.monsterIcons);
                         }
                     }
                 }
