@@ -12,6 +12,11 @@ public class CorruptionSourceManager : MonoBehaviour
     private PlayerController playerController;
     private GameObject overWorldCanvas;
     private List<CorruptionCheckpoint> checkpoints = new List<CorruptionCheckpoint>();
+    private int recentlyClearedNR = 0;
+    private Sprite recentBackground;
+    private CorruptionSource currentSource;
+    private bool cleansingComplete = false;
+
     private void Awake()
     {
         inFrontOfPlayerTrigger = FindObjectOfType<InFrontOfPlayerTrigger>();
@@ -26,13 +31,19 @@ public class CorruptionSourceManager : MonoBehaviour
 
             if (colliding.GetComponent<CorruptionSource>() != null)
             {
-                if (colliding.GetComponent<CorruptionSource>().GetNumberOfCheckpoints() == 3)
+                currentSource = colliding.GetComponent<CorruptionSource>();
+
+                if (currentSource.GetNumberOfCheckpoints() == 3)
                 {
-                    checkpoints = colliding.GetComponent<CorruptionSource>().GetCheckpoints();
+                    checkpoints = currentSource.GetCheckpoints();
 
                     threeCheckpointBox = Instantiate(threeCheckpointBoxPrefab, overWorldCanvas.transform);
 
-                    for(int i = 0; i < checkpoints.Count; i++)
+                    threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback += CheckpointEvent;
+                    recentBackground = currentSource.GetBattleBackground();
+                    threeCheckpointBox.GetComponent<CorruptionBar>().SetNrOfCheckpoints(checkpoints.Count);
+
+                    for (int i = 0; i < checkpoints.Count; i++)
                     {
                         if(checkpoints[i].cleansed)
                         {
@@ -40,15 +51,32 @@ public class CorruptionSourceManager : MonoBehaviour
 
                             if (i == checkpoints.Count - 1)
                                 isLast = true;
-
                             threeCheckpointBox.GetComponent<CorruptionBar>().SetCheckpoints(i, GetOptionString(checkpoints[i].option), isLast);
                         }
                     }
                 }
 
-                else if (colliding.GetComponent<CorruptionSource>().GetNumberOfCheckpoints() == 5)
+                else if (currentSource.GetNumberOfCheckpoints() == 5)
                 {
+                    checkpoints = currentSource.GetCheckpoints();
 
+                    fiveCheckpointBox = Instantiate(fiveCheckpointBoxPrefab, overWorldCanvas.transform);
+
+                    fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback += CheckpointEvent;
+                    recentBackground = currentSource.GetBattleBackground();
+                    fiveCheckpointBox.GetComponent<CorruptionBar>().SetNrOfCheckpoints(checkpoints.Count);
+
+                    for (int i = 0; i < checkpoints.Count; i++)
+                    {
+                        if (checkpoints[i].cleansed)
+                        {
+                            bool isLast = false;
+
+                            if (i == checkpoints.Count - 1)
+                                isLast = true;
+                            fiveCheckpointBox.GetComponent<CorruptionBar>().SetCheckpoints(i, GetOptionString(checkpoints[i].option), isLast);
+                        }
+                    }
                 }
             }
         }
@@ -77,12 +105,21 @@ public class CorruptionSourceManager : MonoBehaviour
     public void TriggerCheckpoint(int cp)
     {
         checkpoints[cp].cleansed = true;
-        threeCheckpointBox.GetComponent<CorruptionBar>().TriggerCheckpointAnim(cp, GetOptionString(checkpoints[cp].option));
+        recentlyClearedNR = cp;
+        
+        if (threeCheckpointBox != null)
+        {
+            threeCheckpointBox.GetComponent<CorruptionBar>().TriggerCheckpointAnim(cp, GetOptionString(checkpoints[cp].option));
+        }
+        else if (fiveCheckpointBox != null)
+        {
+            fiveCheckpointBox.GetComponent<CorruptionBar>().TriggerCheckpointAnim(cp, GetOptionString(checkpoints[cp].option));
+        }
     }
 
     public void CleansingCompleted()
     {
-
+        cleansingComplete = true;
     }
 
     public void StartHolding()
@@ -113,23 +150,60 @@ public class CorruptionSourceManager : MonoBehaviour
     {
         if (threeCheckpointBox != null)
         {
+            threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback -= CheckpointEvent;
             Destroy(threeCheckpointBox.gameObject);
         }
         if (fiveCheckpointBox != null)
         {
+            fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback -= CheckpointEvent;
             Destroy(fiveCheckpointBox.gameObject);
         }
 
         checkpoints = null;
+        currentSource = null;
+        recentlyClearedNR = 0;
     }
 
     public bool CanCleanse()
     {
-        if (inFrontOfPlayerTrigger.GetCollidingTileableStatus())
+        if (inFrontOfPlayerTrigger.GetCollidingTileableStatus() && !cleansingComplete)
         {
             return true;
         }
 
         return false;
+    }
+
+    public void CheckpointEvent()
+    {
+        if(checkpoints[recentlyClearedNR].option == CheckpointOptions.Health)
+        {
+            FindObjectOfType<LaunchRewards>().LanuchHPRewardbox(checkpoints[recentlyClearedNR].rewardAmount);
+            if (cleansingComplete)
+                ActivateDestroyAnim();
+        }
+        else if (checkpoints[recentlyClearedNR].option == CheckpointOptions.Gaia)
+        {
+            FindObjectOfType<LaunchRewards>().LanuchGaiaRewardbox(checkpoints[recentlyClearedNR].rewardAmount);
+            if (cleansingComplete)
+                ActivateDestroyAnim();
+        }
+        else if (checkpoints[recentlyClearedNR].option == CheckpointOptions.Monster)
+        {
+            if(threeCheckpointBox != null)
+            {
+                StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(null, checkpoints[recentlyClearedNR].encounter.list, recentBackground));
+            }
+            else if (fiveCheckpointBox != null)
+            {
+                StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(null, checkpoints[recentlyClearedNR].encounter.list, recentBackground));
+            }
+        }
+    }
+
+    public void ActivateDestroyAnim()
+    {
+        currentSource.GetComponent<Animator>().SetBool("isDestroyed", true);
+        StopCleansing();
     }
 }

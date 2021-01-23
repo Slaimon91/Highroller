@@ -16,13 +16,14 @@ public class CorruptionBar : MonoBehaviour
     [SerializeField] Sprite monsterBigFreeze;
 
     private int clearedCheckpoints = 0;
+    private float checkpointModifier;
 
     private bool buttonDown;
     private float buttonDownTimer;
     private bool holding = false;
     private bool passCompleted = false;
 
-    [SerializeField] private float requiredHoldTime;
+    private float requiredHoldTime;
 
     public UnityEvent onLongClick;
 
@@ -34,6 +35,8 @@ public class CorruptionBar : MonoBehaviour
     private ButtonPanel buttonPanel;
     private CorruptionSourceManager corruptionSourceManager;
     private bool pausedForAnim = false;
+    public delegate void WaitForCheckpointAnim();
+    public WaitForCheckpointAnim onWaitForCheckpointAnimeCallback;
 
     void Awake()
     {
@@ -61,17 +64,9 @@ public class CorruptionBar : MonoBehaviour
             eventSystem.SetSelectedGameObject(null);
 
             buttonDownTimer += Time.deltaTime;
-            if (buttonDownTimer >= requiredHoldTime)
-            {
-                if (passCompleted == false)
-                {
-                    passCompleted = true;
-                    fillImage.gameObject.SetActive(false);
-                    PassCompleted();
-                }
-            }
             fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
-            if (fillImage.fillAmount > (clearedCheckpoints * 0.333f + 0.333))
+
+            if (fillImage.fillAmount >= (clearedCheckpoints * checkpointModifier + checkpointModifier) || fillImage.fillAmount == 1)
             {
                 corruptionSourceManager.TriggerCheckpoint(clearedCheckpoints);
                 clearedCheckpoints++;
@@ -79,7 +74,7 @@ public class CorruptionBar : MonoBehaviour
         }
         else
         {
-            if(fillImage.fillAmount > (clearedCheckpoints * 0.333f))
+            if(fillImage.fillAmount > (clearedCheckpoints * checkpointModifier))
             {
                 buttonDownTimer -= Time.deltaTime;
                 if (buttonDownTimer < 0)
@@ -91,7 +86,7 @@ public class CorruptionBar : MonoBehaviour
 
     private void PassCompleted()
     {
-        onLongClick.Invoke();
+        corruptionSourceManager.CleansingCompleted();
         audioManager.Stop("Passing");
         audioManager.Play("PassCompleted");
         savedSelectedGameObject = eventSystem.firstSelectedGameObject;
@@ -126,6 +121,7 @@ public class CorruptionBar : MonoBehaviour
         buttonDownTimer = (clearedCheckpoints);
         fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
         checkpoints[nr].GetComponent<Animator>().enabled = false;
+
         switch (checkpointInfo)
         {
             case "isHP":
@@ -149,14 +145,27 @@ public class CorruptionBar : MonoBehaviour
         }
     }
 
+    public void SetNrOfCheckpoints(int nr)
+    {
+        checkpointModifier = (float)(1f / nr);
+        requiredHoldTime = nr;
+    }
+
     public void TriggerCheckpointAnim(int checkpoint, string optionString)
     {
         pausedForAnim = true;
+        if(clearedCheckpoints + 1 == requiredHoldTime)
+        {
+            checkpoints[checkpoint].GetComponent<Animator>().SetBool("isBig", true);
+            passCompleted = true;
+            PassCompleted();
+        }
         checkpoints[checkpoint].GetComponent<Animator>().SetBool(optionString, true);
     }
 
     public void UnpauseBox()
     {
         pausedForAnim = false;
+        onWaitForCheckpointAnimeCallback?.Invoke();
     }
 }

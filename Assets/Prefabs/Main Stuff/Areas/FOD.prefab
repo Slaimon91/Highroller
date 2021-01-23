@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 5547318027469713233}
   - component: {fileID: 7478963640730100001}
   - component: {fileID: 3981747537560362473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Corruption Source
   m_TagString: InteractableTile
   m_Icon: {fileID: 0}
@@ -1659,6 +1659,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15301bd0cf8004542b60b69b036d0aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  battleBackground: {fileID: 21300000, guid: f7d70211bb73bff4fa32108118d840e2, type: 3}
+  checkpoints:
+  - option: 1
+    cleansed: 0
+    rewardAmount: 10
+    encounter:
+      list: []
+      weight: 0
+  - option: 0
+    cleansed: 0
+    rewardAmount: 5
+    encounter:
+      list: []
+      weight: 0
+  - option: 0
+    cleansed: 0
+    rewardAmount: 5
+    encounter:
+      list:
+      - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      weight: 0
+  - option: 0
+    cleansed: 0
+    rewardAmount: 5
+    encounter:
+      list:
+      - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      weight: 0
+  - option: 1
+    cleansed: 0
+    rewardAmount: 5
+    encounter:
+      list:
+      - {fileID: 127482270645473796, guid: c3e5c2bdac3d5df42855292d6406f421, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      - {fileID: 127482270645473796, guid: 0251998c20fd35b488cb72a416d0951c, type: 3}
+      weight: 0
 --- !u!95 &7478963640730100001
 Animator:
   serializedVersion: 3

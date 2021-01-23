@@ -519,6 +519,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818851965292621970}
     m_Modifications:
+    - target: {fileID: 746491368, guid: 0a9c6059460cdc34087cc9c74d752f99, type: 3}
+      propertyPath: fiveCheckpointBoxPrefab
+      value: 
+      objectReference: {fileID: 467397676903730841, guid: 801af1e9f4564744693edb4b3fdf99c9,
+        type: 3}
     - target: {fileID: 878300675974279056, guid: 0a9c6059460cdc34087cc9c74d752f99,
         type: 3}
       propertyPath: m_LocalPosition.x

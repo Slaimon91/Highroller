@@ -235,8 +235,6 @@ public class LaunchRewards : MonoBehaviour
 
     public void AcceptReward()
     {
-        GetComponent<PlayerController>().CancelTileflip();
-
         if (pendingGaiaReward != 0)
         {
             StartCoroutine(GetComponent<LaunchRewards>().IncrementGaia());

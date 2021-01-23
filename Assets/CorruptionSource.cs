@@ -34,7 +34,7 @@ public enum CheckpointOptions { Health, Gaia, Monster }
 public class CorruptionCheckpoint
 {
     public CheckpointOptions option;
-    public bool cleansed;
+    [HideInInspector] public bool cleansed;
     public int rewardAmount;
     public Encounter encounter;
 }

@@ -249,7 +249,6 @@ public class BerryTileData
         id = berryTile.id;
         berryIsPlanted = berryTile.berryIsPlanted;
         plantedBerryName = berryTile.plantedBerryName;
-        Debug.Log("Saving berry name:" + plantedBerryName);
         berryStage = berryTile.berryStage;
         berryPlantedAtTime = berryTile.berryPlantedAtTime;
         berryGrowthSpeed = berryTile.berryGrowthSpeed;
