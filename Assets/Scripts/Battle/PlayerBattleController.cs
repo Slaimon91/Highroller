@@ -167,7 +167,6 @@ public class PlayerBattleController : MonoBehaviour
             }
             else
             {
-                Debug.Log(collidingEnemy);
                 TakeDamage(collidingEnemy.GetDamageAmount());
                 collidingEnemy.CollideWithPlayer();
             }

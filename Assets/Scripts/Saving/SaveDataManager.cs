@@ -60,11 +60,6 @@ public class SaveDataManager : MonoBehaviour
                 SaveData.current.tileTreasures.Add(tileTreasure);
             }
 
-            foreach (TileTreasureData tileTreasure in data.tileTreasures)
-            {
-                SaveData.current.tileTreasures.Add(tileTreasure);
-            }
-
             foreach (DialogueTriggerData dialogueTrigger in data.dialogueTriggers)
             {
                 SaveData.current.dialogueTriggers.Add(dialogueTrigger);
@@ -83,6 +78,11 @@ public class SaveDataManager : MonoBehaviour
             foreach (BerryTileData berry in data.berryTiles)
             {
                 SaveData.current.berryTiles.Add(berry);
+            }
+
+            foreach (CorruptionSourceData source in data.corruptionSources)
+            {
+                SaveData.current.corruptionSources.Add(source);
             }
         }
 
@@ -116,6 +116,8 @@ public class SaveDataManager : MonoBehaviour
         SaveData.current.itemPickups.Clear();
 
         SaveData.current.berryTiles.Clear();
+
+        SaveData.current.corruptionSources.Clear();
     }
 
     public void OnDestroy()
@@ -164,4 +166,6 @@ public class SaveData
     public List<ItemPickupsData> itemPickups = new List<ItemPickupsData>();
 
     public List<BerryTileData> berryTiles = new List<BerryTileData>();
+
+    public List<CorruptionSourceData> corruptionSources = new List<CorruptionSourceData>();
 }

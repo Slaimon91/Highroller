@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CheckpointHelper : MonoBehaviour
 {
-    public void TriggerCheckpoint()
+    public void UnpauseBox()
     {
         GetComponentInParent<CorruptionBar>().UnpauseBox();
+    }
+    public void UnpauseBoxFinal()
+    {
+        GetComponentInParent<CorruptionBar>().UnpauseBoxFinal();
     }
 }

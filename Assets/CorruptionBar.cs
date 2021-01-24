@@ -36,7 +36,7 @@ public class CorruptionBar : MonoBehaviour
     private CorruptionSourceManager corruptionSourceManager;
     private bool pausedForAnim = false;
     public delegate void WaitForCheckpointAnim();
-    public WaitForCheckpointAnim onWaitForCheckpointAnimeCallback;
+    public WaitForCheckpointAnim onWaitForCheckpointAnimCallback;
 
     void Awake()
     {
@@ -138,7 +138,7 @@ public class CorruptionBar : MonoBehaviour
                 break;
             case "isMonster":
                 if (!isLast)
-                    checkpoints[nr].GetComponent<Image>().sprite = hpFreeze;
+                    checkpoints[nr].GetComponent<Image>().sprite = monsterFreeze;
                 else
                     checkpoints[nr].GetComponent<Image>().sprite = monsterBigFreeze;
                 break;
@@ -166,6 +166,11 @@ public class CorruptionBar : MonoBehaviour
     public void UnpauseBox()
     {
         pausedForAnim = false;
-        onWaitForCheckpointAnimeCallback?.Invoke();
+        onWaitForCheckpointAnimCallback?.Invoke();
+    }
+
+    public void UnpauseBoxFinal()
+    {
+        onWaitForCheckpointAnimCallback?.Invoke();
     }
 }

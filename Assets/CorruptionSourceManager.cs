@@ -21,6 +21,7 @@ public class CorruptionSourceManager : MonoBehaviour
     {
         inFrontOfPlayerTrigger = FindObjectOfType<InFrontOfPlayerTrigger>();
         overWorldCanvas = FindObjectOfType<OverworldCanvas>().gameObject;
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     public void StartCleansing()
@@ -39,7 +40,7 @@ public class CorruptionSourceManager : MonoBehaviour
 
                     threeCheckpointBox = Instantiate(threeCheckpointBoxPrefab, overWorldCanvas.transform);
 
-                    threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback += CheckpointEvent;
+                    threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimCallback += CheckpointEvent;
                     recentBackground = currentSource.GetBattleBackground();
                     threeCheckpointBox.GetComponent<CorruptionBar>().SetNrOfCheckpoints(checkpoints.Count);
 
@@ -62,7 +63,7 @@ public class CorruptionSourceManager : MonoBehaviour
 
                     fiveCheckpointBox = Instantiate(fiveCheckpointBoxPrefab, overWorldCanvas.transform);
 
-                    fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback += CheckpointEvent;
+                    fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimCallback += CheckpointEvent;
                     recentBackground = currentSource.GetBattleBackground();
                     fiveCheckpointBox.GetComponent<CorruptionBar>().SetNrOfCheckpoints(checkpoints.Count);
 
@@ -104,6 +105,7 @@ public class CorruptionSourceManager : MonoBehaviour
 
     public void TriggerCheckpoint(int cp)
     {
+        Debug.Log(cp);
         checkpoints[cp].cleansed = true;
         recentlyClearedNR = cp;
         
@@ -150,12 +152,12 @@ public class CorruptionSourceManager : MonoBehaviour
     {
         if (threeCheckpointBox != null)
         {
-            threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback -= CheckpointEvent;
+            threeCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimCallback -= CheckpointEvent;
             Destroy(threeCheckpointBox.gameObject);
         }
         if (fiveCheckpointBox != null)
         {
-            fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimeCallback -= CheckpointEvent;
+            fiveCheckpointBox.GetComponent<CorruptionBar>().onWaitForCheckpointAnimCallback -= CheckpointEvent;
             Destroy(fiveCheckpointBox.gameObject);
         }
 
@@ -166,9 +168,17 @@ public class CorruptionSourceManager : MonoBehaviour
 
     public bool CanCleanse()
     {
-        if (inFrontOfPlayerTrigger.GetCollidingTileableStatus() && !cleansingComplete)
+        if (inFrontOfPlayerTrigger.GetCollidingTileableStatus())
         {
-            return true;
+            GameObject colliding = inFrontOfPlayerTrigger.GetCollidingGameObject();
+
+            if (colliding.GetComponent<CorruptionSource>() != null)
+            {
+                if (!colliding.GetComponent<CorruptionSource>().isCleansed)
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -192,10 +202,14 @@ public class CorruptionSourceManager : MonoBehaviour
         {
             if(threeCheckpointBox != null)
             {
+                if (cleansingComplete)
+                    currentSource.bufferDestroyAnim = true;
                 StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(null, checkpoints[recentlyClearedNR].encounter.list, recentBackground));
             }
             else if (fiveCheckpointBox != null)
             {
+                if (cleansingComplete)
+                    currentSource.bufferDestroyAnim = true;
                 StartCoroutine(FindObjectOfType<EncounterManager>().LaunchCustomBattle(null, checkpoints[recentlyClearedNR].encounter.list, recentBackground));
             }
         }
@@ -203,7 +217,8 @@ public class CorruptionSourceManager : MonoBehaviour
 
     public void ActivateDestroyAnim()
     {
-        currentSource.GetComponent<Animator>().SetBool("isDestroyed", true);
-        StopCleansing();
+        currentSource.isCleansed = true;
+        currentSource.ActivateDestroyAnim();
+        playerController.CancelTileFliping();
     }
 }

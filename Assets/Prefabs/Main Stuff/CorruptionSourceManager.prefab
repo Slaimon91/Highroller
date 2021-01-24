@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6894257959072410126}
   - component: {fileID: 746491368}
   m_Layer: 0
-  m_Name: Tileflip Manager
+  m_Name: CorruptionSourceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,4 +84,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   threeCheckpointBoxPrefab: {fileID: 467397676903730841, guid: 47aa92a20983aca43b9aa73c70d9fb4d,
     type: 3}
-  fiveCheckpointBoxPrefab: {fileID: 0}
+  fiveCheckpointBoxPrefab: {fileID: 467397676903730841, guid: 801af1e9f4564744693edb4b3fdf99c9,
+    type: 3}
