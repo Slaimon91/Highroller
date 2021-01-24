@@ -41,7 +41,7 @@ public class HoldAssignButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (buttonDown)
+        if (buttonDown && !passCompleted)
         {
             if(eventSystem.currentSelectedGameObject != null)
             {
@@ -67,7 +67,7 @@ public class HoldAssignButton : MonoBehaviour
             }
             fillImage.fillAmount = buttonDownTimer / requiredHoldTime;
         }
-        else
+        else if(!passCompleted)
         {
             if(buttonDownTimer > 0)
             {
@@ -84,6 +84,7 @@ public class HoldAssignButton : MonoBehaviour
         onLongClick.Invoke();
         audioManager.Stop("Passing");
         audioManager.Play("PassCompleted");
+        buttonDown = false;
         savedSelectedGameObject = eventSystem.firstSelectedGameObject;
     }
 

@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         //If tileflipping
         if (!interacting && tileFlipping)
         {
-            PlayerTurnInPlace();
+            //PlayerTurnInPlace();
             dir = GetDirection();
             SetInteractCoordinates(dir);
 

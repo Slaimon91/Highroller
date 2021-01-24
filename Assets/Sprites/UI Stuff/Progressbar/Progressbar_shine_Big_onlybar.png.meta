@@ -1,7 +1,316 @@
 fileFormatVersion: 2
 guid: de080d1fea9706a4c88727cee37a4588
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -279231397208191169
+    second: Progressbar_shine_Big_onlybar_0
+  - first:
+      213: 70367626308725220
+    second: Progressbar_shine_Big_onlybar_1
+  - first:
+      213: -4442902753628393721
+    second: Progressbar_shine_Big_onlybar_2
+  - first:
+      213: 8483482259589412845
+    second: Progressbar_shine_Big_onlybar_3
+  - first:
+      213: 2057474137027692185
+    second: Progressbar_shine_Big_onlybar_4
+  - first:
+      213: 548678956379201346
+    second: Progressbar_shine_Big_onlybar_5
+  - first:
+      213: 4149913848295024984
+    second: Progressbar_shine_Big_onlybar_6
+  - first:
+      213: 2496200842016403149
+    second: Progressbar_shine_Big_onlybar_7
+  - first:
+      213: -6447124900200850371
+    second: Progressbar_shine_Big_onlybar_8
+  - first:
+      213: 5770135971085254467
+    second: Progressbar_shine_Big_onlybar_9
+  - first:
+      213: 338096544937164181
+    second: Progressbar_shine_Big_onlybar_10
+  - first:
+      213: -3238725205493094995
+    second: Progressbar_shine_Big_onlybar_11
+  - first:
+      213: -4773056842883219369
+    second: Progressbar_shine_Big_onlybar_12
+  - first:
+      213: -3045239618569095025
+    second: Progressbar_shine_Big_onlybar_13
+  - first:
+      213: -2541144721388048582
+    second: Progressbar_shine_Big_onlybar_14
+  - first:
+      213: 674051575519111792
+    second: Progressbar_shine_Big_onlybar_15
+  - first:
+      213: 4606823398557168784
+    second: Progressbar_shine_Big_onlybar_16
+  - first:
+      213: 4742950757310375216
+    second: Progressbar_shine_Big_onlybar_17
+  - first:
+      213: 8630026258332204468
+    second: Progressbar_shine_Big_onlybar_18
+  - first:
+      213: -1097987263495566177
+    second: Progressbar_shine_Big_onlybar_19
+  - first:
+      213: 6699851784231255754
+    second: Progressbar_shine_Big_onlybar_20
+  - first:
+      213: -6906326527993935001
+    second: Progressbar_shine_Big_onlybar_21
+  - first:
+      213: 506627095151583968
+    second: Progressbar_shine_Big_onlybar_22
+  - first:
+      213: 834797374648233949
+    second: Progressbar_shine_Big_onlybar_23
+  - first:
+      213: -6870221580182721302
+    second: Progressbar_shine_Big_onlybar_24
+  - first:
+      213: 3721400689661183506
+    second: Progressbar_shine_Big_onlybar_25
+  - first:
+      213: 7883588569633875736
+    second: Progressbar_shine_Big_onlybar_26
+  - first:
+      213: 1041189212395867016
+    second: Progressbar_shine_Big_onlybar_27
+  - first:
+      213: -6387440245685042761
+    second: Progressbar_shine_Big_onlybar_28
+  - first:
+      213: -8347726929392634631
+    second: Progressbar_shine_Big_onlybar_29
+  - first:
+      213: 275212761433518042
+    second: Progressbar_shine_Big_onlybar_30
+  - first:
+      213: -6003045453704202090
+    second: Progressbar_shine_Big_onlybar_31
+  - first:
+      213: 4737524021714351839
+    second: Progressbar_shine_Big_onlybar_32
+  - first:
+      213: -2572410383334604856
+    second: Progressbar_shine_Big_onlybar_33
+  - first:
+      213: -6920506837990380730
+    second: Progressbar_shine_Big_onlybar_34
+  - first:
+      213: -2595148163689436833
+    second: Progressbar_shine_Big_onlybar_35
+  - first:
+      213: -8075748698913901002
+    second: Progressbar_shine_Big_onlybar_36
+  - first:
+      213: -3757787050258530464
+    second: Progressbar_shine_Big_onlybar_37
+  - first:
+      213: 8457210021561063234
+    second: Progressbar_shine_Big_onlybar_38
+  - first:
+      213: -9050948549923978145
+    second: Progressbar_shine_Big_onlybar_39
+  - first:
+      213: 1941579038307816470
+    second: Progressbar_shine_Big_onlybar_40
+  - first:
+      213: -3084235102685740423
+    second: Progressbar_shine_Big_onlybar_41
+  - first:
+      213: -2805098324279170876
+    second: Progressbar_shine_Big_onlybar_42
+  - first:
+      213: 8310844495514399662
+    second: Progressbar_shine_Big_onlybar_43
+  - first:
+      213: 2636186976100643250
+    second: Progressbar_shine_Big_onlybar_44
+  - first:
+      213: 4464919052194069325
+    second: Progressbar_shine_Big_onlybar_45
+  - first:
+      213: -5166840499940427077
+    second: Progressbar_shine_Big_onlybar_46
+  - first:
+      213: -2280584464093899100
+    second: Progressbar_shine_Big_onlybar_47
+  - first:
+      213: 8450263017596970471
+    second: Progressbar_shine_Big_onlybar_48
+  - first:
+      213: -2649116735296518195
+    second: Progressbar_shine_Big_onlybar_49
+  - first:
+      213: 6853040955163539567
+    second: Progressbar_shine_Big_onlybar_50
+  - first:
+      213: 1641618081633454935
+    second: Progressbar_shine_Big_onlybar_51
+  - first:
+      213: 7597742671438069279
+    second: Progressbar_shine_Big_onlybar_52
+  - first:
+      213: -6235750730397205331
+    second: Progressbar_shine_Big_onlybar_53
+  - first:
+      213: -3353340263671791094
+    second: Progressbar_shine_Big_onlybar_54
+  - first:
+      213: 3034006800041582601
+    second: Progressbar_shine_Big_onlybar_55
+  - first:
+      213: 7763803172774382001
+    second: Progressbar_shine_Big_onlybar_56
+  - first:
+      213: 7667559710309025919
+    second: Progressbar_shine_Big_onlybar_57
+  - first:
+      213: 5373068534046108284
+    second: Progressbar_shine_Big_onlybar_58
+  - first:
+      213: -8325855144481017073
+    second: Progressbar_shine_Big_onlybar_59
+  - first:
+      213: 281209427496709575
+    second: Progressbar_shine_Big_onlybar_60
+  - first:
+      213: 5587417254813476990
+    second: Progressbar_shine_Big_onlybar_61
+  - first:
+      213: -5658571985512075370
+    second: Progressbar_shine_Big_onlybar_62
+  - first:
+      213: 44153476186071838
+    second: Progressbar_shine_Big_onlybar_63
+  - first:
+      213: -5618882014875329303
+    second: Progressbar_shine_Big_onlybar_64
+  - first:
+      213: -385632273590612672
+    second: Progressbar_shine_Big_onlybar_65
+  - first:
+      213: 7651738029563690585
+    second: Progressbar_shine_Big_onlybar_66
+  - first:
+      213: -4798313898294882659
+    second: Progressbar_shine_Big_onlybar_67
+  - first:
+      213: 724288769659458155
+    second: Progressbar_shine_Big_onlybar_68
+  - first:
+      213: 450028879304922104
+    second: Progressbar_shine_Big_onlybar_69
+  - first:
+      213: -8331239243568695111
+    second: Progressbar_shine_Big_onlybar_70
+  - first:
+      213: -606459824683565248
+    second: Progressbar_shine_Big_onlybar_71
+  - first:
+      213: 2893199553557347024
+    second: Progressbar_shine_Big_onlybar_72
+  - first:
+      213: -6273738515826181699
+    second: Progressbar_shine_Big_onlybar_73
+  - first:
+      213: 964930508398255431
+    second: Progressbar_shine_Big_onlybar_74
+  - first:
+      213: 823524263086384851
+    second: Progressbar_shine_Big_onlybar_75
+  - first:
+      213: -6758768421109556724
+    second: Progressbar_shine_Big_onlybar_76
+  - first:
+      213: -7179652838936406410
+    second: Progressbar_shine_Big_onlybar_77
+  - first:
+      213: 6238103962924421342
+    second: Progressbar_shine_Big_onlybar_78
+  - first:
+      213: -4738391142648358580
+    second: Progressbar_shine_Big_onlybar_79
+  - first:
+      213: 8873952083543281221
+    second: Progressbar_shine_Big_onlybar_80
+  - first:
+      213: -4193182235541919164
+    second: Progressbar_shine_Big_onlybar_81
+  - first:
+      213: -410814788759542395
+    second: Progressbar_shine_Big_onlybar_82
+  - first:
+      213: 8178158533117628510
+    second: Progressbar_shine_Big_onlybar_83
+  - first:
+      213: -2855489067125694003
+    second: Progressbar_shine_Big_onlybar_84
+  - first:
+      213: 399800247605931097
+    second: Progressbar_shine_Big_onlybar_85
+  - first:
+      213: -4789806998195097888
+    second: Progressbar_shine_Big_onlybar_86
+  - first:
+      213: -6860088790720375122
+    second: Progressbar_shine_Big_onlybar_87
+  - first:
+      213: 5553115339971867097
+    second: Progressbar_shine_Big_onlybar_88
+  - first:
+      213: 2447092622832803412
+    second: Progressbar_shine_Big_onlybar_89
+  - first:
+      213: 2980910944965662014
+    second: Progressbar_shine_Big_onlybar_90
+  - first:
+      213: -1710402275411595402
+    second: Progressbar_shine_Big_onlybar_91
+  - first:
+      213: 6333474252556562003
+    second: Progressbar_shine_Big_onlybar_92
+  - first:
+      213: 5282431301130900414
+    second: Progressbar_shine_Big_onlybar_93
+  - first:
+      213: 5701674094011855246
+    second: Progressbar_shine_Big_onlybar_94
+  - first:
+      213: -5758534706864591627
+    second: Progressbar_shine_Big_onlybar_95
+  - first:
+      213: 2335634100828368663
+    second: Progressbar_shine_Big_onlybar_96
+  - first:
+      213: 4020431651300790191
+    second: Progressbar_shine_Big_onlybar_97
+  - first:
+      213: 5672647592907546147
+    second: Progressbar_shine_Big_onlybar_98
+  - first:
+      213: 3323092265411034327
+    second: Progressbar_shine_Big_onlybar_99
+  - first:
+      213: 7933650893390457670
+    second: Progressbar_shine_Big_onlybar_100
+  - first:
+      213: 1460187786238455149
+    second: Progressbar_shine_Big_onlybar_101
+  - first:
+      213: -3081135914367678385
+    second: Progressbar_shine_Big_onlybar_102
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +349,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -61,7 +370,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -73,7 +382,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -85,7 +406,2170 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3f054f0688ff1cf0800000000000000
+      internalID: -279231397208191169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9a1d9bbfef9f000800000000000000
+      internalID: 70367626308725220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_2
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fef5e2c73a752c0800000000000000
+      internalID: -4442902753628393721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_3
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7b72dea226bb570800000000000000
+      internalID: 8483482259589412845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_4
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996c610a3dd9d8c10800000000000000
+      internalID: 2057474137027692185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_5
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fd6b29a9c4d9700800000000000000
+      internalID: 548678956379201346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_6
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859691868a4779930800000000000000
+      internalID: 4149913848295024984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_7
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce2b6cb07944a220800000000000000
+      internalID: 2496200842016403149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_8
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3cd3f4cf063786a0800000000000000
+      internalID: -6447124900200850371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_9
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34f7d3e1814a31050800000000000000
+      internalID: 5770135971085254467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_10
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 612
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d34cc240921b400800000000000000
+      internalID: 338096544937164181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5ea79c59cbd03d0800000000000000
+      internalID: -3238725205493094995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_12
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750c2331712b2cdb0800000000000000
+      internalID: -4773056842883219369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_13
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f883e3783b22db5d0800000000000000
+      internalID: -3045239618569095025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_14
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f6ec6e65a0cbcd0800000000000000
+      internalID: -2541144721388048582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_15
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07aeb1f2656ba5900800000000000000
+      internalID: 674051575519111792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_16
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09435f51979beef30800000000000000
+      internalID: 4606823398557168784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_17
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 035a7a4a59852d140800000000000000
+      internalID: 4742950757310375216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_18
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd3f2a782304c770800000000000000
+      internalID: 8630026258332204468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_19
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c8177b66a23c0f0800000000000000
+      internalID: -1097987263495566177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_20
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acefede43b7aafc50800000000000000
+      internalID: 6699851784231255754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_21
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 544
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b80143d9cc720a0800000000000000
+      internalID: -6906326527993935001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e22918a8a6e70700800000000000000
+      internalID: 506627095151583968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_23
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddf265f0acbc59b00800000000000000
+      internalID: 834797374648233949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_24
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec6cf07fd118a0a0800000000000000
+      internalID: -6870221580182721302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_25
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216062ed53215a330800000000000000
+      internalID: 3721400689661183506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_26
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8176b58f802286d60800000000000000
+      internalID: 7883588569633875736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_27
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b03dc721c037e00800000000000000
+      internalID: 1041189212395867016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_28
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1c8eb40f04b57a0800000000000000
+      internalID: -6387440245685042761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_29
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4f69bf59ae62c80800000000000000
+      internalID: -8347726929392634631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_30
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf26e26c80c1d300800000000000000
+      internalID: 275212761433518042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_31
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698ff6127f5e0bca0800000000000000
+      internalID: -6003045453704202090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_32
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 476
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd6f92d4ff01fb140800000000000000
+      internalID: 4737524021714351839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf70d4b266fc4cd0800000000000000
+      internalID: -2572410383334604856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_34
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64bebef72bb65ff90800000000000000
+      internalID: -6920506837990380730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_35
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59a8cbae7e2cfbd0800000000000000
+      internalID: -2595148163689436833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_36
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 636f9e1785d2def80800000000000000
+      internalID: -8075748698913901002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_37
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ff6cf5698a9dbc0800000000000000
+      internalID: -3757787050258530464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_38
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2475506d4bb0e5570800000000000000
+      internalID: 8457210021561063234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_39
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54c1717f32946280800000000000000
+      internalID: -9050948549923978145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_40
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6149ea139dfd1fa10800000000000000
+      internalID: 1941579038307816470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_41
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97240acd3889235d0800000000000000
+      internalID: -3084235102685740423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_42
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8eb45afe94219d0800000000000000
+      internalID: -2805098324279170876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_43
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 408
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea375a2390d065370800000000000000
+      internalID: 8310844495514399662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b17dff661e959420800000000000000
+      internalID: 2636186976100643250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_45
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bb6e8c83496fd30800000000000000
+      internalID: 4464919052194069325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_46
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbaf2fdb0f1bb48b0800000000000000
+      internalID: -5166840499940427077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_47
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a69861538cb950e0800000000000000
+      internalID: -2280584464093899100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_48
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5ec7e617d554570800000000000000
+      internalID: 8450263017596970471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_49
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7cb186d527c3bd0800000000000000
+      internalID: -2649116735296518195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_50
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68f9b39074ea1f50800000000000000
+      internalID: 6853040955163539567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_51
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75bce9492f238c610800000000000000
+      internalID: 1641618081633454935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_52
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1eb4e184ba907960800000000000000
+      internalID: 7597742671438069279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_53
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dacbac6cfb92679a0800000000000000
+      internalID: -6235750730397205331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_54
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 340
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0204d40cca8671d0800000000000000
+      internalID: -3353340263671791094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900299a1c15fa1a20800000000000000
+      internalID: 3034006800041582601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_56
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9844be9d19ebb60800000000000000
+      internalID: 7763803172774382001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_57
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78011b9ee4a86a60800000000000000
+      internalID: 7667559710309025919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_58
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7aa5ad2d59f09a40800000000000000
+      internalID: 5373068534046108284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_59
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03b9ddbbde947c80800000000000000
+      internalID: -8325855144481017073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_60
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cdae610c7e07e300800000000000000
+      internalID: 281209427496709575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_61
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78ab0dc36e7a8d40800000000000000
+      internalID: 5587417254813476990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_62
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f639372c6b871b0800000000000000
+      internalID: -5658571985512075370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_63
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e136ba74a5ddc9000800000000000000
+      internalID: 44153476186071838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_64
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec568cd398b502b0800000000000000
+      internalID: -5618882014875329303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_65
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 272
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d84b68d75f5aaf0800000000000000
+      internalID: -385632273590612672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ebd7e723f603a60800000000000000
+      internalID: 7651738029563690585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_67
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e405b9ee6f86db0800000000000000
+      internalID: -4798313898294882659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_68
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b625b5e6cc03d0a00800000000000000
+      internalID: 724288769659458155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_69
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f313a1a1e2de3600800000000000000
+      internalID: 450028879304922104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_70
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b83b4c7c0e716c80800000000000000
+      internalID: -8331239243568695111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_71
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04fb03ba00c6597f0800000000000000
+      internalID: -606459824683565248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_72
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daba164aa5b62820800000000000000
+      internalID: 2893199553557347024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_73
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db97e7e3f043fe8a0800000000000000
+      internalID: -6273738515826181699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_74
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74dd30a5f2f146d00800000000000000
+      internalID: 964930508398255431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_75
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6ed2d34febd6b00800000000000000
+      internalID: 823524263086384851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_76
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 204
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a13a43ee70432a0800000000000000
+      internalID: -6758768421109556724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_77
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676129c48cfbc5c90800000000000000
+      internalID: -7179652838936406410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_78
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0111ed082329650800000000000000
+      internalID: 6238103962924421342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_79
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49569f5c5add3eb0800000000000000
+      internalID: -4738391142648358580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_80
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e4f6d576c962b70800000000000000
+      internalID: 8873952083543281221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_81
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44aab0429f2dec5c0800000000000000
+      internalID: -4193182235541919164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_82
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585a28f402e7c4af0800000000000000
+      internalID: -410814788759542395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_83
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e505e4b2bd7ae7170800000000000000
+      internalID: 8178158533117628510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_84
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc126fd82d34f58d0800000000000000
+      internalID: -2855489067125694003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_85
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95c2aabf4306c8500800000000000000
+      internalID: 399800247605931097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_86
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eea6e1a9ef278db0800000000000000
+      internalID: -4789806998195097888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_87
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 136
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea6197557911cc0a0800000000000000
+      internalID: -6860088790720375122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_88
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1bbc3eaf0a01d40800000000000000
+      internalID: 5553115339971867097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_89
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e9d6476c1d5f120800000000000000
+      internalID: 2447092622832803412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_90
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3590cdf5b25e5920800000000000000
+      internalID: 2980910944965662014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_91
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f621f413e6348e0800000000000000
+      internalID: -1710402275411595402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_92
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e67b9c64505e750800000000000000
+      internalID: 6333474252556562003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_93
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3df46e747fe4940800000000000000
+      internalID: 5282431301130900414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_94
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81bf96316a602f40800000000000000
+      internalID: 5701674094011855246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_95
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fce392b1339510b0800000000000000
+      internalID: -5758534706864591627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_96
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71fe92907d6d96020800000000000000
+      internalID: 2335634100828368663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_97
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf458329417bc730800000000000000
+      internalID: 4020431651300790191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_98
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 68
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e9a374eea49be40800000000000000
+      internalID: 5672647592907546147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_99
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc3ca31fcefd1e20800000000000000
+      internalID: 3323092265411034327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_100
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 0
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64baf78047df91e60800000000000000
+      internalID: 7933650893390457670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_101
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 0
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d6b102e01a34410800000000000000
+      internalID: 1460187786238455149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Progressbar_shine_Big_onlybar_102
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 0
+        width: 238
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f488a6fd53b9d35d0800000000000000
+      internalID: -3081135914367678385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
