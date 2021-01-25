@@ -80,6 +80,10 @@ public class CorruptionSource : MonoBehaviour
             {
                 GetComponent<Animator>().enabled = false;
                 GetComponentInChildren<CorruptionHelper>().GetComponent<SpriteRenderer>().sprite = cleansedStoneSprite;
+                foreach (MysteriousObject obj in GetComponentsInChildren<MysteriousObject>())
+                {
+                    obj.gameObject.SetActive(false);
+                }
                 corruptedTile.SetActive(false);
             }
             if(bufferDestroyAnim)
