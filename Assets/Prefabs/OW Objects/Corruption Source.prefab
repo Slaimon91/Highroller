@@ -144,7 +144,7 @@ MonoBehaviour:
     encounter:
       list: []
       weight: 0
-  - option: 2
+  - option: 0
     cleansed: 0
     rewardAmount: 5
     encounter:
