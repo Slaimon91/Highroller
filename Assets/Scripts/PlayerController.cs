@@ -104,8 +104,7 @@ public class PlayerController : MonoBehaviour
         if (!interacting && !tileFlipping & !jumping)
         {
             PlayerMove();
-            dir = GetDirection();
-            SetInteractCoordinates(dir);
+
         }
         //If tileflipping
         if (!interacting && tileFlipping)
@@ -141,12 +140,7 @@ public class PlayerController : MonoBehaviour
             GameObject colliding = testTrigger.GetCollidingGameObject();
             if (testTrigger.GetCollidingInteractableStatus())
             {
-                IInteractable[] interactable = colliding.GetComponents<IInteractable>();
-
-                foreach(IInteractable obj in interactable)
-                {
-                    obj.Interact();
-                }
+                StartCoroutine(WaitForFinishWalking("Interact"));
             }
         }
     }
@@ -180,7 +174,7 @@ public class PlayerController : MonoBehaviour
             {
                 tileFlipping = true;
 
-                StartCoroutine(WaitForFinishWalking());
+                StartCoroutine(WaitForFinishWalking("Cleanse"));
             }
             //Stop flipping
             else if (tileFlipping && hasFinishedWalking)
@@ -274,7 +268,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitForFinishWalking()
+    public IEnumerator WaitForFinishWalking(string action)
     {
         hasFinishedWalking = false;
         while (!(Vector3.Distance(transform.position, movePoint.position) == 0))
@@ -288,13 +282,30 @@ public class PlayerController : MonoBehaviour
         NotWalking();
         //tileflipManager.SpawnAvailableTiles();
         hasFinishedWalking = true;
-        if (!corruptionSourceManager.CanCleanse())
+
+        if(action == "Cleanse")
         {
-            CancelTileflip();
+            if (!corruptionSourceManager.CanCleanse())
+            {
+                CancelTileflip();
+            }
+            else
+            {
+                corruptionSourceManager.StartCleansing();
+            }
         }
-        else
+        else if(action == "Interact")
         {
-            corruptionSourceManager.StartCleansing();
+            GameObject colliding = testTrigger.GetCollidingGameObject();
+            if (testTrigger.GetCollidingInteractableStatus())
+            {
+                IInteractable[] interactable = colliding.GetComponents<IInteractable>();
+
+                foreach (IInteractable obj in interactable)
+                {
+                    obj.Interact();
+                }
+            }
         }
     }
 
@@ -350,6 +361,8 @@ public class PlayerController : MonoBehaviour
         //Only check movement input if we are at the movepoint position
         if ((Vector3.Distance(transform.position, movePoint.position) <= .05f))
         {
+            dir = GetDirection();
+            SetInteractCoordinates(dir);
             //Check if we're pressing all the way to the left or to the right
             if (move.x == 1f)    //east
             {

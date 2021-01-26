@@ -276,6 +276,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38e4557d22260fa41acf39d829b13356, type: 2}
   battleStartupInfo: {fileID: 11400000, guid: 7478c8187a2ee32439379806f5b9d3b1, type: 2}
   playerValues: {fileID: 11400000, guid: 19452ffe34ee2d844a8facedf925b153, type: 2}
+  tileToFlip: {fileID: 299745898312277631, guid: c300ac8e60fbec644a60b2a2a94e4f9d,
+    type: 3}
 --- !u!1001 &3517070293672963384
 PrefabInstance:
   m_ObjectHideFlags: 0

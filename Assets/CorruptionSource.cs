@@ -89,6 +89,7 @@ public class CorruptionSource : MonoBehaviour
             if(bufferDestroyAnim)
             {
                 bufferDestroyAnim = false;
+                isCleansed = true;
                 ActivateDestroyAnim();
             }
         }

@@ -7,7 +7,7 @@ public class TileflipVisual : MonoBehaviour
     Animator animator;
     public delegate void FlipAnimationDone();
     public FlipAnimationDone onFlipAnimationDoneCallback;
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -27,9 +27,7 @@ public class TileflipVisual : MonoBehaviour
 
     public void AnimationDone()
     {
-        if (onFlipAnimationDoneCallback != null)
-        {
-            onFlipAnimationDoneCallback?.Invoke();
-        }
+        onFlipAnimationDoneCallback?.Invoke();
+        Destroy(gameObject);
     }
 }

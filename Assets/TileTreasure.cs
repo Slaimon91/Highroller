@@ -8,6 +8,7 @@ public class TileTreasure : MonoBehaviour, IInteractable
     [SerializeField] Sprite afterSprite;
     [HideInInspector] public bool isTaken = false;
     [HideInInspector] public string id;
+    [SerializeField] int gaiaAmount;
     void Awake()
     {
         GameEvents.SaveInitiated += Save;
