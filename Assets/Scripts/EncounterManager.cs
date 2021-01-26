@@ -17,6 +17,7 @@ public class EncounterManager : MonoBehaviour
     public delegate void WaitForFlipDone();
     public WaitForFlipDone onWaitForFlipDoneCallback;
     private PlayerControlsManager playerControlsManager;
+    [SerializeField] private GameObject tileToFlip;
 
     private void Awake()
     {
@@ -102,6 +103,30 @@ public class EncounterManager : MonoBehaviour
             LaunchBattle(matchedTable);
         }
 
+        yield return null;
+    }
+    public IEnumerator GaiaTile(Transform coords)
+    {
+        TileflipVisual tfv = Instantiate(tileToFlip, coords).GetComponent<TileflipVisual>();
+        waitForAnim = true;
+        tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
+        tfv.TriggerGaiaAnimation();
+        yield return StartCoroutine(WaitForFlipAnimation());
+        onWaitForFlipDoneCallback?.Invoke();
+        tfv.onFlipAnimationDoneCallback -= WaitForAnimDone;
+        yield return null;
+    }
+
+    public IEnumerator MonsterTile(Transform coords, Encounter encounter, Sprite background)
+    {
+        TileflipVisual tfv = Instantiate(tileToFlip, coords).GetComponent<TileflipVisual>();
+        waitForAnim = true;
+        tfv.onFlipAnimationDoneCallback += WaitForAnimDone;
+        tfv.TriggerMonsterAnimation();
+        yield return StartCoroutine(WaitForFlipAnimation());
+        onWaitForFlipDoneCallback?.Invoke();
+        tfv.onFlipAnimationDoneCallback -= WaitForAnimDone;
+        StartCoroutine(LaunchCustomBattle(null, encounter.list, background));
         yield return null;
     }
 

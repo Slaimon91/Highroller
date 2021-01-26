@@ -80,7 +80,28 @@ public class CorruptionSourceManager : MonoBehaviour
                     }
                 }
             }
+            else if(colliding.GetComponent<TileTreasure>() != null)
+            {
+                colliding.GetComponent<IInteractable>().Interact();
+                StartCoroutine(WaitForFlipAnimGaia(colliding));
+            }
+            else if (colliding.GetComponent<MonsterTile>() != null)
+            {
+                StartCoroutine(WaitForFlipAnimMonster(colliding));
+            }
         }
+    }
+
+    public IEnumerator WaitForFlipAnimGaia(GameObject colliding)
+    {
+        yield return StartCoroutine(FindObjectOfType<EncounterManager>().GaiaTile(colliding.transform));
+        playerController.CancelTileFliping();
+    }
+
+    public IEnumerator WaitForFlipAnimMonster(GameObject colliding)
+    {
+        yield return StartCoroutine(FindObjectOfType<EncounterManager>().MonsterTile(colliding.transform, colliding.GetComponent<MonsterTile>().GetEncounter(), colliding.GetComponent<MonsterTile>().GetBattleBackground()));
+        playerController.CancelTileFliping();
     }
 
     private string GetOptionString(CheckpointOptions option)
@@ -178,6 +199,17 @@ public class CorruptionSourceManager : MonoBehaviour
                 {
                     return true;
                 }
+            }
+            else if (colliding.GetComponent<TileTreasure>() != null)
+            {
+                if (!colliding.GetComponent<TileTreasure>().isTaken)
+                {
+                    return true;
+                }
+            }
+            else if (colliding.GetComponent<MonsterTile>() != null)
+            {
+                return true;
             }
         }
 

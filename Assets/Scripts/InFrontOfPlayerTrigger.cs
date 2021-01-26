@@ -12,35 +12,48 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        collisionCount++;
+
         if (other.CompareTag("InteractableObject"))
         {
+            collisionCount++;
             currentlyCollidingInteractable = true;
             collidingGameObject = other.gameObject;
+            Debug.Log(other.name + collisionCount);
         }
 
         else if (other.CompareTag("InteractableTile"))
         {
+            collisionCount++;
             currentlyCollidingTileable = true;
             collidingGameObject = other.gameObject;
+            Debug.Log(other.name + collisionCount);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        collisionCount--;
-        if (collisionCount < 0)
-            collisionCount = 0;
-        if (other.CompareTag("InteractableObject") && collisionCount == 0)
+        if (other.CompareTag("InteractableObject"))
         {
-            currentlyCollidingInteractable = false;
-            collidingGameObject = null;
+            collisionCount--;
+            if (collisionCount < 0)
+                collisionCount = 0;
+            if (collisionCount == 0)
+            {
+                currentlyCollidingInteractable = false;
+                collidingGameObject = null;
+            }
         }
 
-        else if (other.CompareTag("InteractableTile") && collisionCount == 0)
+        else if (other.CompareTag("InteractableTile"))
         {
-            currentlyCollidingTileable = false;
-            collidingGameObject = null;
+            collisionCount--;
+            if (collisionCount < 0)
+                collisionCount = 0;
+            if (collisionCount == 0)
+            {
+                currentlyCollidingTileable = false;
+                collidingGameObject = null;
+            }
         }
     }
 
