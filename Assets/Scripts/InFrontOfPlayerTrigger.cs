@@ -18,7 +18,6 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
             collisionCount++;
             currentlyCollidingInteractable = true;
             collidingGameObject = other.gameObject;
-            Debug.Log(other.name + collisionCount);
         }
 
         else if (other.CompareTag("InteractableTile"))
@@ -26,7 +25,6 @@ public class InFrontOfPlayerTrigger : MonoBehaviour
             collisionCount++;
             currentlyCollidingTileable = true;
             collidingGameObject = other.gameObject;
-            Debug.Log(other.name + collisionCount);
         }
     }
 

@@ -126,7 +126,6 @@ public class CorruptionSourceManager : MonoBehaviour
 
     public void TriggerCheckpoint(int cp)
     {
-        Debug.Log(cp);
         checkpoints[cp].cleansed = true;
         recentlyClearedNR = cp;
         
