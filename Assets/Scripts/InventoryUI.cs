@@ -134,7 +134,16 @@ public class InventoryUI : MonoBehaviour
         }
         if (item.prefab.GetComponent<TrinketBase>() != null)
         {
-            trinketSlots[trinketSlots.Count - 1].AddItem(item);
+            int slotNr = item.prefab.GetComponent<TrinketBase>().GetInventorySlotNr();
+            if(trinketSlots[slotNr].GetComponentInChildren<TrinketBase>() == null)
+            {
+                trinketSlots[slotNr].AddItem(item);
+                trinketSlots[slotNr].GetComponentInChildren<InventoryTrinket>().ChangeTrinketCount(1);
+            }
+            else
+            {
+                trinketSlots[slotNr].GetComponentInChildren<InventoryTrinket>().ChangeTrinketCount(1);
+            }
         }
     }
 
@@ -143,7 +152,16 @@ public class InventoryUI : MonoBehaviour
 
         foreach (Item item in trinkets)
         {
-            trinketSlots[trinketSlots.Count - 1].AddItem(item);
+            int slotNr = item.prefab.GetComponent<TrinketBase>().GetInventorySlotNr();
+            if (trinketSlots[slotNr].GetComponentInChildren<TrinketBase>() == null)
+            {
+                trinketSlots[slotNr].AddItem(item);
+                trinketSlots[slotNr].GetComponentInChildren<InventoryTrinket>().ChangeTrinketCount(1);
+            }
+            else
+            {
+                trinketSlots[slotNr].GetComponentInChildren<InventoryTrinket>().ChangeTrinketCount(1);
+            }
         }
         foreach (Item item in abilities)
         {

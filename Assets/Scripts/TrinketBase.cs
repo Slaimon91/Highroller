@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrinketBase : MonoBehaviour
 {
     [SerializeField] protected string trinketName;
+    [SerializeField] protected int inventorySlotNr;
 
     [SerializeField]
     [TextArea(3, 20)]
@@ -13,6 +14,11 @@ public class TrinketBase : MonoBehaviour
     public string GetTrinketName()
     {
         return trinketName;
+    }
+
+    public int GetInventorySlotNr()
+    {
+        return inventorySlotNr;
     }
 
     public string GetInfo()

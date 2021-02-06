@@ -23,12 +23,6 @@ public class MoleGlasses : MonoBehaviour, IInteractable
         GameEvents.LoadInitiated += Load;
     }
 
-    private void GiveSeed()
-    {
-        itemPickup.Interact();
-        FindObjectOfType<PlayerController>().onFinishedInteractingCallback -= GiveSeed;
-    }
-
     public void Interact()
     {
         if (!hasSpawnedBling)

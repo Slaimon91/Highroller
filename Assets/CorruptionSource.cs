@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -128,28 +129,34 @@ public enum CheckpointOptions { Health, Gaia, Monster }
 public class CorruptionCheckpoint
 {
     public CheckpointOptions option;
-    [HideInInspector] public bool cleansed;
-    public int rewardAmount;
-    public Encounter encounter;
+    public bool cleansed;
+    [HideInInspector] public int rewardAmount;
+    [HideInInspector] public Encounter encounter;
+    [HideInInspector] public GameObject Template;
 }
 
-/*#if UNITY_EDITOR
-[CustomEditor(typeof(CorruptionCheckpoint))]
-public class RandomScript_Editor : Editor
+#if UNITY_EDITOR
+[CustomEditor(typeof(CorruptionSource))]
+public class CorruptionSourceEditor : Editor
 {
+    //public CorruptionCheckpoint script { get { return (target as CorruptionCheckpoint); } }
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector(); // for other non-HideInInspector fields
 
-        RandomScript script = (RandomScript)target;
-
+        CorruptionSource script = target as CorruptionSource;
         // draw checkbox for the bool
-        script.StartTemp = EditorGUILayout.Toggle("Start Temp", script.StartTemp);
-        if (script.StartTemp) // if bool is true, show other fields
+        for (int i = 0; i < script.checkpoints.Count; i++)
         {
-            script.iField = EditorGUILayout.ObjectField("I Field", script.iField, typeof(InputField), true) as InputField;
-            script.Template = EditorGUILayout.ObjectField("Template", script.Template, typeof(GameObject), true) as GameObject;
+           // script.checkpoints[i].cleansed = EditorGUILayout.Toggle(true);
+            if (/*script.checkpoints[i].option == CheckpointOptions.Health || script.checkpoints[i].option == CheckpointOptions.Gaia*/script.checkpoints[i].cleansed) // if bool is true, show other fields
+            {
+                //script.rewardAmount = EditorGUILayout.ObjectField("I Field", script.rewardAmount, typeof(int), true) as int;
+                //script.rewardAmount = EditorGUILayout.ObjectField("Template", script.rewardAmount, typeof(int), true) as int;
+                script.checkpoints[i].rewardAmount = (int)EditorGUILayout.IntField(script.checkpoints[i].rewardAmount);
+            }
         }
     }
 }
-#endif*/
+
+#endif
